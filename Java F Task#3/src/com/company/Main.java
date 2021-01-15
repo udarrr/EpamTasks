@@ -11,7 +11,7 @@ public class Main {
         Scanner res = new Scanner(System.in);
         System.out.println("Enter count of number");
         String randomNumber = res.nextLine();
-
+        System.out.println("Numbers of count: "+ randomNumber);
         Random ran = new Random();
 
         int count = Integer.parseInt(randomNumber);
