@@ -1,73 +1,35 @@
 package com.company;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args)
     {
-        int n = 0;
-        int i = 0;
-        boolean exit = true;
-        String[] num = new String[0];
+        while(true) {
+            CreateArrayN arr = new CreateArrayN();
+            String[] arrNumbers = arr.createAndFillArr();
+            String[] initialArr = Arrays.copyOf(arrNumbers, arrNumbers.length);
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Set n numbers, only int ");
-        while (exit)
-        try
-        {
-            String setline = sc.nextLine();
-            n = Integer.parseInt(setline);
-            exit = false;
-            num = new String[n];
-            System.out.println("Enter " + n + " numbers");
-        } catch (Exception e) {
-            System.out.println("Only int number");
-            }
-        
-        while (i < n) {
-              try {
-                String line = sc.nextLine();
-                Long.parseLong(line);
-                num[i] = line;
-                i++;
-            } catch (Exception e) {
-                  System.out.println("Only numbers,please try again");
-            }
+            SortOfArrayNumbers res = new SortOfArrayNumbers();
+            AvgLengthArray avgres = new AvgLengthArray();
+            DifferenceNumberOfArray diff = new DifferenceNumberOfArray();
+
+            System.out.println("Less is: " + diff.LowerBiggerNumber(arrNumbers)[0] + " and length is: " + diff.LowerBiggerNumber(arrNumbers)[0].length()
+                    + " Big is: " + diff.LowerBiggerNumber(arrNumbers)[1] + " and length is : " + diff.LowerBiggerNumber(arrNumbers)[1].length() + " Task №1");
+            System.out.println("Sorted array of numbers increase: " + Arrays.toString(res.SortOfNumbers(arrNumbers)) + " Task №2");
+            System.out.println("Sorted array of numbers decrease: " + Arrays.toString(res.SortOfNumbersReverse(arrNumbers)) + " Task №2");
+            System.out.println("Numbers with less avg length: " + Arrays.toString(avgres.AvgHalfOfLengthLess(arrNumbers))
+                    + " and their length:" + Arrays.toString(avgres.LengthOfArrayNumbers(avgres.AvgHalfOfLengthLess(arrNumbers))) + " Task №3");
+            System.out.println("Numbers with more avg length: " + Arrays.toString(avgres.AvgHalfOfLengthMore(arrNumbers))
+                    + " and their length:" + Arrays.toString(avgres.LengthOfArrayNumbers(avgres.AvgHalfOfLengthMore(arrNumbers))) + " Task №3");
+            System.out.println("First number with less differences is: " + diff.DifferenceNumber(initialArr) + " Task №4");
+            System.out.println("Number with only odd number is: " + diff.OddNumber(initialArr) + " and number with half odd and even numbers is: "
+                    + diff.OddAndEvenHalfNumber(initialArr) + " Task №5");
+            System.out.println("First increase number with strict orders is: " + diff.IncreaseNumberOrder(initialArr) + " Task №6");
+            System.out.println("Firs max difference number is: " + diff.MaxDifferenceNumber(initialArr) + " Task №7");
+
+            System.out.println("********** Try again **********");
         }
-
-        SortOfArray res = new SortOfArray();
-        AvgLengthArray avgres = new AvgLengthArray();
-        DifferenceNumberOfArray diffres = new DifferenceNumberOfArray();
-
-        System.out.println("Less is: "+ LowerBiggerNumber(num)[0] + " and length is: " +LowerBiggerNumber(num)[0].length()
-               + " Big is: " +LowerBiggerNumber(num)[1] + " and length is : " + LowerBiggerNumber(num)[1].length() +" Task №1");
-        System.out.println("Sorted array of numbers increase: " + Arrays.toString(res.SortOfNumbers(num)) +" Task №2");
-        System.out.println("Sorted array of numbers decrease: " + Arrays.toString(res.SortOfNumbersReverse(num)) +" Task №3");
-        System.out.println("Numbers with less avg length: " + Arrays.toString(avgres.AvgHalfOfLengthLess(num) )
-               +" and their length:" + Arrays.toString(avgres.LengthOfArrayNumbers(avgres.AvgHalfOfLengthLess(num))) +" Task №4");
-        System.out.println("Numbers with more avg length: " + Arrays.toString(avgres.AvgHalfOfLengthMore(num))
-                +" and their length:" + Arrays.toString(avgres.LengthOfArrayNumbers(avgres.AvgHalfOfLengthMore(num)))+" Task №5");
-        System.out.println("First number with less differences is: " + diffres.DifferenceNumber(num) +" Task №6");
-        System.out.println("Increase number with strict orders is: " + diffres.IncreaseNumberOrder(num) +" Task №8");
-        System.out.println("Max difference number is: " + diffres.MaxDifferenceNumber(num) +" Task №9");
-    }
-
-    public static String[] LowerBiggerNumber(String[] numbers)
-    {
-        String[] result = new String[2];
-        result[0] = numbers[0];
-        result[1] = numbers[0];
-        for(int i = 0; i < numbers.length;i++)
-        {
-            if(result[0].length() > numbers[i].length()) {
-                result[0] = numbers[i];
-            }
-            if(result[1].length() < numbers[i].length()) {
-                result[1] = numbers[i];
-            }
-        }
-        return result;
     }
 }

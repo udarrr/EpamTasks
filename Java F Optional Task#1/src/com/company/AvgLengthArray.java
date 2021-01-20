@@ -1,7 +1,8 @@
 package com.company;
 
 public class AvgLengthArray {
-    String[] AvgHalfOfLengthLess(String[] numbers) {
+
+        String[] AvgHalfOfLengthLess(String[] numbers) {  //Task #3
         int avgLength = 0;
         int countNumbersLess =0;
 
@@ -10,7 +11,7 @@ public class AvgLengthArray {
             avgLength+=numbers[i].length();
         }
 
-        SortOfArray avgRes = new SortOfArray();
+        SortOfArrayNumbers avgRes = new SortOfArrayNumbers();
         numbers = avgRes.SortOfNumbers(numbers);
 
         for(int i = 0; i < numbers.length;i++)
@@ -39,7 +40,7 @@ public class AvgLengthArray {
         {
             avgLength+=numbers[i].length();
         }
-        SortOfArray avgRes = new SortOfArray();
+        SortOfArrayNumbers avgRes = new SortOfArrayNumbers();
         numbers = avgRes.SortOfNumbers(numbers);
 
         for(int i = 0; i < numbers.length;i++)

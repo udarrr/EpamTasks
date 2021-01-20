@@ -1,11 +1,28 @@
 package com.company;
 
 public class DifferenceNumberOfArray {
-   String DifferenceNumber(String[] numbers) {
+    String[] LowerBiggerNumber(String[] numbers)  //Task #1
+    {
+        String[] result = new String[2];
+        result[0] = numbers[0];
+        result[1] = numbers[0];
+        for(int i = 0; i < numbers.length;i++)
+        {
+            if(result[0].length() > numbers[i].length()) {
+                result[0] = numbers[i];
+            }
+            if(result[1].length() < numbers[i].length()) {
+                result[1] = numbers[i];
+            }
+        }
+        return result;
+    }
 
-        String result = null;
+   String DifferenceNumber(String[] numbers) {  //Task #4
+
+        String result = "NO RESULT";
         int lengthDiff =10;
-        SortOfArray sort = new SortOfArray();
+       SortOfArrayNumbers sort = new SortOfArrayNumbers();
 
 
         for(int i = 0; i < numbers.length;i++)
@@ -30,10 +47,69 @@ public class DifferenceNumberOfArray {
         return  result;
     }
 
+    int OddNumber(String[] numbers) {  //Task #5
+        int result = 0;
+        int count = 0;
 
-    String IncreaseNumberOrder(String[] numbers) {
+        for (int i = 0; i < numbers.length; i++) {
+            char[] arrayNum = numbers[i].toCharArray();
+            SortOfArrayNumbers sort = new SortOfArrayNumbers();
+            sort.SortOfNumbersChar(arrayNum);
+            for (int j = 0; j < arrayNum.length-1; j++) {
+                if(arrayNum[j] % 2 == 0){
+                    count++;
+                }
+            }
+            if(count == arrayNum.length-1){
+                result++;
+            }
+            count = 0;
+        }
+        return result;
+    }
 
-        String result = "Here no number";
+    int OddAndEvenHalfNumber(String[] numbers) {
+        int result = 0;
+        int countOddFirstHalf = 0;
+        int countEvenFirstHalf = 0;
+        int countOddSecondHalf = 0;
+        int countEvenSecondHalf =0;
+
+        for (int i = 0; i < numbers.length; i++) {
+            char[] arrayNum = numbers[i].toCharArray();
+
+            for (int j = 0; j < arrayNum.length; j++) {
+
+                if(arrayNum[j] % 2 == 1 && j<arrayNum.length/2){
+                    countOddFirstHalf++;
+                }
+                if (arrayNum[j] % 2 == 0 && j<arrayNum.length/2){
+                    countEvenFirstHalf++;
+                }
+                if((arrayNum[j] % 2 == 1) && (j>=arrayNum.length/2) && (countEvenFirstHalf !=0)){
+                    countOddSecondHalf++;
+                }
+                if ((arrayNum[j] % 2 == 0) && (j>=arrayNum.length/2) && (countOddFirstHalf !=0)){
+                    countEvenSecondHalf++;
+                }
+            }
+            if(((countOddFirstHalf ==0 && countEvenFirstHalf !=0) ||
+                    (countOddFirstHalf !=0 && countEvenFirstHalf ==0)) &&
+                    ((countOddSecondHalf ==0 && countEvenSecondHalf !=0) ||
+                            (countOddSecondHalf !=0 && countEvenSecondHalf ==0))){
+                result++;
+            }
+            countOddFirstHalf = 0;
+            countEvenFirstHalf = 0;
+            countOddSecondHalf = 0;
+            countEvenSecondHalf =0;
+        }
+        return result;
+    }
+
+    String IncreaseNumberOrder(String[] numbers) {  //Task #6
+
+        String result = "NO RESULT";
         int k = 0;
         int lengthNumber =0;
         boolean fail;
@@ -43,6 +119,7 @@ public class DifferenceNumberOfArray {
             int countNum = 0;
             fail =false;
             char[] arrayNum = numbers[i].toCharArray();
+
             for(int j = 0; j < arrayNum.length-1;j++)
             {
                 if((arrayNum[k] < arrayNum[j+1]) && ((arrayNum[j+1] % arrayNum[k]== 1) || (arrayNum[j+1] % arrayNum[k]== 0)))
@@ -59,16 +136,16 @@ public class DifferenceNumberOfArray {
             if(countNum > lengthNumber && (!fail))
             {
                 result = numbers[i];
-                lengthNumber = countNum;
-                k=0;
+                break;
             }
+            k=0;
         }
         return  result;
     }
 
-    String MaxDifferenceNumber(String[] numbers) {
+    String MaxDifferenceNumber(String[] numbers) {  //Task #7
 
-        String result = "Here no number";
+        String result = "NO RESULT";
         int lengthNumber =0;
         boolean fail;
 
@@ -76,7 +153,7 @@ public class DifferenceNumberOfArray {
         {
             int countDiffNum = 0;
             char[] arrayNum = numbers[i].toCharArray();
-            SortOfArray sort = new SortOfArray();
+            SortOfArrayNumbers sort = new SortOfArrayNumbers();
             sort.SortOfNumbersChar(arrayNum);
             fail = false;
             for(int j = 0; j < arrayNum.length-1;j++)
