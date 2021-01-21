@@ -10,7 +10,6 @@ public class AvgLengthArray {
         {
             avgLength+=numbers[i].length();
         }
-
         SortOfArrayNumbers avgRes = new SortOfArrayNumbers();
         numbers = avgRes.SortOfNumbers(numbers);
 
