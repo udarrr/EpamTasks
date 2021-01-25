@@ -1,5 +1,8 @@
 package com.company;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class YearOfCar extends ModelOfCar
 {
     private int year;
@@ -20,11 +23,11 @@ public class YearOfCar extends ModelOfCar
         this.year = year;
     }
 
-    public static void print(RegIdOfCar[] vendor, int request,String command)
+    public static void print(RegIdOfCar[] cars, int request,String command)
     {
         if(command.equals("="))
         {
-            for (RegIdOfCar item : vendor)
+            for (RegIdOfCar item : cars)
             {
                 if (item.getYear() == request) {
                     System.out.println(item.toString());
@@ -33,7 +36,7 @@ public class YearOfCar extends ModelOfCar
         }
         if(command.equals(">"))
         {
-            for (RegIdOfCar item : vendor)
+            for (RegIdOfCar item : cars)
             {
                 if (item.getYear() > request)
                 {
@@ -43,9 +46,23 @@ public class YearOfCar extends ModelOfCar
         }
         if(command.equals("<"))
         {
-            for (RegIdOfCar item : vendor)
+            for (RegIdOfCar item : cars)
             {
                 if (item.getYear() < request)
+                {
+                    System.out.println(item.toString());
+                }
+            }
+        }
+
+        if(command.equals("%"))
+        {
+            Calendar calendar = new GregorianCalendar();
+            int yearNow = calendar.get(Calendar.YEAR);
+
+            for (RegIdOfCar item : cars)
+            {
+                if ((yearNow - item.getYear()) > request)
                 {
                     System.out.println(item.toString());
                 }
@@ -85,6 +102,19 @@ public class YearOfCar extends ModelOfCar
                 }
             }
         }
+        if(command.equals("%"))
+        {
+            Calendar calendar = new GregorianCalendar();
+            int yearNow = calendar.get(Calendar.YEAR);
+
+            for (RegIdOfCar item : cars)
+            {
+                if ((yearNow -item.getYear()) > request)
+                {
+                    length++;
+                }
+            }
+        }
         return length;
     }
 
@@ -110,7 +140,8 @@ public class YearOfCar extends ModelOfCar
     @Override
     public String toString()
     {
-       return getId() + " " + getVendor() + " " + getModel() + " " + getYear();
+        return " ID='"  + getId() + '\''  + " vendor='" + getVendor() + '\'' +
+                " model='" + getModel() + '\'' + " year='" + getYear() + '\'';
     }
 
 

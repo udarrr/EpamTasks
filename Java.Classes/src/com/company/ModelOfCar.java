@@ -71,6 +71,7 @@ public class ModelOfCar extends VendorOfCar
     @Override
     public String toString()
     {
-        return getId() + " " + getVendor() + " " + getModel();
+        return " ID='"  + getId() + '\''  + " vendor='" + getVendor() + '\'' +
+                " model='" + getModel() + '\'';
     }
 }

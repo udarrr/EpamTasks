@@ -71,6 +71,7 @@ public class ColorOfCar extends YearOfCar
     @Override
     public String toString()
     {
-        return getId() + " " + getVendor() + " " + getModel() + " " + getYear() + " " + getColor();
+        return " ID='"  + getId() + '\''  + " vendor='" + getVendor() + '\'' +
+                " model='" + getModel() + '\'' + " year='" + getYear() + '\'' + " color='" + getColor() + '\'';
     }
 }

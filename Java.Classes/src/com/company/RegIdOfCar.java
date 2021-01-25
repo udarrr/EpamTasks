@@ -77,6 +77,9 @@ public class RegIdOfCar extends PriceOfCar
     @Override
     public String toString()
     {
-        return getId() + " " + getVendor() + " " + getModel() + " " + getYear() + " " + getColor() + " " + getPrice() + " " + getRegId();
+            return " ID='"  + getId() + '\''  + " vendor='" + getVendor() + '\'' +
+                    " model='" + getModel() + '\'' + " year='" + getYear() + '\'' + " color='" + getColor() + '\'' +
+                    " price='" + getPrice() + '\'' + " regId='"+ getRegId();
+
     }
 }

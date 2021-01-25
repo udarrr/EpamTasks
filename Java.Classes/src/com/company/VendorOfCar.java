@@ -82,6 +82,6 @@ public class VendorOfCar
     @Override
     public String toString()
     {
-        return getId() + " " + getVendor();
+        return " ID='"  + getId() + '\''  + " vendor='" + getVendor() + '\'';
     }
 }
