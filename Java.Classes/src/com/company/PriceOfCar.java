@@ -98,6 +98,28 @@ public class PriceOfCar extends ColorOfCar
                     j++;
                 }
             }
+            if(command.equals(">"))
+            {
+                for (RegIdOfCar item : cars)
+                {
+                    if (item.getPrice() > request)
+                    {
+                        result[j] = cars[i];
+                        j++;
+                    }
+                }
+            }
+            if(command.equals("<"))
+            {
+                for (RegIdOfCar item : cars)
+                {
+                    if (item.getPrice() < request)
+                    {
+                        result[j] = cars[i];
+                        j++;
+                    }
+                }
+            }
         }
         return  result;
     }

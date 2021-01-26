@@ -31,22 +31,22 @@ public class CommandsForCmd
                 String secondCondition = params[2];
 
                 try {
-                    for (int i = 0; i < params.length; i += 4) {
+                    for (int i = 0; i < params.length-3; i += 4)
+                    {
                         String AdditionalOperation = params[i + 3];
                         boolean checkSecondOperation = AdditionalOperation.equalsIgnoreCase("AND");
-
-                        if (checkSecondOperation) {
+                        if (checkSecondOperation)
+                        {
                             car = SecondOperationHandler(firstCondition, secondCondition, command, car);
                         }
-
                         firstCondition = params[i + 4];
                         command = params[i + 5];
                         secondCondition = params[i + 6];
                     }
-                } catch (ArrayIndexOutOfBoundsException e) {
-
-                } finally {
                     FirstOperationPrint(firstCondition, secondCondition, command, car);
+                }
+                catch (ArrayIndexOutOfBoundsException e)
+                {
                 }
             }catch (Exception e){System.out.println("Command is not recognized");}
         }
@@ -60,6 +60,7 @@ public class CommandsForCmd
         System.out.println("vendor = BMW");
         System.out.println("model = LADASedan and year % 10");
         System.out.println("year = 2004 and price > 5000");
+        System.out.println("model = X7 and year % 10 and price > 10000");
         System.out.println("****************************************");
     }
 

@@ -133,7 +133,45 @@ public class YearOfCar extends ModelOfCar
                     j++;
                 }
             }
+            if(command.equals(">"))
+            {
+                if(command.equals(">"))
+                {
+                    if (cars[i].getYear() > request)
+                    {
+                        result[j] = cars[i];
+                        j++;
+                    }
+                }
+            }
+            if(command.equals("<"))
+            {
+                if(command.equals("<"))
+                {
+                    if (cars[i].getYear() < request)
+                    {
+                        result[j] = cars[i];
+                        j++;
+                    }
+                }
+            }
+            if(command.equals("%"))
+            {
+                Calendar calendar = new GregorianCalendar();
+                int yearNow = calendar.get(Calendar.YEAR);
+
+                if(command.equals("%"))
+                {
+                    if ((yearNow -cars[i].getYear()) > request)
+                    {
+                        result[j] = cars[i];
+                        j++;
+                    }
+                }
+            }
         }
+
+
         return  result;
     }
 
