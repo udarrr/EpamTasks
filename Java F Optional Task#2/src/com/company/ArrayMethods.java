@@ -12,6 +12,7 @@ public class ArrayMethods {
         int tempResJ1 =0;
         int tempResJ2=0;
         int count = 0;
+
         boolean markNumIs = false;
 
         for(int i = 0; i < numbers.length; ++i)
