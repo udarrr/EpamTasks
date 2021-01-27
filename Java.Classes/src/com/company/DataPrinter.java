@@ -5,9 +5,9 @@ import java.util.GregorianCalendar;
 
 public class DataPrinter
 {
-    public void printVendor(CarInfo[] vendor, String request, String command)
+    public void printVendor(Car[] vendor, String request, String command)
     {
-        for (CarInfo item : vendor)
+        for (Car item : vendor)
         {
             if(command.equals("=")) {
                 if (item.getVendor().equalsIgnoreCase(request))
@@ -18,9 +18,9 @@ public class DataPrinter
         }
     }
 
-    public void printModel(CarInfo[] vendor, String request, String command)
+    public void printModel(Car[] vendor, String request, String command)
     {
-        for (CarInfo item : vendor)
+        for (Car item : vendor)
         {
             if(command.equals("=")) {
                 if (item.getModel().equalsIgnoreCase(request))
@@ -32,11 +32,11 @@ public class DataPrinter
     }
 
 
-    public void printYear(CarInfo[] cars, int request,String command)
+    public void printYear(Car[] cars, int request,String command)
     {
         if(command.equals("="))
         {
-            for (CarInfo item : cars)
+            for (Car item : cars)
             {
                 if (item.getYear() == request) {
                     System.out.println(item.toString());
@@ -45,7 +45,7 @@ public class DataPrinter
         }
         if(command.equals(">"))
         {
-            for (CarInfo item : cars)
+            for (Car item : cars)
             {
                 if (item.getYear() > request)
                 {
@@ -55,7 +55,7 @@ public class DataPrinter
         }
         if(command.equals("<"))
         {
-            for (CarInfo item : cars)
+            for (Car item : cars)
             {
                 if (item.getYear() < request)
                 {
@@ -69,7 +69,7 @@ public class DataPrinter
             Calendar calendar = new GregorianCalendar();
             int yearNow = calendar.get(Calendar.YEAR);
 
-            for (CarInfo item : cars)
+            for (Car item : cars)
             {
                 if ((yearNow - item.getYear()) > request)
                 {
@@ -79,9 +79,9 @@ public class DataPrinter
         }
     }
 
-    public void printColor(CarInfo[] vendor, String request, String command)
+    public void printColor(Car[] vendor, String request, String command)
     {
-        for (CarInfo item : vendor)
+        for (Car item : vendor)
         {
             if(command.equals("=")) {
                 if (item.getColor().equalsIgnoreCase(request))
@@ -92,11 +92,11 @@ public class DataPrinter
         }
     }
 
-    public void printPrice(CarInfo[] vendor, double request, String command)
+    public void printPrice(Car[] vendor, double request, String command)
     {
         if(command.equals("="))
         {
-            for (CarInfo item : vendor) {
+            for (Car item : vendor) {
                 if (item.getPrice() == request) {
                     System.out.println(item.toString());
                 }
@@ -104,7 +104,7 @@ public class DataPrinter
         }
         if(command.equals(">"))
         {
-            for (CarInfo item : vendor) {
+            for (Car item : vendor) {
                 if (item.getPrice() > request) {
                     System.out.println(item.toString());
                 }
@@ -112,7 +112,7 @@ public class DataPrinter
         }
         if(command.equals("<"))
         {
-            for (CarInfo item : vendor) {
+            for (Car item : vendor) {
                 if (item.getPrice() < request) {
                     System.out.println(item.toString());
                 }
@@ -120,9 +120,9 @@ public class DataPrinter
         }
     }
 
-    public void printRegId(CarInfo[] vendor, String request, String command)
+    public void printRegId(Car[] vendor, String request, String command)
     {
-        for (CarInfo item : vendor)
+        for (Car item : vendor)
         {
             if(command.equals("=")) {
                 if (item.getRegId().equalsIgnoreCase(request))

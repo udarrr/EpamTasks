@@ -1,18 +1,17 @@
 package com.company;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class CommandsForCmd
 {
-    public static void setCommandInLine() throws IOException,ArrayIndexOutOfBoundsException
+    public static void setCommandInLine()
     {
-        CarCatalogCreator creator = new CarCatalogCreator();
-        CarInfo[] car = creator.createMassive();
-        CarInfo[] initCar = car.clone();
+        CarCreator creator = new CarCreator();
+        Car[] car = creator.createMassive();
+        Car[] initCar = car.clone();
 
-        for (CarInfo item:initCar)
+        for (Car item:initCar)
         {
          System.out.println(item);
         }
@@ -29,7 +28,7 @@ public class CommandsForCmd
                 showCommand();
 
                 input = in.readLine();
-                String[] params = input.split("[\\s(^'.'$)]");
+                String[] params = input.split("[\\s(^'.$)]");
                 String firstCondition = params[0];
                 String command = params[1];
                 String secondCondition = params[2];
@@ -62,7 +61,7 @@ public class CommandsForCmd
     }
     private static void showCommand()
     {
-        System.out.println("");
+        System.out.println(" ");
         System.out.println("Commands '=' is equal '>' is more ,'<' is less, '%' is time exploitation, 'AND' is additional operation ");
         System.out.println("Use space between words: vendor,model,year,color,price,regid");
         System.out.println("****************Examples****************");

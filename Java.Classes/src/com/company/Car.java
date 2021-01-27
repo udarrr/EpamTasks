@@ -1,24 +1,64 @@
 package com.company;
 
-public class CarInfo extends CarVendor
+public class Car
 {
+    private int id;
+    private String vendor;
+    private String model;
     private int year;
-    private String color;
+    private String  color;
     private double price;
     private  String regId;
 
-    public CarInfo()
+    public Car()
     {
         super();
     }
 
-    public CarInfo(int id, String vendor, String model, int year, String color, double price, String regId)
+    public Car(int id, String vendor, String model)
     {
-        super(id, vendor, model);
+        this.id = id;
+        this.vendor = vendor;
+        this.model = model;
+    }
+
+    public Car(int id, String vendor, String model, int year, String color, double price, String regId)
+    {
+        this(id,vendor,model);
         this.year = year;
         this.color = color;
         this.price = price;
         this.regId = regId;
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getVendor()
+    {
+        return vendor;
+    }
+
+    public void setVendor(String vendor)
+    {
+        this.vendor = vendor;
+    }
+
+    public String getModel()
+    {
+        return model;
+    }
+
+    public void setModel(String model)
+    {
+        this.model = model;
     }
 
     public int getYear()
@@ -60,8 +100,6 @@ public class CarInfo extends CarVendor
     {
         this.regId = regId;
     }
-
-
 
     @Override
     public String toString()

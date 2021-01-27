@@ -2,7 +2,7 @@ package com.company;
 
 public class CommandsHandler
 {
-    public void printResult(String firstCondition, String secondCondition, String command, CarInfo[] car)
+    public void printResult(String firstCondition, String secondCondition, String command, Car[] car)
     {
         try {
             DataPrinter dataPrinter = new DataPrinter();
@@ -33,9 +33,9 @@ public class CommandsHandler
         } catch (NumberFormatException e) {System.out.println(e + " Try again");}
     }
 
-    public CarInfo[] processingData(String firstCondition, String secondCondition, String command, CarInfo[] car)
+    public Car[] processingData(String firstCondition, String secondCondition, String command, Car[] car)
     {
-        CarInfo[] result = new CarInfo[0];
+        Car[] result = new Car[0];
         DataHandler dataHandler = new DataHandler();
 
         switch (firstCondition)

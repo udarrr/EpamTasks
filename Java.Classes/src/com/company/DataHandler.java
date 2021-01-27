@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 
 public class DataHandler
 {
-    public CarInfo[] getDataFromVendor(CarInfo[] cars, String request, String command)
+    public Car[] getDataFromVendor(Car[] cars, String request, String command)
     {
         int length = 0;
 
@@ -20,7 +20,7 @@ public class DataHandler
             }
         }
 
-        CarInfo[] result = new CarInfo[length];
+        Car[] result = new Car[length];
 
         for (int i = 0,j=0; i < cars.length; i++)
         {
@@ -37,7 +37,7 @@ public class DataHandler
     }
 
 
-    public CarInfo[] getDataFromModel(CarInfo[] cars, String request, String command)
+    public Car[] getDataFromModel(Car[] cars, String request, String command)
     {
         int length = 0;
         for (int i = 0; i < cars.length; i++)
@@ -51,7 +51,7 @@ public class DataHandler
             }
         }
 
-        CarInfo[] result = new CarInfo[length];
+        Car[] result = new Car[length];
 
         for (int i = 0,j=0; i < cars.length; i++)
         {
@@ -67,12 +67,12 @@ public class DataHandler
         return  result;
     }
 
-    public CarInfo[] getDataFromYear(CarInfo[] cars, int request, String command)
+    public Car[] getDataFromYear(Car[] cars, int request, String command)
     {
         int length = 0;
         if(command.equals("="))
         {
-            for (CarInfo item : cars)
+            for (Car item : cars)
             {
                 if (item.getYear() == request) {
                     length++;
@@ -81,7 +81,7 @@ public class DataHandler
         }
         if(command.equals(">"))
         {
-            for (CarInfo item : cars)
+            for (Car item : cars)
             {
                 if (item.getYear() > request)
                 {
@@ -91,7 +91,7 @@ public class DataHandler
         }
         if(command.equals("<"))
         {
-            for (CarInfo item : cars)
+            for (Car item : cars)
             {
                 if (item.getYear() < request)
                 {
@@ -104,7 +104,7 @@ public class DataHandler
             Calendar calendar = new GregorianCalendar();
             int yearNow = calendar.get(Calendar.YEAR);
 
-            for (CarInfo item : cars)
+            for (Car item : cars)
             {
                 if ((yearNow -item.getYear()) > request)
                 {
@@ -113,7 +113,7 @@ public class DataHandler
             }
         }
 
-        CarInfo[] result = new CarInfo[length];
+        Car[] result = new Car[length];
 
         for (int i = 0,j=0; i < cars.length; i++)
         {
@@ -127,24 +127,19 @@ public class DataHandler
             }
             if(command.equals(">"))
             {
-                if(command.equals(">"))
+                if (cars[i].getYear() > request)
                 {
-                    if (cars[i].getYear() > request)
-                    {
                         result[j] = cars[i];
                         j++;
-                    }
                 }
             }
             if(command.equals("<"))
             {
-                if(command.equals("<"))
+
+                if (cars[i].getYear() < request)
                 {
-                    if (cars[i].getYear() < request)
-                    {
                         result[j] = cars[i];
                         j++;
-                    }
                 }
             }
             if(command.equals("%"))
@@ -152,25 +147,22 @@ public class DataHandler
                 Calendar calendar = new GregorianCalendar();
                 int yearNow = calendar.get(Calendar.YEAR);
 
-                if(command.equals("%"))
+                if ((yearNow -cars[i].getYear()) > request)
                 {
-                    if ((yearNow -cars[i].getYear()) > request)
-                    {
-                        result[j] = cars[i];
-                        j++;
-                    }
+                    result[j] = cars[i];
+                    j++;
                 }
             }
         }
         return  result;
     }
 
-    public CarInfo[] getDataFromPrice(CarInfo[] cars, double request, String command)
+    public Car[] getDataFromPrice(Car[] cars, double request, String command)
     {
         int length = 0;
         if(command.equals("="))
         {
-            for (CarInfo item : cars)
+            for (Car item : cars)
             {
                 if (item.getPrice() == request) {
                     length++;
@@ -179,7 +171,7 @@ public class DataHandler
         }
         if(command.equals(">"))
         {
-            for (CarInfo item : cars)
+            for (Car item : cars)
             {
                 if (item.getPrice() > request)
                 {
@@ -189,7 +181,7 @@ public class DataHandler
         }
         if(command.equals("<"))
         {
-            for (CarInfo item : cars)
+            for (Car item : cars)
             {
                 if (item.getPrice() < request)
                 {
@@ -198,7 +190,7 @@ public class DataHandler
             }
         }
 
-        CarInfo[] result = new CarInfo[length];
+        Car[] result = new Car[length];
 
         for (int i = 0,j=0; i < cars.length; i++)
         {
@@ -212,7 +204,7 @@ public class DataHandler
             }
             if(command.equals(">"))
             {
-                for (CarInfo item : cars)
+                for (Car item : cars)
                 {
                     if (item.getPrice() > request)
                     {
@@ -223,7 +215,7 @@ public class DataHandler
             }
             if(command.equals("<"))
             {
-                for (CarInfo item : cars)
+                for (Car item : cars)
                 {
                     if (item.getPrice() < request)
                     {
@@ -236,7 +228,7 @@ public class DataHandler
         return  result;
     }
 
-    public CarInfo[] getDataFromColor(CarInfo[] cars, String request, String command)
+    public Car[] getDataFromColor(Car[] cars, String request, String command)
     {
         int length = 0;
         for (int i = 0; i < cars.length; i++)
@@ -249,7 +241,7 @@ public class DataHandler
                 }
             }
         }
-        CarInfo[] result = new CarInfo[length];
+        Car[] result = new Car[length];
 
         for (int i = 0,j=0; i < cars.length; i++)
         {
@@ -265,7 +257,7 @@ public class DataHandler
         return  result;
     }
 
-    public CarInfo[] getDataFromRegId(CarInfo[] cars, String request, String command)
+    public Car[] getDataFromRegId(Car[] cars, String request, String command)
     {
         int length = 0;
         for (int i = 0; i < cars.length; i++)
@@ -279,7 +271,7 @@ public class DataHandler
             }
         }
 
-        CarInfo[] result = new CarInfo[length];
+        Car[] result = new Car[length];
 
         for (int i = 0,j=0; i < cars.length; i++)
         {
