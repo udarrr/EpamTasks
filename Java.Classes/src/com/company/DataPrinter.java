@@ -9,7 +9,8 @@ public class DataPrinter
     {
         for (Car item : vendor)
         {
-            if(command.equals("=")) {
+            if(command.equals("="))
+            {
                 if (item.getVendor().equalsIgnoreCase(request))
                 {
                     System.out.println(item.toString());
@@ -22,7 +23,8 @@ public class DataPrinter
     {
         for (Car item : vendor)
         {
-            if(command.equals("=")) {
+            if(command.equals("="))
+            {
                 if (item.getModel().equalsIgnoreCase(request))
                 {
                     System.out.println(item.toString());
@@ -38,7 +40,8 @@ public class DataPrinter
         {
             for (Car item : cars)
             {
-                if (item.getYear() == request) {
+                if (item.getYear() == request)
+                {
                     System.out.println(item.toString());
                 }
             }
@@ -83,7 +86,8 @@ public class DataPrinter
     {
         for (Car item : vendor)
         {
-            if(command.equals("=")) {
+            if(command.equals("="))
+            {
                 if (item.getColor().equalsIgnoreCase(request))
                 {
                     System.out.println(item.toString());
@@ -96,24 +100,30 @@ public class DataPrinter
     {
         if(command.equals("="))
         {
-            for (Car item : vendor) {
-                if (item.getPrice() == request) {
+            for (Car item : vendor)
+            {
+                if (item.getPrice() == request)
+                {
                     System.out.println(item.toString());
                 }
             }
         }
         if(command.equals(">"))
         {
-            for (Car item : vendor) {
-                if (item.getPrice() > request) {
+            for (Car item : vendor)
+            {
+                if (item.getPrice() > request)
+                {
                     System.out.println(item.toString());
                 }
             }
         }
         if(command.equals("<"))
         {
-            for (Car item : vendor) {
-                if (item.getPrice() < request) {
+            for (Car item : vendor)
+            {
+                if (item.getPrice() < request)
+                {
                     System.out.println(item.toString());
                 }
             }

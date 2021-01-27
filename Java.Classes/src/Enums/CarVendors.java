@@ -1,11 +1,12 @@
 package Enums;
 
-public enum enumVendorCars
+public enum CarVendors
 {
     VW,BMW,MITSUBISHI,VAZ;
 
-    public static enumVendorCars getRandomVendorsCars()
+    public static CarVendors getRandomCarVendors()
     {
         return values()[(int) (Math.random() * values().length)];
     }
 }
+

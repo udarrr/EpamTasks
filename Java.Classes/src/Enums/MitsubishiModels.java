@@ -1,10 +1,10 @@
 package Enums;
 
-public enum enumModelMitsubishi
+public enum MitsubishiModels
 {
     SPACESTAR,VAGON,PADJERO,OUTLANDER,ASX,ECLIPSE;
 
-    public static enumModelMitsubishi getRandomModelMitsubishi()
+    public static MitsubishiModels getRandomMitsubishiModel()
     {
         return values()[(int) (Math.random() * values().length)];
     }
