@@ -11,7 +11,7 @@ public class DataPrinter
         {
             if(command.equals("="))
             {
-                if (item.getVendor().equalsIgnoreCase(request))
+                if (item.getVendor().name().equalsIgnoreCase(request))
                 {
                     System.out.println(item.toString());
                 }
@@ -88,7 +88,7 @@ public class DataPrinter
         {
             if(command.equals("="))
             {
-                if (item.getColor().equalsIgnoreCase(request))
+                if (item.getColor().name().equalsIgnoreCase(request))
                 {
                     System.out.println(item.toString());
                 }

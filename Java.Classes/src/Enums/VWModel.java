@@ -1,10 +1,10 @@
 package Enums;
 
-public enum VWModels
+public enum VWModel
 {
     POLO,TOURAN,GOLF,PASSAT,SHARAN;
 
-    public static VWModels getRandomVWModels()
+    public static VWModel getRandomModels()
     {
         return values()[(int) (Math.random() * values().length)];
     }

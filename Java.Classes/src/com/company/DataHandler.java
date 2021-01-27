@@ -13,7 +13,7 @@ public class DataHandler
         {
             if(command.equals("="))
             {
-                if (cars[i].getVendor().equalsIgnoreCase(request))
+                if (cars[i].getVendor().name().equalsIgnoreCase(request))
                 {
                     length++;
                 }
@@ -26,7 +26,7 @@ public class DataHandler
         {
             if(command.equals("="))
             {
-                if (cars[i].getVendor().equalsIgnoreCase(request))
+                if (cars[i].getVendor().name().equalsIgnoreCase(request))
                 {
                     result[j] = cars[i];
                     j++;
@@ -235,7 +235,7 @@ public class DataHandler
         {
             if(command.equals("="))
             {
-                if (cars[i].getColor().equalsIgnoreCase(request))
+                if (cars[i].getColor().name().equalsIgnoreCase(request))
                 {
                     length++;
                 }
@@ -247,7 +247,7 @@ public class DataHandler
         {
             if(command.equals("="))
             {
-                if (cars[i].getColor().equalsIgnoreCase(request))
+                if (cars[i].getColor().name().equalsIgnoreCase(request))
                 {
                     result[j] = cars[i];
                     j++;

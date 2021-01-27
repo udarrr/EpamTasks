@@ -53,16 +53,16 @@ public class CarCreator
 
         for (int i = 0; i < data.length; i++)
         {
-            switch (CarVendors.getRandomCarVendors())
+            switch (CarVendor.getRandomVendor())
             {
-                case VW -> data[i] = new Car(i + 1, "VW", VWModels.getRandomVWModels().toString(),
-                        getRandomNumberInts(1990, 2020), CarColors.getRandomCarColors().toString(), (double) Math.round(getRandomNumberDouble(5000.00, 25000.00)), getRandomNumberRegId(1000, 9999));
-                case BMW -> data[i] = new Car(i + 1, "BMW", BMWModels.getRandomBMWModels().toString(),
-                        getRandomNumberInts(1990, 2020), CarColors.getRandomCarColors().toString(), (double) Math.round(getRandomNumberDouble(5000.00, 25000.00)), getRandomNumberRegId(1000, 9999));
-                case MITSUBISHI -> data[i] = new Car(i + 1, "MITSUBISHI", MitsubishiModels.getRandomMitsubishiModel().toString(),
-                        getRandomNumberInts(1990, 2020), CarColors.getRandomCarColors().toString(), (double) Math.round(getRandomNumberDouble(5000.00, 25000.00)), getRandomNumberRegId(1000, 9999));
-                case VAZ -> data[i] = new Car(i + 1, "VAZ", VAZModel.getRandomVAZModel().toString(),
-                        getRandomNumberInts(1990, 2020), CarColors.getRandomCarColors().toString(), (double) Math.round(getRandomNumberDouble(5000.00, 25000.00)), getRandomNumberRegId(1000, 9999));
+                case VW -> data[i] = new Car(i + 1, CarVendor.VW, VWModel.getRandomModels().toString(),
+                        getRandomNumberInts(1990, 2020), CarColor.getRandomColor(), (double) Math.round(getRandomNumberDouble(5000.00, 25000.00)), getRandomNumberRegId(1000, 9999));
+                case BMW -> data[i] = new Car(i + 1, CarVendor.BMW, BMWModel.getRandomModel().toString(),
+                        getRandomNumberInts(1990, 2020), CarColor.getRandomColor(), (double) Math.round(getRandomNumberDouble(5000.00, 25000.00)), getRandomNumberRegId(1000, 9999));
+                case MITSUBISHI -> data[i] = new Car(i + 1, CarVendor.MITSUBISHI, MitsubishiModel.getRandomModel().toString(),
+                        getRandomNumberInts(1990, 2020), CarColor.getRandomColor(), (double) Math.round(getRandomNumberDouble(5000.00, 25000.00)), getRandomNumberRegId(1000, 9999));
+                case VAZ -> data[i] = new Car(i + 1, CarVendor.VAZ, VAZModel.getRandomModel().toString(),
+                        getRandomNumberInts(1990, 2020), CarColor.getRandomColor(), (double) Math.round(getRandomNumberDouble(5000.00, 25000.00)), getRandomNumberRegId(1000, 9999));
                 default -> System.out.println("isn't possible add car");
             }
         }

@@ -1,28 +1,31 @@
 package com.company;
 
+import Enums.CarColor;
+import Enums.CarVendor;
+
 public class Car
 {
     private int id;
-    private String vendor;
+    private CarVendor vendor;
     private String model;
     private int year;
-    private String  color;
+    private CarColor color;
     private double price;
-    private  String regId;
+    private String regId;
 
     public Car()
     {
         super();
     }
 
-    public Car(int id, String vendor, String model)
+    public Car(int id, CarVendor vendor, String model)
     {
         this.id = id;
         this.vendor = vendor;
         this.model = model;
     }
 
-    public Car(int id, String vendor, String model, int year, String color, double price, String regId)
+    public Car(int id, CarVendor vendor, String model, int year, CarColor color, double price, String regId)
     {
         this(id,vendor,model);
         this.year = year;
@@ -39,16 +42,6 @@ public class Car
     public void setId(int id)
     {
         this.id = id;
-    }
-
-    public String getVendor()
-    {
-        return vendor;
-    }
-
-    public void setVendor(String vendor)
-    {
-        this.vendor = vendor;
     }
 
     public String getModel()
@@ -71,16 +64,6 @@ public class Car
         this.year = year;
     }
 
-    public String getColor()
-    {
-        return color;
-    }
-
-    public void setColor(String color)
-    {
-        this.color = color;
-    }
-
     public double getPrice()
     {
         return price;
@@ -99,6 +82,26 @@ public class Car
     public void setRegId(String regId)
     {
         this.regId = regId;
+    }
+
+    public CarVendor getVendor()
+    {
+        return vendor;
+    }
+
+    public void setVendor(CarVendor vendor)
+    {
+        this.vendor = vendor;
+    }
+
+    public CarColor getColor()
+    {
+        return color;
+    }
+
+    public void setColor(CarColor color)
+    {
+        this.color = color;
     }
 
     @Override
