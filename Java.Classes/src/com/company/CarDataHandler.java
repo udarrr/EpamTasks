@@ -59,8 +59,7 @@ public class CarDataHandler
     public Car[] getDataFromYear(Car[] carData, int request, String command)
     {
         int length = 0;
-        Calendar calendar = new GregorianCalendar();
-        int yearNow = calendar.get(Calendar.YEAR);
+
 
         for (int i = 0; i < carData.length; i++)
         {
@@ -83,6 +82,9 @@ public class CarDataHandler
                 length++;
             }
         }
+
+        Calendar calendar = new GregorianCalendar();
+        int yearNow = calendar.get(Calendar.YEAR);
 
         for (int i = 0; i < carData.length; i++)
         {
@@ -214,7 +216,6 @@ public class CarDataHandler
                 result[j++] = carData[i];
             }
         }
-
         return  result;
     }
 }

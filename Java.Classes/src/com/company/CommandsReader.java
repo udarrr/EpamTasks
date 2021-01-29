@@ -9,46 +9,39 @@ public class CommandsReader
     public static void start() throws IOException
     {
         CarCreator creator = new CarCreator();
-        Car[] carDataInit = creator.createCarData();
-        Car[] carDataHandler;
+        Car[] cars = creator.createCarData();
 
-        for (Car item:carDataInit)
+        for (Car item : cars)
         {
-         System.out.println(item);
+            System.out.println(item);
         }
 
-        BufferedReader inputCommand = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String input = "";
+
+        Car[] carDataHandler;
 
         while (!input.equalsIgnoreCase("exit"))
         {
             CommandsHandler commandsHandler = new CommandsHandler();
-            carDataHandler = carDataInit;
+            ConsolePrinter consolePrinter = new ConsolePrinter();
+            carDataHandler = cars;
 
-            showCommand();
+            printDescriptionCommands();
 
-            String firstCondition = null;
-            String command = null;
-            String secondCondition = null;
+            String firstCondition;
+            String command;
+            String secondCondition;
 
-            input = inputCommand.readLine();
+            input = reader.readLine();
             String[] params = input.split("[\\s(^'.$)]");
 
-            if (params[0] != null)
+            if (params[0] != null && params[2] != null && params[1] != null)
             {
                 firstCondition = params[0];
-            }
-            if (params[1] != null)
-            {
                 command = params[1];
-            }
-            if (params[2] != null)
-            {
                 secondCondition = params[2];
-            }
 
-            if (firstCondition != null || secondCondition != null)
-            {
                 for (int i = 0; i < params.length - 3; i += 4)
                 {
                     String additionalOperation = params[i + 3];
@@ -56,16 +49,26 @@ public class CommandsReader
                     if (checkSecondOperation)
                     {
                         carDataHandler = commandsHandler.processData(firstCondition, secondCondition, command, carDataHandler);
-                        firstCondition = params[i + 4];
-                        command = params[i + 5];
-                        secondCondition = params[i + 6];
+                        if (params[i + 4] != null)
+                        {
+                            firstCondition = params[i + 4];
+                        }
+                        if (params[i + 5] != null)
+                        {
+                            command = params[i + 5];
+                        }
+                        if (params[i + 6] != null)
+                        {
+                            secondCondition = params[i + 6];
+                        }
                     }
                 }
-                commandsHandler.printResult(firstCondition, secondCondition, command, carDataHandler);
             }
+            consolePrinter.printCarDataResult(carDataHandler);
         }
     }
-    private static void showCommand()
+
+    private static void printDescriptionCommands()
     {
         System.out.println(" ");
         System.out.println("Commands '=' is equal '>' is more ,'<' is less, '%' is time exploitation, 'AND' is additional operation ");
