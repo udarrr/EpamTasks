@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class CommandsReader
 {
-    public static void setCommandInLine() throws IOException
+    public static void start() throws IOException
     {
         CarCreator creator = new CarCreator();
         Car[] carDataInit = creator.createCarData();
