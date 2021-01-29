@@ -18,11 +18,13 @@ public class CarCreator
     private String getRandomRegistrationNumber(int min, int max)
     {
         Random random = new Random();
+
         char[] str = "ABCDEFGHIJKLMNOPQRSTUVWZYZ".toCharArray();
         int randomNumber = random.ints(min, (max + 1)).findFirst().getAsInt();
         int charA = random.ints(0, (str.length)).findFirst().getAsInt();
         int charB = random.ints(0, (str.length)).findFirst().getAsInt();
         StringBuilder resultStr = new StringBuilder();
+
         return resultStr.append(randomNumber).append(str[charA]).append(str[charB]).toString();
     }
 

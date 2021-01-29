@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class CommandsReader
 {
-    public static void start(Car[] cars) throws IOException
+    public void start(Car[] cars) throws IOException
     {
         ConsolePrinter consolePrinter = new ConsolePrinter();
         consolePrinter.printCarData(cars);
