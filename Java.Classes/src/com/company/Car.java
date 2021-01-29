@@ -3,6 +3,8 @@ package com.company;
 import Enums.CarColor;
 import Enums.CarVendor;
 
+import java.util.Objects;
+
 public class Car
 {
     private int id;
@@ -102,6 +104,23 @@ public class Car
     public void setColor(CarColor color)
     {
         this.color = color;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return id == car.id && year == car.year && Double.compare(car.price, price) == 0 &&
+                vendor == car.vendor && Objects.equals(model, car.model) && color == car.color &&
+                Objects.equals(regId, car.regId);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(id, vendor, model, year, color, price, regId);
     }
 
     @Override

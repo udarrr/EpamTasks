@@ -9,7 +9,7 @@ public class CommandsReader
     public static void setCommandInLine() throws IOException
     {
         CarCreator creator = new CarCreator();
-        Car[] carDataInit = creator.createMassive();
+        Car[] carDataInit = creator.createCarData();
         Car[] carDataHandler;
 
         for (Car item:carDataInit)
