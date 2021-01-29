@@ -2,7 +2,7 @@ package com.company;
 
 public class ConsolePrinter
 {
-    public void printCarDataResult(Car[] carDataResult)
+    public void printCarData(Car[] carDataResult)
     {
         for (Car item : carDataResult)
         {
