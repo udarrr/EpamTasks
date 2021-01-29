@@ -31,7 +31,7 @@ public class CarCreator
 
     public Car[] createMassive()
     {
-        int line = 0;
+        int quantity = 0;
         boolean exit = true;
         System.out.println("Enter quantity cars from catalog: ");
 
@@ -40,7 +40,7 @@ public class CarCreator
             try
             {
                 Scanner sc = new Scanner(System.in);
-                line = sc.nextInt();
+                quantity = sc.nextInt();
                 exit = false;
             } catch (Exception e)
             {
@@ -49,7 +49,7 @@ public class CarCreator
             }
         }
 
-        Car[] data = new Car[line];
+        Car[] data = new Car[quantity];
 
         for (int i = 0; i < data.length; i++)
         {

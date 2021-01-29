@@ -2,64 +2,61 @@ package com.company;
 
 public class CommandsHandler
 {
-    public void printResult(String firstCondition, String secondCondition, String command, Car[] car)
+    public void printResult(String firstCondition, String secondCondition, String command, Car[] carData)
     {
-        try {
-            DataPrinter dataPrinter = new DataPrinter();
-
-            switch (firstCondition) {
-
-                case "vendor":
-                    dataPrinter.printVendor(car, secondCondition, command);
-                    break;
-                case "model":
-                    dataPrinter.printModel(car, secondCondition, command);
-                    break;
-                case "regId":
-                    dataPrinter.printRegId(car, secondCondition, command);
-                    break;
-                case "color":
-                    dataPrinter.printColor(car, secondCondition, command);
-                    break;
-                case "year":
-                    dataPrinter.printYear(car, Integer.parseInt(secondCondition), command);
-                    break;
-                case "price":
-                    dataPrinter.printPrice(car, Double.parseDouble(secondCondition), command);
-                    break;
-                default:
-                    System.out.println("Wrong command");
-            }
-        } catch (NumberFormatException e) {System.out.println(e + " Try again");}
-    }
-
-    public Car[] processingData(String firstCondition, String secondCondition, String command, Car[] car)
-    {
-        Car[] result = new Car[0];
-        DataHandler dataHandler = new DataHandler();
+        ConsolePrinter consolePrinter = new ConsolePrinter();
 
         switch (firstCondition)
         {
             case "vendor":
-                result = dataHandler.getDataFromVendor(car, secondCondition, command);
+                consolePrinter.printVendor(carData, secondCondition, command);
                 break;
             case "model":
-                result = dataHandler.getDataFromModel(car, secondCondition, command);
+                consolePrinter.printModel(carData, secondCondition, command);
                 break;
             case "regId":
-                result = dataHandler.getDataFromRegId(car, secondCondition, command);
+                consolePrinter.printRegId(carData, secondCondition, command);
                 break;
             case "color":
-                result = dataHandler.getDataFromColor(car, secondCondition, command);
+                consolePrinter.printColor(carData, secondCondition, command);
                 break;
             case "year":
-                result = dataHandler.getDataFromYear(car, Integer.parseInt(secondCondition), command);
+                consolePrinter.printYear(carData, Integer.parseInt(secondCondition), command);
                 break;
             case "price":
-                result = dataHandler.getDataFromPrice(car, Double.parseDouble(secondCondition), command);
+                consolePrinter.printPrice(carData, Double.parseDouble(secondCondition), command);
                 break;
             default:
-                System.out.println("Wrong command");
+                System.out.println("Command isn't recognized");
+        }
+    }
+    public Car[] processData(String firstCondition, String secondCondition, String command, Car[] carData)
+    {
+        Car[] result = new Car[0];
+        CarDataHandler dataHandler = new CarDataHandler();
+
+        switch (firstCondition)
+        {
+            case "vendor":
+                result = dataHandler.getDataFromVendor(carData, secondCondition, command);
+                break;
+            case "model":
+                result = dataHandler.getDataFromModel(carData, secondCondition, command);
+                break;
+            case "regId":
+                result = dataHandler.getDataFromRegId(carData, secondCondition, command);
+                break;
+            case "color":
+                result = dataHandler.getDataFromColor(carData, secondCondition, command);
+                break;
+            case "year":
+                result = dataHandler.getDataFromYear(carData, Integer.parseInt(secondCondition), command);
+                break;
+            case "price":
+                result = dataHandler.getDataFromPrice(carData, Double.parseDouble(secondCondition), command);
+                break;
+            default:
+                System.out.println("Command isn't recognized");
         }
         return result;
     }
