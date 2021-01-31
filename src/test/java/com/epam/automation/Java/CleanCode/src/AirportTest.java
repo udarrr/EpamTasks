@@ -1,15 +1,15 @@
-import Enum.ClassificationSecurityLevel;
-import Enum.MilitaryType;
-import Enum.PassengerModel;
+package com.epam.automation.Java.CleanCode.src;
 
+import com.epam.automation.Java.CleanCode.src.Enum.ClassificationSecurityLevel;
+import com.epam.automation.Java.CleanCode.src.Enum.MilitaryType;
+import com.epam.automation.Java.CleanCode.src.Enum.PassengerModel;
+import com.epam.automation.Java.CleanCode.src.Planes.ExperimentalPlane;
+import com.epam.automation.Java.CleanCode.src.Planes.MilitaryPlane;
+import com.epam.automation.Java.CleanCode.src.Planes.PassengerPlane;
+import com.epam.automation.Java.CleanCode.src.Planes.Plane;
 import org.junit.jupiter.api.BeforeEach;
-import org.testng.Assert;
 import org.junit.jupiter.api.Test;
-
-import Planes.ExperimentalPlane;
-import Planes.MilitaryPlane;
-import Planes.PassengerPlane;
-import Planes.Plane;
+import org.testng.Assert;
 
 import java.util.List;
 

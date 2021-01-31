@@ -1,6 +1,6 @@
-package Planes;
+package com.epam.automation.Java.CleanCode.src.Planes;
 
-import Enum.MilitaryType;
+import com.epam.automation.Java.CleanCode.src.Enum.MilitaryType;
 import java.util.Objects;
 
 public class MilitaryPlane extends Plane{

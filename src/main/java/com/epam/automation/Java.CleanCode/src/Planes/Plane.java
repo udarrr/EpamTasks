@@ -1,7 +1,6 @@
-package Planes;
+package com.epam.automation.Java.CleanCode.src.Planes;
 
 import java.util.Objects;
-import Enum.PassengerModel;
 
 abstract public class Plane
 {

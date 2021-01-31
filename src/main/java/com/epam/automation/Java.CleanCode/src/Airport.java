@@ -1,8 +1,10 @@
-import Planes.ExperimentalPlane;
-import Enum.MilitaryType;
-import Planes.MilitaryPlane;
-import Planes.PassengerPlane;
-import Planes.Plane;
+package com.epam.automation.Java.CleanCode.src;
+
+import com.epam.automation.Java.CleanCode.src.Planes.ExperimentalPlane;
+import com.epam.automation.Java.CleanCode.src.Enum.MilitaryType;
+import com.epam.automation.Java.CleanCode.src.Planes.MilitaryPlane;
+import com.epam.automation.Java.CleanCode.src.Planes.PassengerPlane;
+import com.epam.automation.Java.CleanCode.src.Planes.Plane;
 
 import java.util.ArrayList;
 import java.util.Comparator;
