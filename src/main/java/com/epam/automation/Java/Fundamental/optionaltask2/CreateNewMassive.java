@@ -1,4 +1,4 @@
-package com.company;
+package com.epam.automation.Java.Fundamental.optionaltask2;
 
 import java.util.Arrays;
 import java.util.Random;
