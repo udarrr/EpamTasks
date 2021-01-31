@@ -3,7 +3,7 @@ package com.epam.automation.Java.Classes.src.com.company;
 import com.epam.automation.Java.Classes.src.Enums.*;
 import java.util.Random;
 
-public class CarCreator
+public class DataAccessCars
 {
     private int getRandomYear(int min, int max)
     {

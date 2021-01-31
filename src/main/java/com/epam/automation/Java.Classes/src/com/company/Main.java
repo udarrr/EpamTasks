@@ -25,7 +25,7 @@ public class Main
                 exit = true;
             }
         }
-        Car[] cars = new CarCreator().createCarData(quantity);
+        Car[] cars = new DataAccessCars().createCarData(quantity);
         CommandsReader commandsReader = new CommandsReader();
         commandsReader.start(cars);
     }
