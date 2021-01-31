@@ -1,41 +1,55 @@
 package Planes;
 
-import models.ClassificationLevel;
-import models.ExperimentalTypes;
+import Enum.ClassificationSecurityLevel;
+import Enum.ExperimentalType;
 
-public class experimentalPlane extends Plane{
+public class ExperimentalPlane extends Plane
+{
+    private ExperimentalType experimentalType;
+    private ClassificationSecurityLevel securityLevel;
 
-    private ExperimentalTypes type;
-    private ClassificationLevel classificationLevel;
-
-    public experimentalPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, ExperimentalTypes type, ClassificationLevel classificationLevel) {
+    public ExperimentalPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, ExperimentalType experimentalType, ClassificationSecurityLevel securityLevel)
+    {
         super(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
-        this.type = type;
-        this.classificationLevel = classificationLevel;
+        this.experimentalType = experimentalType;
+        this.securityLevel = securityLevel;
     }
 
-    public ClassificationLevel getClassificationLevel(){
-        return classificationLevel;
+    public ClassificationSecurityLevel getClassificationLevel()
+    {
+        return securityLevel;
     }
 
-    public void setClassificationLevel(ClassificationLevel classificationLevel){
-        this.classificationLevel = classificationLevel;
+    public void setSecurityLevel(ClassificationSecurityLevel securityLevel)
+    {
+        this.securityLevel = securityLevel;
+    }
+
+    public ExperimentalType getExperimentalType()
+    {
+        return experimentalType;
+    }
+
+    public void setExperimentalType(ExperimentalType experimentalType)
+    {
+        this.experimentalType = experimentalType;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         return super.equals(o);
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return super.hashCode();
     }
 
     @Override
-    public String toString() {
-        return "experimentalPlane{" +
-                "model='" + model + '\'' +
-                '}';
+    public String toString()
+    {
+        return super.toString() +',' + "experimentalType=" + experimentalType + '}';
     }
 }
