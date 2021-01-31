@@ -13,7 +13,7 @@ public class Car
     private int year;
     private CarColor color;
     private double price;
-    private String regId;
+    private String registrationNumber;
 
     public Car()
     {
@@ -27,13 +27,13 @@ public class Car
         this.model = model;
     }
 
-    public Car(int id, CarVendor vendor, String model, int year, CarColor color, double price, String regId)
+    public Car(int id, CarVendor vendor, String model, int year, CarColor color, double price, String registrationNumber)
     {
         this(id,vendor,model);
         this.year = year;
         this.color = color;
         this.price = price;
-        this.regId = regId;
+        this.registrationNumber = registrationNumber;
     }
 
     public int getId()
@@ -76,14 +76,14 @@ public class Car
         this.price = price;
     }
 
-    public String getRegId()
+    public String getRegistrationNumber()
     {
-        return regId;
+        return registrationNumber;
     }
 
-    public void setRegId(String regId)
+    public void setRegistrationNumber(String regId)
     {
-        this.regId = regId;
+        this.registrationNumber = regId;
     }
 
     public CarVendor getVendor()
@@ -114,13 +114,13 @@ public class Car
         Car car = (Car) o;
         return id == car.id && year == car.year && Double.compare(car.price, price) == 0 &&
                 vendor == car.vendor && Objects.equals(model, car.model) && color == car.color &&
-                Objects.equals(regId, car.regId);
+                Objects.equals(registrationNumber, car.registrationNumber);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(id, vendor, model, year, color, price, regId);
+        return Objects.hash(id, vendor, model, year, color, price, registrationNumber);
     }
 
     @Override
@@ -128,6 +128,6 @@ public class Car
     {
         return " ID='"  + getId() + '\''  + " vendor='" + getVendor() + '\'' +
                 " model='" + getModel() + '\'' + " year='" + getYear() + '\'' + " color='" + getColor() + '\'' +
-                " price='" + getPrice() + '\'' + " regId='"+ getRegId();
+                " price='" + getPrice() + '\'' + " regId='"+ getRegistrationNumber();
     }
 }
