@@ -83,6 +83,5 @@ public class AirportTest
         {
             Assert.assertTrue(experimentalPlane.getClassificationLevel() != ClassificationSecurityLevel.UNCLASSIFIED);
         }
-
     }
 }

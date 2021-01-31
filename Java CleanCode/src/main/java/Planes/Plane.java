@@ -18,13 +18,6 @@ abstract public class Plane
         this.maxLoadCapacity = maxLoadCapacity;
     }
 
-    public Plane(int maxSpeed, int maxFlightDistance, int maxLoadCapacity)
-    {
-        this.maxSpeed = maxSpeed;
-        this.maxFlightDistance = maxFlightDistance;
-        this.maxLoadCapacity = maxLoadCapacity;
-    }
-
     public String getModel()
     {
         return model;
@@ -46,7 +39,8 @@ abstract public class Plane
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (!(o instanceof Plane)) return false;
         Plane plane = (Plane) o;

@@ -93,16 +93,16 @@ public class Airport
 
     public List<ExperimentalPlane> getExperimentalPlanes()
     {
-        List<ExperimentalPlane> ExperimentalPlanes = new ArrayList<>();
+        List<ExperimentalPlane> experimentalPlanes = new ArrayList<>();
 
         for (Plane plane : planes)
         {
             if (plane instanceof ExperimentalPlane)
             {
-                ExperimentalPlanes.add((ExperimentalPlane) plane);
+                experimentalPlanes.add((ExperimentalPlane) plane);
             }
         }
-        return ExperimentalPlanes;
+        return experimentalPlanes;
     }
 
     public Airport sortByMaxDistance()
@@ -133,6 +133,4 @@ public class Airport
     {
         return "Airport{" + "Planes=" + planes.toString() + '}';
     }
-
-
 }
