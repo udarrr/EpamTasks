@@ -1,6 +1,6 @@
-package com.company;
+package com.epam.automation.Java.Classes.src.com.company;
 
-import Enums.*;
+import com.epam.automation.Java.Classes.src.Enums.*;
 import java.util.Random;
 
 public class CarCreator

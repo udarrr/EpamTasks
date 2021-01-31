@@ -1,4 +1,4 @@
-package com.company;
+package com.epam.automation.Java.Classes.src.com.company;
 
 import java.io.IOException;
 import java.util.Scanner;

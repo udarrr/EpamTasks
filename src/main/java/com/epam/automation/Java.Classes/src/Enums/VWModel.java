@@ -1,4 +1,4 @@
-package Enums;
+package com.epam.automation.Java.Classes.src.Enums;
 
 public enum VWModel
 {
