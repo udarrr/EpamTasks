@@ -1,12 +1,12 @@
-package com.epam.automation.Java.CleanCode.src;
+package com.epam.automation.Java.CleanCode;
 
-import com.epam.automation.Java.CleanCode.src.Enum.ClassificationSecurityLevel;
-import com.epam.automation.Java.CleanCode.src.Enum.MilitaryType;
-import com.epam.automation.Java.CleanCode.src.Enum.PassengerModel;
-import com.epam.automation.Java.CleanCode.src.Planes.ExperimentalPlane;
-import com.epam.automation.Java.CleanCode.src.Planes.MilitaryPlane;
-import com.epam.automation.Java.CleanCode.src.Planes.PassengerPlane;
-import com.epam.automation.Java.CleanCode.src.Planes.Plane;
+import com.epam.automation.Java.CleanCode.Enum.ClassificationSecurityLevel;
+import com.epam.automation.Java.CleanCode.Enum.MilitaryType;
+import com.epam.automation.Java.CleanCode.Enum.PassengerModel;
+import com.epam.automation.Java.CleanCode.Planes.ExperimentalPlane;
+import com.epam.automation.Java.CleanCode.Planes.MilitaryPlane;
+import com.epam.automation.Java.CleanCode.Planes.PassengerPlane;
+import com.epam.automation.Java.CleanCode.Planes.Plane;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;

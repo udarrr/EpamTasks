@@ -1,7 +1,7 @@
-package com.epam.automation.Java.CleanCode.src;
+package com.epam.automation.Java.CleanCode;
 
-import com.epam.automation.Java.CleanCode.src.Planes.MilitaryPlane;
-import com.epam.automation.Java.CleanCode.src.Planes.PassengerPlane;
+import com.epam.automation.Java.CleanCode.Planes.MilitaryPlane;
+import com.epam.automation.Java.CleanCode.Planes.PassengerPlane;
 
 public class ConsolePrinter
 {
