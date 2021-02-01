@@ -1,4 +1,4 @@
-package com.epam.automation.Java.CleanCode.Enum;
+package com.epam.automation.JavaCleanCode.Enum;
 
 public enum ClassificationSecurityLevel
 {
