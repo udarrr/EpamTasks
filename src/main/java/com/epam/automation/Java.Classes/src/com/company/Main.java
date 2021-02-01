@@ -1,33 +1,32 @@
 package com.epam.automation.Java.Classes.src.com.company;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Main
 {
     public static void main(String[] args) throws IOException
     {
-        boolean exit = true;
-        int quantity = 0;
+        ConsoleCommandReader commandsReader = new ConsoleCommandReader();
+        Car[] cars = new DataAccessCars().createCarData(commandsReader.getWishQuantityCarsForArray());
 
-        System.out.println("Enter quantity cars from catalog: ");
+        ConsolePrinter consolePrinter = new ConsolePrinter();
+        consolePrinter.printCarData(cars);
 
-        while (exit)
+        while(true)
         {
+            consolePrinter.printDescriptionOfCommands();
+
+            ConsoleCommandParse consoleCommandParse = new ConsoleCommandParse();
             try
             {
-                Scanner sc = new Scanner(System.in);
-                quantity = sc.nextInt();
-                exit = false;
-            } catch (Exception e)
+                Car[] carsAfterCommands = consoleCommandParse.getCarsAfterConsoleCommands(cars, commandsReader.readConsoleCommands());
+                consolePrinter.printCarData(carsAfterCommands);
+            }
+            catch (ArrayIndexOutOfBoundsException e)
             {
-                System.out.println("Quantity is a integer number, please enter quantity again");
-                exit = true;
+                System.out.println("Command isn't recognised, please try again");
             }
         }
-        Car[] cars = new DataAccessCars().createCarData(quantity);
-        CommandsReader commandsReader = new CommandsReader();
-        commandsReader.start(cars);
     }
 }
 
