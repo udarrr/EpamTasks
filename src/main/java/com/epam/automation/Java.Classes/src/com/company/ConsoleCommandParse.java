@@ -8,7 +8,6 @@ public class ConsoleCommandParse
     public Car[] getCarsAfterConsoleCommands (Car[] cars, String[] consoleCommand) throws ArrayIndexOutOfBoundsException
     {
         final String AND = "and";
-        ConsoleCommandReader consoleCommandReader = new ConsoleCommandReader();
 
             if (consoleCommand[0] != null && consoleCommand[1] != null && consoleCommand[2] != null)
             {
@@ -22,7 +21,8 @@ public class ConsoleCommandParse
 
                     if (additionalOperation.equalsIgnoreCase(AND))
                     {
-                        cars = consoleCommandReader.getParametersCars(firstCondition, secondCondition, command, cars);
+                        cars = getParametersCars(firstCondition, secondCondition, command, cars);
+
                         if (consoleCommand[i + 4] != null)
                         {
                             firstCondition = consoleCommand[i + 4];
@@ -39,11 +39,43 @@ public class ConsoleCommandParse
                 }
                 if(consoleCommand.length == 3)
                 {
-                    cars = consoleCommandReader.getParametersCars(firstCondition, secondCondition, command, cars);
+                    cars = getParametersCars(firstCondition, secondCondition, command, cars);
                 }
             }
 
             return cars;
+    }
+
+    public Car[] getParametersCars(String firstCondition, String secondCondition, String command, Car[] cars)
+    {
+        Car[] carParameter = new Car[0];
+        ConsoleCommandParse consoleCommandParse = new ConsoleCommandParse();
+
+        switch (firstCondition)
+        {
+            case "vendor":
+                carParameter = consoleCommandParse.getVendor(cars, secondCondition, command);
+                break;
+            case "model":
+                carParameter = consoleCommandParse.getModel(cars, secondCondition, command);
+                break;
+            case "regId":
+                carParameter = consoleCommandParse.getRegistrationNumber(cars, secondCondition, command);
+                break;
+            case "color":
+                carParameter = consoleCommandParse.getColor(cars, secondCondition, command);
+                break;
+            case "year":
+                carParameter = consoleCommandParse.getYear(cars, Integer.parseInt(secondCondition), command);
+                break;
+            case "price":
+                carParameter = consoleCommandParse.getPrice(cars, Double.parseDouble(secondCondition), command);
+                break;
+            default:
+                System.out.println("Parameter isn't recognized");
+        }
+
+        return carParameter;
     }
 
     public Car[] getVendor(Car[] carData, String vendorRequest, String command)

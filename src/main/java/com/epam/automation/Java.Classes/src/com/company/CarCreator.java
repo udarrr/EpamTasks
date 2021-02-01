@@ -27,7 +27,7 @@ public class CarCreator
         return String.valueOf(randomNumber) + str[charA] + str[charB];
     }
 
-    public Car[] createCarData(int quantity)
+    public Car[] createCars(int quantity)
     {
         Car[] data = new Car[quantity];
 
