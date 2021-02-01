@@ -1,7 +1,7 @@
-package com.epam.automation.Java.Classes.src.com.company;
+package com.epam.automation.JavaClasses.Car;
 
-import com.epam.automation.Java.Classes.src.Enums.CarColor;
-import com.epam.automation.Java.Classes.src.Enums.CarVendor;
+import com.epam.automation.JavaClasses.Enums.CarColor;
+import com.epam.automation.JavaClasses.Enums.CarVendor;
 
 import java.util.Objects;
 

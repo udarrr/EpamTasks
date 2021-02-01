@@ -1,4 +1,4 @@
-package com.epam.automation.Java.Classes.src.Enums;
+package com.epam.automation.JavaClasses.Enums;
 
 public enum CarColor
 {

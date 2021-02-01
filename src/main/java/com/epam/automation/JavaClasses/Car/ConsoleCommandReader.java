@@ -1,4 +1,4 @@
-package com.epam.automation.Java.Classes.src.com.company;
+package com.epam.automation.JavaClasses.Car;
 
 import java.io.BufferedReader;
 import java.io.IOException;
