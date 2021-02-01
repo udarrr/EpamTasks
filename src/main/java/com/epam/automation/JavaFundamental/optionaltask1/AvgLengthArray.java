@@ -1,4 +1,4 @@
-package com.epam.automation.Java.Fundamental.optionaltask1;
+package com.epam.automation.JavaFundamental.optionaltask1;
 
 public class AvgLengthArray {
 

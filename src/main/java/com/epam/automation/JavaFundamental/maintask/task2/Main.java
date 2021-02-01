@@ -1,4 +1,4 @@
-package com.epam.automation.Java.Fundamental.maintask.task2;
+package com.epam.automation.JavaFundamental.maintask.task2;
 
 import java.util.Scanner;
 

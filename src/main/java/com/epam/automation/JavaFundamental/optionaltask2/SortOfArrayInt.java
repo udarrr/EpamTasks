@@ -1,4 +1,4 @@
-package com.epam.automation.Java.Fundamental.optionaltask2;
+package com.epam.automation.JavaFundamental.optionaltask2;
 
 public class SortOfArrayInt {
 

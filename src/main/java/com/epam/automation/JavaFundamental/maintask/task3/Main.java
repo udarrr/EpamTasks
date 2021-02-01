@@ -1,4 +1,4 @@
-package com.epam.automation.Java.Fundamental.maintask.task3;
+package com.epam.automation.JavaFundamental.maintask.task3;
 
 import java.util.Arrays;
 import java.util.Random;
