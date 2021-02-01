@@ -3,7 +3,7 @@ package com.epam.automation.Java.Classes.src.com.company;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class ConsoleCommandParse
+public class ConsoleCommandParser
 {
     public Car[] getCarsAfterConsoleCommands (Car[] cars, String[] consoleCommand) throws ArrayIndexOutOfBoundsException
     {
@@ -46,30 +46,30 @@ public class ConsoleCommandParse
             return cars;
     }
 
-    public Car[] getParametersCars(String firstCondition, String secondCondition, String command, Car[] cars)
+    private Car[] getParametersCars(String firstCondition, String secondCondition, String command, Car[] cars)
     {
         Car[] carParameter = new Car[0];
-        ConsoleCommandParse consoleCommandParse = new ConsoleCommandParse();
+        ConsoleCommandParser consoleCommandParser = new ConsoleCommandParser();
 
         switch (firstCondition)
         {
             case "vendor":
-                carParameter = consoleCommandParse.getVendor(cars, secondCondition, command);
+                carParameter = consoleCommandParser.getVendor(cars, secondCondition, command);
                 break;
             case "model":
-                carParameter = consoleCommandParse.getModel(cars, secondCondition, command);
+                carParameter = consoleCommandParser.getModel(cars, secondCondition, command);
                 break;
             case "regId":
-                carParameter = consoleCommandParse.getRegistrationNumber(cars, secondCondition, command);
+                carParameter = consoleCommandParser.getRegistrationNumber(cars, secondCondition, command);
                 break;
             case "color":
-                carParameter = consoleCommandParse.getColor(cars, secondCondition, command);
+                carParameter = consoleCommandParser.getColor(cars, secondCondition, command);
                 break;
             case "year":
-                carParameter = consoleCommandParse.getYear(cars, Integer.parseInt(secondCondition), command);
+                carParameter = consoleCommandParser.getYear(cars, Integer.parseInt(secondCondition), command);
                 break;
             case "price":
-                carParameter = consoleCommandParse.getPrice(cars, Double.parseDouble(secondCondition), command);
+                carParameter = consoleCommandParser.getPrice(cars, Double.parseDouble(secondCondition), command);
                 break;
             default:
                 System.out.println("Parameter isn't recognized");
@@ -78,7 +78,7 @@ public class ConsoleCommandParse
         return carParameter;
     }
 
-    public Car[] getVendor(Car[] carData, String vendorRequest, String command)
+    private Car[] getVendor(Car[] carData, String vendorRequest, String command)
     {
         int length = 0;
 
@@ -103,7 +103,7 @@ public class ConsoleCommandParse
         return  result;
     }
 
-    public Car[] getModel(Car[] carData, String modelRequest, String command)
+    private Car[] getModel(Car[] carData, String modelRequest, String command)
     {
         int length = 0;
 
@@ -128,7 +128,7 @@ public class ConsoleCommandParse
         return  result;
     }
 
-    public Car[] getYear(Car[] carData, int yearRequest, String command)
+    private Car[] getYear(Car[] carData, int yearRequest, String command)
     {
         int length = 0;
 
@@ -195,7 +195,7 @@ public class ConsoleCommandParse
         return  result;
     }
 
-    public Car[] getPrice(Car[] carData, double priceRequest, String command)
+    private Car[] getPrice(Car[] carData, double priceRequest, String command)
     {
         int length = 0;
 
@@ -244,7 +244,7 @@ public class ConsoleCommandParse
         return  result;
     }
 
-    public Car[] getColor(Car[] cars, String colorRequest, String command)
+    private Car[] getColor(Car[] cars, String colorRequest, String command)
     {
         int length = 0;
 
@@ -269,7 +269,7 @@ public class ConsoleCommandParse
         return  result;
     }
 
-    public Car[] getRegistrationNumber(Car[] carData, String registrationNumber, String command)
+    private Car[] getRegistrationNumber(Car[] carData, String registrationNumber, String command)
     {
         int length = 0;
 

@@ -16,7 +16,7 @@ public class Main
         {
             consolePrinter.printDescriptionOfCommands();
 
-            ConsoleCommandParse consoleCommandParse = new ConsoleCommandParse();
+            ConsoleCommandParser consoleCommandParse = new ConsoleCommandParser();
 
             try
             {
