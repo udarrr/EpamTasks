@@ -1,12 +1,12 @@
-package com.epam.automation.Java.CleanCode;
+package com.epam.automation.JavaCleanCode;
 
-import com.epam.automation.Java.CleanCode.Enum.ClassificationSecurityLevel;
-import com.epam.automation.Java.CleanCode.Enum.MilitaryType;
-import com.epam.automation.Java.CleanCode.Enum.PassengerModel;
-import com.epam.automation.Java.CleanCode.Planes.ExperimentalPlane;
-import com.epam.automation.Java.CleanCode.Planes.MilitaryPlane;
-import com.epam.automation.Java.CleanCode.Planes.PassengerPlane;
-import com.epam.automation.Java.CleanCode.Planes.Plane;
+import com.epam.automation.JavaCleanCode.Enum.ClassificationSecurityLevel;
+import com.epam.automation.JavaCleanCode.Enum.MilitaryType;
+import com.epam.automation.JavaCleanCode.Enum.PassengerModel;
+import com.epam.automation.JavaCleanCode.Planes.ExperimentalPlane;
+import com.epam.automation.JavaCleanCode.Planes.MilitaryPlane;
+import com.epam.automation.JavaCleanCode.Planes.PassengerPlane;
+import com.epam.automation.JavaCleanCode.Planes.Plane;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
@@ -21,7 +21,7 @@ public class AirportTest
     @BeforeEach
     public void setUp()
     {
-        planes = DataAccessPlanes.createListPlanes();
+        planes = PlaneCreator.createListPlanes();
         airport = new Airport(planes);
     }
 

@@ -1,4 +1,4 @@
-package com.epam.automation.Java.CleanCode.Planes;
+package com.epam.automation.JavaCleanCode.Planes;
 
 import java.util.Objects;
 

@@ -1,13 +1,13 @@
-package com.epam.automation.Java.CleanCode;
+package com.epam.automation.JavaCleanCode;
 
-import com.epam.automation.Java.CleanCode.Planes.MilitaryPlane;
-import com.epam.automation.Java.CleanCode.Planes.PassengerPlane;
+import com.epam.automation.JavaCleanCode.Planes.MilitaryPlane;
+import com.epam.automation.JavaCleanCode.Planes.PassengerPlane;
 
 public class ConsolePrinter
 {
     public static void main(String[] args)
     {
-        Airport airport = new Airport(DataAccessPlanes.createListPlanes());
+        Airport airport = new Airport(PlaneCreator.createListPlanes());
         Airport militaryAirport = new Airport(airport.getMilitaryPlanes());
         Airport passengerAirport = new Airport(airport.getPassengerPlane());
 

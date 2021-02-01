@@ -1,7 +1,7 @@
-package com.epam.automation.Java.CleanCode.Planes;
+package com.epam.automation.JavaCleanCode.Planes;
 
-import com.epam.automation.Java.CleanCode.Enum.ClassificationSecurityLevel;
-import com.epam.automation.Java.CleanCode.Enum.ExperimentalType;
+import com.epam.automation.JavaCleanCode.Enum.ClassificationSecurityLevel;
+import com.epam.automation.JavaCleanCode.Enum.ExperimentalType;
 
 public class ExperimentalPlane extends Plane
 {
