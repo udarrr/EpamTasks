@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class ConsoleCommandReader
 {
-    public int getWishQuantityCarsForArray()
+    public int getCarsQuantity()
     {
         int quantityCarsInArray;
 
@@ -18,12 +18,14 @@ public class ConsoleCommandReader
             try
             {
                 Scanner sc = new Scanner(System.in);
+
                 quantityCarsInArray = sc.nextInt();
+
                 return quantityCarsInArray;
 
             } catch (Exception e)
             {
-                System.out.println("Quantity have to be a integer number, please enter quantity again");
+                System.out.println("Quantity have to be an integer number, please enter quantity again");
             }
         }
     }

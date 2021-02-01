@@ -7,7 +7,7 @@ public class Main
     public static void main(String[] args) throws IOException
     {
         ConsoleCommandReader commandsReader = new ConsoleCommandReader();
-        Car[] cars = new CarCreator().createCarData(commandsReader.getWishQuantityCarsForArray());
+        Car[] cars = new CarCreator().createCarData(commandsReader.getCarsQuantity());
 
         ConsolePrinter consolePrinter = new ConsolePrinter();
         consolePrinter.printCarData(cars);
@@ -17,9 +17,11 @@ public class Main
             consolePrinter.printDescriptionOfCommands();
 
             ConsoleCommandParse consoleCommandParse = new ConsoleCommandParse();
+
             try
             {
                 Car[] carsAfterCommands = consoleCommandParse.getCarsAfterConsoleCommands(cars, commandsReader.readConsoleCommands());
+
                 consolePrinter.printCarData(carsAfterCommands);
             }
             catch (ArrayIndexOutOfBoundsException e)
