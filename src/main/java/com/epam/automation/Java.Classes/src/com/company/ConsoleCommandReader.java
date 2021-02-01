@@ -64,6 +64,7 @@ public class ConsoleCommandReader
             default:
                 System.out.println("Parameter isn't recognized");
         }
+
         return carParameter;
     }
 }

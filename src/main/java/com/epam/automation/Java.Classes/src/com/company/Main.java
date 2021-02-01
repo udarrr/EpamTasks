@@ -7,7 +7,7 @@ public class Main
     public static void main(String[] args) throws IOException
     {
         ConsoleCommandReader commandsReader = new ConsoleCommandReader();
-        Car[] cars = new DataAccessCars().createCarData(commandsReader.getWishQuantityCarsForArray());
+        Car[] cars = new CarCreator().createCarData(commandsReader.getWishQuantityCarsForArray());
 
         ConsolePrinter consolePrinter = new ConsolePrinter();
         consolePrinter.printCarData(cars);

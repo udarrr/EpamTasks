@@ -3,7 +3,7 @@ package com.epam.automation.Java.Classes.src.com.company;
 import com.epam.automation.Java.Classes.src.Enums.*;
 import java.util.Random;
 
-public class DataAccessCars
+public class CarCreator
 {
     private int getRandomYear(int min, int max)
     {
@@ -23,9 +23,8 @@ public class DataAccessCars
         int randomNumber = random.ints(min, (max + 1)).findFirst().getAsInt();
         int charA = random.ints(0, (str.length)).findFirst().getAsInt();
         int charB = random.ints(0, (str.length)).findFirst().getAsInt();
-        StringBuilder resultStr = new StringBuilder();
 
-        return resultStr.append(randomNumber).append(str[charA]).append(str[charB]).toString();
+        return String.valueOf(randomNumber) + str[charA] + str[charB];
     }
 
     public Car[] createCarData(int quantity)
@@ -47,6 +46,7 @@ public class DataAccessCars
                 default -> System.out.println("isn't possible add car");
             }
         }
+
         return data;
     }
 }

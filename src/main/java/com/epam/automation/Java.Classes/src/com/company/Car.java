@@ -81,9 +81,9 @@ public class Car
         return registrationNumber;
     }
 
-    public void setRegistrationNumber(String regId)
+    public void setRegistrationNumber(String registrationNumber)
     {
-        this.registrationNumber = regId;
+        this.registrationNumber = registrationNumber;
     }
 
     public CarVendor getVendor()

@@ -42,6 +42,7 @@ public class ConsoleCommandParse
                     cars = consoleCommandReader.getParametersCars(firstCondition, secondCondition, command, cars);
                 }
             }
+
             return cars;
     }
 
@@ -66,6 +67,7 @@ public class ConsoleCommandParse
                 result[j++] = carData[i];
             }
         }
+
         return  result;
     }
 
@@ -157,6 +159,7 @@ public class ConsoleCommandParse
             }
 
         }
+
         return  result;
     }
 
@@ -205,6 +208,7 @@ public class ConsoleCommandParse
                 result[j++] = carData[i];
             }
         }
+
         return  result;
     }
 
@@ -254,6 +258,7 @@ public class ConsoleCommandParse
                 result[j++] = carData[i];
             }
         }
+
         return  result;
     }
 }
