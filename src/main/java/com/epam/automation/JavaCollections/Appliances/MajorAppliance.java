@@ -9,16 +9,16 @@ public class MajorAppliance extends HomeElectricAppliance
     @CsvBindByName
     String additionalConnectionType;
     @CsvBindByName
-    double size;
+    int size;
 
     public MajorAppliance()
     {
         super();
     }
 
-    public MajorAppliance(String model, String function, String power, String electricConnectionType, String networkConnection, String majorApplianceType, String additionalConnectionType, double size)
+    public MajorAppliance(String model, String color, String function, int power, String networkConnection, String majorApplianceType, String additionalConnectionType, int size)
     {
-        super(model, function, power, electricConnectionType, networkConnection);
+        super(model,color, function, power, networkConnection);
         this.majorApplianceType = majorApplianceType;
         this.additionalConnectionType = additionalConnectionType;
         this.size = size;
@@ -44,12 +44,12 @@ public class MajorAppliance extends HomeElectricAppliance
         this.additionalConnectionType = additionalConnectionType;
     }
 
-    public double getSize()
+    public int getSize()
     {
         return size;
     }
 
-    public void setSize(double size)
+    public void setSize(int size)
     {
         this.size = size;
     }
@@ -60,7 +60,6 @@ public class MajorAppliance extends HomeElectricAppliance
         return super.toString() +
                 "majorApplianceType='" + majorApplianceType + '\'' +
                 ", additionalConnectionType='" + additionalConnectionType + '\'' +
-                ", size=" + size +
-                '}';
+                ", size=" + size + "\"";
     }
 }

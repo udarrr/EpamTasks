@@ -1,2 +1,2 @@
-model;function;power;electricConnectionType;networkConnection;consumerElectronicType;sizeBattery
-XIAOMI_READMI;Calling;125;miniUSB;wifi;phone;4000
+model;color;function;power;networkConnection;consumerElectronicType;sizeBattery
+XIAOMI;WHITE;Calling;125;wifi;phone;4000

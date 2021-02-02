@@ -1,2 +1,2 @@
-model;function;power;electricConnectionType;networkConnection;smallApplianceType
-LG;MIX;500;1FASE;WITHOUT;BLENDER
+MODEL;COLOR;FUNCTION;POWER;networkConnection;smallApplianceType
+LG;WHITE;MIX;500;WITHOUT;BLENDER

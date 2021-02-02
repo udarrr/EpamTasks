@@ -8,14 +8,13 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.exceptions.CsvException;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.csv.CsvParser;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CsvReader
+public class CsvReaderToCollection
 {
 
      public List<HomeElectricAppliance> getApplianceFromCsvFile() throws IOException, CsvException

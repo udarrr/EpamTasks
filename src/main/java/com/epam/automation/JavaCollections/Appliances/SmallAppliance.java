@@ -12,9 +12,9 @@ public class SmallAppliance extends HomeElectricAppliance
         super();
     }
 
-    public SmallAppliance(String model, String function, String power, String electricConnectionType, String networkConnection, String smallApplianceType)
+    public SmallAppliance(String model,String color, String function, int power, String networkConnection, String smallApplianceType)
     {
-        super(model, function, power, electricConnectionType, networkConnection);
+        super(model,color, function, power, networkConnection);
         this.smallApplianceType = smallApplianceType;
     }
 
@@ -32,7 +32,6 @@ public class SmallAppliance extends HomeElectricAppliance
     public String toString()
     {
         return super.toString()+ "SmallAppliance{" +
-                "smallApplianceType='" + smallApplianceType + '\'' +
-                '}';
+                "smallApplianceType='" + smallApplianceType + '\'';
     }
 }

@@ -7,11 +7,11 @@ public class HomeElectricAppliance
     @CsvBindByName
     String model;
     @CsvBindByName
+    String color;
+    @CsvBindByName
     String function;
     @CsvBindByName
-    String power;
-    @CsvBindByName
-    String electricConnectionType;
+    int power;
     @CsvBindByName
     String networkConnection;
 
@@ -20,12 +20,12 @@ public class HomeElectricAppliance
         super();
     }
 
-    public HomeElectricAppliance(String model, String function, String power, String electricConnectionType, String networkConnection)
+    public HomeElectricAppliance(String model, String color, String function, int power, String networkConnection)
     {
         this.model = model;
         this.function = function;
         this.power = power;
-        this.electricConnectionType = electricConnectionType;
+        this.color = color;
         this.networkConnection = networkConnection;
     }
 
@@ -39,6 +39,16 @@ public class HomeElectricAppliance
         this.model = model;
     }
 
+    public String getColor()
+    {
+        return color;
+    }
+
+    public void setColor(String color)
+    {
+        this.color = color;
+    }
+
     public String getFunction()
     {
         return function;
@@ -49,24 +59,14 @@ public class HomeElectricAppliance
         this.function = function;
     }
 
-    public String getPower()
+    public int getPower()
     {
         return power;
     }
 
-    public void setPower(String power)
+    public void setPower(int power)
     {
         this.power = power;
-    }
-
-    public String getElectricConnectionType()
-    {
-        return electricConnectionType;
-    }
-
-    public void setElectricConnectionType(String electricConnectionType)
-    {
-        this.electricConnectionType = electricConnectionType;
     }
 
     public String getNetworkConnection()
@@ -82,12 +82,10 @@ public class HomeElectricAppliance
     @Override
     public String toString()
     {
-        return "HomeElectricAppliance{" +
-                ", model='" + model + '\'' +
+        return  "model='" + model + '\'' +
+                ", color='" + color + '\'' +
                 ", function='" + function + '\'' +
-                ", power='" + power + '\'' +
-                ", electricConnectionType='" + electricConnectionType + '\'' +
-                ", networkConnection='" + networkConnection + '\'' +
-                '}';
+                ", power='" + power + " Watt" + '\'' +
+                ", networkConnection='" + networkConnection + '\'';
     }
 }
