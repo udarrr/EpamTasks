@@ -13,7 +13,7 @@ public class ConsolePrinter
 
         System.out.println("Military planes sorted by max distance: ");
 
-        for (MilitaryPlane militaryPlanesSortMaxDistance : militaryAirport.sortByMaxDistance().getMilitaryPlanes())
+        for (MilitaryPlane militaryPlanesSortMaxDistance : airport.sortByMaxDistance().getMilitaryPlanes())
         {
             System.out.println(militaryPlanesSortMaxDistance);
         }
