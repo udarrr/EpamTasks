@@ -10,20 +10,8 @@ public class Main
 {
     public static void main(String[] args) throws IOException, CsvException
     {
-        CsvReaderToCollection csvReaderToCollectionAppliance = new CsvReaderToCollection();
-        List<HomeElectricAppliance> temp = csvReaderToCollectionAppliance.getApplianceFromCsvFile();
-
-        Flat flat = new Flat(temp);
-
-        new ConsumerElectronic();
-
-
-for(HomeElectricAppliance flat1: flat.getSortedHomeElectricApplianceByPower().getAllAppliance())
-{
-    System.out.println(flat1);
-}
-
-
+        ConsoleMenu consoleMenu = new ConsoleMenu();
+        consoleMenu.Start();
     }
 
 }

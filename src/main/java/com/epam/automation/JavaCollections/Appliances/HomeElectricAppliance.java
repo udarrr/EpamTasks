@@ -2,18 +2,22 @@ package com.epam.automation.JavaCollections.Appliances;
 
 import com.opencsv.bean.CsvBindByName;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class HomeElectricAppliance
 {
     @CsvBindByName
-    String model;
+    private String model;
     @CsvBindByName
-    String color;
+    private String color;
     @CsvBindByName
-    String function;
+    private String function;
     @CsvBindByName
-    int power;
+    private int power;
     @CsvBindByName
-    String networkConnection;
+    private String networkConnection;
 
     public HomeElectricAppliance()
     {
@@ -80,6 +84,29 @@ public class HomeElectricAppliance
     }
 
     @Override
+    public boolean equals(Object otherAppliance)
+    {
+        if (this == otherAppliance)
+        {
+            return true;
+        }
+
+        if (!(otherAppliance instanceof MajorAppliance))
+        {
+            return false;
+        }
+
+        HomeElectricAppliance equalingAppliance = (HomeElectricAppliance) otherAppliance;
+
+        if (this.getModel().equals(equalingAppliance.getModel()))
+        {
+            return true;
+        }
+        HomeElectricAppliance that = (HomeElectricAppliance) otherAppliance;
+        return power == that.power && model.equals(that.model) && color.equals(that.color) && function.equals(that.function) && networkConnection.equals(that.networkConnection);
+    }
+
+    @Override
     public String toString()
     {
         return  "model='" + model + '\'' +
@@ -88,4 +115,5 @@ public class HomeElectricAppliance
                 ", power='" + power + " Watt" + '\'' +
                 ", networkConnection='" + networkConnection + '\'';
     }
+
 }

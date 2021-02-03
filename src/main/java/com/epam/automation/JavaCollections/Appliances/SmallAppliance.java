@@ -5,7 +5,7 @@ import com.opencsv.bean.CsvBindByName;
 public class SmallAppliance extends HomeElectricAppliance
 {
     @CsvBindByName
-    String smallApplianceType;
+    private String smallApplianceType;
 
     public SmallAppliance()
     {

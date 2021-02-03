@@ -5,11 +5,11 @@ import com.opencsv.bean.CsvBindByName;
 public class MajorAppliance extends HomeElectricAppliance
 {
     @CsvBindByName
-    String majorApplianceType;
+    private String majorApplianceType;
     @CsvBindByName
-    String additionalConnectionType;
+    private String additionalConnectionType;
     @CsvBindByName
-    int size;
+    private double size;
 
     public MajorAppliance()
     {
@@ -44,12 +44,12 @@ public class MajorAppliance extends HomeElectricAppliance
         this.additionalConnectionType = additionalConnectionType;
     }
 
-    public int getSize()
+    public double getSize()
     {
         return size;
     }
 
-    public void setSize(int size)
+    public void setSize(double size)
     {
         this.size = size;
     }

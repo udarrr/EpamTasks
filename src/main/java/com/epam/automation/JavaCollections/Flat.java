@@ -5,15 +5,13 @@ import com.epam.automation.JavaCollections.Appliances.HomeElectricAppliance;
 import com.epam.automation.JavaCollections.Appliances.MajorAppliance;
 import com.epam.automation.JavaCollections.Appliances.SmallAppliance;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Flat
 {
-    private final List<HomeElectricAppliance> homeElectricAppliances;
+    private List<? extends HomeElectricAppliance> homeElectricAppliances;
 
-    public Flat(List<HomeElectricAppliance> homeElectricAppliances)
+    public Flat(List<? extends HomeElectricAppliance> homeElectricAppliances)
     {
         this.homeElectricAppliances = homeElectricAppliances;
     }
@@ -78,13 +76,13 @@ public class Flat
         return this;
     }
 
-    public  List<HomeElectricAppliance> getAppliancesWithPowerBetweenTheRange(int firstRange,int secondRange)
+    public List<HomeElectricAppliance> getAppliancesWithParametersBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange)
     {
         List<HomeElectricAppliance> filteredAppliancesByPowerBetweenRange = new ArrayList<>();
 
         for(HomeElectricAppliance homeElectricAppliance: homeElectricAppliances)
         {
-            if(homeElectricAppliance.getPower() > firstRange && homeElectricAppliance.getPower() < secondRange)
+            if(homeElectricAppliance.getPower() > firstConditionTheRange && homeElectricAppliance.getPower() < secondConditionTheRange)
             {
                 filteredAppliancesByPowerBetweenRange.add(homeElectricAppliance);
             }
@@ -92,5 +90,63 @@ public class Flat
 
         return filteredAppliancesByPowerBetweenRange;
 
+    }
+
+
+    public List<ConsumerElectronic> getAppliancesWithParametersBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange, List<ConsumerElectronic> consumerElectronics)
+    {
+        List<ConsumerElectronic> filteredAppliancesByBatteryCapacityBetweenRange = new ArrayList<>();
+
+        for(ConsumerElectronic consumerElectronic: consumerElectronics)
+        {
+            if(consumerElectronic.getBatteryCapacity() > firstConditionTheRange && consumerElectronic.getBatteryCapacity() < secondConditionTheRange)
+            {
+                filteredAppliancesByBatteryCapacityBetweenRange.add(consumerElectronic);
+            }
+        }
+
+        return filteredAppliancesByBatteryCapacityBetweenRange;
+
+    }
+
+    public List<MajorAppliance> getAppliancesWithParametersBetweenTheRange(double firstConditionTheRange, double secondConditionTheRange, List<MajorAppliance> majorAppliances)
+    {
+        List<MajorAppliance> filteredAppliancesBySizeBetweenRange = new ArrayList<>();
+
+        for(MajorAppliance majorAppliance: majorAppliances)
+        {
+            if(majorAppliance.getSize() > firstConditionTheRange && majorAppliance.getSize() < secondConditionTheRange)
+            {
+                filteredAppliancesBySizeBetweenRange.add(majorAppliance);
+            }
+        }
+
+        return filteredAppliancesBySizeBetweenRange;
+
+    }
+
+    public List<HomeElectricAppliance> connectRandomApplianceToElectricalNetwork()
+    {
+        List<HomeElectricAppliance> someoneRandomConnectedApplianceToElectricalNetwork = new ArrayList<>();
+        int numberRandomAppliance = homeElectricAppliances.size();
+        someoneRandomConnectedApplianceToElectricalNetwork.add(homeElectricAppliances.get(0));
+
+        return someoneRandomConnectedApplianceToElectricalNetwork;
+    }
+
+    public List<HomeElectricAppliance> connectRandomApplianceToElectricalNetwork(List<HomeElectricAppliance> connectedAppliances)
+    {
+        List<HomeElectricAppliance> appliancesConnectedToElectricalNetwork;
+        for(HomeElectricAppliance exceptConnectedAppliance : homeElectricAppliances)
+        {
+            if (exceptConnectedAppliance.equals(connectedAppliances.get(0)))
+            {
+                homeElectricAppliances.remove(exceptConnectedAppliance);
+            }
+        }
+
+        appliancesConnectedToElectricalNetwork =  connectRandomApplianceToElectricalNetwork();
+
+        return appliancesConnectedToElectricalNetwork;
     }
 }
