@@ -2,9 +2,6 @@ package com.epam.automation.JavaCollections.Appliances;
 
 import com.opencsv.bean.CsvBindByName;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ConsumerElectronic extends HomeElectricAppliance
 {
     @CsvBindByName
@@ -44,12 +41,12 @@ public class ConsumerElectronic extends HomeElectricAppliance
         this.batteryCapacity = batteryCapacity;
     }
 
-
     @Override
     public String toString()
     {
-        return super.toString() +
-                "consumerElectronicType='" + consumerElectronicType + '\'' +
-                ", sizeBattery=" + batteryCapacity;
+        return "Model='" + super.getModel()  +
+                ", Power='" + super.getPower() + "Watt"+ " " +
+                "ConsumerElectronicType='" + consumerElectronicType + '\'' +
+                ", BatteryCapacity=" + batteryCapacity;
     }
 }

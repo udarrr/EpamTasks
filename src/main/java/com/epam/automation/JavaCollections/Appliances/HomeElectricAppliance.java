@@ -2,10 +2,6 @@ package com.epam.automation.JavaCollections.Appliances;
 
 import com.opencsv.bean.CsvBindByName;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-
 public class HomeElectricAppliance
 {
     @CsvBindByName
@@ -109,11 +105,10 @@ public class HomeElectricAppliance
     @Override
     public String toString()
     {
-        return  "model='" + model + '\'' +
-                ", color='" + color + '\'' +
-                ", function='" + function + '\'' +
-                ", power='" + power + " Watt" + '\'' +
-                ", networkConnection='" + networkConnection + '\'';
+        return  "Model='" + model + '\'' +
+                ", Color='" + color + '\'' +
+                ", Function='" + function + '\'' +
+                ", Power='" + power + " Watt" + '\'' +
+                ", NetworkConnection='" + networkConnection + '\'';
     }
-
 }

@@ -57,9 +57,10 @@ public class MajorAppliance extends HomeElectricAppliance
     @Override
     public String toString()
     {
-        return super.toString() +
-                "majorApplianceType='" + majorApplianceType + '\'' +
-                ", additionalConnectionType='" + additionalConnectionType + '\'' +
-                ", size=" + size + "\"";
+        return  "Model='" + super.getModel() +
+                ", Power='" + super.getPower() + "Watt"+ " " +
+                ", MajorApplianceType='" + majorApplianceType + '\'' +
+                ", AdditionalConnectionType='" + additionalConnectionType + '\'' +
+                ", Size=" + size + "\"";
     }
 }

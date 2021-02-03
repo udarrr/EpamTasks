@@ -31,7 +31,8 @@ public class SmallAppliance extends HomeElectricAppliance
     @Override
     public String toString()
     {
-        return super.toString()+ "SmallAppliance{" +
-                "smallApplianceType='" + smallApplianceType + '\'';
+        return "Model='" + super.getModel() +
+                 ", Power='" + super.getPower() + "Watt"+ " " +
+                "SmallApplianceType='" + smallApplianceType + '\'';
     }
 }
