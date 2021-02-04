@@ -8,6 +8,34 @@ import java.util.*;
 
 public class Flat
 {
+    public List<ConsumerElectronic> getConsumerElectronicAppliance(List<HomeElectricAppliance> homeElectricAppliances)
+    {
+        List<ConsumerElectronic> consumerElectronics = new ArrayList<>();
+        for (HomeElectricAppliance homeElectricAppliance: homeElectricAppliances)
+        {
+            if(homeElectricAppliance instanceof ConsumerElectronic)
+            {
+                consumerElectronics.add((ConsumerElectronic) homeElectricAppliance);
+            }
+        }
+
+        return  consumerElectronics;
+    }
+
+    public List<MajorAppliance> getMajorAppliance(List<HomeElectricAppliance> homeElectricAppliances)
+    {
+        List<MajorAppliance> majorAppliances = new ArrayList<>();
+        for (HomeElectricAppliance homeElectricAppliance: homeElectricAppliances)
+        {
+            if(homeElectricAppliance instanceof MajorAppliance)
+            {
+                majorAppliances.add((MajorAppliance) homeElectricAppliance);
+            }
+        }
+
+        return  majorAppliances;
+    }
+
     public List<HomeElectricAppliance> getSortedHomeElectricApplianceByPower(List<HomeElectricAppliance> homeElectricAppliances)
     {
         homeElectricAppliances.sort((Comparator<HomeElectricAppliance>) (o1, o2)-> (o1.getPower() - o2.getPower()));
@@ -32,7 +60,7 @@ public class Flat
 
     }
 
-    public List<ConsumerElectronic> getAppliancesWithParametersBetweenTheRange(List<HomeElectricAppliance> homeElectricAppliances,int firstConditionTheRange, int secondConditionTheRange, List<ConsumerElectronic> consumerElectronics)
+    public List<ConsumerElectronic> getAppliancesWithParametersBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange, List<ConsumerElectronic> consumerElectronics)
     {
         List<ConsumerElectronic> filteredAppliancesByBatteryCapacityBetweenRange = new ArrayList<>();
 
@@ -48,7 +76,7 @@ public class Flat
 
     }
 
-    public List<MajorAppliance> getAppliancesWithParametersBetweenTheRange(List<HomeElectricAppliance> homeElectricAppliances,double firstConditionTheRange, double secondConditionTheRange, List<MajorAppliance> majorAppliances)
+    public List<MajorAppliance> getAppliancesWithParametersBetweenTheRange(int firstConditionTheRange,List<MajorAppliance> majorAppliances, int secondConditionTheRange)
     {
         List<MajorAppliance> filteredAppliancesBySizeBetweenRange = new ArrayList<>();
 
@@ -110,4 +138,5 @@ public class Flat
 
         return allPowerApplianceInHome;
     }
+
 }

@@ -1,2 +1,5 @@
-model;color;function;power;networkConnection;consumerElectronicType;sizeBattery
-XIAOMI;WHITE;Calling;125;wifi;phone;4000
+model;color;function;power;networkConnection;consumerElectronicType;BatteryCapacity
+XIAOMI1;WHITE;Calling;125;wifi;phone;1000
+XIAOMI2;WHITE;Calling;125;wifi;phone;2000
+XIAOMI3;WHITE;Calling;125;wifi;phone;3000
+XIAOMI4;WHITE;Calling;125;wifi;phone;4500

@@ -1,12 +1,15 @@
 package com.epam.automation.JavaCollections;
 
+import com.epam.automation.JavaCollections.Appliances.ConsumerElectronic;
 import com.epam.automation.JavaCollections.Appliances.HomeElectricAppliance;
+import com.epam.automation.JavaCollections.Appliances.MajorAppliance;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class ConsoleMenu
 {
@@ -22,7 +25,7 @@ public class ConsoleMenu
 
     Flat flat = new Flat();
 
-    public void mainConsoleMenu() throws IOException, CsvException
+    public void mainConsoleMenu()
     {
         while (!consoleLineMainMenu.equals(EXIT))
         {
@@ -30,32 +33,39 @@ public class ConsoleMenu
 
             consoleLineMainMenu = sc.nextLine();
 
-            switch (consoleLineMainMenu)
+            try
             {
-                case "1":
-                    consolePrinter.printDescriptionFirstPositionMenu();
-                    setHandlerFirstPositionMenu();
-                    break;
+                switch (consoleLineMainMenu)
+                {
+                    case "1":
+                        consolePrinter.printDescriptionFirstPositionMenu();
+                        startHandlerFirstPositionMenu();
+                        break;
 
-                case "2":
-                    consolePrinter.printDescriptionSecondPositionOfMenu();
-                    setHandlerSecondPositionMenu();
-                    break;
+                    case "2":
+                        consolePrinter.printDescriptionSecondPositionOfMenu();
+                        startHandlerSecondPositionMenu();
+                        break;
 
-                case "3":
-                    setHandlerThirdPositionMenu();
-                    break;
+                    case "3":
+                        startHandlerThirdPositionMenu();
+                        break;
 
-                case "4":
-                    consoleLineMainMenu = EXIT;
-                    break;
+                    case "4":
+                        consoleLineMainMenu = EXIT;
+                        break;
 
-                default:System.out.println("Your choosing isn't recognized");
+                    default:
+                        System.out.println("Your choosing isn't recognized");
+                }
+            }catch (IOException | CsvException e)
+            {
+                System.out.println(e.getMessage() +" Command isn't recognized");
             }
         }
     }
 
-    private void setHandlerFirstPositionMenu() throws IOException, CsvException
+    private void startHandlerFirstPositionMenu() throws IOException, CsvException
     {
         List<HomeElectricAppliance> connectedAppliance = new ArrayList<>();
 
@@ -102,9 +112,51 @@ public class ConsoleMenu
         }
     }
 
-    private void setHandlerSecondPositionMenu()
+    private void startHandlerSecondPositionMenu() throws IOException, CsvException
     {
         String consoleLineSecondPositionMenu="";
+        String parameterTypeOfAppliance = "";
+
+        int firstValueTheRange = 0;
+        int secondValueTheRange = 0;
+
+        List<HomeElectricAppliance> homeElectricAppliances = collectionAppliances.getAllAppliances();
+        Pattern pattern = Pattern.compile("\\s*(\\s|,|\\)|-|\\(|!|\\.)\\s*");
+        String[] splitConsoleLineWithParams = pattern.split(consoleLineSecondPositionMenu);
+
+        if(splitConsoleLineWithParams.length == 3)
+        {
+            parameterTypeOfAppliance = splitConsoleLineWithParams[0];
+            firstValueTheRange = Integer.parseInt(splitConsoleLineWithParams[1]);
+            secondValueTheRange = Integer.parseInt(splitConsoleLineWithParams[2]);
+
+
+            if (parameterTypeOfAppliance.equalsIgnoreCase("BatteryCapacity"))
+            {
+                List<ConsumerElectronic> filteredConsumerElectronicByBatteryCapacity =
+                        flat.getAppliancesWithParametersBetweenTheRange(firstValueTheRange, secondValueTheRange,
+                                flat.getConsumerElectronicAppliance(homeElectricAppliances));
+
+                consolePrinter.printConsumerElectronicAppliances(filteredConsumerElectronicByBatteryCapacity);
+            }
+
+            if ((parameterTypeOfAppliance.equalsIgnoreCase("Size")))
+            {
+                List<MajorAppliance> filteredMajorApplianceBySize =
+                        flat.getAppliancesWithParametersBetweenTheRange(firstValueTheRange,
+                                flat.getMajorAppliance(homeElectricAppliances), secondValueTheRange);
+
+                consolePrinter.printMajorAppliances(filteredMajorApplianceBySize);
+            }
+
+            if ((parameterTypeOfAppliance.equalsIgnoreCase("Power")))
+            {
+                List<HomeElectricAppliance> filteredAppliancesByPower =
+                        flat.getAppliancesWithParametersBetweenTheRange(homeElectricAppliances, firstValueTheRange, secondValueTheRange);
+
+                consolePrinter.printHomeElectricAppliance(filteredAppliancesByPower);
+            }
+        }
 
         while (!consoleLineSecondPositionMenu.equals(EXIT))
         {
@@ -117,12 +169,14 @@ public class ConsoleMenu
                     break;
 
                 default:
-                    System.out.println("Your choosing isn't recognized");
+                    consolePrinter.printDescriptionSecondPositionOfMenu();
+                    System.out.println();
+                    System.out.println("Wrong command please try again");
             }
         }
     }
 
-    private void setHandlerThirdPositionMenu() throws IOException, CsvException
+    private void startHandlerThirdPositionMenu() throws IOException, CsvException
     {
         List<HomeElectricAppliance> homeElectricAppliances = collectionAppliances.getAllAppliances();
 
