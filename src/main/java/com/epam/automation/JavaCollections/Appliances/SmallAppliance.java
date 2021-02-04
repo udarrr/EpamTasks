@@ -32,7 +32,7 @@ public class SmallAppliance extends HomeElectricAppliance
     public String toString()
     {
         return "Model='" + super.getModel() +
-                 ", Power='" + super.getPower() + "Watt"+ " " +
+                ", Power='" + super.getPower() + "Watt"+ " " +
                 "SmallApplianceType='" + smallApplianceType + '\'';
     }
 }

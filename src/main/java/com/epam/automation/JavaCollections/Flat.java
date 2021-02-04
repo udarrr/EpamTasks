@@ -11,6 +11,7 @@ public class Flat
     public List<ConsumerElectronic> getConsumerElectronicAppliance(List<HomeElectricAppliance> homeElectricAppliances)
     {
         List<ConsumerElectronic> consumerElectronics = new ArrayList<>();
+
         for (HomeElectricAppliance homeElectricAppliance: homeElectricAppliances)
         {
             if(homeElectricAppliance instanceof ConsumerElectronic)
@@ -25,6 +26,7 @@ public class Flat
     public List<MajorAppliance> getMajorAppliance(List<HomeElectricAppliance> homeElectricAppliances)
     {
         List<MajorAppliance> majorAppliances = new ArrayList<>();
+
         for (HomeElectricAppliance homeElectricAppliance: homeElectricAppliances)
         {
             if(homeElectricAppliance instanceof MajorAppliance)
@@ -43,7 +45,7 @@ public class Flat
         return new ArrayList<>(homeElectricAppliances);
     }
 
-    public List<HomeElectricAppliance> getHomeElectricAppliancesWithParametersBetweenTheRange(List<HomeElectricAppliance> homeElectricAppliances,int firstConditionTheRange, int secondConditionTheRange)
+    public List<HomeElectricAppliance> getPowerHomeElectricAppliancesBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange, List<HomeElectricAppliance> homeElectricAppliances)
     {
         List<HomeElectricAppliance> filteredAppliancesByPowerBetweenRange = new ArrayList<>();
 
@@ -56,10 +58,9 @@ public class Flat
         }
 
         return filteredAppliancesByPowerBetweenRange;
-
     }
 
-    public List<ConsumerElectronic> getConsumerElectronicAppliancesWithParametersBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange, List<ConsumerElectronic> consumerElectronics)
+    public List<ConsumerElectronic> getBatteryCapacityConsumerElectronicAppliancesBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange, List<ConsumerElectronic> consumerElectronics)
     {
         List<ConsumerElectronic> filteredAppliancesByBatteryCapacityBetweenRange = new ArrayList<>();
 
@@ -72,40 +73,37 @@ public class Flat
         }
 
         return filteredAppliancesByBatteryCapacityBetweenRange;
-
     }
 
-    public List<MajorAppliance> getMajorApplianceWithParametersBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange, List<MajorAppliance> majorAppliances)
+    public List<MajorAppliance> getSizeMajorApplianceBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange, List<MajorAppliance> appliances)
     {
         List<MajorAppliance> filteredAppliancesBySizeBetweenRange = new ArrayList<>();
 
-        for(MajorAppliance majorAppliance: majorAppliances)
+        for(MajorAppliance majorAppliance: appliances)
         {
-            if(majorAppliance.getSize() > firstConditionTheRange && majorAppliance.getSize() < secondConditionTheRange)
+            if(majorAppliance.getHeight() > firstConditionTheRange && majorAppliance.getHeight() < secondConditionTheRange)
             {
                 filteredAppliancesBySizeBetweenRange.add(majorAppliance);
             }
         }
 
         return filteredAppliancesBySizeBetweenRange;
-
     }
 
-    public List<HomeElectricAppliance> getRandomAppliance(List<HomeElectricAppliance> homeElectricAppliances)
+    public List<HomeElectricAppliance> getRandomAppliance(List<HomeElectricAppliance> appliances)
     {
         List<HomeElectricAppliance> someoneRandomConnectedApplianceToElectricalNetwork = new ArrayList<>();
 
-        int numberRandomAppliance = homeElectricAppliances.size();
+        int numberRandomAppliance = appliances.size();
 
-        someoneRandomConnectedApplianceToElectricalNetwork.add(homeElectricAppliances.
+        someoneRandomConnectedApplianceToElectricalNetwork.add(appliances.
                 get(new Random().ints(0,numberRandomAppliance).findFirst().getAsInt()));
 
         return someoneRandomConnectedApplianceToElectricalNetwork;
-
     }
 
 
-    public List<HomeElectricAppliance> connectRandomApplianceToElectricalNetwork(List<HomeElectricAppliance> homeElectricAppliances,List<HomeElectricAppliance> connectedAppliances)
+    public List<HomeElectricAppliance> connectRandomAppliancesToElectricalNetwork(List<HomeElectricAppliance> homeElectricAppliances,List<HomeElectricAppliance> connectedAppliances)
     {
         for (int i = 0; i < connectedAppliances.size(); i++)
         {
@@ -120,19 +118,17 @@ public class Flat
         }
 
         return connectedAppliances;
-
     }
 
-    public int getWholePowerConnectedApplianceInHome(List<HomeElectricAppliance> connectedElectricAppliances)
+    public int getWholePowerConnectedAppliancesInHome(List<HomeElectricAppliance> connectedElectricAppliances)
     {
-        int allPowerApplianceInHome = 0;
+        int wholePowerAppliancesInHome = 0;
 
         for (HomeElectricAppliance homeElectricAppliance : connectedElectricAppliances)
         {
-            allPowerApplianceInHome += homeElectricAppliance.getPower();
+            wholePowerAppliancesInHome += homeElectricAppliance.getPower();
         }
 
-        return allPowerApplianceInHome;
+        return wholePowerAppliancesInHome;
     }
-
 }

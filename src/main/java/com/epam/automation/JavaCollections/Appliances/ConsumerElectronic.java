@@ -47,6 +47,6 @@ public class ConsumerElectronic extends HomeElectricAppliance
         return "Model='" + super.getModel()  +
                 ", Power='" + super.getPower() + "Watt"+ " " +
                 "ConsumerElectronicType='" + consumerElectronicType + '\'' +
-                ", BatteryCapacity=" + batteryCapacity;
+                ", BatteryCapacity=" + batteryCapacity + "Ah";
     }
 }

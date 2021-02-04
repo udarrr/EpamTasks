@@ -1,5 +1,5 @@
-model;color;function;power;networkConnection;consumerElectronicType;BatteryCapacity
-XIAOMI1;WHITE;Calling;125;wifi;phone;1000
-XIAOMI2;WHITE;Calling;125;wifi;phone;2000
-XIAOMI3;WHITE;Calling;125;wifi;phone;3000
-XIAOMI4;WHITE;Calling;125;wifi;phone;4500
+Model;Color;Function;Power;NetworkConnection;ConsumerElectronicType;BatteryCapacity
+Apple-Watch-Series6;ORANGE;CALLING;5;BLUETOOTH;WATCH;800
+Apple-Macbook-Air;BLACK;WORKING;45;LAN;NOTEBOOK;7300
+iPhone-12Pro;WHITE;Calling;21;WIFI;PHONE;2815
+Apple-iPad4;BLACK;ENTERTAINMENT;15;WIFI;TABLET;11560

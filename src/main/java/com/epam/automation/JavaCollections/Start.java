@@ -1,5 +1,6 @@
 package com.epam.automation.JavaCollections;
 
+import com.epam.automation.JavaCollections.Console.ConsoleMenu;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;

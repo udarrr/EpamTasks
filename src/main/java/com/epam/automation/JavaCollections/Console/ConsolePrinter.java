@@ -1,36 +1,19 @@
-package com.epam.automation.JavaCollections;
+package com.epam.automation.JavaCollections.Console;
 
 import com.epam.automation.JavaCollections.Appliances.HomeElectricAppliance;
-import com.epam.automation.JavaCollections.Appliances.ConsumerElectronic;
-import com.epam.automation.JavaCollections.Appliances.MajorAppliance;
 
 import java.util.List;
 
 public class ConsolePrinter
 {
-    public void printHomeElectricAppliance(List<HomeElectricAppliance> homeElectricAppliances)
+    public void printAppliances(List<? extends HomeElectricAppliance> appliances)
     {
-        for(HomeElectricAppliance consumerElectronic: homeElectricAppliances)
+        for(HomeElectricAppliance appliance: appliances)
         {
-            System.out.println(consumerElectronic);
+            System.out.println(appliance);
         }
     }
 
-    public void printConsumerElectronicAppliances(List<ConsumerElectronic> consumerElectronics)
-    {
-        for(ConsumerElectronic consumerElectronic: consumerElectronics)
-        {
-            System.out.println(consumerElectronic);
-        }
-    }
-
-    public void printMajorAppliances(List<MajorAppliance> majorAppliances)
-    {
-        for(MajorAppliance majorAppliance: majorAppliances)
-        {
-            System.out.println(majorAppliance);
-        }
-    }
     public void printConnectedApplianceToElectricNetwork(List<HomeElectricAppliance> connectedAppliance)
     {
         System.out.println("Connected: ");
@@ -81,7 +64,7 @@ public class ConsolePrinter
     {
         System.out.println();
         System.out.println("Examples for search");
-        System.out.println("size 10-100 or power 1-10000 or batterycapacity 1-1000 where word is parameter of appliance that have got it" );
+        System.out.println(" 'size 1-100' or 'power 1-10000' or 'batterycapacity 1-10000' where word is parameter of appliance that have got it" );
         System.out.println("first number is first condition that mean size > 10 and second number is second condition that mean size < 100");
         System.out.println("We have 3 commands it's size,power,batterycapacity");
         System.out.println("Please enter your command in console line or enter exit");
@@ -90,10 +73,11 @@ public class ConsolePrinter
         System.out.println("1.Exit to previous menu");
     }
 
-    public void printDescriptionThirdPositionOfMenu()
+    public void printDescriptionSortedMenu()
     {
         System.out.println();
         System.out.println("Sorted appliances by power");
+        System.out.println();
         System.out.println("1.Exit to previous menu");
     }
 }

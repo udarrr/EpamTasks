@@ -1,8 +1,10 @@
-package com.epam.automation.JavaCollections;
+package com.epam.automation.JavaCollections.Console;
 
 import com.epam.automation.JavaCollections.Appliances.ConsumerElectronic;
 import com.epam.automation.JavaCollections.Appliances.HomeElectricAppliance;
 import com.epam.automation.JavaCollections.Appliances.MajorAppliance;
+import com.epam.automation.JavaCollections.CollectionAppliances;
+import com.epam.automation.JavaCollections.Flat;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;
@@ -41,15 +43,18 @@ public class ConsoleMenu
                         consolePrinter.printDescriptionPluggingMenu();
                         startHandlerPluggingAppliance();
                     }
+
                     case "2" -> {
                         consolePrinter.printDescriptionSearcherMenu();
                         startHandlerSearcherAppliance();
                     }
+
                     case "3" -> startHandlerSortingByPowerAppliance();
                     case "4" -> consoleLineMainMenu = EXIT;
                     default -> System.out.println("Your choosing isn't recognized");
                 }
-            }catch (IOException | CsvException e)
+            }
+            catch (IOException | CsvException e)
             {
                 System.out.println(e.getMessage() +" Command isn't recognized");
             }
@@ -74,14 +79,14 @@ public class ConsoleMenu
 
                     if (connectedAppliance.size() != 0 && homeElectricAppliances.size() != 0)
                     {
-                        connectedAppliance = flat.connectRandomApplianceToElectricalNetwork(homeElectricAppliances, connectedAppliance);
+                        connectedAppliance = flat.connectRandomAppliancesToElectricalNetwork(homeElectricAppliances, connectedAppliance);
 
                     } else if (connectedAppliance.size() == 0)
                     {
                         connectedAppliance = flat.getRandomAppliance(homeElectricAppliances);
                     }
                     consolePrinter.printConnectedApplianceToElectricNetwork(connectedAppliance);
-                    consolePrinter.printPowerConnectedAppliancesInHome(flat.getWholePowerConnectedApplianceInHome(connectedAppliance));
+                    consolePrinter.printPowerConnectedAppliancesInHome(flat.getWholePowerConnectedAppliancesInHome(connectedAppliance));
                     consolePrinter.printDescriptionPluggingMenu();
 
                     if (homeElectricAppliances.size() == 0)
@@ -90,6 +95,7 @@ public class ConsoleMenu
                         System.out.println("Nothing to connect");
                     }
                 }
+
                 case "2" -> consoleLineFirstPositionMenu = EXIT;
                 default -> System.out.println("Your choosing isn't recognized");
             }
@@ -109,7 +115,9 @@ public class ConsoleMenu
             consoleLineSecondPositionMenu = sc.nextLine();
 
             List<HomeElectricAppliance> homeElectricAppliances = collectionAppliances.getAllAppliances();
+
             Pattern pattern = Pattern.compile("\\s*(\\s|,|\\)|-|\\(|!|\\.)\\s*");
+
             String[] splitConsoleLineWithParams = pattern.split(consoleLineSecondPositionMenu);
 
             if(splitConsoleLineWithParams.length == 3)
@@ -121,26 +129,26 @@ public class ConsoleMenu
                 if (parameterTypeOfAppliance.equalsIgnoreCase("BatteryCapacity"))
                 {
                     List<ConsumerElectronic> filteredConsumerElectronicByBatteryCapacity =
-                            flat.getConsumerElectronicAppliancesWithParametersBetweenTheRange(firstValueTheRange, secondValueTheRange,
+                            flat.getBatteryCapacityConsumerElectronicAppliancesBetweenTheRange(firstValueTheRange, secondValueTheRange,
                                     flat.getConsumerElectronicAppliance(homeElectricAppliances));
 
-                    consolePrinter.printConsumerElectronicAppliances(filteredConsumerElectronicByBatteryCapacity);
+                    consolePrinter.printAppliances(filteredConsumerElectronicByBatteryCapacity);
                 }
 
                 if ((parameterTypeOfAppliance.equalsIgnoreCase("Size")))
                 {
                     List<MajorAppliance> filteredMajorApplianceBySize =
-                            flat.getMajorApplianceWithParametersBetweenTheRange(firstValueTheRange, secondValueTheRange, flat.getMajorAppliance(homeElectricAppliances));
+                            flat.getSizeMajorApplianceBetweenTheRange(firstValueTheRange, secondValueTheRange, flat.getMajorAppliance(homeElectricAppliances));
 
-                    consolePrinter.printMajorAppliances(filteredMajorApplianceBySize);
+                    consolePrinter.printAppliances(filteredMajorApplianceBySize);
                 }
 
                 if ((parameterTypeOfAppliance.equalsIgnoreCase("Power")))
                 {
                     List<HomeElectricAppliance> filteredAppliancesByPower =
-                            flat.getHomeElectricAppliancesWithParametersBetweenTheRange(homeElectricAppliances, firstValueTheRange, secondValueTheRange);
+                            flat.getPowerHomeElectricAppliancesBetweenTheRange(firstValueTheRange, secondValueTheRange, homeElectricAppliances);
 
-                    consolePrinter.printHomeElectricAppliance(filteredAppliancesByPower);
+                    consolePrinter.printAppliances(filteredAppliancesByPower);
                 }
             }
 
@@ -160,7 +168,7 @@ public class ConsoleMenu
         List<HomeElectricAppliance> homeElectricAppliances = collectionAppliances.getAllAppliances();
 
         consolePrinter.printSortedAppliancesByPower(flat.getSortedHomeElectricApplianceByPower(homeElectricAppliances));
-        consolePrinter.printDescriptionThirdPositionOfMenu();
+        consolePrinter.printDescriptionSortedMenu();
 
         String consoleLineThirdPositionMenu="";
 
