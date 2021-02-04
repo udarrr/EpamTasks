@@ -5,77 +5,63 @@ import java.util.GregorianCalendar;
 
 public class ConsoleCommandParser
 {
-    public Car[] getCarsAfterConsoleCommands (Car[] cars, String[] consoleCommand) throws ArrayIndexOutOfBoundsException
+    public Car[] filter (Car[] cars, String[] parameters) throws ArrayIndexOutOfBoundsException
     {
         final String AND = "and";
 
-            if (consoleCommand[0] != null && consoleCommand[1] != null && consoleCommand[2] != null)
+            if (parameters[0] != null && parameters[1] != null && parameters[2] != null)
             {
-                String firstCondition = consoleCommand[0];
-                String command = consoleCommand[1];
-                String secondCondition = consoleCommand[2];
+                String firstCondition = parameters[0];
+                String command = parameters[1];
+                String secondCondition = parameters[2];
 
-                for (int i = 0; i < consoleCommand.length - 3; i += 4)
+                for (int i = 0; i < parameters.length - 3; i += 4)
                 {
-                    String additionalOperation = consoleCommand[i + 3];
+                    String additionalOperation = parameters[i + 3];
 
                     if (additionalOperation.equalsIgnoreCase(AND))
                     {
-                        cars = getParametersCars(firstCondition, secondCondition, command, cars);
+                        cars = filterCars(firstCondition, secondCondition, command, cars);
 
-                        if (consoleCommand[i + 4] != null)
+                        if (parameters[i + 4] != null)
                         {
-                            firstCondition = consoleCommand[i + 4];
+                            firstCondition = parameters[i + 4];
                         }
-                        if (consoleCommand[i + 5] != null)
+                        if (parameters[i + 5] != null)
                         {
-                            command = consoleCommand[i + 5];
+                            command = parameters[i + 5];
                         }
-                        if (consoleCommand[i + 6] != null)
+                        if (parameters[i + 6] != null)
                         {
-                            secondCondition = consoleCommand[i + 6];
+                            secondCondition = parameters[i + 6];
                         }
                     }
                 }
-                if(consoleCommand.length == 3)
+                if(parameters.length == 3)
                 {
-                    cars = getParametersCars(firstCondition, secondCondition, command, cars);
+                    cars = filterCars(firstCondition, secondCondition, command, cars);
                 }
             }
 
             return cars;
     }
 
-    private Car[] getParametersCars(String firstCondition, String secondCondition, String command, Car[] cars)
+    private Car[] filterCars(String firstCondition, String secondCondition, String command, Car[] cars)
     {
-        Car[] carParameter = new Car[0];
-        ConsoleCommandParser consoleCommandParser = new ConsoleCommandParser();
+        Car[] filteredCars = new Car[0];
 
         switch (firstCondition)
         {
-            case "vendor":
-                carParameter = consoleCommandParser.getVendor(cars, secondCondition, command);
-                break;
-            case "model":
-                carParameter = consoleCommandParser.getModel(cars, secondCondition, command);
-                break;
-            case "regId":
-                carParameter = consoleCommandParser.getRegistrationNumber(cars, secondCondition, command);
-                break;
-            case "color":
-                carParameter = consoleCommandParser.getColor(cars, secondCondition, command);
-                break;
-            case "year":
-                carParameter = consoleCommandParser.getYear(cars, Integer.parseInt(secondCondition), command);
-                break;
-            case "price":
-                carParameter = consoleCommandParser.getPrice(cars, Double.parseDouble(secondCondition), command);
-                break;
-            default:
-                System.out.println("Parameter isn't recognized");
+            case "vendor" -> filteredCars = getVendor(cars, secondCondition, command);
+            case "model" -> filteredCars = getModel(cars, secondCondition, command);
+            case "regId" -> filteredCars = getRegistrationNumber(cars, secondCondition, command);
+            case "color" -> filteredCars = getColor(cars, secondCondition, command);
+            case "year" -> filteredCars = getYear(cars, Integer.parseInt(secondCondition), command);
+            case "price" -> filteredCars = getPrice(cars, Double.parseDouble(secondCondition), command);
+            default -> System.out.println("Parameter isn't recognized");
         }
 
-        return carParameter;
+        return filteredCars;
     }
 
     private Car[] getVendor(Car[] carData, String vendorRequest, String command)
@@ -132,7 +118,6 @@ public class ConsoleCommandParser
     {
         int length = 0;
 
-
         for (int i = 0; i < carData.length; i++)
         {
             if (command.equals("=") && carData[i].getYear() == yearRequest)
@@ -140,6 +125,7 @@ public class ConsoleCommandParser
                 length++;
             }
         }
+
         for (int i = 0; i < carData.length; i++)
         {
             if (command.equals(">") && carData[i].getYear() > yearRequest)
@@ -147,6 +133,7 @@ public class ConsoleCommandParser
                 length++;
             }
         }
+
         for (int i = 0; i < carData.length; i++)
         {
             if (command.equals("<") && carData[i].getYear() < yearRequest)
@@ -156,6 +143,7 @@ public class ConsoleCommandParser
         }
 
         Calendar calendar = new GregorianCalendar();
+
         int yearNow = calendar.get(Calendar.YEAR);
 
         for (int i = 0; i < carData.length; i++)
@@ -189,7 +177,6 @@ public class ConsoleCommandParser
             {
                 result[j++] = carData[i];
             }
-
         }
 
         return  result;
@@ -206,6 +193,7 @@ public class ConsoleCommandParser
                 length++;
             }
         }
+
         for (int i = 0; i < carData.length; i++)
         {
             if (command.equals(">") && carData[i].getPrice() > priceRequest)
@@ -213,6 +201,7 @@ public class ConsoleCommandParser
                 length++;
             }
         }
+
         for (int i = 0; i < carData.length; i++)
         {
             if (command.equals("<") && carData[i].getPrice() < priceRequest)

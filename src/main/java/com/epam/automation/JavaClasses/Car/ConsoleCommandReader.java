@@ -11,7 +11,7 @@ public class ConsoleCommandReader
     {
         int quantityCarsInArray;
 
-        System.out.println("Enter the wish quantity cars from catalog: ");
+        System.out.println("Enter quantity cars from catalog: ");
 
         while (true)
         {
@@ -34,8 +34,6 @@ public class ConsoleCommandReader
     {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        String[] commands = reader.readLine().split("[\\s(^'.$)]");
-
-        return commands;
+        return reader.readLine().split("[\\s(^'.$)]");
     }
 }

@@ -16,13 +16,13 @@ public class Main
         {
             consolePrinter.printDescriptionOfCommands();
 
-            ConsoleCommandParser consoleCommandParse = new ConsoleCommandParser();
+            ConsoleCommandParser carsFilter = new ConsoleCommandParser();
 
             try
             {
-                Car[] carsAfterCommands = consoleCommandParse.getCarsAfterConsoleCommands(cars, commandsReader.readConsoleCommands());
+                Car[] filteredCars = carsFilter.filter(cars, commandsReader.readConsoleCommands());
 
-                consolePrinter.printCarData(carsAfterCommands);
+                consolePrinter.printCarData(filteredCars);
             }
             catch (ArrayIndexOutOfBoundsException | IOException e)
             {
