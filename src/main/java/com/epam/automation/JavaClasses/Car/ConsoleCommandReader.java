@@ -9,25 +9,33 @@ public class ConsoleCommandReader
 {
     public int getCarsQuantity()
     {
-        int quantityCarsInArray;
+        String inputConsoleValue = "";
+        String exit = "exit";
 
         System.out.println("Enter quantity cars from catalog: ");
 
-        while (true)
+        while (!inputConsoleValue.equalsIgnoreCase(exit))
         {
             try
             {
                 Scanner sc = new Scanner(System.in);
 
-                quantityCarsInArray = sc.nextInt();
+                inputConsoleValue = sc.nextLine();
 
-                return quantityCarsInArray;
-
+                if(inputConsoleValue.equals(exit))
+                {
+                    inputConsoleValue = exit;
+                }
+                else
+                {
+                    return Integer.parseInt(inputConsoleValue);
+                }
             } catch (Exception e)
             {
                 System.out.println("Quantity have to be an integer number, please enter quantity again");
             }
         }
+        return 0;
     }
 
     public String[] readConsoleCommands() throws IOException
