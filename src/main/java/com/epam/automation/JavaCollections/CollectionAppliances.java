@@ -4,10 +4,7 @@ import com.epam.automation.JavaCollections.Appliances.ConsumerElectronic;
 import com.epam.automation.JavaCollections.Appliances.HomeElectricAppliance;
 import com.epam.automation.JavaCollections.Appliances.MajorAppliance;
 import com.epam.automation.JavaCollections.Appliances.SmallAppliance;
-import com.opencsv.CSVParser;
-import com.opencsv.CSVParserBuilder;
 import com.opencsv.bean.CsvToBeanBuilder;
-import com.opencsv.exceptions.CsvException;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -17,15 +14,13 @@ import java.util.List;
 public class CollectionAppliances
 {
 
-    public List<HomeElectricAppliance> getAllAppliances() throws IOException, CsvException
+    public List<HomeElectricAppliance> getAllAppliances() throws IOException
     {
         return getApplianceFromCsvFile();
     }
 
-    private List<HomeElectricAppliance> getApplianceFromCsvFile() throws IOException, CsvException
+    private List<HomeElectricAppliance> getApplianceFromCsvFile() throws IOException
     {
-        final CSVParser parser = new CSVParserBuilder().withSeparator(';').build();
-
         List<ConsumerElectronic> consumerElectronics = new CsvToBeanBuilder
                 (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaCollections\\CSV\\ConsumerElectronic.csv"))
                 .withSeparator(';').withType(ConsumerElectronic.class).build().parse();

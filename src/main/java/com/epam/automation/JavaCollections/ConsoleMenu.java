@@ -39,16 +39,16 @@ public class ConsoleMenu
                 {
                     case "1":
                         consolePrinter.printDescriptionFirstPositionMenu();
-                        startHandlerFirstPositionMenu();
+                        startHandlerPluggingAppliance();
                         break;
 
                     case "2":
                         consolePrinter.printDescriptionSecondPositionOfMenu();
-                        startHandlerSecondPositionMenu();
+                        startHandlerSearcherAppliance();
                         break;
 
                     case "3":
-                        startHandlerThirdPositionMenu();
+                        startHandlerSortingByPowerAppliance();
                         break;
 
                     case "4":
@@ -65,7 +65,7 @@ public class ConsoleMenu
         }
     }
 
-    private void startHandlerFirstPositionMenu() throws IOException, CsvException
+    private void startHandlerPluggingAppliance() throws IOException, CsvException
     {
         List<HomeElectricAppliance> connectedAppliance = new ArrayList<>();
 
@@ -112,71 +112,67 @@ public class ConsoleMenu
         }
     }
 
-    private void startHandlerSecondPositionMenu() throws IOException, CsvException
+    private void startHandlerSearcherAppliance() throws IOException, CsvException
     {
         String consoleLineSecondPositionMenu="";
-        String parameterTypeOfAppliance = "";
+        String parameterTypeOfAppliance;
 
-        int firstValueTheRange = 0;
-        int secondValueTheRange = 0;
-
-        List<HomeElectricAppliance> homeElectricAppliances = collectionAppliances.getAllAppliances();
-        Pattern pattern = Pattern.compile("\\s*(\\s|,|\\)|-|\\(|!|\\.)\\s*");
-        String[] splitConsoleLineWithParams = pattern.split(consoleLineSecondPositionMenu);
-
-        if(splitConsoleLineWithParams.length == 3)
-        {
-            parameterTypeOfAppliance = splitConsoleLineWithParams[0];
-            firstValueTheRange = Integer.parseInt(splitConsoleLineWithParams[1]);
-            secondValueTheRange = Integer.parseInt(splitConsoleLineWithParams[2]);
-
-
-            if (parameterTypeOfAppliance.equalsIgnoreCase("BatteryCapacity"))
-            {
-                List<ConsumerElectronic> filteredConsumerElectronicByBatteryCapacity =
-                        flat.getAppliancesWithParametersBetweenTheRange(firstValueTheRange, secondValueTheRange,
-                                flat.getConsumerElectronicAppliance(homeElectricAppliances));
-
-                consolePrinter.printConsumerElectronicAppliances(filteredConsumerElectronicByBatteryCapacity);
-            }
-
-            if ((parameterTypeOfAppliance.equalsIgnoreCase("Size")))
-            {
-                List<MajorAppliance> filteredMajorApplianceBySize =
-                        flat.getAppliancesWithParametersBetweenTheRange(firstValueTheRange,
-                                flat.getMajorAppliance(homeElectricAppliances), secondValueTheRange);
-
-                consolePrinter.printMajorAppliances(filteredMajorApplianceBySize);
-            }
-
-            if ((parameterTypeOfAppliance.equalsIgnoreCase("Power")))
-            {
-                List<HomeElectricAppliance> filteredAppliancesByPower =
-                        flat.getAppliancesWithParametersBetweenTheRange(homeElectricAppliances, firstValueTheRange, secondValueTheRange);
-
-                consolePrinter.printHomeElectricAppliance(filteredAppliancesByPower);
-            }
-        }
+        int firstValueTheRange;
+        int secondValueTheRange;
 
         while (!consoleLineSecondPositionMenu.equals(EXIT))
         {
             consoleLineSecondPositionMenu = sc.nextLine();
 
-            switch (consoleLineSecondPositionMenu)
-            {
-                case "1":
-                    consoleLineSecondPositionMenu = EXIT;
-                    break;
+            List<HomeElectricAppliance> homeElectricAppliances = collectionAppliances.getAllAppliances();
+            Pattern pattern = Pattern.compile("\\s*(\\s|,|\\)|-|\\(|!|\\.)\\s*");
+            String[] splitConsoleLineWithParams = pattern.split(consoleLineSecondPositionMenu);
 
-                default:
-                    consolePrinter.printDescriptionSecondPositionOfMenu();
-                    System.out.println();
-                    System.out.println("Wrong command please try again");
+            if(splitConsoleLineWithParams.length == 3)
+            {
+                parameterTypeOfAppliance = splitConsoleLineWithParams[0];
+                firstValueTheRange = Integer.parseInt(splitConsoleLineWithParams[1]);
+                secondValueTheRange = Integer.parseInt(splitConsoleLineWithParams[2]);
+
+                if (parameterTypeOfAppliance.equalsIgnoreCase("BatteryCapacity"))
+                {
+                    List<ConsumerElectronic> filteredConsumerElectronicByBatteryCapacity =
+                            flat.getAppliancesWithParametersBetweenTheRange(firstValueTheRange, secondValueTheRange,
+                                    flat.getConsumerElectronicAppliance(homeElectricAppliances));
+
+                    consolePrinter.printConsumerElectronicAppliances(filteredConsumerElectronicByBatteryCapacity);
+                }
+
+                if ((parameterTypeOfAppliance.equalsIgnoreCase("Size")))
+                {
+                    List<MajorAppliance> filteredMajorApplianceBySize =
+                            flat.getAppliancesWithParametersBetweenTheRange(firstValueTheRange,
+                                    flat.getMajorAppliance(homeElectricAppliances), secondValueTheRange);
+
+                    consolePrinter.printMajorAppliances(filteredMajorApplianceBySize);
+                }
+
+                if ((parameterTypeOfAppliance.equalsIgnoreCase("Power")))
+                {
+                    List<HomeElectricAppliance> filteredAppliancesByPower =
+                            flat.getAppliancesWithParametersBetweenTheRange(homeElectricAppliances, firstValueTheRange, secondValueTheRange);
+
+                    consolePrinter.printHomeElectricAppliance(filteredAppliancesByPower);
+                }
+            }
+
+            if ("1".equals(consoleLineSecondPositionMenu))
+            {
+                consoleLineSecondPositionMenu = EXIT;
+            }
+            else if(splitConsoleLineWithParams.length !=3)
+            {
+                System.out.println("Command isn't recognized");
             }
         }
     }
 
-    private void startHandlerThirdPositionMenu() throws IOException, CsvException
+    private void startHandlerSortingByPowerAppliance() throws IOException, CsvException
     {
         List<HomeElectricAppliance> homeElectricAppliances = collectionAppliances.getAllAppliances();
 
@@ -189,15 +185,10 @@ public class ConsoleMenu
         {
             consoleLineThirdPositionMenu = sc.nextLine();
 
-            switch (consoleLineThirdPositionMenu)
+            if ("1".equals(consoleLineThirdPositionMenu))
             {
-                case "1":
-                    System.out.println();
-                    consoleLineThirdPositionMenu = EXIT;
-                    break;
-
-                default:
-                    System.out.println("Your choosing isn't recognized");
+                System.out.println();
+                consoleLineThirdPositionMenu = EXIT;
             }
         }
     }

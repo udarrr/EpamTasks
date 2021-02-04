@@ -39,9 +39,8 @@ public class Flat
     public List<HomeElectricAppliance> getSortedHomeElectricApplianceByPower(List<HomeElectricAppliance> homeElectricAppliances)
     {
         homeElectricAppliances.sort((Comparator<HomeElectricAppliance>) (o1, o2)-> (o1.getPower() - o2.getPower()));
-        List<HomeElectricAppliance> sortedHomeElectricAppliances = new ArrayList<>(homeElectricAppliances);
 
-        return sortedHomeElectricAppliances;
+        return new ArrayList<>(homeElectricAppliances);
     }
 
     public List<HomeElectricAppliance> getAppliancesWithParametersBetweenTheRange(List<HomeElectricAppliance> homeElectricAppliances,int firstConditionTheRange, int secondConditionTheRange)
@@ -128,12 +127,9 @@ public class Flat
     {
         int allPowerApplianceInHome = 0;
 
-        Iterator<HomeElectricAppliance> homeElectricApplianceIterator = connectedElectricAppliances.iterator();
-
-        while (homeElectricApplianceIterator.hasNext())
+        for (HomeElectricAppliance homeElectricAppliance : connectedElectricAppliances)
         {
-            HomeElectricAppliance homeElectricAppliance = homeElectricApplianceIterator.next();
-            allPowerApplianceInHome =allPowerApplianceInHome + homeElectricAppliance.getPower();
+            allPowerApplianceInHome += homeElectricAppliance.getPower();
         }
 
         return allPowerApplianceInHome;
