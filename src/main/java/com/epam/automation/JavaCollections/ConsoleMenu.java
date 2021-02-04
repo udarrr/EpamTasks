@@ -130,8 +130,7 @@ public class ConsoleMenu
                 if ((parameterTypeOfAppliance.equalsIgnoreCase("Size")))
                 {
                     List<MajorAppliance> filteredMajorApplianceBySize =
-                            flat.getMajorApplianceWithParametersBetweenTheRange(firstValueTheRange, secondValueTheRange,
-                                    flat.getMajorAppliance(homeElectricAppliances));
+                            flat.getMajorApplianceWithParametersBetweenTheRange(firstValueTheRange, secondValueTheRange, flat.getMajorAppliance(homeElectricAppliances));
 
                     consolePrinter.printMajorAppliances(filteredMajorApplianceBySize);
                 }

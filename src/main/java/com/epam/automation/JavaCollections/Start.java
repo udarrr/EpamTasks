@@ -8,7 +8,6 @@ public class Start
 {
     public static void main(String[] args) throws IOException, CsvException
     {
-        ConsoleMenu consoleMenu = new ConsoleMenu();
-        consoleMenu.mainConsoleMenu();
+        new ConsoleMenu().mainConsoleMenu();
     }
 }

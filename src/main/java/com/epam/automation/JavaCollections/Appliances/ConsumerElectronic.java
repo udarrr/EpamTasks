@@ -5,9 +5,9 @@ import com.opencsv.bean.CsvBindByName;
 public class ConsumerElectronic extends HomeElectricAppliance
 {
     @CsvBindByName
-    String consumerElectronicType;
+    private String consumerElectronicType;
     @CsvBindByName
-    int batteryCapacity;
+    private int batteryCapacity;
 
     public  ConsumerElectronic()
     {
