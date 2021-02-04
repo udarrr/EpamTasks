@@ -66,7 +66,7 @@ public class ConsolePrinter
         System.out.println("4.Exit");
     }
 
-    public void printDescriptionFirstPositionMenu()
+    public void printDescriptionPluggingMenu()
     {
         System.out.println();
         System.out.println("You can switch on some random electric appliances in outlet one by one");
@@ -77,7 +77,7 @@ public class ConsolePrinter
         System.out.println("2.Exit to previous menu");
     }
 
-    public void printDescriptionSecondPositionOfMenu()
+    public void printDescriptionSearcherMenu()
     {
         System.out.println();
         System.out.println("Examples for search");

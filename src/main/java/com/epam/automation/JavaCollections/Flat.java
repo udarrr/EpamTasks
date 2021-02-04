@@ -43,7 +43,7 @@ public class Flat
         return new ArrayList<>(homeElectricAppliances);
     }
 
-    public List<HomeElectricAppliance> getAppliancesWithParametersBetweenTheRange(List<HomeElectricAppliance> homeElectricAppliances,int firstConditionTheRange, int secondConditionTheRange)
+    public List<HomeElectricAppliance> getHomeElectricAppliancesWithParametersBetweenTheRange(List<HomeElectricAppliance> homeElectricAppliances,int firstConditionTheRange, int secondConditionTheRange)
     {
         List<HomeElectricAppliance> filteredAppliancesByPowerBetweenRange = new ArrayList<>();
 
@@ -59,7 +59,7 @@ public class Flat
 
     }
 
-    public List<ConsumerElectronic> getAppliancesWithParametersBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange, List<ConsumerElectronic> consumerElectronics)
+    public List<ConsumerElectronic> getConsumerElectronicAppliancesWithParametersBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange, List<ConsumerElectronic> consumerElectronics)
     {
         List<ConsumerElectronic> filteredAppliancesByBatteryCapacityBetweenRange = new ArrayList<>();
 
@@ -75,7 +75,7 @@ public class Flat
 
     }
 
-    public List<MajorAppliance> getAppliancesWithParametersBetweenTheRange(int firstConditionTheRange,List<MajorAppliance> majorAppliances, int secondConditionTheRange)
+    public List<MajorAppliance> getMajorApplianceWithParametersBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange, List<MajorAppliance> majorAppliances)
     {
         List<MajorAppliance> filteredAppliancesBySizeBetweenRange = new ArrayList<>();
 
