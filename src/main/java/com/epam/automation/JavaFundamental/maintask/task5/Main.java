@@ -4,14 +4,20 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-        while (true) {
+    public static void main(String[] args)
+    {
+        while (true)
+        {
             Scanner sc = new Scanner(System.in);
             System.out.println("Enter number of month that you wish: ");
-            String line = sc.nextLine();
+
+            String lineWithNumberOfMonth = sc.nextLine();
+
             int month;
+
             try {
-                month = Integer.parseInt(line);
+                month = Integer.parseInt(lineWithNumberOfMonth);
+
                 switch (month) {
                     case 1:
                         System.out.println("January");
@@ -53,11 +59,9 @@ public class Main {
                     default:
                         System.out.println("Month isn't exist");
                 }
-
-
-            } catch (Exception e) {
-                System.out.println("Wrong, you can write down only numbers:");
-
+            } catch (NumberFormatException e)
+            {
+                System.out.println(e.getMessage() + " Wrong, you can write down only numbers:");
             }
         }
     }

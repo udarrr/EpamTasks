@@ -8,43 +8,47 @@ public class Main
     public static void main(String[] args)
     {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter your number1: ");
-        String line1 =scan.nextLine();
+
+        System.out.println("Enter your number №1: ");
+        String lineWithFirstNumber = scan.nextLine();
 
         boolean operation = true;
-        double number1 = 0;
-        double number2 = 0;
+        double firstNumber = 0;
+        double secondNumber = 0;
 
         try
         {
-            number1 = Double.parseDouble(line1);
+            firstNumber = Double.parseDouble(lineWithFirstNumber);
         }
-        catch (Exception e)
+        catch (NumberFormatException e)
         {
-            System.out.println("Wrong number1");
+            System.out.println(e.getMessage() + " Wrong number №1");
             operation = false;
 
         }
-        System.out.println("Enter your number2: ");
-        String line2 =scan.nextLine();
+
+        System.out.println("Enter your number №1: ");
+
+        String lineWithSecondNumber = scan.nextLine();
 
         try
         {
-            number2 = Double.parseDouble(line2);
+            secondNumber = Double.parseDouble(lineWithSecondNumber);
         }
-        catch (Exception e)
+        catch (NumberFormatException e)
         {
-            System.out.println("Wrong number2");
+            System.out.println(e.getMessage() + " Wrong number №2");
             operation = false;
         }
-              if(operation)
-              {
-                  double summ = number1+number2;
-                  System.out.println("Summ is:" +summ);
 
-                  double multiplication = number1*number2;
-                  System.out.println("Multiplication is:"+multiplication);
-              }
-              else {System.out.println("No result due to you enter wrong number");}
+        if (operation)
+        {
+            double summa = firstNumber + secondNumber;
+            System.out.println("Summa is:" + summa);
+
+            double multiplication = firstNumber * secondNumber;
+            System.out.println("Multiplication is:" + multiplication);
+        }
+        else {System.out.println("No result due to you enter wrong number");}
     }
 }

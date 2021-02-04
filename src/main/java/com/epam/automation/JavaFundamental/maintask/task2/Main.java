@@ -6,16 +6,22 @@ public class Main {
 
     public static void main(String[] args)
     {
-        Scanner user = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+
         System.out.println("Please Enter your name");
-        String hello = user.nextLine();
+
+        String hello = sc.nextLine();
+
         char[] array = hello.toCharArray();
-        char[] arraytemp = new char[array.length];
+        char[] reverseName = new char[array.length];
+
         for(int i = 0; i< array.length; i ++)
         {
-            arraytemp [(array.length-1)-i]= array[i];
+           reverseName [(array.length-1)-i]= array[i];
         }
-        String result = new String(arraytemp);
+
+        String result = new String(reverseName);
+
         System.out.println(result);
     }
 }

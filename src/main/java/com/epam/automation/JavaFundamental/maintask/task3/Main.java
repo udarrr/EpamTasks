@@ -8,23 +8,30 @@ public class Main {
 
     public static void main(String[] args)
     {
-        Scanner res = new Scanner(System.in);
-        System.out.println("Enter count of number");
-        String randomNumber = res.nextLine();
-        System.out.println("Numbers of count: "+ randomNumber);
-        Random ran = new Random();
+        Scanner sc = new Scanner(System.in);
 
-        int count = Integer.parseInt(randomNumber);
-        int[] countarray = new int[count];
-          for(int i=0;i<count;i++)
+        System.out.println("Enter quantity values in array");
+
+        String randomNumber = sc.nextLine();
+
+        System.out.println("Quantity values : " + randomNumber);
+
+        int sizeArray = Integer.parseInt(randomNumber);
+
+        int[] valuesArray = new int[sizeArray];
+
+          for(int i=0;i<sizeArray;i++)
           {
-              int temp = ran.nextInt(10);
+              int randomValue = new Random().nextInt(10);
 
-            System.out.println(temp+" ");
-            countarray[i] = temp;
+            System.out.println(randomValue +" ");
+
+            valuesArray[i] = randomValue;
 
           }
-          String result = Arrays.toString(countarray);
+
+          String result = Arrays.toString(valuesArray);
+
           System.out.println(result);
     }
 }

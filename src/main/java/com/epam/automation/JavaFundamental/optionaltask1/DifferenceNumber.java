@@ -1,7 +1,8 @@
 package com.epam.automation.JavaFundamental.optionaltask1;
 
-public class DifferenceNumberOfArray {
-    String[] LowerBiggerNumber(String[] numbers)  //Task #1
+public class DifferenceNumber
+{
+    String[] getLowerOrBiggerNumber(String[] numbers)  //Task #1
     {
         String[] result = new String[2];
         result[0] = numbers[0];
@@ -18,11 +19,11 @@ public class DifferenceNumberOfArray {
         return result;
     }
 
-   String DifferenceNumber(String[] numbers) {  //Task #4
+   String getNumberWithMinimumVariousNumbers(String[] numbers) {  //Task #4
 
         String result = "NO RESULT";
         int lengthDiff =10;
-       SortOfArrayNumbers sort = new SortOfArrayNumbers();
+       ArraySorter sort = new ArraySorter();
 
 
         for(int i = 0; i < numbers.length;i++)
@@ -53,7 +54,7 @@ public class DifferenceNumberOfArray {
 
         for (int i = 0; i < numbers.length; i++) {
             char[] arrayNum = numbers[i].toCharArray();
-            SortOfArrayNumbers sort = new SortOfArrayNumbers();
+            ArraySorter sort = new ArraySorter();
             sort.SortOfNumbersChar(arrayNum);
             for (int j = 0; j < arrayNum.length-1; j++) {
                 if(arrayNum[j] % 2 == 0){
@@ -153,7 +154,7 @@ public class DifferenceNumberOfArray {
         {
             int countDiffNum = 0;
             char[] arrayNum = numbers[i].toCharArray();
-            SortOfArrayNumbers sort = new SortOfArrayNumbers();
+            ArraySorter sort = new ArraySorter();
             sort.SortOfNumbersChar(arrayNum);
             fail = false;
             for(int j = 0; j < arrayNum.length-1;j++)

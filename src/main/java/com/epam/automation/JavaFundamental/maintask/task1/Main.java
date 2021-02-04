@@ -6,9 +6,12 @@ public class Main {
 
     public static void main(String[] args)
     {
-        Scanner user = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+
         System.out.println("Please Enter your name");
-        String hello = user.nextLine();
+
+        String hello = sc.nextLine();
+
         System.out.println("Hello " + hello);
     }
 }

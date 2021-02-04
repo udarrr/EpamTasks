@@ -1,37 +1,44 @@
 package com.epam.automation.JavaFundamental.optionaltask1;
 
-public class AvgLengthArray {
-
-        String[] AvgHalfOfLengthLess(String[] numbers) {  //Task #3
+public class AvgLengthArray
+{
+    String[] getAmountNumbersWithLessAvgLengthThanLengthAllNumbers(String[] numbers)
+    {
         int avgLength = 0;
-        int countNumbersLess =0;
+        int sizeArray =0;
 
         for(int i = 0; i < numbers.length;i++)
         {
             avgLength+=numbers[i].length();
         }
-        SortOfArrayNumbers avgRes = new SortOfArrayNumbers();
-        numbers = avgRes.SortOfNumbers(numbers);
+
+        ArraySorter sort = new ArraySorter();
+
+        numbers = sort.getSortedNumbers(numbers);
 
         for(int i = 0; i < numbers.length;i++)
         {
             if(numbers[i].length() <= avgLength/numbers.length)
             {
-                countNumbersLess++;
+                sizeArray++;
             }
         }
-        String[] lessHalfResult = new String[countNumbersLess];
 
-        for(int i = 0; i < numbers.length;i++) {
+        String[] numbersWithLessAvgLengthThanLengthAllNumbers= new String[sizeArray];
+
+        for(int i = 0; i < numbers.length;i++)
+        {
             if (numbers[i].length() <= avgLength / numbers.length)
             {
-                lessHalfResult[i] = numbers[i];
+                numbersWithLessAvgLengthThanLengthAllNumbers[i] = numbers[i];
             }
         }
-        return  lessHalfResult;
+
+        return  numbersWithLessAvgLengthThanLengthAllNumbers;
     }
 
-    String[] AvgHalfOfLengthMore(String[] numbers) {
+    String[] getAmountNumbersWithMoreAvgLengthThanLengthAllNumbers(String[] numbers)
+    {
         int avgLength = 0;
         int countNumbersMore =0;
 
@@ -39,8 +46,10 @@ public class AvgLengthArray {
         {
             avgLength+=numbers[i].length();
         }
-        SortOfArrayNumbers avgRes = new SortOfArrayNumbers();
-        numbers = avgRes.SortOfNumbers(numbers);
+
+        ArraySorter sort = new ArraySorter();
+
+        numbers = sort.getSortedNumbers(numbers);
 
         for(int i = 0; i < numbers.length;i++)
         {
@@ -49,27 +58,32 @@ public class AvgLengthArray {
                 countNumbersMore++;
             }
         }
-        String[] MoreHalfResult = new String[countNumbersMore];
-        int count = 0; //чтобы не превысить размерность масива MoreHalfResult = countNumbersMore
 
-        for(int i = 0; i < numbers.length;i++) {
-            if (numbers[i].length() > avgLength / numbers.length && count < countNumbersMore)
-            {
-                MoreHalfResult[count] = numbers[i];
-                ++count;
-            }
-        }
-        return  MoreHalfResult;
-    }
+        String[] numbersWithMoreAvgLengthThanLengthAllNumbers = new String[countNumbersMore];
 
-    String[] LengthOfArrayNumbers(String[] numbers) {
-
-        String[] lengthArr = new String[numbers.length];
+        int size = 0;
 
         for(int i = 0; i < numbers.length;i++)
         {
-            lengthArr[i] =String.valueOf(numbers[i].length());
+            if (numbers[i].length() > avgLength / numbers.length && size < countNumbersMore)
+            {
+                numbersWithMoreAvgLengthThanLengthAllNumbers[size] = numbers[i];
+                ++size;
+            }
         }
-        return  lengthArr;
+
+        return  numbersWithMoreAvgLengthThanLengthAllNumbers;
+    }
+
+    String[] getLengthArrayOfNumbers(String[] numbers) {
+
+        String[] lengthArray = new String[numbers.length];
+
+        for(int i = 0; i < numbers.length;i++)
+        {
+            lengthArray[i] =String.valueOf(numbers[i].length());
+        }
+
+        return  lengthArray;
     }
 }
