@@ -37,14 +37,18 @@ public class Main {
                     Arrays.toString(avgLengthArray.getAmountNumbersWithMoreAvgLengthThanLengthAllNumbers(arrNumbers))
                     + " and their length:" + Arrays.toString(avgLengthArray.getLengthArrayOfNumbers(avgLengthArray.getAmountNumbersWithMoreAvgLengthThanLengthAllNumbers(arrNumbers))) + " Task №3");
 
-            System.out.println("First number with less differences is: " + differenceNumber.getNumberWithMinimumVariousNumbers(initialArr) + " Task №4");
+            System.out.println("First number with less differences is: " +
+                    differenceNumber.getNumberWithMinimumVariousNumbers(initialArr) + " Task №4");
 
             System.out.println("Number with only odd number is: " + differenceNumber.OddNumber(initialArr) +
-                    " and number with half odd and even numbers is: " + differenceNumber.OddAndEvenHalfNumber(initialArr) + " Task №5");
+                    " and number with half odd and even numbers is: " +
+                    differenceNumber.OddAndEvenHalfNumber(initialArr) + " Task №5");
 
-            System.out.println("First increase number with strict orders is: " + differenceNumber.IncreaseNumberOrder(initialArr) + " Task №6");
+            System.out.println("First increase number with strict orders is: " +
+                    differenceNumber.IncreaseNumberOrder(initialArr) + " Task №6");
 
-            System.out.println("Firs max difference number is: " + differenceNumber.MaxDifferenceNumber(initialArr) + " Task №7");
+            System.out.println("Firs max difference number is: " +
+                    differenceNumber.MaxDifferenceNumber(initialArr) + " Task №7");
 
             System.out.println("********** Try again **********");
         }
