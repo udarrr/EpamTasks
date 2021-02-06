@@ -8,7 +8,6 @@ public class ConsolePrinter
     public static void main(String[] args)
     {
         Airport airport = new Airport(PlaneCreator.createListPlanes());
-        Airport militaryAirport = new Airport(airport.getMilitaryPlanes());
         Airport passengerAirport = new Airport(airport.getPassengerPlane());
 
         System.out.println("Military planes sorted by max distance: ");
