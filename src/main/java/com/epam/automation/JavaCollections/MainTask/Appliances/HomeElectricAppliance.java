@@ -1,4 +1,4 @@
-package com.epam.automation.JavaCollections.Appliances;
+package com.epam.automation.JavaCollections.MainTask.Appliances;
 
 import com.opencsv.bean.CsvBindByName;
 
@@ -87,17 +87,11 @@ public class HomeElectricAppliance
             return true;
         }
 
-        if (!(otherAppliance instanceof MajorAppliance))
+        if (!(otherAppliance instanceof HomeElectricAppliance))
         {
             return false;
         }
 
-        HomeElectricAppliance equalingAppliance = (HomeElectricAppliance) otherAppliance;
-
-        if (this.getModel().equals(equalingAppliance.getModel()))
-        {
-            return true;
-        }
         HomeElectricAppliance that = (HomeElectricAppliance) otherAppliance;
         return power == that.power && model.equals(that.model) && color.equals(that.color) && function.equals(that.function) && networkConnection.equals(that.networkConnection);
     }

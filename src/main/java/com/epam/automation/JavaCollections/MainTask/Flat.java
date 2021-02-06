@@ -1,18 +1,33 @@
-package com.epam.automation.JavaCollections;
+package com.epam.automation.JavaCollections.MainTask;
 
-import com.epam.automation.JavaCollections.Appliances.ConsumerElectronic;
-import com.epam.automation.JavaCollections.Appliances.HomeElectricAppliance;
-import com.epam.automation.JavaCollections.Appliances.MajorAppliance;
+import com.epam.automation.JavaCollections.MainTask.Appliances.ConsumerElectronic;
+import com.epam.automation.JavaCollections.MainTask.Appliances.HomeElectricAppliance;
+import com.epam.automation.JavaCollections.MainTask.Appliances.MajorAppliance;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
 
 public class Flat
 {
-    public List<ConsumerElectronic> getConsumerElectronicAppliance(List<HomeElectricAppliance> homeElectricAppliances)
+    public Flat()
+    {
+        super();
+    }
+
+    public List<? extends HomeElectricAppliance> allHomeElectricAppliances;
+
+    public Flat(List<? extends HomeElectricAppliance> allHomeElectricAppliances)
+    {
+        this.allHomeElectricAppliances = allHomeElectricAppliances;
+    }
+
+    public List<ConsumerElectronic> getConsumerElectronicAppliance()
     {
         List<ConsumerElectronic> consumerElectronics = new ArrayList<>();
 
-        for (HomeElectricAppliance homeElectricAppliance: homeElectricAppliances)
+        for (HomeElectricAppliance homeElectricAppliance: allHomeElectricAppliances)
         {
             if(homeElectricAppliance instanceof ConsumerElectronic)
             {
@@ -23,11 +38,11 @@ public class Flat
         return  consumerElectronics;
     }
 
-    public List<MajorAppliance> getMajorAppliance(List<HomeElectricAppliance> homeElectricAppliances)
+    public List<MajorAppliance> getMajorAppliance()
     {
         List<MajorAppliance> majorAppliances = new ArrayList<>();
 
-        for (HomeElectricAppliance homeElectricAppliance: homeElectricAppliances)
+        for (HomeElectricAppliance homeElectricAppliance: allHomeElectricAppliances)
         {
             if(homeElectricAppliance instanceof MajorAppliance)
             {
@@ -38,20 +53,20 @@ public class Flat
         return  majorAppliances;
     }
 
-    public List<HomeElectricAppliance> getSortedHomeElectricApplianceByPower(List<HomeElectricAppliance> homeElectricAppliances)
+    public List<HomeElectricAppliance> getSortedHomeElectricApplianceByPower()
     {
-        homeElectricAppliances.sort((Comparator<HomeElectricAppliance>) (o1, o2)-> (o1.getPower() - o2.getPower()));
+        allHomeElectricAppliances.sort((Comparator<HomeElectricAppliance>) (o1, o2)-> (o1.getPower() - o2.getPower()));
 
-        return new ArrayList<>(homeElectricAppliances);
+        return new ArrayList<>(allHomeElectricAppliances);
     }
 
-    public List<HomeElectricAppliance> getPowerHomeElectricAppliancesBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange, List<HomeElectricAppliance> homeElectricAppliances)
+    public List<HomeElectricAppliance> filterByPower(int min, int max)
     {
         List<HomeElectricAppliance> filteredAppliancesByPowerBetweenRange = new ArrayList<>();
 
-        for(HomeElectricAppliance homeElectricAppliance: homeElectricAppliances)
+        for(HomeElectricAppliance homeElectricAppliance: allHomeElectricAppliances)
         {
-            if(homeElectricAppliance.getPower() > firstConditionTheRange && homeElectricAppliance.getPower() < secondConditionTheRange)
+            if(homeElectricAppliance.getPower() > min && homeElectricAppliance.getPower() < max)
             {
                 filteredAppliancesByPowerBetweenRange.add(homeElectricAppliance);
             }
@@ -60,13 +75,13 @@ public class Flat
         return filteredAppliancesByPowerBetweenRange;
     }
 
-    public List<ConsumerElectronic> getBatteryCapacityConsumerElectronicAppliancesBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange, List<ConsumerElectronic> consumerElectronics)
+    public List<ConsumerElectronic> filterByBatteryCapacity(int min, int max, List<ConsumerElectronic> consumerElectronics)
     {
         List<ConsumerElectronic> filteredAppliancesByBatteryCapacityBetweenRange = new ArrayList<>();
 
         for(ConsumerElectronic consumerElectronic: consumerElectronics)
         {
-            if(consumerElectronic.getBatteryCapacity() > firstConditionTheRange && consumerElectronic.getBatteryCapacity() < secondConditionTheRange)
+            if(consumerElectronic.getBatteryCapacity() > min && consumerElectronic.getBatteryCapacity() < max)
             {
                 filteredAppliancesByBatteryCapacityBetweenRange.add(consumerElectronic);
             }
@@ -75,13 +90,13 @@ public class Flat
         return filteredAppliancesByBatteryCapacityBetweenRange;
     }
 
-    public List<MajorAppliance> getSizeMajorApplianceBetweenTheRange(int firstConditionTheRange, int secondConditionTheRange, List<MajorAppliance> appliances)
+    public List<MajorAppliance> filterBySize(int min, int max, List<MajorAppliance> majorAppliances)
     {
         List<MajorAppliance> filteredAppliancesBySizeBetweenRange = new ArrayList<>();
 
-        for(MajorAppliance majorAppliance: appliances)
+        for(MajorAppliance majorAppliance: majorAppliances)
         {
-            if(majorAppliance.getHeight() > firstConditionTheRange && majorAppliance.getHeight() < secondConditionTheRange)
+            if(majorAppliance.getHeight() > min && majorAppliance.getHeight() < max)
             {
                 filteredAppliancesBySizeBetweenRange.add(majorAppliance);
             }

@@ -1,6 +1,6 @@
-package com.epam.automation.JavaCollections.Console;
+package com.epam.automation.JavaCollections.MainTask.Console;
 
-import com.epam.automation.JavaCollections.Appliances.HomeElectricAppliance;
+import com.epam.automation.JavaCollections.MainTask.Appliances.HomeElectricAppliance;
 
 import java.util.List;
 
@@ -32,13 +32,13 @@ public class ConsolePrinter
 
     public void printSortedAppliancesByPower(List<HomeElectricAppliance> sortedAppliances)
     {
-        for(HomeElectricAppliance connectedHomeElectricAppliance:sortedAppliances)
+        for(HomeElectricAppliance homeElectricAppliance:sortedAppliances)
         {
-            System.out.println(connectedHomeElectricAppliance);
+            System.out.println(homeElectricAppliance);
         }
     }
 
-    public void printDescriptionMainMenu()
+    public void printMainMenuDescription()
     {
         System.out.println();
         System.out.println("Please choose position of menu enter it in console and press button ENTER");
@@ -49,7 +49,7 @@ public class ConsolePrinter
         System.out.println("4.Exit");
     }
 
-    public void printDescriptionPluggingMenu()
+    public void printPluggingMenuDescription()
     {
         System.out.println();
         System.out.println("You can switch on some random electric appliances in outlet one by one");
@@ -60,7 +60,7 @@ public class ConsolePrinter
         System.out.println("2.Exit to previous menu");
     }
 
-    public void printDescriptionSearcherMenu()
+    public void printSearcherMenuDescription()
     {
         System.out.println();
         System.out.println("Examples for search");
@@ -73,7 +73,7 @@ public class ConsolePrinter
         System.out.println("1.Exit to previous menu");
     }
 
-    public void printDescriptionSortedMenu()
+    public void printSortedMenuDescription()
     {
         System.out.println();
         System.out.println("Sorted appliances by power");
