@@ -2,9 +2,11 @@ package com.epam.automation.JavaFundamental.optionaltask2;
 
 import java.util.Arrays;
 
-public class ArrayMethods {
+public class Sequences
+{
 
-    int[] SearchSequences(int[][] numbers) {
+    int[] getMaxLongSequences(int[][] numbers)
+    {
         int[] result = new int[0];
         int countOfLength = 0;
         int jIndexStart = 0;
@@ -13,7 +15,7 @@ public class ArrayMethods {
         int tempResJ2=0;
         int count = 0;
 
-        boolean markNumIs = false;
+        boolean markNumIs;
 
         for(int i = 0; i < numbers.length; ++i)
         {
@@ -44,6 +46,7 @@ public class ArrayMethods {
                     jIndexEnd = j+1;
                     countOfLength = countOfNum;
                 }
+
                 if ((jIndexStart !=0 && jIndexEnd !=0) && !markNumIs && count < countOfNum)
                 {
                     tempResJ1 = jIndexStart;
@@ -53,12 +56,14 @@ public class ArrayMethods {
                     jIndexEnd=0;
                     mark = true;
                 }
+
                 if (!markNumIs)
                 {
                     countOfNum =0;
                     countOfLength =0;
                 }
             }
+
             if(mark)
             {
                 result = Arrays.copyOfRange(numbers[i], tempResJ1, tempResJ2 + 1);

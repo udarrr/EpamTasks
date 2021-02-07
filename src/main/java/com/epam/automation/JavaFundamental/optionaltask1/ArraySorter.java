@@ -31,7 +31,7 @@ public class ArraySorter
         return  numbers;
     }
 
-    String[] SortOfNumbersReverse(String[] numbers)
+    String[] sortOfNumbersReverse(String[] numbers)
     {
         String nextValueSaving;
         boolean exit = true;
@@ -58,7 +58,7 @@ public class ArraySorter
         return  numbers;
     }
 
-    char[] SortOfNumbersChar(char[] numbers)
+    char[] sortOfNumbersChar(char[] numbers)
     {
         char nextValueSaving;
         boolean exit = true;

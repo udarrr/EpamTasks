@@ -1,8 +1,8 @@
-package com.epam.automation.JavaFundamental.maintask.task4;
+package com.epam.automation.JavaFundamental.maintask;
 
 import java.util.Scanner;
 
-public class Main
+public class Point4
 {
 
     public static void main(String[] args)

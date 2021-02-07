@@ -1,10 +1,11 @@
-package com.epam.automation.JavaFundamental.maintask.task3;
+package com.epam.automation.JavaFundamental.maintask;
 
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main {
+public class Point3
+{
 
     public static void main(String[] args)
     {

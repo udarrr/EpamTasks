@@ -1,11 +1,13 @@
-package com.epam.automation.JavaFundamental.maintask.task1;
+package com.epam.automation.JavaFundamental.maintask;
 
 import java.util.Scanner;
 
-public class Main {
+public class Point1
+{
 
     public static void main(String[] args)
-    {        Scanner sc = new Scanner(System.in);
+    {
+        Scanner sc = new Scanner(System.in);
 
         System.out.println("Please Enter your name");
 
