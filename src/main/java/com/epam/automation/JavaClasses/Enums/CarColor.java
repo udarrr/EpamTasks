@@ -1,16 +1,16 @@
 package com.epam.automation.JavaClasses.Enums;
 
-public enum CarColor
-{
-        BLACK,WHITE,RED,GREEN,ORANGE,BLUE,BACLAGAN;
+public enum CarColor {
 
-        public static CarColor getRandomColor()
-        {
-            return values()[(int) (Math.random() * values().length)];
-        }
+    BLACK, WHITE, RED, GREEN, ORANGE, BLUE, BACLAGAN;
 
-    public boolean equalsIgnoreCase(String request)
-    {
+    public static CarColor getRandomColor() {
+
+        return values()[(int) (Math.random() * values().length)];
+    }
+
+    public boolean equalsIgnoreCase(String request) {
+
         return CarColor.getRandomColor().name().equals(request);
     }
 }

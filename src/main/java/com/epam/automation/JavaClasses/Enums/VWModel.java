@@ -1,11 +1,11 @@
 package com.epam.automation.JavaClasses.Enums;
 
-public enum VWModel
-{
-    POLO,TOURAN,GOLF,PASSAT,SHARAN;
+public enum VWModel {
 
-    public static VWModel getRandomModels()
-    {
+    POLO, TOURAN, GOLF, PASSAT, SHARAN;
+
+    public static VWModel getRandomModels() {
+
         return values()[(int) (Math.random() * values().length)];
     }
 }
