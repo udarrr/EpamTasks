@@ -148,6 +148,7 @@ public class ConsoleMenu {
 
                     consolePrinter.printAppliances(filteredAppliancesByPower);
                 }
+
             } else {
 
                 System.out.println("Command isn't recognized");
