@@ -17,8 +17,6 @@ public class ConsoleMenu
 
     Scanner sc = new Scanner(System.in);
 
-    String inputConsoleLine="";
-
     ConsolePrinter consolePrinter = new ConsolePrinter();
 
     CsvReader collectionAppliances = new CsvReader();
@@ -29,11 +27,18 @@ public class ConsoleMenu
 
     public void mainConsoleMenu()
     {
+        String inputConsoleLine="";
+
         while (!inputConsoleLine.equals(EXIT))
         {
             consolePrinter.printMainMenuDescription();
 
             inputConsoleLine = sc.nextLine();
+
+            if (inputConsoleLine.equals("4"))
+            {
+                break;
+            }
 
             switch (inputConsoleLine)
             {
@@ -48,9 +53,10 @@ public class ConsoleMenu
                 }
 
                 case "3" -> startHandlerSortingByPowerAppliance();
-                case "4" -> inputConsoleLine = EXIT;
+
                 default -> System.out.println("Your choosing isn't recognized");
             }
+
         }
     }
 
@@ -67,6 +73,11 @@ public class ConsoleMenu
         while (!inputConsoleLine.equals(EXIT))
         {
             inputConsoleLine = sc.nextLine();
+
+            if (inputConsoleLine.equals("2"))
+            {
+                break;
+            }
 
             switch (inputConsoleLine)
             {
@@ -88,12 +99,12 @@ public class ConsoleMenu
                     {
                         connectedAppliance = flatWithConnectedAppliances.getRandomAppliance(homeElectricAppliances);
                     }
+
                     consolePrinter.printConnectedApplianceToElectricNetwork(connectedAppliance);
                     consolePrinter.printPowerConnectedAppliancesInHome(flatWithConnectedAppliances.getWholePowerConnectedAppliancesInHome(connectedAppliance));
                     consolePrinter.printPluggingMenuDescription();
                 }
 
-                case "2" -> inputConsoleLine = EXIT;
                 default -> System.out.println("Your a choice isn't recognized");
             }
         }
@@ -104,12 +115,17 @@ public class ConsoleMenu
         String inputConsoleLine="";
         String parameterTypeOfAppliance;
 
-        int min;
-        int max;
-
         while (!inputConsoleLine.equals(EXIT))
         {
+            int min;
+            int max;
+
             inputConsoleLine = sc.nextLine();
+
+            if (inputConsoleLine.equals("1"))
+            {
+                break;
+            }
 
             Pattern pattern = Pattern.compile("\\s*(\\s|,|\\)|-|\\(|!|\\.)\\s*");
 
@@ -149,11 +165,6 @@ public class ConsoleMenu
                     consolePrinter.printAppliances(filteredAppliancesByPower);
                 }
             }
-
-            if (inputConsoleLine.equals("1"))
-            {
-                inputConsoleLine = EXIT;
-            }
             else if(splitConsoleLineWithParams.length !=3)
             {
                 System.out.println("Command isn't recognized");
@@ -163,19 +174,20 @@ public class ConsoleMenu
 
     private void startHandlerSortingByPowerAppliance()
     {
+        String inputConsoleLine="";
+
         consolePrinter.printSortedAppliancesByPower(flatWithAllAppliances.getSortedHomeElectricApplianceByPower());
         consolePrinter.printSortedMenuDescription();
 
-        String inputConsoleLine="";
-
-        while (!inputConsoleLine.equals(EXIT))
+        while (true)
         {
             inputConsoleLine = sc.nextLine();
 
             if (inputConsoleLine.equals("1"))
             {
                 System.out.println();
-                inputConsoleLine = EXIT;
+
+                break;
             }
         }
     }

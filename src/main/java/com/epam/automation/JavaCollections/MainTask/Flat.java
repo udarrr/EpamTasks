@@ -127,7 +127,7 @@ public class Flat
             homeElectricAppliances.removeIf(x -> (x.equals(connectedAppliances.get(finalI))));
         }
 
-        if(homeElectricAppliances.size() != 0)
+        if(homeElectricAppliances.size() > 0)
         {
             connectedAppliances.add(getRandomAppliance(homeElectricAppliances).get(0));
         }

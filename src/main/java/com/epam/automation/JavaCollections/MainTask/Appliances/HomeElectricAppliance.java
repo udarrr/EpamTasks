@@ -82,16 +82,19 @@ public class HomeElectricAppliance
     }
 
     @Override
-    public boolean equals(Object o)
+    public boolean equals(Object obj)
     {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        HomeElectricAppliance that = (HomeElectricAppliance) o;
-        return power == that.power &&
-                Objects.equals(model, that.model) &&
-                Objects.equals(color, that.color) &&
-                Objects.equals(function, that.function) &&
-                Objects.equals(networkConnection, that.networkConnection);
+        if (this == obj) return true;
+
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        HomeElectricAppliance appliance = (HomeElectricAppliance) obj;
+
+        return power == appliance.power &&
+                Objects.equals(model, appliance.model) &&
+                Objects.equals(color, appliance.color) &&
+                Objects.equals(function, appliance.function) &&
+                Objects.equals(networkConnection, appliance.networkConnection);
     }
 
     @Override

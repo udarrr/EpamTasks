@@ -15,14 +15,18 @@ public class CsvReader
 {
     public List<HomeElectricAppliance> getAllAppliances()
     {
-        return getApplianceFromCsvFile();
+        List<HomeElectricAppliance> homeElectricAppliances = new ArrayList<>();
+
+        homeElectricAppliances.addAll(getConsumerElectronicsFromCsvFile());
+        homeElectricAppliances.addAll(getMajorApplianceFromCsvFile());
+        homeElectricAppliances.addAll(getApplianceFromCsvFile());
+
+        return homeElectricAppliances;
     }
 
-    private List<HomeElectricAppliance> getApplianceFromCsvFile()
+    private List<ConsumerElectronic> getConsumerElectronicsFromCsvFile()
     {
         List<ConsumerElectronic> consumerElectronics = new ArrayList<>();
-        List<MajorAppliance> majorAppliances = new ArrayList<>();
-        List<SmallAppliance> smallAppliances = new ArrayList<>();
 
         try
         {
@@ -35,6 +39,13 @@ public class CsvReader
             System.out.println(exception.getMessage() + " " + "There is no csv file ConsumerElectronic in the directory");
         }
 
+        return consumerElectronics;
+    }
+
+    private List<MajorAppliance> getMajorApplianceFromCsvFile()
+    {
+        List<MajorAppliance> majorAppliances = new ArrayList<>();
+
         try
         {
             majorAppliances = new CsvToBeanBuilder
@@ -45,6 +56,14 @@ public class CsvReader
         {
             System.out.println(exception.getMessage() + " " + "There is no csv file MajorAppliance in the directory");
         }
+
+        return majorAppliances;
+    }
+
+
+    private List<SmallAppliance> getApplianceFromCsvFile()
+    {
+        List<SmallAppliance> smallAppliances = new ArrayList<>();
 
         try
         {
@@ -57,12 +76,6 @@ public class CsvReader
             System.out.println(exception.getMessage() + " " + "There is no csv file SmallAppliance in the directory");
         }
 
-        List<HomeElectricAppliance> homeElectricAppliances = new ArrayList<>();
-
-        homeElectricAppliances.addAll(consumerElectronics);
-        homeElectricAppliances.addAll(majorAppliances);
-        homeElectricAppliances.addAll(smallAppliances);
-
-        return homeElectricAppliances;
+        return smallAppliances;
     }
 }
