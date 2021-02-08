@@ -16,6 +16,7 @@ public class ConsolePrinter {
 
             System.out.println(militaryPlanesSortMaxDistance);
         }
+
         System.out.println("Passenger planes sorted by max speed: ");
 
         for (PassengerPlane passengerPlanesWithMaxSpeed : passengerAirport.sortByMaxSpeed().getPassengerPlane()) {

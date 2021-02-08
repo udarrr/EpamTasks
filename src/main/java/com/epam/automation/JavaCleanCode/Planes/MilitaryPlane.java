@@ -31,6 +31,7 @@ public class MilitaryPlane extends Plane {
         if (!(o instanceof MilitaryPlane)) return false;
         if (!super.equals(o)) return false;
         MilitaryPlane that = (MilitaryPlane) o;
+
         return militaryType == that.militaryType;
     }
 

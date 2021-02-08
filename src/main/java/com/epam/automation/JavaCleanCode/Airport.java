@@ -124,6 +124,7 @@ public class Airport {
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
 
         List<PassengerPlane> passengerPlanes = getPassengerPlane();
+
         PassengerPlane planeWithMaxCapacity = passengerPlanes.get(0);
 
         for (int i = 0; i < passengerPlanes.size(); i++) {
