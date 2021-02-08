@@ -6,8 +6,8 @@ import java.util.List;
 
 public class StartPoint5
 {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
+
         List<Integer> list = new ArrayList<>();
 
         list.add(-1);
