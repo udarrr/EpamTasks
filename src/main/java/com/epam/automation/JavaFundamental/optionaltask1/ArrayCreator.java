@@ -8,7 +8,9 @@ public class ArrayCreator {
 
         int sizeArray = 0;
         int sizeLimit = 0;
+
         String[] ArrayOfNumbers = new String[0];
+
         boolean exit = true;
 
         Scanner sc = new Scanner(System.in);

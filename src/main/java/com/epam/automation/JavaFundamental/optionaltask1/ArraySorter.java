@@ -5,6 +5,7 @@ public class ArraySorter {
     String[] getSortedNumbers(String[] numbers) {
 
         String nextValueSaving;
+
         boolean exit = true;
 
         while (exit) {
@@ -33,6 +34,7 @@ public class ArraySorter {
     String[] sortOfNumbersReverse(String[] numbers) {
 
         String nextValueSaving;
+
         boolean exit = true;
 
         while (exit) {
@@ -50,6 +52,7 @@ public class ArraySorter {
             }
 
             if (triggerPoint == 0) {
+
                 exit = false;
             }
         }
@@ -60,6 +63,7 @@ public class ArraySorter {
     char[] sortOfNumbersChar(char[] numbers) {
 
         char nextValueSaving;
+
         boolean exit = true;
 
         while (exit) {

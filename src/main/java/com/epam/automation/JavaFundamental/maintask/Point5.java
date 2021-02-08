@@ -16,7 +16,6 @@ public class Point5 {
             int month;
 
             try {
-
                 month = Integer.parseInt(lineWithNumberOfMonth);
 
                 switch (month) {

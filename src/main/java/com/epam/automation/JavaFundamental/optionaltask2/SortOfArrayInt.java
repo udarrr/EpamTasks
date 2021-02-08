@@ -9,6 +9,7 @@ public class SortOfArrayInt {
             boolean exit = true;
 
             while (exit) {
+
                 int point = 0;
 
                 for (int j = 0; j < numbers[i].length - 1; ++j) {

@@ -9,9 +9,11 @@ public class Point4 {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Enter your number №1: ");
+
         String lineWithFirstNumber = scan.nextLine();
 
         boolean operation = true;
+
         double firstNumber = 0;
         double secondNumber = 0;
 

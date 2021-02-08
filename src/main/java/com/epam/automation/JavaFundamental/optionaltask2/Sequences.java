@@ -19,20 +19,24 @@ public class Sequences {
         for (int i = 0; i < numbers.length; ++i) {
 
             int countOfNum = 0;
+
             boolean mark = false;
 
             for (int j = 0; j < numbers[i].length - 1; j++) {
 
                 markNumIs = false;
 
-                if (numbers[i][j] > 0 && ((numbers[i][j + 1] - numbers[i][j]) == 1) && countOfNum == 0 || numbers[i][j] < 0 && ((numbers[i][j + 1] - numbers[i][j]) == -1) && countOfNum == 0) {
+                if (numbers[i][j] > 0 && ((numbers[i][j + 1] - numbers[i][j]) == 1) &&
+                        countOfNum == 0 || numbers[i][j] < 0 && ((numbers[i][j + 1] - numbers[i][j]) == -1) &&
+                        countOfNum == 0) {
 
                     jIndexStart = j;
                     countOfNum++;
                     markNumIs = true;
 
 
-                } else if (numbers[i][j] > 0 && ((numbers[i][j + 1] - numbers[i][j]) == 1) || numbers[i][j] < 0 && ((numbers[i][j + 1] - numbers[i][j]) == -1)) {
+                } else if (numbers[i][j] > 0 && ((numbers[i][j + 1] - numbers[i][j]) == 1) ||
+                        numbers[i][j] < 0 && ((numbers[i][j + 1] - numbers[i][j]) == -1)) {
 
                     countOfNum++;
                     markNumIs = true;

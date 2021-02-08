@@ -27,7 +27,6 @@ public class Point3 {
             System.out.println(randomValue + " ");
 
             valuesArray[i] = randomValue;
-
         }
 
         String result = Arrays.toString(valuesArray);

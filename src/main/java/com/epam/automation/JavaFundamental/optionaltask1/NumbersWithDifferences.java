@@ -28,6 +28,7 @@ public class NumbersWithDifferences {
     String getNumberWithMinimumVariousNumbers(String[] numbers) {
 
         String possibleResult = "NO RESULT";
+
         int amountVariousValues = 10;
 
         for (int i = 0; i < numbers.length; i++) {
@@ -70,6 +71,7 @@ public class NumbersWithDifferences {
             for (int j = 0; j < numberToCharArray.length - 1; j++) {
 
                 if (numberToCharArray[j] % 2 == 0) {
+
                     amountNumberWithOddValues++;
                 }
             }
@@ -119,7 +121,8 @@ public class NumbersWithDifferences {
                 }
             }
 
-            if (((countOddFirstHalf == 0 && countEvenFirstHalf != 0) || (countOddFirstHalf != 0 && countEvenFirstHalf == 0)) && ((countOddSecondHalf == 0 && countEvenSecondHalf != 0) || (countOddSecondHalf != 0 && countEvenSecondHalf == 0))) {
+            if (((countOddFirstHalf == 0 && countEvenFirstHalf != 0) || (countOddFirstHalf != 0 && countEvenFirstHalf == 0)) &&
+                    ((countOddSecondHalf == 0 && countEvenSecondHalf != 0) || (countOddSecondHalf != 0 && countEvenSecondHalf == 0))) {
 
                 amount++;
             }
@@ -139,11 +142,13 @@ public class NumbersWithDifferences {
 
         int index = 0;
         int lengthNumber = 0;
+
         boolean fail;
 
         for (int i = 0; i < numbers.length; i++) {
 
             int potentialNumber = 0;
+
             fail = false;
 
             char[] numberToCharArray = numbers[i].toCharArray();
@@ -163,6 +168,7 @@ public class NumbersWithDifferences {
             if (potentialNumber > lengthNumber && (!fail)) {
 
                 possibleResult = numbers[i];
+
                 break;
             }
 
@@ -195,6 +201,7 @@ public class NumbersWithDifferences {
                 } else {
 
                     fail = true;
+
                     break;
                 }
             }
