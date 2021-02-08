@@ -73,12 +73,11 @@ public class ConsoleMenu
                 break;
             }
 
-            if ("1".equals(inputConsoleLine))
+            if (inputConsoleLine.equals("1"))
             {
                 if (connectedAppliance.size() != 0 && homeElectricAppliances.size() != 0)
                 {
                     connectedAppliance = flatWithConnectedAppliances.connectRandomAppliancesToElectricalNetwork(homeElectricAppliances, connectedAppliance);
-
                 }
 
                 if (homeElectricAppliances.size() == 0)
