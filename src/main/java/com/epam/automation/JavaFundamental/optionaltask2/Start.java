@@ -8,10 +8,8 @@ public class Start {
 
         System.out.println("Enter n: ");
 
-        CreateNewArray createNewArray = new CreateNewArray();
-
-        int[][] newArray = createNewArray.getNewArray();
-        int[][] unsortedArray = createNewArray.getCopyOfArray(newArray);
+        int[][] newArray = ArrayCreator.getNewArray();
+        int[][] unsortedArray = ArrayCreator.getCopyOfArray(newArray);
 
         System.out.println("Unsorted array is: ");
 
@@ -20,7 +18,7 @@ public class Start {
             System.out.println(Arrays.toString(newArray[i]));
         }
 
-        new SortOfArrayInt().sortOfNumbers(newArray);
+        ArraySorter.sortOfNumbers(newArray);
 
         System.out.println("Sorted array is: ");
 
@@ -29,8 +27,8 @@ public class Start {
             System.out.println(Arrays.toString(newArray[i]));
         }
 
-        Sequences sequences = new Sequences();
+        System.out.println("The longest sequences: " + Arrays.toString(Sequences.getMaxLongSequences(unsortedArray)));
 
-        System.out.println("The longest sequences: " + Arrays.toString(sequences.getMaxLongSequences(unsortedArray)));
+        System.out.println("The sum all lines in one line" + Arrays.toString(ArraySummer.sumLinesArray(newArray)));
     }
 }

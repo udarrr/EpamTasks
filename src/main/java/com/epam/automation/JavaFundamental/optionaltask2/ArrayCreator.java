@@ -4,9 +4,10 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class CreateNewArray {
+public class ArrayCreator
+{
 
-    int[][] getNewArray() {
+    public static int[][] getNewArray() {
 
         Random count = new Random();
 
@@ -26,7 +27,7 @@ public class CreateNewArray {
         return arr;
     }
 
-    int[][] getCopyOfArray(int[][] original) {
+    public static int[][] getCopyOfArray(int[][] original) {
 
         int[][] copy = new int[original.length][];
 

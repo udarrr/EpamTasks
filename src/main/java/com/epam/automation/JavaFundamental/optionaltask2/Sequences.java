@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Sequences {
 
-    int[] getMaxLongSequences(int[][] numbers) {
+    public static int[] getMaxLongSequences(int[][] numbers) {
 
         int[] result = new int[0];
         int countOfLength = 0;
