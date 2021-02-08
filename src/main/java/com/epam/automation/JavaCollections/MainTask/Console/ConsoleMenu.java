@@ -13,8 +13,6 @@ import java.util.regex.Pattern;
 
 public class ConsoleMenu
 {
-    final private String EXIT = "exit";
-
     Scanner sc = new Scanner(System.in);
 
     ConsolePrinter consolePrinter = new ConsolePrinter();
@@ -87,6 +85,7 @@ public class ConsoleMenu
                 {
                     System.out.println();
                     System.out.println("Nothing to connect");
+
                 } else if (connectedAppliance.size() == 0)
                 {
                     connectedAppliance = flatWithConnectedAppliances.getRandomAppliance(homeElectricAppliances);
