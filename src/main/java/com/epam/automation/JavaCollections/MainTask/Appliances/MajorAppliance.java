@@ -19,6 +19,7 @@ public class MajorAppliance extends HomeElectricAppliance {
     public MajorAppliance(String model, String color, String function, int power, String networkConnection, String majorApplianceType, String additionalConnectionType, int height) {
 
         super(model, color, function, power, networkConnection);
+
         this.majorApplianceType = majorApplianceType;
         this.additionalConnectionType = additionalConnectionType;
         this.height = height;

@@ -33,6 +33,6 @@ public class SmallAppliance extends HomeElectricAppliance {
 
         return "Model='" + super.getModel() +
                 ", Power='" + super.getPower() + "Watt" + " " +
-                "SmallApplianceType='" + smallApplianceType + '\'';
+                ", SmallApplianceType='" + smallApplianceType + '\'';
     }
 }

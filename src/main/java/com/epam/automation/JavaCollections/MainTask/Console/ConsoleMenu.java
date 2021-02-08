@@ -32,6 +32,7 @@ public class ConsoleMenu {
             String inputConsoleLine = sc.nextLine();
 
             if (inputConsoleLine.equals("4")) {
+
                 break;
             }
 

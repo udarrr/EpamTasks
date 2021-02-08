@@ -15,6 +15,7 @@ public class StartPoint7 {
         char[] lineArray = line.toCharArray();
 
         boolean isCorrectLine = false;
+
         int isCircleBracket = 0;
         int isSquareBracket = 0;
         int isFigureBracket = 0;
@@ -29,6 +30,7 @@ public class StartPoint7 {
         Iterator<Character> iterator = stack.iterator();
 
         while (iterator.hasNext()) {
+
             if (stack.peek().equals('(') && isCircleBracket < 1) {
 
                 isCircleBracket++;
@@ -40,11 +42,14 @@ public class StartPoint7 {
                 } else {
 
                     isCorrectLine = false;
+
                     break;
                 }
+
             } else if (stack.peek().equals(')') || stack.peek().equals('(') && isCircleBracket >= 1) {
 
                 isCorrectLine = false;
+
                 break;
             }
 
@@ -59,11 +64,14 @@ public class StartPoint7 {
                 } else {
 
                     isCorrectLine = false;
+
                     break;
                 }
+
             } else if (stack.peek().equals(']') || stack.peek().equals('[') && isSquareBracket >= 1) {
 
                 isCorrectLine = false;
+
                 break;
             }
 
@@ -77,11 +85,14 @@ public class StartPoint7 {
                 } else {
 
                     isCorrectLine = false;
+
                     break;
                 }
+
             } else if (stack.peek().equals('}') || stack.peek().equals('{') && isFigureBracket >= 1) {
 
                 isCorrectLine = false;
+
                 break;
             }
 
@@ -91,6 +102,7 @@ public class StartPoint7 {
         if (isCorrectLine) {
 
             System.out.println("Brackets stand right" + "(" + isCorrectLine + ")");
+
         } else {
 
             System.out.println("Brackets don't stand right" + "(" + isCorrectLine + ")");
@@ -107,6 +119,7 @@ public class StartPoint7 {
             if (check.peek().equals(')')) {
 
                 return true;
+
             } else if (check.peek().equals('(')) {
 
                 return false;
@@ -142,6 +155,7 @@ public class StartPoint7 {
         Iterator<Character> iterator = check.iterator();
 
         while (iterator.hasNext()) {
+
             check.pop();
 
             if (check.peek().equals('}')) {

@@ -21,6 +21,7 @@ public class StartPoint1 {
             }
 
             in.close();
+
         } catch (IOException e) {
 
             System.out.println(e.getMessage() + " File isn't exist");
@@ -47,6 +48,7 @@ public class StartPoint1 {
             }
 
             out.close();
+
         } catch (IOException e) {
 
             System.out.println(e.getMessage() + " Path isn't exist");
