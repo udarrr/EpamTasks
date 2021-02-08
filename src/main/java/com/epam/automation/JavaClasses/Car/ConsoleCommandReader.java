@@ -17,7 +17,6 @@ public class ConsoleCommandReader {
         while (!inputConsoleValue.equalsIgnoreCase(exit)) {
 
             try {
-
                 Scanner sc = new Scanner(System.in);
 
                 inputConsoleValue = sc.nextLine();
@@ -25,6 +24,7 @@ public class ConsoleCommandReader {
                 if (inputConsoleValue.equals(exit)) {
 
                     inputConsoleValue = exit;
+
                 } else {
 
                     return Integer.parseInt(inputConsoleValue);
@@ -34,6 +34,7 @@ public class ConsoleCommandReader {
                 System.out.println("Quantity have to be an integer number, please enter quantity again");
             }
         }
+
         return 0;
     }
 

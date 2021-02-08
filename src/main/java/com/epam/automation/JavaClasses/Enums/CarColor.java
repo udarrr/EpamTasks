@@ -8,9 +8,4 @@ public enum CarColor {
 
         return values()[(int) (Math.random() * values().length)];
     }
-
-    public boolean equalsIgnoreCase(String request) {
-
-        return CarColor.getRandomColor().name().equals(request);
-    }
 }

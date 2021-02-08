@@ -124,6 +124,12 @@ public class Car {
     @Override
     public String toString() {
 
-        return " ID='" + getId() + '\'' + " vendor='" + getVendor() + '\'' + " model='" + getModel() + '\'' + " year='" + getYear() + '\'' + " color='" + getColor() + '\'' + " price='" + getPrice() + '\'' + " regId='" + getRegistrationNumber();
+        return " ID='" + getId() + '\'' +
+                " vendor='" + getVendor() + '\'' +
+                " model='" + getModel() + '\'' +
+                " year='" + getYear() + '\'' +
+                " color='" + getColor() + '\'' +
+                " price='" + getPrice() + '\'' +
+                " regId='" + getRegistrationNumber();
     }
 }

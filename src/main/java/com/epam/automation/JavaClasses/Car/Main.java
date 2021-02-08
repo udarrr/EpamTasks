@@ -7,10 +7,11 @@ public class Main {
     public static void main(String[] args) {
 
         ConsoleCommandReader commandsReader = new ConsoleCommandReader();
+
         Car[] cars = new CarCreator().createCars(commandsReader.getCarsQuantity());
 
         ConsolePrinter consolePrinter = new ConsolePrinter();
-        consolePrinter.printCarData(cars);
+        new ConsolePrinter().printCarData(cars);
 
         while (true) {
 
@@ -19,7 +20,6 @@ public class Main {
             ConsoleCommandParser carsFilter = new ConsoleCommandParser();
 
             try {
-
                 Car[] filteredCars = carsFilter.filter(cars, commandsReader.readConsoleCommands());
 
                 consolePrinter.printCarData(filteredCars);

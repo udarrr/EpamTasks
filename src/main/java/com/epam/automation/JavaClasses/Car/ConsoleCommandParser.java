@@ -37,6 +37,7 @@ public class ConsoleCommandParser {
                     }
                 }
             }
+
             if (parameters.length == 3) {
 
                 cars = filterCars(firstCondition, secondCondition, command, cars);
