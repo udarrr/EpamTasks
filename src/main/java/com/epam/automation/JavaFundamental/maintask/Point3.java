@@ -4,11 +4,10 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Point3
-{
+public class Point3 {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Enter quantity values in array");
@@ -21,18 +20,18 @@ public class Point3
 
         int[] valuesArray = new int[sizeArray];
 
-          for(int i=0;i<sizeArray;i++)
-          {
-              int randomValue = new Random().nextInt(10);
+        for (int i = 0; i < sizeArray; i++) {
 
-            System.out.println(randomValue +" ");
+            int randomValue = new Random().nextInt(10);
+
+            System.out.println(randomValue + " ");
 
             valuesArray[i] = randomValue;
 
-          }
+        }
 
-          String result = Arrays.toString(valuesArray);
+        String result = Arrays.toString(valuesArray);
 
-          System.out.println(result);
+        System.out.println(result);
     }
 }

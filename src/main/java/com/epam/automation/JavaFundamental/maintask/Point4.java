@@ -2,11 +2,10 @@ package com.epam.automation.JavaFundamental.maintask;
 
 import java.util.Scanner;
 
-public class Point4
-{
+public class Point4 {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
+
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Enter your number №1: ");
@@ -16,12 +15,12 @@ public class Point4
         double firstNumber = 0;
         double secondNumber = 0;
 
-        try
-        {
+        try {
+
             firstNumber = Double.parseDouble(lineWithFirstNumber);
-        }
-        catch (NumberFormatException e)
-        {
+
+        } catch (NumberFormatException e) {
+
             System.out.println(e.getMessage() + " Wrong number №1");
             operation = false;
 
@@ -31,24 +30,27 @@ public class Point4
 
         String lineWithSecondNumber = scan.nextLine();
 
-        try
-        {
+        try {
+
             secondNumber = Double.parseDouble(lineWithSecondNumber);
-        }
-        catch (NumberFormatException e)
-        {
+
+        } catch (NumberFormatException e) {
+
             System.out.println(e.getMessage() + " Wrong number №2");
             operation = false;
         }
 
-        if (operation)
-        {
+        if (operation) {
+
             double summa = firstNumber + secondNumber;
             System.out.println("Summa is:" + summa);
 
             double multiplication = firstNumber * secondNumber;
             System.out.println("Multiplication is:" + multiplication);
+
+        } else {
+
+            System.out.println("No result due to you enter wrong number");
         }
-        else {System.out.println("No result due to you enter wrong number");}
     }
 }
