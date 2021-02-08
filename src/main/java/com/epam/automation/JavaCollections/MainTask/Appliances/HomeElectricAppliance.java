@@ -2,6 +2,8 @@ package com.epam.automation.JavaCollections.MainTask.Appliances;
 
 import com.opencsv.bean.CsvBindByName;
 
+import java.util.Objects;
+
 public class HomeElectricAppliance
 {
     @CsvBindByName
@@ -80,20 +82,22 @@ public class HomeElectricAppliance
     }
 
     @Override
-    public boolean equals(Object otherAppliance)
+    public boolean equals(Object o)
     {
-        if (this == otherAppliance)
-        {
-            return true;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HomeElectricAppliance that = (HomeElectricAppliance) o;
+        return power == that.power &&
+                Objects.equals(model, that.model) &&
+                Objects.equals(color, that.color) &&
+                Objects.equals(function, that.function) &&
+                Objects.equals(networkConnection, that.networkConnection);
+    }
 
-        if (!(otherAppliance instanceof HomeElectricAppliance))
-        {
-            return false;
-        }
-
-        HomeElectricAppliance that = (HomeElectricAppliance) otherAppliance;
-        return power == that.power && model.equals(that.model) && color.equals(that.color) && function.equals(that.function) && networkConnection.equals(that.networkConnection);
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(model, color, function, power, networkConnection);
     }
 
     @Override

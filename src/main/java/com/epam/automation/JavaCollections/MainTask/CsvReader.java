@@ -24,27 +24,40 @@ public class CsvReader
         List<MajorAppliance> majorAppliances = new ArrayList<>();
         List<SmallAppliance> smallAppliances = new ArrayList<>();
 
-        List<HomeElectricAppliance> homeElectricAppliances = new ArrayList<>();
-
         try
         {
             consumerElectronics = new CsvToBeanBuilder
                     (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaCollections\\MainTask\\CSV\\ConsumerElectronic.csv"))
                     .withSeparator(';').withType(ConsumerElectronic.class).build().parse();
-
-            majorAppliances = new CsvToBeanBuilder
-                    (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaCollections\\MainTask\\CSV\\MajorAppliance.csv"))
-                    .withSeparator(';').withType(MajorAppliance.class).build().parse();
-
-            smallAppliances = new CsvToBeanBuilder
-                    (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaCollections\\MainTask\\CSV\\SmallAppliance.csv"))
-                    .withSeparator(';').withType(SmallAppliance.class).build().parse();
-
         }
         catch (IOException exception)
         {
-            System.out.println(exception.getMessage() + " " + "There are not files in directory");
+            System.out.println(exception.getMessage() + " " + "There is no csv file ConsumerElectronic in the directory");
         }
+
+        try
+        {
+            majorAppliances = new CsvToBeanBuilder
+                    (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaCollections\\MainTask\\CSV\\MajorAppliance.csv"))
+                    .withSeparator(';').withType(MajorAppliance.class).build().parse();
+        }
+        catch (IOException exception)
+        {
+            System.out.println(exception.getMessage() + " " + "There is no csv file MajorAppliance in the directory");
+        }
+
+        try
+        {
+            smallAppliances = new CsvToBeanBuilder
+                    (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaCollections\\MainTask\\CSV\\SmallAppliance.csv"))
+                    .withSeparator(';').withType(SmallAppliance.class).build().parse();
+        }
+        catch (IOException exception)
+        {
+            System.out.println(exception.getMessage() + " " + "There is no csv file SmallAppliance in the directory");
+        }
+
+        List<HomeElectricAppliance> homeElectricAppliances = new ArrayList<>();
 
         homeElectricAppliances.addAll(consumerElectronics);
         homeElectricAppliances.addAll(majorAppliances);
