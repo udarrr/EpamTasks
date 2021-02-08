@@ -1,0 +1,22 @@
+Started by user [8mha:////4BzIYSX7G8+eILBYVzwWNQ90kUWy+pBznR2r2URv3XLVAAAAmB+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzZEgYe/dLi1CL90pTEoqIiAP208d3BAAAA[0mSergey Alekseevich Klyshnikov
+Running as SYSTEM
+Building on master in workspace C:\Java\Jenkins\workspace\UpdateProject
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/vitalliuss/helloci
+ > C:\Program Files\Git\bin\git.exe init C:\Java\Jenkins\workspace\UpdateProject # timeout=10
+Fetching upstream changes from https://github.com/vitalliuss/helloci
+ > C:\Program Files\Git\bin\git.exe --version # timeout=10
+ > git --version # 'git version 2.17.1.windows.2'
+ > C:\Program Files\Git\bin\git.exe fetch --tags --progress -- https://github.com/vitalliuss/helloci +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > C:\Program Files\Git\bin\git.exe config remote.origin.url https://github.com/vitalliuss/helloci # timeout=10
+ > C:\Program Files\Git\bin\git.exe config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > C:\Program Files\Git\bin\git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+Checking out Revision 904af05dec9a5818276ac39c6faf97fe5a5e13ba (refs/remotes/origin/master)
+ > C:\Program Files\Git\bin\git.exe config core.sparsecheckout # timeout=10
+ > C:\Program Files\Git\bin\git.exe checkout -f 904af05dec9a5818276ac39c6faf97fe5a5e13ba # timeout=10
+Commit message: "Merge pull request #15 from Molnix888/dotnet-update"
+First time build. Skipping changelog.
+Finished: SUCCESS

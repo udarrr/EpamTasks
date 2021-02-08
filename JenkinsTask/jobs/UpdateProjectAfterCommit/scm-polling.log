@@ -1,0 +1,12 @@
+Started on 8 февр. 2021 г., 15:04:46
+Using strategy: Default
+[poll] Last Built Revision: Revision 904af05dec9a5818276ac39c6faf97fe5a5e13ba (refs/remotes/origin/master)
+The recommended git tool is: NONE
+No credentials specified
+ > C:\Program Files\Git\bin\git.exe --version # timeout=10
+ > git --version # 'git version 2.17.1.windows.2'
+ > C:\Program Files\Git\bin\git.exe ls-remote -h -- https://github.com/vitalliuss/helloci # timeout=10
+Found 8 remote heads on https://github.com/vitalliuss/helloci
+[poll] Latest remote head revision on refs/heads/master is: 904af05dec9a5818276ac39c6faf97fe5a5e13ba - already built by 12
+Done. Took 0,71 секунд
+No changes
