@@ -4,8 +4,8 @@ import com.opencsv.bean.CsvBindByName;
 
 import java.util.Objects;
 
-public class HomeElectricAppliance
-{
+public class HomeElectricAppliance {
+
     @CsvBindByName
     private String model;
     @CsvBindByName
@@ -17,13 +17,13 @@ public class HomeElectricAppliance
     @CsvBindByName
     private String networkConnection;
 
-    public HomeElectricAppliance()
-    {
+    public HomeElectricAppliance() {
+
         super();
     }
 
-    public HomeElectricAppliance(String model, String color, String function, int power, String networkConnection)
-    {
+    public HomeElectricAppliance(String model, String color, String function, int power, String networkConnection) {
+
         this.model = model;
         this.function = function;
         this.power = power;
@@ -31,59 +31,59 @@ public class HomeElectricAppliance
         this.networkConnection = networkConnection;
     }
 
-    public String getModel()
-    {
+    public String getModel() {
+
         return model;
     }
 
-    public void setModel(String model)
-    {
+    public void setModel(String model) {
+
         this.model = model;
     }
 
-    public String getColor()
-    {
+    public String getColor() {
+
         return color;
     }
 
-    public void setColor(String color)
-    {
+    public void setColor(String color) {
+
         this.color = color;
     }
 
-    public String getFunction()
-    {
+    public String getFunction() {
+
         return function;
     }
 
-    public void setFunction(String function)
-    {
+    public void setFunction(String function) {
+
         this.function = function;
     }
 
-    public int getPower()
-    {
+    public int getPower() {
+
         return power;
     }
 
-    public void setPower(int power)
-    {
+    public void setPower(int power) {
+
         this.power = power;
     }
 
-    public String getNetworkConnection()
-    {
+    public String getNetworkConnection() {
+
         return networkConnection;
     }
 
-    public void setNetworkConnection(String networkConnection)
-    {
+    public void setNetworkConnection(String networkConnection) {
+
         this.networkConnection = networkConnection;
     }
 
     @Override
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
+
         if (this == obj) return true;
 
         if (obj == null || getClass() != obj.getClass()) return false;
@@ -98,15 +98,15 @@ public class HomeElectricAppliance
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
+
         return Objects.hash(model, color, function, power, networkConnection);
     }
 
     @Override
-    public String toString()
-    {
-        return  "Model='" + model + '\'' +
+    public String toString() {
+
+        return "Model='" + model + '\'' +
                 ", Color='" + color + '\'' +
                 ", Function='" + function + '\'' +
                 ", Power='" + power + " Watt" + '\'' +
