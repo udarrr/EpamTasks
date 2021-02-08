@@ -4,29 +4,29 @@ import com.epam.automation.JavaCleanCode.Enum.MilitaryType;
 
 import java.util.Objects;
 
-public class MilitaryPlane extends Plane{
+public class MilitaryPlane extends Plane {
 
     private MilitaryType militaryType;
 
-    public MilitaryPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, MilitaryType militaryType)
-    {
+    public MilitaryPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, MilitaryType militaryType) {
+
         super(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
         this.militaryType = militaryType;
     }
 
-    public MilitaryType getMilitaryType()
-    {
+    public MilitaryType getMilitaryType() {
+
         return militaryType;
     }
 
-    public void setMilitaryType(MilitaryType militaryType)
-    {
+    public void setMilitaryType(MilitaryType militaryType) {
+
         this.militaryType = militaryType;
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
+
         if (this == o) return true;
         if (!(o instanceof MilitaryPlane)) return false;
         if (!super.equals(o)) return false;
@@ -35,14 +35,14 @@ public class MilitaryPlane extends Plane{
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
+
         return Objects.hash(super.hashCode(), militaryType);
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
+
         return super.toString() + ',' + " type=" + militaryType + '}';
     }
 }

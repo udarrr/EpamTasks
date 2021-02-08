@@ -3,53 +3,53 @@ package com.epam.automation.JavaCleanCode.Planes;
 import com.epam.automation.JavaCleanCode.Enum.ClassificationSecurityLevel;
 import com.epam.automation.JavaCleanCode.Enum.ExperimentalType;
 
-public class ExperimentalPlane extends Plane
-{
+public class ExperimentalPlane extends Plane {
+
     private ExperimentalType experimentalType;
     private ClassificationSecurityLevel securityLevel;
 
-    public ExperimentalPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, ExperimentalType experimentalType, ClassificationSecurityLevel securityLevel)
-    {
+    public ExperimentalPlane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, ExperimentalType experimentalType, ClassificationSecurityLevel securityLevel) {
+
         super(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
         this.experimentalType = experimentalType;
         this.securityLevel = securityLevel;
     }
 
-    public ClassificationSecurityLevel getClassificationLevel()
-    {
+    public ClassificationSecurityLevel getClassificationLevel() {
+
         return securityLevel;
     }
 
-    public void setSecurityLevel(ClassificationSecurityLevel securityLevel)
-    {
+    public void setSecurityLevel(ClassificationSecurityLevel securityLevel) {
+
         this.securityLevel = securityLevel;
     }
 
-    public ExperimentalType getExperimentalType()
-    {
+    public ExperimentalType getExperimentalType() {
+
         return experimentalType;
     }
 
-    public void setExperimentalType(ExperimentalType experimentalType)
-    {
+    public void setExperimentalType(ExperimentalType experimentalType) {
+
         this.experimentalType = experimentalType;
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
+
         return super.equals(o);
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
+
         return super.hashCode();
     }
 
     @Override
-    public String toString()
-    {
-        return super.toString() +',' + "experimentalType=" + experimentalType + '}';
+    public String toString() {
+
+        return super.toString() + ',' + "experimentalType=" + experimentalType + '}';
     }
 }
