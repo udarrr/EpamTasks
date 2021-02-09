@@ -29,6 +29,6 @@ public class Start {
 
         System.out.println("The longest sequences: " + Arrays.toString(Sequences.getMaxLongSequences(unsortedArray)));
 
-        System.out.println("The sum all lines in one line" + Arrays.toString(ArraySummer.sumLinesArray(newArray)));
+        System.out.println("The sum all lines in one line" + Arrays.toString(ArraySum.sumLinesArray(newArray)));
     }
 }
