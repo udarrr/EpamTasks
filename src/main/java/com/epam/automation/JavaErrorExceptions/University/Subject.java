@@ -1,38 +1,34 @@
 package com.epam.automation.JavaErrorExceptions.University;
 
+import java.util.List;
+
 public class Subject {
 
     String typeSubject;
-    Grade grade;
+    List<Integer> mark;
 
-    public Subject(String typeSubject, Grade grade) {
-
-        this.typeSubject = typeSubject;
-        this.grade = grade;
+    public Subject(List<Integer> mark) {
+        this.mark = mark;
     }
 
-    public Subject(String typeSubject) {
-
+    public Subject(String typeSubject, List<Integer> mark) {
         this.typeSubject = typeSubject;
+        this.mark = mark;
+    }
+
+    public List<Integer> getMark() {
+        return mark;
     }
 
     public String getTypeSubject() {
-
         return typeSubject;
     }
 
     public void setTypeSubject(String typeSubject) {
-
         this.typeSubject = typeSubject;
     }
 
-    public Grade getGrade() {
-
-        return grade;
-    }
-
-    public void setGrade(Grade grade) {
-
-        this.grade = grade;
+    public void setMark(List<Integer> mark) {
+        this.mark = mark;
     }
 }

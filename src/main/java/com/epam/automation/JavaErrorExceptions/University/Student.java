@@ -1,51 +1,44 @@
 package com.epam.automation.JavaErrorExceptions.University;
 
+import java.util.List;
+
 public class Student {
 
-    String firstName;
-    String lastName;
-    Subject subject;
+    int idStudent;
+    String name;
+    List<Subject> subject;
 
-    public Student(String firstName, String lastName, Subject subject) {
-
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Student(List<Subject> subject) {
         this.subject = subject;
     }
 
-    public Student(String firstName, String lastName) {
-
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Student(int idStudent, String name, List<Subject> subject) {
+        this.idStudent = idStudent;
+        this.name = name;
+        this.subject = subject;
     }
 
-    public String getFirstName() {
-
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-
-        this.lastName = lastName;
-    }
-
-    public Subject getSubject() {
-
+    public List<Subject> getSubject() {
         return subject;
     }
 
-    public void setSubject(Subject subject) {
+    public int getIdStudent() {
+        return idStudent;
+    }
 
+    public void setIdStudent(int idStudent) {
+        this.idStudent = idStudent;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSubject(List<Subject> subject) {
         this.subject = subject;
     }
 }

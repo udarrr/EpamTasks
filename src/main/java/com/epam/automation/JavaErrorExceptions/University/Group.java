@@ -1,38 +1,49 @@
 package com.epam.automation.JavaErrorExceptions.University;
 
+import java.util.List;
+
 public class Group {
 
+    int idGroup;
     String nameGroup;
-    Student student;
+    List<Student> student;
 
-    public Group(String nameGroup, Student student) {
+    public Group(List<Student> student) {
+        this.student = student;
+    }
 
+    public Group(int idGroup, String nameGroup, List<Student> student) {
+        this.idGroup = idGroup;
         this.nameGroup = nameGroup;
         this.student = student;
     }
 
-    public Group(String nameGroup) {
-
+    public Group(int idGroup, String nameGroup) {
+        this.idGroup = idGroup;
         this.nameGroup = nameGroup;
     }
 
-    public String getNameGroup() {
+    public List<Student> getStudent() {
+        return student;
+    }
 
+    public int getIdGroup() {
+        return idGroup;
+    }
+
+    public void setIdGroup(int idGroup) {
+        this.idGroup = idGroup;
+    }
+
+    public String getNameGroup() {
         return nameGroup;
     }
 
     public void setNameGroup(String nameGroup) {
-
         this.nameGroup = nameGroup;
     }
 
-    public Student getStudent() {
-
-        return student;
-    }
-
-    public void setStudent(Student student) {
-
+    public void setStudent(List<Student> student) {
         this.student = student;
     }
 }
