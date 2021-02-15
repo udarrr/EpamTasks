@@ -10,24 +10,24 @@ import java.util.List;
 
 public class Printer {
 
-    public void printFaculty(List<Faculty> faculties) {
+    public void printUniversity(List<Faculty> faculties){
 
-        faculties.forEach(x -> System.out.println("ID " + x.getIdFaculty() + " " + x.getNameFaculty()));
+        faculties.forEach(x->System.out.println("ID=" + x.getIdFaculty() + " " +"NameFaculty="+ x.getNameFaculty()));
     }
 
     public void printGroup(List<Group> groups) {
 
-        groups.forEach((x) -> System.out.println("ID" + x.getIdGroup() + " " + x.getNameGroup()));
+        groups.forEach((x) -> System.out.println("ID=" + x.getIdGroup()+ " " +"NameGroup="+ x.getNameGroup()));
     }
 
     public void printStudent(List<Student> students) {
 
-        students.forEach(x -> System.out.println("ID" + x.getIdStudent() + " " + x.getName()));
+        students.forEach(x -> System.out.println("ID=" + x.getIdStudent() + " " +"NameStudent="+  x.getName()));
     }
 
     public void printSubjectOfStudent(List<Subject> subjects) {
 
-        subjects.forEach(x -> System.out.println(x.getTypeSubject() + " " + Arrays.toString(x.getMark().toArray())));
+        subjects.forEach(x -> System.out.println("ID=" + x.getIdSubject()+ " " +"NameSubject="+  x.getTypeSubject() + " " + "Marks=" + Arrays.toString(x.getMark().toArray())));
     }
 
 
@@ -48,7 +48,7 @@ public class Printer {
 
         System.out.println();
         System.out.println("Menu");
-        System.out.println("1.Choose student");
+        System.out.println("1.University");
         System.out.println("2.Exit to previous menu");
     }
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Subject {
 
+    int idSubject;
     String typeSubject;
     List<Integer> mark;
 
@@ -11,7 +12,8 @@ public class Subject {
         this.mark = mark;
     }
 
-    public Subject(String typeSubject, List<Integer> mark) {
+    public Subject(int idSubject, String typeSubject, List<Integer> mark) {
+        this.idSubject = idSubject;
         this.typeSubject = typeSubject;
         this.mark = mark;
     }
@@ -28,7 +30,16 @@ public class Subject {
         this.typeSubject = typeSubject;
     }
 
-    public void setMark(List<Integer> mark) {
-        this.mark = mark;
+    public void setMark(int mark) {
+        this.mark.add(mark);
+    }
+
+    public void setMarks(List<Integer> marks) {
+        this.mark = marks;
+    }
+
+    public int getIdSubject() {
+
+        return idSubject;
     }
 }
