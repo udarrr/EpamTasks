@@ -26,8 +26,8 @@ public class Subject {
         this.name = name;
     }
 
-    public void setMarks(int marks) {
-        this.marks.add(marks);
+    public void addMark(int mark) {
+        this.marks.add(mark);
     }
 
     public List<Integer> getMarks() {

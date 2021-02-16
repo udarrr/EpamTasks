@@ -1,15 +1,15 @@
 package com.epam.automation.JavaErrorExceptions.Console;
 
-import com.epam.automation.JavaErrorExceptions.University.Faculty;
-import com.epam.automation.JavaErrorExceptions.University.Group;
-import com.epam.automation.JavaErrorExceptions.University.Student;
-import com.epam.automation.JavaErrorExceptions.University.Subject;
+import com.epam.automation.JavaErrorExceptions.University.*;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class Printer {
-    public void printUniversity(List<Faculty> faculties) {
+    public void printUniversity(List<University> university) {
+        university.forEach(x -> System.out.println(x.toString()));
+    }
+    public void printFaculties(List<Faculty> faculties) {
         faculties.forEach(x -> System.out.println(x.toString()));
     }
 
@@ -30,7 +30,7 @@ public class Printer {
         System.out.println("Please choose position of menu enter it in console and press button ENTER");
         System.out.println();
         System.out.println("Menu");
-        System.out.println("1.Faculties");
+        System.out.println("1.University");
         System.out.println("2.Get average mark");
         System.out.println("3.Exit");
         System.out.println();
@@ -46,9 +46,8 @@ public class Printer {
     public void printUniversityMenuDescription() {
         System.out.println();
         System.out.println("Menu");
-        System.out.println("1.Add faculty");
-        System.out.println("2.Add marks");
-        System.out.println("3.Exit to previous menu");
+        System.out.println("1.Add marks");
+        System.out.println("2.Exit to previous menu");
     }
 
     public void printAvgMarkMenuDescription() {

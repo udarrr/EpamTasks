@@ -7,19 +7,10 @@ public class Faculty {
     String name;
     List<Group> groups;
 
-    public Faculty(List<Group> groups) {
-        this.groups = groups;
-    }
-
     public Faculty(int id, String name, List<Group> groups) {
         this.id = id;
         this.name = name;
         this.groups = groups;
-    }
-
-    public Faculty(int id, String name) {
-        this.id = id;
-        this.name = name;
     }
 
     public int getId() {

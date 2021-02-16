@@ -31,7 +31,7 @@ public class Menu {
             }
 
             switch (inputConsoleLine) {
-                case "1" -> startHandlerMenuUniversity();
+                case "1" -> addMarksFromConsoleLine();
 
                 case "2" -> startHandlerMenuAverageMark();
 
@@ -40,55 +40,12 @@ public class Menu {
         }
     }
 
-    private void startHandlerMenuAddingFaculty() {
-        while (true) {
-            System.out.println();
-            System.out.println("Existing faculties:");
-
-            printer.printUniversity(management.getFaculties());
-
-            System.out.println();
-
-            printer.printMenuAddingFacultyDescription();
-
-            String input = sc.nextLine();
-
-            if (input.equals("2")) {
-                break;
-            }
-
-            if (input.equals("1")) {
-                System.out.println();
-                System.out.print("Enter new FACULTY name: ");
-                String inputFacultyName = sc.nextLine();
-                management.setFaculty(inputFacultyName);
-            }
-        }
-    }
-
-    private void startHandlerMenuUniversity() {
-        while (true) {
-            printer.printUniversityMenuDescription();
-
-            String input = sc.nextLine();
-
-            if (input.equals("3")) {
-                break;
-            }
-
-            if (input.equals("1")) {
-                startHandlerMenuAddingFaculty();
-            }
-
-            if (input.equals("2")) {
-                addMarksFromConsoleLine();
-            }
-        }
-    }
-
     private void addMarksFromConsoleLine() {
-        checkExistingFaculty();
-        int inputFacultyId = takeIdFacultyFromConsole();
+        checkExistingUniversity();
+        int inputUniversityId = takeIdUniversityFromConsole();
+
+        checkExistingFaculty(inputUniversityId);
+        int inputFacultyId = takeIdFacultyFromConsole(inputUniversityId);
 
         checkExistingGroup(inputFacultyId);
         int inputGroupId = takeIdGroupFromConsole(inputFacultyId);
@@ -102,11 +59,15 @@ public class Menu {
         addMarksToParticularSubject(inputFacultyId, inputGroupId, inputIdStudent, inputSubjectId);
     }
 
-    private void checkExistingFaculty() {
-        printer.printUniversity(management.getFaculties());
+    private void checkExistingUniversity() {
+        printer.printUniversity(management.getUniversity());
+    }
+
+    private void checkExistingFaculty(int facultyId) {
+        printer.printFaculties(management.getAllFaculties());
 
         try {
-            if (management.getFaculties().size() == 0) {
+            if (management.filteredFaculties(facultyId).size() == 0) {
                 throw new NoFacultyInUniversityException();
             }
 
@@ -114,8 +75,8 @@ public class Menu {
             System.out.println("In university no faculty, please add one");
             System.out.print("Enter name for new faculty:");
 
-            management.setFaculty(sc.nextLine());
-            printer.printUniversity(management.getFaculties());
+            management.addFaculty(sc.nextLine());
+            printer.printFaculties(management.getAllFaculties());
         }
     }
 
@@ -168,9 +129,34 @@ public class Menu {
         }
     }
 
-    private int takeIdFacultyFromConsole() {
+    private int takeIdUniversityFromConsole() {
         System.out.println();
-        System.out.print("Choose and enter value of ID FACULTY where you'd like to add subject: ");
+        System.out.print("Choose and enter value of ID UNIVERSITY: ");
+        System.out.println();
+
+        int inputUniversityId;
+
+        while (true) {
+            try {
+                inputUniversityId = Integer.parseInt(sc.nextLine());
+
+                int finalInputUniversityId = inputUniversityId;
+                if (management.getUniversity().stream().anyMatch(u->u.getId() == finalInputUniversityId)) {
+                    break;
+                } else {
+                    System.out.println("Id university isn't exist");
+                }
+            } catch (Exception e) {
+                System.out.println("Id is integer please choose someone from list");
+            }
+        }
+
+        return inputUniversityId;
+    }
+
+    private int takeIdFacultyFromConsole(int universityId) {
+        System.out.println();
+        System.out.print("Choose and enter value of ID FACULTY: ");
         System.out.println();
 
         int inputFacultyId;
@@ -179,7 +165,8 @@ public class Menu {
             try {
                 inputFacultyId = Integer.parseInt(sc.nextLine());
 
-                if (inputFacultyId <= management.getFaculties().size()) {
+                int finalInputFacultyId = inputFacultyId;
+                if (management.filteredFaculties(universityId).stream().anyMatch(x->x.getId()== finalInputFacultyId)) {
                     break;
                 } else {
                     System.out.println("Id faculty isn't exist");
@@ -194,7 +181,7 @@ public class Menu {
 
     private int takeIdGroupFromConsole(int facultyId) {
         System.out.println();
-        System.out.print("Choose and enter value of ID GROUP where you'd like to add subject: ");
+        System.out.print("Choose and enter value of ID GROUP: ");
         System.out.println();
 
         int inputGroupId;
@@ -219,7 +206,7 @@ public class Menu {
 
     private int takeIdStudentFromConsole(int groupId) {
         System.out.println();
-        System.out.print("Choose and enter value of ID STUDENT where you'd like to add subject: ");
+        System.out.print("Choose and enter value of ID STUDENT: ");
         System.out.println();
 
         int inputStudentId;
