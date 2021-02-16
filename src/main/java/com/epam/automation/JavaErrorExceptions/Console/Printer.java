@@ -2,13 +2,13 @@ package com.epam.automation.JavaErrorExceptions.Console;
 
 import com.epam.automation.JavaErrorExceptions.University.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Printer {
     public void printUniversity(List<University> university) {
         university.forEach(x -> System.out.println(x.toString()));
     }
+
     public void printFaculties(List<Faculty> faculties) {
         faculties.forEach(x -> System.out.println(x.toString()));
     }
@@ -36,20 +36,6 @@ public class Printer {
         System.out.println();
     }
 
-    public void printMenuAddingFacultyDescription() {
-        System.out.println();
-        System.out.println("Menu");
-        System.out.println("1.Add new one");
-        System.out.println("2.Exit to previous menu");
-    }
-
-    public void printUniversityMenuDescription() {
-        System.out.println();
-        System.out.println("Menu");
-        System.out.println("1.Add marks");
-        System.out.println("2.Exit to previous menu");
-    }
-
     public void printAvgMarkMenuDescription() {
         System.out.println();
         System.out.println("Average mark with a particular condition");
@@ -62,5 +48,4 @@ public class Printer {
     public void printAvgMark(double avgMark) {
         System.out.println("Average mark: " + avgMark);
     }
-
 }

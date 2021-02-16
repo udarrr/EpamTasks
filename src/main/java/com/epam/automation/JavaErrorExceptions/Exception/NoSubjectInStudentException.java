@@ -1,7 +1,7 @@
 package com.epam.automation.JavaErrorExceptions.Exception;
 
 public class NoSubjectInStudentException extends Exception{
-    public NoSubjectInStudentException() {
-        super();
+    public NoSubjectInStudentException(String message) {
+        super(message);
     }
 }

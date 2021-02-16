@@ -2,7 +2,6 @@ package com.epam.automation.JavaErrorExceptions;
 
 import com.epam.automation.JavaErrorExceptions.Console.Menu;
 import com.epam.automation.JavaErrorExceptions.Management.Management;
-import com.epam.automation.JavaErrorExceptions.University.Faculty;
 import com.epam.automation.JavaErrorExceptions.University.University;
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ public class Start {
         Management management = new Management(university);
 
         management.addUniversity("BRU");
-//        management.addFaculty("TECHNICAL ");
+//        management.addFaculty("TECHNICAL");
 //        management.addFaculty("ECONOMY");
 //        management.addFaculty("LAW");
 //        management.addGroup(1, "EP033");
@@ -30,6 +29,7 @@ public class Start {
 //        management.addSubject(1,"History");
 
         Menu menu = new Menu(management);
+
         menu.startMainConsoleMenu();
     }
 }

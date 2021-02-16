@@ -1,6 +1,6 @@
 package com.epam.automation.JavaErrorExceptions.Management;
 
-import com.epam.automation.JavaErrorExceptions.Exception.NumberIsNotInRangeException;
+import com.epam.automation.JavaErrorExceptions.Exception.*;
 import com.epam.automation.JavaErrorExceptions.University.*;
 
 import java.util.ArrayList;
@@ -20,38 +20,38 @@ public class Management {
     }
 
     public void addUniversity(String universityName) {
-
         if (university.stream().noneMatch(x -> x.getName().equals(universityName))) {
             university.add(new University(1, universityName, new ArrayList<>()));
         }
     }
 
     public void addFaculty(String facultyName) {
-        int nextFacultyId = getAllFaculties().size() + 1;
+        boolean isFacultyName = university.stream().
+                flatMap(f -> f.getFaculties().stream()).
+                noneMatch(x -> x.getName().equals(facultyName));
 
-        if (university.stream().
-                flatMap(f -> f.getFaculties().stream()).noneMatch(x -> x.getName().equals(facultyName))) {
+        if (isFacultyName) {
+            int nextFacultyId = getFaculties().size() + 1;
 
-            university.stream().
-                    findFirst().
+            university.stream().findFirst().
                     ifPresent(x -> x.setFaculties(new Faculty(nextFacultyId, facultyName, new ArrayList<>())));
         }
     }
 
-    public List<Faculty> getAllFaculties() {
+    public List<Faculty> getFaculties() {
 
         return university.stream().
                 flatMap(f -> f.getFaculties().stream()).collect(Collectors.toList());
     }
 
-    public List<Faculty> filteredFaculties(int facultyId) {
+    public List<Faculty> getFaculties(int facultyId) {
 
         return university.stream().
                 flatMap(f -> f.getFaculties().stream()).
                 filter(fac -> fac.getId() == facultyId).collect(Collectors.toList());
     }
 
-    public double getAvgMarkAllSubjectsByStudent(String studentName) {
+    public double getStudentAverageMark(String studentName) {
         double avgMark;
 
         try {
@@ -64,13 +64,14 @@ public class Management {
                     flatMap(m -> m.getMarks().stream()).mapToInt(s -> s).average().
                     orElseThrow(NoSuchElementException::new);
         } catch (NoSuchElementException e) {
+
             return -1;
         }
 
         return avgMark;
     }
 
-    public double getAvgMarkStudentBySubject(String facultyName, String groupName, String subjectName) {
+    public double getFacultyGroupSubjectAverageMark(String facultyName, String groupName, String subjectName) {
         double avgMark;
 
         try {
@@ -85,12 +86,13 @@ public class Management {
                     flatMap(c -> c.getMarks().stream()).mapToInt(v -> v).average().
                     orElseThrow(NoSuchElementException::new);
         } catch (NoSuchElementException e) {
+
             return -1;
         }
         return avgMark;
     }
 
-    public double getAvgMarkAllFacultiesBySubject(String subjectName) {
+    public double getSubjectAverageMark(String subjectName) {
         double avgMark;
 
         try {
@@ -102,20 +104,22 @@ public class Management {
                     flatMap(b -> b.getMarks().stream()).mapToInt(n -> n).average().
                     orElseThrow(NoSuchElementException::new);
         } catch (NoSuchElementException e) {
+
             return -1;
         }
 
         return avgMark;
     }
 
-    public List<Group> getAllGroups() {
+    public List<Group> getGroups() {
 
         return university.stream().
                 flatMap(f -> f.getFaculties().stream()).
                 flatMap(x -> x.getGroups().stream()).collect(Collectors.toList());
     }
 
-    public List<Group> filteredGroup(int facultyId) {
+    public List<Group> getGroups(int facultyId) {
+
         return university.stream().
                 flatMap(f -> f.getFaculties().stream()).
                 filter(x -> x.getId() == facultyId).
@@ -124,12 +128,13 @@ public class Management {
     }
 
     public void addGroup(int facultyId, String groupName) {
-        int nextIdGroup = getAllGroups().size() + 1;
-
-        if (university.stream().
+        boolean isGroupName = university.stream().
                 flatMap(f -> f.getFaculties().stream()).
                 flatMap(x -> x.getGroups().stream()).
-                noneMatch(z -> z.getName().equals(groupName))) {
+                noneMatch(z -> z.getName().equals(groupName));
+
+        if (isGroupName) {
+            int nextIdGroup = getGroups().size() + 1;
 
             university.stream().
                     flatMap(f -> f.getFaculties().stream()).filter(z -> z.getId() == facultyId).
@@ -138,7 +143,7 @@ public class Management {
         }
     }
 
-    public List<Student> getAllStudents() {
+    public List<Student> getStudents() {
 
         return university.stream().
                 flatMap(f -> f.getFaculties().stream()).
@@ -147,7 +152,7 @@ public class Management {
                 collect(Collectors.toList());
     }
 
-    public List<Student> filteredStudents(int groupId) {
+    public List<Student> getStudents(int groupId) {
 
         return university.stream().
                 flatMap(f -> f.getFaculties().stream()).
@@ -158,13 +163,14 @@ public class Management {
     }
 
     public void addStudent(int groupId, String firstName, String lastName) {
-        int nextStudentId = getAllStudents().size() + 1;
-
-        if (university.stream().
+        boolean isFirstLastName = university.stream().
                 flatMap(f -> f.getFaculties().stream()).
                 flatMap(g -> g.getGroups().stream()).
                 flatMap(s -> s.getStudents().stream()).
-                noneMatch(z -> z.getFirstName().equals(firstName) && z.getLastName().equals(lastName))) {
+                noneMatch(z -> z.getFirstName().equals(firstName) && z.getLastName().equals(lastName));
+
+        if (isFirstLastName) {
+            int nextStudentId = getStudents().size() + 1;
 
             university.stream().
                     flatMap(f -> f.getFaculties().stream()).flatMap(g -> g.getGroups().stream()).
@@ -174,7 +180,7 @@ public class Management {
         }
     }
 
-    public List<Subject> filteredSubject(int studentId) {
+    public List<Subject> getSubject(int studentId) {
 
         return university.stream().
                 flatMap(f -> f.getFaculties().stream()).
@@ -185,7 +191,7 @@ public class Management {
                 collect(Collectors.toList());
     }
 
-    public List<Subject> filteredSubject(int studentId, int subjectId) {
+    public List<Subject> getSubject(int studentId, int subjectId) {
 
         return university.stream().
                 flatMap(f -> f.getFaculties().stream()).
@@ -198,16 +204,16 @@ public class Management {
     }
 
     public void addSubject(int studentId, String subjectName) {
-
-        int nextSubjectId = filteredSubject(studentId).size() + 1;
-
-        if (university.stream().
+        boolean isSubject = university.stream().
                 flatMap(f -> f.getFaculties().stream()).
                 flatMap(g -> g.getGroups().stream()).
                 flatMap(st -> st.getStudents().stream()).
                 filter(s -> s.getId() == studentId).
                 flatMap(sub -> sub.getSubjects().stream()).
-                noneMatch(n -> n.getName().equals(subjectName))) {
+                noneMatch(n -> n.getName().equals(subjectName));
+
+        if (isSubject) {
+            int nextSubjectId = getSubject(studentId).size() + 1;
 
             university.stream().
                     flatMap(f -> f.getFaculties().stream()).
@@ -219,20 +225,40 @@ public class Management {
         }
     }
 
-    public void setMarks(int facultyId, int groupId, int studentId, int subjectId, int mark) {
-        try {
-            if ((mark >= 0) && (mark <= 10)) {
-                university.stream().
-                        flatMap(f -> f.getFaculties().stream()).filter(f -> f.getId() == facultyId).
-                        flatMap(fuc -> fuc.getGroups().stream()).filter(g -> g.getId() == groupId).
-                        flatMap(s -> s.getStudents().stream()).filter(st -> st.getId() == studentId).
-                        flatMap(sub -> sub.getSubjects().stream()).filter(subject -> subject.getId() == subjectId).findFirst().
-                        ifPresent(m -> m.addMark(mark));
-            } else {
-                throw new NumberIsNotInRangeException();
-            }
-        } catch (NumberIsNotInRangeException e) {
-            System.out.println("You entered wrong number, mark can't be less 0 and more than 10");
+    public void setMarks(int facultyId, int groupId, int studentId, int subjectId, int mark) throws NumberIsNotInRangeException {
+        if ((mark >= 0) && (mark <= 10)) {
+            university.stream().
+                    flatMap(f -> f.getFaculties().stream()).filter(f -> f.getId() == facultyId).
+                    flatMap(fuc -> fuc.getGroups().stream()).filter(g -> g.getId() == groupId).
+                    flatMap(s -> s.getStudents().stream()).filter(st -> st.getId() == studentId).
+                    flatMap(sub -> sub.getSubjects().stream()).filter(subject -> subject.getId() == subjectId).findFirst().
+                    ifPresent(m -> m.addMark(mark));
+        } else {
+            throw new NumberIsNotInRangeException("You entered wrong number, mark can't be less 0 and more than 10");
+        }
+    }
+
+    public void checkExistingFaculty(int facultyId) throws NoFacultyInUniversityException {
+        if (getFaculties(facultyId).size() == 0) {
+            throw new NoFacultyInUniversityException("There is no faculty in university, please add one");
+        }
+    }
+
+    public void checkExistingGroup(int inputFacultyId) throws NoGroupInFacultyException {
+        if (getGroups(inputFacultyId).size() == 0) {
+            throw new NoGroupInFacultyException("There is no group in faculty, please add one");
+        }
+    }
+
+    public void checkExistingStudent(int inputGroupId) throws NoStudentInGroupException {
+        if (getStudents(inputGroupId).size() == 0) {
+            throw new NoStudentInGroupException("There is no student in group, please add one");
+        }
+    }
+
+    public void checkExistingSubject(int inputStudentId) throws NoSubjectInStudentException {
+        if (getSubject(inputStudentId).size() == 0) {
+            throw new NoSubjectInStudentException("There is no subject in student, please add one");
         }
     }
 }
