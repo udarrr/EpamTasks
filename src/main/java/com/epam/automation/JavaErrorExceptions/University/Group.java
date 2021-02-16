@@ -43,4 +43,11 @@ public class Group {
         this.students = students;
     }
 
+    @Override
+    public String toString() {
+        return "Group{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

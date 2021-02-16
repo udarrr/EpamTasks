@@ -306,15 +306,15 @@ public class Menu {
             }
 
             if (input.equals("1")) {
-                System.out.println("Enter condition. Example SUBJECT=MICROELECTRONICS or STUDENT=KLYSHNIKOV or FACULTY=ELECTROTEH GROUP=EP033 SUBJECT=MICROELECTRONICS");
+                System.out.println("Enter condition. Example SUBJECT=MICROELECTRONICS or STUDENT=KLYSHNIKOV or FACULTY=ELECTROTEH/GROUP=EP033/SUBJECT=MICROELECTRONICS");
                 String inputCondition = sc.nextLine();
-                String[] lineAfterSplit = inputCondition.trim().split("\\s*(\\s|=|\\.)\\s*");
+                String[] lineAfterSplit = inputCondition.trim().split("\\s*(\\s|=|/|\\.)\\s*");
 
                 if (lineAfterSplit.length == 2 && lineAfterSplit[0].equalsIgnoreCase("SUBJECT")) {
                     double averageMark = management.getAvgMarkWholeUniversityFromParticularSubject(lineAfterSplit[1]);
 
                     if (averageMark == -1) {
-                        System.out.println("Not all subjects have marks");
+                        System.out.println("There no marks in subject, please try again");
                     } else {
                         printer.printAvgMark(averageMark);
                     }
@@ -324,7 +324,7 @@ public class Menu {
                     double averageMark = management.getAvgMarkFromParticularStudentAllSubjects(lineAfterSplit[1]);
 
                     if (averageMark == -1) {
-                        System.out.println("Not all subjects have marks");
+                        System.out.println("There no marks in subject, please try again");
                     } else {
                         printer.printAvgMark(averageMark);
                     }
@@ -337,7 +337,7 @@ public class Menu {
                     double averageMark = management.getAvgMarkFromParticularGroupStudentSubject(lineAfterSplit[1], lineAfterSplit[3], lineAfterSplit[5]);
 
                     if (averageMark == -1) {
-                        System.out.println("Not all subjects have marks");
+                        System.out.println("There no marks in subject, please try again");
                     } else {
                         printer.printAvgMark(averageMark);
                     }

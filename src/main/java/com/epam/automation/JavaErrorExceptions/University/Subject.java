@@ -1,5 +1,6 @@
 package com.epam.automation.JavaErrorExceptions.University;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Subject {
@@ -37,5 +38,14 @@ public class Subject {
 
     public void setMarks(List<Integer> marks) {
         this.marks = marks;
+    }
+
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", marks=" + Arrays.toString(marks.toArray()) +
+                '}';
     }
 }

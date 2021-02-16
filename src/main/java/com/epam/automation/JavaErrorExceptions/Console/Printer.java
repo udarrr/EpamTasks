@@ -11,21 +11,20 @@ import java.util.List;
 public class Printer {
 
     public void printUniversity(List<Faculty> faculties) {
-        faculties.forEach(x -> System.out.println("ID=" + x.getId() + " " + "NameFaculty=" + x.getName()));
+        faculties.forEach(x -> System.out.println(x.toString()));
     }
 
     public void printGroup(List<Group> groups) {
-        groups.forEach((x) -> System.out.println("ID=" + x.getId() + " " + "NameGroup=" + x.getName()));
+        groups.forEach((x) -> System.out.println(x.toString()));
     }
 
     public void printStudent(List<Student> students) {
-        students.forEach(x -> System.out.println("ID=" + x.getId() + " " + "NameStudent=" + x.getName()));
+        students.forEach(x -> System.out.println(x.toString()));
     }
 
     public void printSubjectOfStudent(List<Subject> subjects) {
-        subjects.forEach(x -> System.out.println("ID=" + x.getId() + " " + "NameSubject=" + x.getName() + " " + "Marks=" + Arrays.toString(x.getMarks().toArray())));
+        subjects.forEach(x -> System.out.println(x.toString()));
     }
-
 
     public void printMainMenuDescription() {
         System.out.println();
