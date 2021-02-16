@@ -4,46 +4,43 @@ import java.util.List;
 
 public class Group {
 
-    int idGroup;
-    String nameGroup;
-    List<Student> student;
+    int id;
+    String name;
+    List<Student> students;
 
-    public Group(List<Student> student) {
-        this.student = student;
+    public Group(List<Student> students) {
+        this.students = students;
     }
 
-    public Group(int idGroup, String nameGroup, List<Student> student) {
-        this.idGroup = idGroup;
-        this.nameGroup = nameGroup;
-        this.student = student;
+    public Group(int id, String name, List<Student> students) {
+        this.id = id;
+        this.name = name;
+        this.students = students;
     }
 
-    public Group(int idGroup, String nameGroup) {
-        this.idGroup = idGroup;
-        this.nameGroup = nameGroup;
+    public Group(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public List<Student> getStudent() {
-        return student;
+    public int getId() {
+        return id;
     }
 
-    public int getIdGroup() {
-        return idGroup;
+    public String getName() {
+        return name;
     }
 
-    public void setIdGroup(int idGroup) {
-        this.idGroup = idGroup;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getNameGroup() {
-        return nameGroup;
+    public List<Student> getStudents() {
+        return students;
     }
 
-    public void setNameGroup(String nameGroup) {
-        this.nameGroup = nameGroup;
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
-    public void setStudent(List<Student> student) {
-        this.student = student;
-    }
 }

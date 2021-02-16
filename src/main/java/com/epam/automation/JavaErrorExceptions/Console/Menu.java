@@ -9,99 +9,100 @@ import com.epam.automation.JavaErrorExceptions.Management.Management;
 import java.util.Scanner;
 
 public class Menu {
+    Printer printer = new Printer();
+    Scanner sc = new Scanner(System.in);
 
     private final Management management;
 
     public Menu(Management management) {
-
         this.management = management;
     }
 
-    Printer printer = new Printer();
-
-    Scanner sc = new Scanner(System.in);
-
-    public void mainConsoleMenu() {
-
+    public void startMainConsoleMenu() {
         while (true) {
-
             printer.printMainMenuDescription();
 
             Scanner sc = new Scanner(System.in);
 
             String inputConsoleLine = sc.nextLine();
 
-            if (inputConsoleLine.equals("4")) {
-
+            if (inputConsoleLine.equals("3")) {
                 break;
             }
 
             switch (inputConsoleLine) {
+                case "1" -> startHandlerMenuUniversity();
 
-                case "1" -> startHandlerMenuAddingFaculty();
+                case "2" -> startHandlerMenuAverageMark();
 
-                case "2" -> startHandlerMenuAddMarks();
-
-                case "3" -> startHandlerMenuAverageMark();
-
-                default -> System.out.println("Your choosing isn't recognized");
+                default -> System.out.println("Your a choice isn't recognized");
             }
         }
     }
 
     private void startHandlerMenuAddingFaculty() {
-
-        System.out.println();
-        System.out.println("Exist faculties:");
-        printer.printUniversity(management.getFaculties());
-        System.out.println();
-        System.out.print("Enter new FACULTY name: ");
-        String inputNameFaculty = sc.nextLine();
-        management.addFaculty(inputNameFaculty);
-
-        System.out.println();
-        System.out.println("Exist groups");
-        printer.printGroup(management.getGroup());
-        System.out.println();
-        System.out.print("Enter new GROUP name: ");
-        String inputNameGroup = sc.nextLine();
-        management.addGroup(inputNameFaculty, inputNameGroup);
-
-        System.out.println();
-        System.out.println("Exist student");
-        printer.printStudent(management.getStudent());
-        System.out.println();
-        System.out.print("Enter new STUDENT name: ");
-
-        String inputNameStudent = sc.nextLine();
-
-        management.addStudent(inputNameGroup, inputNameStudent);
-
-        addSubjectsConsoleLine();
-    }
-
-    private void startHandlerMenuAddMarks() {
-
         while (true) {
+            System.out.println();
+            System.out.println("Existing faculties:");
 
-            printer.printAddMarksMenuDescription();
+            printer.printUniversity(management.getFaculties());
+
+            System.out.println();
+
+            printer.printMenuAddingFacultyDescription();
 
             String input = sc.nextLine();
 
             if (input.equals("2")) {
-
                 break;
             }
 
             if (input.equals("1")) {
-
-                addMarksConsoleLine();
+                System.out.println();
+                System.out.print("Enter new FACULTY name: ");
+                String inputNameFaculty = sc.nextLine();
+                management.addFaculty(inputNameFaculty);
             }
         }
     }
 
-    private void addMarksConsoleLine() {
+    private void startHandlerMenuUniversity() {
+        while (true) {
+            printer.printUniversityMenuDescription();
 
+            String input = sc.nextLine();
+
+            if (input.equals("3")) {
+                break;
+            }
+
+            if (input.equals("1")) {
+                startHandlerMenuAddingFaculty();
+            }
+
+            if (input.equals("2")) {
+                addMarksFromConsoleLine();
+            }
+        }
+    }
+
+    private void addMarksFromConsoleLine() {
+        checkExistingFaculty();
+        int inputIdFaculty = takeIdFacultyFromConsole();
+
+        checkExistingGroup(inputIdFaculty);
+        int inputIdGroup = takeIdGroupFromConsole();
+
+        checkExistingStudent(inputIdGroup);
+        int inputIdStudent = takeIdStudentFromConsole();
+
+        checkExistingSubject(inputIdStudent);
+        int inputIdSubject = takeIdSubjectFromConsole(inputIdStudent);
+
+        addMarksToParticularSubject(inputIdFaculty,inputIdGroup,inputIdStudent,inputIdSubject);
+    }
+
+    private void checkExistingFaculty(){
         printer.printUniversity(management.getFaculties());
 
         try {
@@ -116,7 +117,58 @@ public class Menu {
             management.addFaculty(sc.nextLine());
             printer.printUniversity(management.getFaculties());
         }
+    }
 
+    private void checkExistingGroup(int inputIdFaculty){
+        printer.printGroup(management.getGroup(inputIdFaculty));
+
+        try {
+            if (management.getGroup(inputIdFaculty).size() == 0) {
+                throw new NoGroupInFacultyException();
+            }
+        } catch (NoGroupInFacultyException e) {
+            System.out.println("In faculty no group, please add one");
+            System.out.print("Enter name for new group:");
+
+            management.addGroup(inputIdFaculty, sc.nextLine());
+            printer.printGroup(management.getGroup(inputIdFaculty));
+        }
+    }
+
+    private void checkExistingStudent(int inputIdGroup){
+        printer.printStudent(management.getStudent(inputIdGroup));
+
+        try {
+            if (management.getStudent(inputIdGroup).size() == 0) {
+                throw new NoStudentInGroupException();
+            }
+        } catch (NoStudentInGroupException e) {
+            System.out.println("In group no student, please add one");
+            System.out.print("Enter name for new student:");
+
+            management.setStudent(inputIdGroup, sc.nextLine());
+            printer.printStudent(management.getStudent(inputIdGroup));
+        }
+    }
+
+    private void checkExistingSubject(int inputIdStudent){
+        printer.printSubjectOfStudent(management.getSubject(inputIdStudent));
+
+        try {
+            if (management.getSubject(inputIdStudent).size() == 0) {
+
+                throw new NoSubjectInStudentException();
+            }
+        } catch (NoSubjectInStudentException e) {
+            System.out.println("In student no subject, please add one");
+            System.out.print("Enter name for new subject:");
+
+            management.setSubject(inputIdStudent, sc.nextLine());
+            printer.printSubjectOfStudent(management.getSubject(inputIdStudent));
+        }
+    }
+
+    private int takeIdFacultyFromConsole(){
         System.out.println();
         System.out.print("Choose and enter value of ID FACULTY where you'd like to add subject: ");
         System.out.println();
@@ -138,24 +190,13 @@ public class Menu {
             }
         }
 
-        printer.printGroup(management.getGroup(inputIdFaculty));
+        return inputIdFaculty;
+    }
 
-        try {
-            if (management.getGroup(inputIdFaculty).size() == 0) {
-                throw new NoGroupInFacultyException();
-            }
-        } catch (NoGroupInFacultyException e) {
-            System.out.println("In faculty no group, please add one");
-            System.out.print("Enter name for new group:");
-
-            management.addGroup(inputIdFaculty, sc.nextLine());
-            printer.printGroup(management.getGroup(inputIdFaculty));
-        }
-
+    private int takeIdGroupFromConsole(){
         System.out.println();
         System.out.print("Choose and enter value of ID GROUP where you'd like to add subject: ");
         System.out.println();
-
 
         int inputIdGroup;
 
@@ -173,21 +214,10 @@ public class Menu {
                 System.out.println("Id is integer please choose someone from list");
             }
         }
+        return inputIdGroup;
+    }
 
-        printer.printStudent(management.getStudent(inputIdGroup));
-
-        try {
-            if (management.getStudent(inputIdGroup).size() == 0) {
-                throw new NoStudentInGroupException();
-            }
-        } catch (NoStudentInGroupException e) {
-            System.out.println("In group no student, please add one");
-            System.out.print("Enter name for new student:");
-
-            management.addStudent(inputIdGroup, sc.nextLine());
-            printer.printStudent(management.getStudent(inputIdGroup));
-        }
-
+    private int takeIdStudentFromConsole(){
         System.out.println();
         System.out.print("Choose and enter value of ID STUDENT where you'd like to add subject: ");
         System.out.println();
@@ -209,20 +239,10 @@ public class Menu {
             }
         }
 
-        printer.printSubjectOfStudent(management.getSubject(inputIdStudent));
+        return inputIdStudent;
+    }
 
-        try {
-            if (management.getSubject(inputIdStudent).size() == 0) {
-                throw new NoSubjectInStudentException();
-            }
-        } catch (NoSubjectInStudentException e) {
-            System.out.println("In student no subject, please add one");
-            System.out.print("Enter name for new subject:");
-
-            management.addSubject(inputIdStudent, sc.nextLine());
-            printer.printSubjectOfStudent(management.getSubject(inputIdStudent));
-        }
-
+    private int takeIdSubjectFromConsole(int inputIdStudent){
         System.out.println();
         System.out.print("Choose and enter value of ID SUBJECT where you'd like to add marks: ");
         System.out.println();
@@ -246,6 +266,10 @@ public class Menu {
             }
         }
 
+        return inputIdSubject;
+    }
+
+    private void addMarksToParticularSubject(int inputIdFaculty, int inputIdGroup, int inputIdStudent, int inputIdSubject){
         int indexFaculty = management.getIndexFaculty(inputIdFaculty);
         int indexGroup = management.getIndexGroup(indexFaculty, inputIdGroup);
         int indexStudent = management.getIndexStudent(indexFaculty, indexGroup, inputIdStudent);
@@ -257,37 +281,15 @@ public class Menu {
             String markOrExit = sc.nextLine();
 
             if (markOrExit.equals("exit")) {
-
                 break;
             }
 
-            management.addMarks(indexFaculty, indexGroup, indexStudent, indexSubject, Integer.parseInt(markOrExit));
+            management.setMarks(indexFaculty, indexGroup, indexStudent, indexSubject, Integer.parseInt(markOrExit));
             printer.printSubjectOfStudent(management.getSubject(inputIdStudent, inputIdSubject));
         }
     }
 
-    private void addSubjectsConsoleLine() {
-
-        System.out.println();
-        printer.printStudent(management.getStudent());
-        System.out.println();
-        System.out.print("Choose and enter ID STUDENT where you'd like to add subject: ");
-        System.out.println();
-
-        int inputIdStudent = Integer.parseInt(sc.nextLine());
-
-        printer.printSubjectOfStudent(management.getSubject(inputIdStudent));
-
-        System.out.println();
-        System.out.println("Enter name of SUBJECT");
-        System.out.println();
-
-        String inputNameSubject = sc.nextLine();
-        management.addSubject(inputIdStudent, inputNameSubject);
-    }
-
-    public void startHandlerMenuAverageMark() {
-
+    private void startHandlerMenuAverageMark() {
         while (true) {
 
             printer.printAvgMarkMenuDescription();
@@ -295,12 +297,10 @@ public class Menu {
             String input = sc.nextLine();
 
             if (input.equals("2")) {
-
                 break;
             }
 
             if (input.equals("1")) {
-
                 System.out.println("Enter condition. Example SUBJECT=MICROELECTRONICS or STUDENT=KLYSHNIKOV or FACULTY=ELECTROTEH GROUP=EP033 SUBJECT=MICROELECTRONICS");
                 String inputCondition = sc.nextLine();
                 String[] lineAfterSplit = inputCondition.trim().split("\\s*(\\s|=|\\.)\\s*");

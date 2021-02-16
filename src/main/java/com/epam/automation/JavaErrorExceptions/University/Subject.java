@@ -4,42 +4,38 @@ import java.util.List;
 
 public class Subject {
 
-    int idSubject;
-    String typeSubject;
-    List<Integer> mark;
+    int id;
+    String name;
+    List<Integer> marks;
 
-    public Subject(List<Integer> mark) {
-        this.mark = mark;
+    public Subject(int id, String name, List<Integer> marks) {
+        this.id = id;
+        this.name = name;
+        this.marks = marks;
     }
 
-    public Subject(int idSubject, String typeSubject, List<Integer> mark) {
-        this.idSubject = idSubject;
-        this.typeSubject = typeSubject;
-        this.mark = mark;
+    public int getId() {
+
+        return id;
     }
 
-    public List<Integer> getMark() {
-        return mark;
+    public String getName() {
+        return name;
     }
 
-    public String getTypeSubject() {
-        return typeSubject;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setTypeSubject(String typeSubject) {
-        this.typeSubject = typeSubject;
+    public void setMarks(int marks) {
+        this.marks.add(marks);
     }
 
-    public void setMark(int mark) {
-        this.mark.add(mark);
+    public List<Integer> getMarks() {
+        return marks;
     }
 
     public void setMarks(List<Integer> marks) {
-        this.mark = marks;
-    }
-
-    public int getIdSubject() {
-
-        return idSubject;
+        this.marks = marks;
     }
 }

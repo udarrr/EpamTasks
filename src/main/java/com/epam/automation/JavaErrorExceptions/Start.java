@@ -11,23 +11,11 @@ public class Start {
 
     public static void main(String[] args) {
 
-        List<Faculty> universityData = new ArrayList<>();
+        List<Faculty> faculties = new ArrayList<>();
 
-        Management management = new Management(universityData);
-
-//        management.addFaculty("ELECTROTEH");
-//        management.addGroup("ELECTROTEH", "EP033");
-//        management.addStudent("EP033", "KLYSHNIKOV");
-//        management.addStudent("EP033", "MARFEL");
-//        management.addSubject(2, "HISTORY");
-//        management.addSubject(1, "ELECTRONICA");
-//        management.addSubject(1, "MICROELECTRONICS");
-//
-//        management.addMarks(1,1,1,1,new ArrayList<>(List.of(1,2,3,4)));
-//        management.addMarks(1,1,1,2,new ArrayList<>(List.of(1,2,3,4)));
-//        management.addMarks(1,1,2,1,new ArrayList<>(List.of(5,5,4,5)));
+        Management management = new Management(faculties);
 
         Menu menu = new Menu(management);
-        menu.mainConsoleMenu();
+        menu.startMainConsoleMenu();
     }
 }

@@ -4,46 +4,42 @@ import java.util.List;
 
 public class Faculty {
 
-    int idFaculty;
-    String nameFaculty;
-    List<Group> group;
+    int id;
+    String name;
+    List<Group> groups;
 
-    public Faculty(List<Group> group) {
-        this.group = group;
+    public Faculty(List<Group> groups) {
+        this.groups = groups;
     }
 
-    public Faculty(int idFaculty, String nameFaculty, List<Group> group) {
-        this.idFaculty = idFaculty;
-        this.nameFaculty = nameFaculty;
-        this.group = group;
+    public Faculty(int id, String name, List<Group> groups) {
+        this.id = id;
+        this.name = name;
+        this.groups = groups;
     }
 
-    public Faculty(int idFaculty, String nameFaculty) {
-        this.idFaculty = idFaculty;
-        this.nameFaculty = nameFaculty;
+    public Faculty(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public List<Group> getGroup() {
-        return group;
+    public int getId() {
+        return id;
     }
 
-    public int getIdFaculty() {
-        return idFaculty;
+    public List<Group> getGroups() {
+        return groups;
     }
 
-    public void setIdFaculty(int idFaculty) {
-        this.idFaculty = idFaculty;
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 
-    public String getNameFaculty() {
-        return nameFaculty;
+    public String getName() {
+        return name;
     }
 
-    public void setNameFaculty(String nameFaculty) {
-        this.nameFaculty = nameFaculty;
-    }
-
-    public void setGroup(List<Group> group) {
-        this.group = group;
+    public void setName(String name) {
+        this.name = name;
     }
 }

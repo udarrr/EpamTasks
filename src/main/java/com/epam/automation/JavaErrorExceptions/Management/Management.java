@@ -16,37 +16,30 @@ public class Management {
     private final List<Faculty> faculties;
 
     public Management(List<Faculty> faculties) {
-
         this.faculties = faculties;
     }
 
     public List<Faculty> getFaculties() {
-
         return faculties;
     }
 
     public void addFaculty(String nameFaculty) {
-
         int nextIdFaculty = faculties.size() + 1;
 
-
         if (faculties.stream().noneMatch(x -> {
-            return x.getNameFaculty().equals(nameFaculty);
-        })) {
 
+            return x.getName().equals(nameFaculty);
+        })) {
             faculties.add(new Faculty(nextIdFaculty, nameFaculty, new ArrayList<>()));
         }
     }
 
     public int getIndexFaculty(String faculty) {
-
         int indexFaculty = 0;
         boolean isIndex = false;
 
         for (int i = 0; i < faculties.size(); i++) {
-
-            if (faculties.get(i).getNameFaculty().equals(faculty)) {
-
+            if (faculties.get(i).getName().equals(faculty)) {
                 indexFaculty = i;
                 isIndex = true;
 
@@ -58,14 +51,11 @@ public class Management {
     }
 
     public int getIndexFaculty(int idFaculty) {
-
         int indexFaculty = 0;
         boolean isIndex = false;
 
         for (int i = 0; i < faculties.size(); i++) {
-
-            if (faculties.get(i).getIdFaculty() == idFaculty) {
-
+            if (faculties.get(i).getId() == idFaculty) {
                 indexFaculty = i;
                 isIndex = true;
 
@@ -77,17 +67,16 @@ public class Management {
     }
 
     public double getAvgMarkFromParticularStudentAllSubjects(String nameStudent) {
-
         double avgMark;
-
         try {
             avgMark = faculties.stream().
-                    flatMap(x -> x.getGroup().stream()).
-                    flatMap(z -> z.getStudent().stream()).
+                    flatMap(x -> x.getGroups().stream()).
+                    flatMap(z -> z.getStudents().stream()).
                     filter(v -> v.getName().equals(nameStudent)).
-                    flatMap(n -> n.getSubject().stream()).
-                    flatMap(m -> m.getMark().stream()).mapToInt(s -> s).average().orElseThrow(NoSuchElementException::new);
-        } catch (NoSuchElementException e){
+                    flatMap(n -> n.getSubjects().stream()).
+                    flatMap(m -> m.getMarks().stream()).mapToInt(s -> s).average().
+                    orElseThrow(NoSuchElementException::new);
+        } catch (NoSuchElementException e) {
             return -1;
         }
 
@@ -96,23 +85,21 @@ public class Management {
 
 
     public double getAvgMarkFromParticularGroupStudentSubject(String nameFaculty, String nameGroup, String nameSubject) {
-
         double avgMark;
-
         int indexFaculty = getIndexFaculty(nameFaculty);
         int indexGroup = getIndexGroup(indexFaculty, nameGroup);
 
         if (indexFaculty > -1 && indexGroup > -1) {
             try {
-                avgMark = faculties.get(indexFaculty).getGroup().get(indexGroup).getStudent().stream().
-                        flatMap(x -> x.getSubject().stream()).
-                        filter(z -> z.getTypeSubject().equals(nameSubject)).
-                        flatMap(c -> c.getMark().stream()).mapToInt(v -> v).average().orElseThrow(NoSuchElementException::new);
+                avgMark = faculties.get(indexFaculty).getGroups().get(indexGroup).getStudents().stream().
+                        flatMap(x -> x.getSubjects().stream()).
+                        filter(z -> z.getName().equals(nameSubject)).
+                        flatMap(c -> c.getMarks().stream()).mapToInt(v -> v).average().
+                        orElseThrow(NoSuchElementException::new);
             } catch (NoSuchElementException e) {
                 return -1;
             }
-        }
-        else {
+        } else {
             return -1;
         }
 
@@ -120,61 +107,40 @@ public class Management {
     }
 
     public double getAvgMarkWholeUniversityFromParticularSubject(String nameSubject) {
-
         double avgMark;
-
         try {
             avgMark = faculties.stream().
-                    flatMap(z -> z.getGroup().stream()).
-                    flatMap(x -> x.getStudent().stream()).
-                    flatMap(c -> c.getSubject().stream()).filter(v -> v.getTypeSubject().equals(nameSubject)).
-                    flatMap(b -> b.getMark().stream()).mapToInt(n -> n).average().orElseThrow(NoSuchElementException::new);
-        } catch (NoSuchElementException e){
+                    flatMap(z -> z.getGroups().stream()).
+                    flatMap(x -> x.getStudents().stream()).
+                    flatMap(c -> c.getSubjects().stream()).filter(v -> v.getName().equals(nameSubject)).
+                    flatMap(b -> b.getMarks().stream()).mapToInt(n -> n).average().
+                    orElseThrow(NoSuchElementException::new);
+        } catch (NoSuchElementException e) {
             return -1;
         }
 
         return avgMark;
     }
 
-    public void addGroup(String nameFaculty, String nameGroup) {
+    public List<Group> getGroup() {
+        return faculties.stream().flatMap(x -> x.getGroups().stream()).collect(Collectors.toList());
+    }
 
-        int nextIdGroup = getGroup().size() + 1;
+    public List<Group> getGroup(int idFaculty) {
 
-        int indexFaculty = 0;
-        boolean isFaculty = false;
-
-        for (int i = 0; i < faculties.size(); i++) {
-
-            if (faculties.get(i).getNameFaculty().equals(nameFaculty)) {
-
-                indexFaculty = i;
-                isFaculty = true;
-
-                break;
-            }
-        }
-
-        if (isFaculty &&
-                faculties.get(indexFaculty).getGroup().stream().noneMatch(z -> {
-
-                    return z.getNameGroup().equals(nameGroup);
-                })) {
-
-            faculties.get(indexFaculty).getGroup().add(new Group(nextIdGroup, nameGroup, new ArrayList<>()));
-        }
+        return faculties.stream().
+                filter(x -> x.getId() == idFaculty).
+                flatMap(z -> z.getGroups().stream()).
+                collect(Collectors.toList());
     }
 
     public void addGroup(int idFaculty, String nameGroup) {
-
         int nextIdGroup = getGroup().size() + 1;
-
         int indexFaculty = 0;
         boolean isFaculty = false;
 
         for (int i = 0; i < faculties.size(); i++) {
-
-            if (faculties.get(i).getIdFaculty() == idFaculty) {
-
+            if (faculties.get(i).getId() == idFaculty) {
                 indexFaculty = i;
                 isFaculty = true;
 
@@ -183,29 +149,21 @@ public class Management {
         }
 
         if (isFaculty &&
-                faculties.get(indexFaculty).getGroup().stream().noneMatch(z -> {
+                faculties.get(indexFaculty).getGroups().stream().noneMatch(z -> {
 
-                    return z.getNameGroup().equals(nameGroup);
+                    return z.getName().equals(nameGroup);
                 })) {
 
-            faculties.get(indexFaculty).getGroup().add(new Group(nextIdGroup, nameGroup, new ArrayList<>()));
+            faculties.get(indexFaculty).getGroups().add(new Group(nextIdGroup, nameGroup, new ArrayList<>()));
         }
     }
 
-    public List<Group> getGroup() {
-
-        return faculties.stream().flatMap(x -> x.getGroup().stream()).collect(Collectors.toList());
-    }
-
     public int getIndexGroup(int indexFaculty, String group) {
-
         int indexGroup = 0;
         boolean isIndex = false;
 
-        for (int i = 0; i < faculties.get(indexFaculty).getGroup().size(); i++) {
-
-            if (faculties.get(indexFaculty).getGroup().get(i).getNameGroup().equals(group)) {
-
+        for (int i = 0; i < faculties.get(indexFaculty).getGroups().size(); i++) {
+            if (faculties.get(indexFaculty).getGroups().get(i).getName().equals(group)) {
                 indexGroup = i;
                 isIndex = true;
 
@@ -217,14 +175,11 @@ public class Management {
     }
 
     public int getIndexGroup(int indexFaculty, int idGroup) {
-
         int indexGroup = 0;
         boolean isIndex = false;
 
-        for (int i = 0; i < faculties.get(indexFaculty).getGroup().size(); i++) {
-
-            if (faculties.get(indexFaculty).getGroup().get(i).getIdGroup() == idGroup) {
-
+        for (int i = 0; i < faculties.get(indexFaculty).getGroups().size(); i++) {
+            if (faculties.get(indexFaculty).getGroups().get(i).getId() == idGroup) {
                 indexGroup = i;
                 isIndex = true;
 
@@ -235,30 +190,32 @@ public class Management {
         return isIndex ? indexGroup : -1;
     }
 
-    public List<Group> getGroup(int idFaculty) {
-
+    public List<Student> getStudent() {
         return faculties.stream().
-                filter(x->x.getIdFaculty() == idFaculty).
-                flatMap(z->z.getGroup().stream()).
+                flatMap(z -> z.getGroups().stream()).
+                flatMap(x -> x.getStudents().stream()).
                 collect(Collectors.toList());
     }
 
-    public void addStudent(String nameGroup, String nameStudent) {
 
+    public List<Student> getStudent(int idGroup) {
+        return faculties.stream().
+                flatMap(z -> z.getGroups().stream()).
+                filter(m -> m.getId() == idGroup).
+                flatMap(x -> x.getStudents().stream()).
+                collect(Collectors.toList());
+    }
+
+    public void setStudent(int idGroup, String nameStudent) {
         int nextIdStudent = getStudent().size() + 1;
-
         int indexGroup = 0;
         int indexFaculty = 0;
         boolean isGroup = false;
 
         for (int i = 0; i < faculties.size(); i++) {
-
             if (!isGroup) {
-
-                for (int j = 0; j < faculties.get(i).getGroup().size(); j++) {
-
-                    if (faculties.get(i).getGroup().get(j).getNameGroup().equals(nameGroup)) {
-
+                for (int j = 0; j < faculties.get(i).getGroups().size(); j++) {
+                    if (faculties.get(i).getGroups().get(j).getId() == idGroup) {
                         indexFaculty = i;
                         indexGroup = j;
                         isGroup = true;
@@ -274,73 +231,23 @@ public class Management {
 
         if (isGroup &&
                 faculties.
-                        get(indexFaculty).getGroup().
-                        get(indexGroup).getStudent().
+                        get(indexFaculty).getGroups().
+                        get(indexGroup).getStudents().
                         stream().noneMatch(z -> {
 
                     return z.getName().equals(nameStudent);
                 })) {
 
-            faculties.get(indexFaculty).getGroup().get(indexGroup).getStudent().add(new Student(nextIdStudent, nameStudent, new ArrayList<>()));
+            faculties.get(indexFaculty).getGroups().get(indexGroup).getStudents().add(new Student(nextIdStudent, nameStudent, new ArrayList<>()));
         }
-    }
-
-    public void addStudent(int idGroup, String nameStudent) {
-
-        int nextIdStudent = getStudent().size() + 1;
-
-        int indexGroup = 0;
-        int indexFaculty = 0;
-        boolean isGroup = false;
-
-        for (int i = 0; i < faculties.size(); i++) {
-
-            if (!isGroup) {
-
-                for (int j = 0; j < faculties.get(i).getGroup().size(); j++) {
-
-                    if (faculties.get(i).getGroup().get(j).getIdGroup() == idGroup) {
-
-                        indexFaculty = i;
-                        indexGroup = j;
-                        isGroup = true;
-
-                        break;
-                    }
-                }
-            } else {
-
-                break;
-            }
-        }
-
-        if (isGroup &&
-                faculties.
-                        get(indexFaculty).getGroup().
-                        get(indexGroup).getStudent().
-                        stream().noneMatch(z -> {
-
-                    return z.getName().equals(nameStudent);
-                })) {
-
-            faculties.get(indexFaculty).getGroup().get(indexGroup).getStudent().add(new Student(nextIdStudent, nameStudent, new ArrayList<>()));
-        }
-    }
-
-    public List<Student> getStudent() {
-
-        return faculties.stream().flatMap(z -> z.getGroup().stream()).flatMap(x -> x.getStudent().stream()).collect(Collectors.toList());
     }
 
     public int getIndexStudent(int indexFaculty, int indexGroup, int idStudent) {
-
         int indexStudent = 0;
         boolean isIndex = false;
 
-        for (int i = 0; i < faculties.get(indexFaculty).getGroup().get(indexGroup).getStudent().size(); i++) {
-
-            if (faculties.get(indexFaculty).getGroup().get(indexGroup).getStudent().get(i).getIdStudent() == idStudent) {
-
+        for (int i = 0; i < faculties.get(indexFaculty).getGroups().get(indexGroup).getStudents().size(); i++) {
+            if (faculties.get(indexFaculty).getGroups().get(indexGroup).getStudents().get(i).getId() == idStudent) {
                 indexStudent = i;
                 isIndex = true;
 
@@ -351,37 +258,44 @@ public class Management {
         return isIndex ? indexStudent : -1;
     }
 
-    public List<Student> getStudent(int idGroup) {
+    public List<Subject> getSubject(int idStudent) {
 
         return faculties.stream().
-                flatMap(z -> z.getGroup().stream()).
-                filter(m->m.getIdGroup() == idGroup).
-                flatMap(x -> x.getStudent().stream()).
+                flatMap(z -> z.getGroups().stream()).
+                flatMap(x -> x.getStudents().stream()).
+                filter(v -> v.getId() == idStudent).
+                flatMap(c -> c.getSubjects().stream()).
                 collect(Collectors.toList());
     }
 
-    public void addSubject(int idStudent, String nameSubject) {
+    public List<Subject> getSubject(int idStudent, int idSubject) {
 
+        return faculties.stream().
+                flatMap(z -> z.getGroups().stream()).
+                flatMap(x -> x.getStudents().stream()).
+                filter(v -> v.getId() == idStudent).
+                flatMap(c -> c.getSubjects().stream()).
+                filter(b -> b.getId() == idSubject).
+                collect(Collectors.toList());
+    }
+
+    public void setSubject(int idStudent, String nameSubject) {
         int indexFaculty = 0;
         int indexGroup = 0;
         int indexStudent = 0;
-
-        int nextIdSubject = getSubjectOfStudent(idStudent).size() + 1;
+        int nextIdSubject = getSubject(idStudent).size() + 1;
 
         boolean isStudent = false;
 
-
         for (int i = 0; i < faculties.size(); i++) {
-
             if (!isStudent) {
-
-                for (int j = 0; j < faculties.get(i).getGroup().size(); j++) {
-
+                for (int j = 0; j < faculties.get(i).getGroups().size(); j++) {
                     if (!isStudent) {
-
-                        for (int k = 0; k < faculties.get(i).getGroup().get(j).getStudent().size(); k++) {
-
-                            if (faculties.get(i).getGroup().get(j).getStudent().get(k).getIdStudent() == idStudent) {
+                        for (int k = 0; k < faculties.get(i).getGroups().get(j).getStudents().size(); k++) {
+                            if (faculties.
+                                    get(i).getGroups().
+                                    get(j).getStudents().get(k).
+                                    getId() == idStudent) {
 
                                 indexFaculty = i;
                                 indexGroup = j;
@@ -392,47 +306,49 @@ public class Management {
                             }
                         }
                     } else {
+
                         break;
                     }
                 }
 
             } else {
+
                 break;
             }
         }
 
         if (isStudent &&
                 faculties.
-                        get(indexFaculty).getGroup().
-                        get(indexGroup).getStudent().
-                        get(indexStudent).getSubject().
+                        get(indexFaculty).getGroups().
+                        get(indexGroup).getStudents().
+                        get(indexStudent).getSubjects().
                         stream().noneMatch(z -> {
 
-                    return z.getTypeSubject().equals(nameSubject);
+                    return z.getName().equals(nameSubject);
                 })) {
 
-            faculties.get(indexFaculty).getGroup().get(indexGroup).getStudent().get(indexStudent).getSubject().add(new Subject(nextIdSubject, nameSubject, new ArrayList<>()));
+            faculties.
+                    get(indexFaculty).getGroups().
+                    get(indexGroup).getStudents().
+                    get(indexStudent).getSubjects().
+                    add(new Subject(nextIdSubject, nameSubject, new ArrayList<>()));
         }
     }
 
-    public List<Subject> getSubjectOfStudent(int idStudent) {
-
-        return faculties.stream().
-                flatMap(z -> z.getGroup().stream()).
-                flatMap(x -> x.getStudent().stream()).
-                filter(c -> c.getIdStudent() == idStudent).
-                flatMap(v -> v.getSubject().stream()).
-                collect(Collectors.toList());
-    }
-
     public int getIndexSubject(int indexFaculty, int indexGroup, int indexStudent, int idSubject) {
-
         int indexSubject = 0;
         boolean isIndex = false;
+        int amountSubjects = faculties.
+                get(indexFaculty).getGroups().
+                get(indexGroup).getStudents().
+                get(indexStudent).getSubjects().size();
 
-        for (int i = 0; i < faculties.get(indexFaculty).getGroup().get(indexGroup).getStudent().get(indexStudent).getSubject().size(); i++) {
-
-            if (faculties.get(indexFaculty).getGroup().get(indexGroup).getStudent().get(indexStudent).getSubject().get(i).getIdSubject() == idSubject) {
+        for (int i = 0; i < amountSubjects; i++) {
+            if (faculties.
+                    get(indexFaculty).getGroups().
+                    get(indexGroup).getStudents().
+                    get(indexStudent).getSubjects().
+                    get(i).getId() == idSubject) {
 
                 indexSubject = i;
                 isIndex = true;
@@ -444,53 +360,36 @@ public class Management {
         return isIndex ? indexSubject : -1;
     }
 
-    public List<Subject> getSubject(int idStudent) {
-
-        return faculties.stream().
-                flatMap(z -> z.getGroup().stream()).
-                flatMap(x -> x.getStudent().stream()).
-                filter(v -> v.getIdStudent() == idStudent).
-                flatMap(c -> c.getSubject().stream()).
-                collect(Collectors.toList());
-    }
-
-    public List<Subject> getSubject(int idStudent, int idSubject) {
-
-        return faculties.stream().
-                flatMap(z -> z.getGroup().stream()).
-                flatMap(x -> x.getStudent().stream()).
-                filter(v -> v.getIdStudent() == idStudent).
-                flatMap(c -> c.getSubject().stream()).
-                filter(b -> b.getIdSubject() == idSubject).
-                collect(Collectors.toList());
-    }
-
-    public void addMarks(int indexFaculty, int indexGroup, int indexStudent, int indexSubject, int mark) {
-
+    public void setMarks(int indexFaculty, int indexGroup, int indexStudent, int indexSubject, int mark) {
         try {
-            if ((mark >= 0) && (mark <= 10)){
+            boolean nullChecker =
+                            faculties.
+                                    get(indexFaculty) != null &&
+                            faculties.
+                                    get(indexFaculty).
+                                    getGroups().get(indexGroup) != null &&
+                            faculties.
+                                    get(indexFaculty).getGroups().
+                                    get(indexGroup).getStudents().
+                                    get(indexStudent) !=null &&
+                            faculties.
+                                    get(indexFaculty).getGroups().
+                                    get(indexGroup).getStudents().
+                                    get(indexStudent).getSubjects().
+                                    get(indexSubject) != null;
 
-                faculties.get(indexFaculty).
-                                getGroup().get(indexGroup).
-                                getStudent().get(indexStudent).
-                                getSubject().get(indexSubject).setMark(mark);
-            }
-            else {
+            if ((mark >= 0) && (mark <= 10) && nullChecker) {
+                faculties.
+                        get(indexFaculty).getGroups().
+                        get(indexGroup).getStudents().
+                        get(indexStudent).getSubjects().
+                        get(indexSubject).setMarks(mark);
+            } else {
                 throw new NumberIsNotInRangeException();
             }
 
         } catch (NumberIsNotInRangeException e) {
             System.out.println("You entered wrong number, mark can't be less 0 and more than 10");
         }
-    }
-
-    public void addMarks(int inputIdFaculty,int inputIdGroup,int inputIdStudent,int inputIdSubject,List<Integer> marks){
-
-        int indexFaculty = getIndexFaculty(inputIdFaculty);
-        int indexGroup = getIndexGroup(indexFaculty, inputIdGroup);
-        int indexStudent = getIndexStudent(indexFaculty, indexGroup, inputIdStudent);
-        int indexSubject = getIndexSubject(indexFaculty, indexGroup,indexStudent,inputIdSubject);
-
-        faculties.get(indexFaculty).getGroup().get(indexGroup).getStudent().get(indexStudent).getSubject().get(indexSubject).setMarks(marks);
     }
 }

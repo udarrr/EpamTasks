@@ -4,30 +4,18 @@ import java.util.List;
 
 public class Student {
 
-    int idStudent;
+    int id;
     String name;
-    List<Subject> subject;
+    List<Subject> subjects;
 
-    public Student(List<Subject> subject) {
-        this.subject = subject;
-    }
-
-    public Student(int idStudent, String name, List<Subject> subject) {
-        this.idStudent = idStudent;
+    public Student(int id, String name, List<Subject> subjects) {
+        this.id = id;
         this.name = name;
-        this.subject = subject;
+        this.subjects = subjects;
     }
 
-    public List<Subject> getSubject() {
-        return subject;
-    }
-
-    public int getIdStudent() {
-        return idStudent;
-    }
-
-    public void setIdStudent(int idStudent) {
-        this.idStudent = idStudent;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -38,7 +26,11 @@ public class Student {
         this.name = name;
     }
 
-    public void setSubject(List<Subject> subject) {
-        this.subject = subject;
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
     }
 }
