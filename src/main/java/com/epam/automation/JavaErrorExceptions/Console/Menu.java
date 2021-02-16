@@ -99,10 +99,10 @@ public class Menu {
         checkExistingSubject(inputIdStudent);
         int inputIdSubject = takeIdSubjectFromConsole(inputIdStudent);
 
-        addMarksToParticularSubject(inputIdFaculty,inputIdGroup,inputIdStudent,inputIdSubject);
+        addMarksToParticularSubject(inputIdFaculty, inputIdGroup, inputIdStudent, inputIdSubject);
     }
 
-    private void checkExistingFaculty(){
+    private void checkExistingFaculty() {
         printer.printUniversity(management.getFaculties());
 
         try {
@@ -119,7 +119,7 @@ public class Menu {
         }
     }
 
-    private void checkExistingGroup(int inputIdFaculty){
+    private void checkExistingGroup(int inputIdFaculty) {
         printer.printGroup(management.getGroup(inputIdFaculty));
 
         try {
@@ -135,7 +135,7 @@ public class Menu {
         }
     }
 
-    private void checkExistingStudent(int inputIdGroup){
+    private void checkExistingStudent(int inputIdGroup) {
         printer.printStudent(management.getStudent(inputIdGroup));
 
         try {
@@ -151,7 +151,7 @@ public class Menu {
         }
     }
 
-    private void checkExistingSubject(int inputIdStudent){
+    private void checkExistingSubject(int inputIdStudent) {
         printer.printSubjectOfStudent(management.getSubject(inputIdStudent));
 
         try {
@@ -168,7 +168,7 @@ public class Menu {
         }
     }
 
-    private int takeIdFacultyFromConsole(){
+    private int takeIdFacultyFromConsole() {
         System.out.println();
         System.out.print("Choose and enter value of ID FACULTY where you'd like to add subject: ");
         System.out.println();
@@ -193,7 +193,7 @@ public class Menu {
         return inputIdFaculty;
     }
 
-    private int takeIdGroupFromConsole(){
+    private int takeIdGroupFromConsole() {
         System.out.println();
         System.out.print("Choose and enter value of ID GROUP where you'd like to add subject: ");
         System.out.println();
@@ -217,7 +217,7 @@ public class Menu {
         return inputIdGroup;
     }
 
-    private int takeIdStudentFromConsole(){
+    private int takeIdStudentFromConsole() {
         System.out.println();
         System.out.print("Choose and enter value of ID STUDENT where you'd like to add subject: ");
         System.out.println();
@@ -242,7 +242,7 @@ public class Menu {
         return inputIdStudent;
     }
 
-    private int takeIdSubjectFromConsole(int inputIdStudent){
+    private int takeIdSubjectFromConsole(int inputIdStudent) {
         System.out.println();
         System.out.print("Choose and enter value of ID SUBJECT where you'd like to add marks: ");
         System.out.println();
@@ -269,14 +269,14 @@ public class Menu {
         return inputIdSubject;
     }
 
-    private void addMarksToParticularSubject(int inputIdFaculty, int inputIdGroup, int inputIdStudent, int inputIdSubject){
+    private void addMarksToParticularSubject(int inputIdFaculty, int inputIdGroup, int inputIdStudent, int inputIdSubject) {
         int indexFaculty = management.getIndexFaculty(inputIdFaculty);
         int indexGroup = management.getIndexGroup(indexFaculty, inputIdGroup);
         int indexStudent = management.getIndexStudent(indexFaculty, indexGroup, inputIdStudent);
         int indexSubject = management.getIndexSubject(indexFaculty, indexGroup, indexStudent, inputIdSubject);
 
         while (true) {
-            System.out.println("Writing mark or enter exit");
+            System.out.println("Enter new mark or type exit in console");
 
             String markOrExit = sc.nextLine();
 
@@ -286,7 +286,7 @@ public class Menu {
 
             try {
                 management.setMarks(indexFaculty, indexGroup, indexStudent, indexSubject, Integer.parseInt(markOrExit));
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.out.println("Mark can be only integer please try again");
             }
 
