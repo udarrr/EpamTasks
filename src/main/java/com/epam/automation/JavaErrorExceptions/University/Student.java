@@ -3,7 +3,6 @@ package com.epam.automation.JavaErrorExceptions.University;
 import java.util.List;
 
 public class Student {
-
     int id;
     String firstName;
     String lastName;
@@ -40,9 +39,10 @@ public class Student {
         return subjects;
     }
 
-    public void setSubjects(List<Subject> subjects) {
-        this.subjects = subjects;
+    public void setSubjects(Subject subjects) {
+        this.subjects.add(subjects);
     }
+
 
     @Override
     public String toString() {

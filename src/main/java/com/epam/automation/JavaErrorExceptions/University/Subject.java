@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Subject {
-
     int id;
     String name;
     List<Integer> marks;
@@ -16,7 +15,6 @@ public class Subject {
     }
 
     public int getId() {
-
         return id;
     }
 

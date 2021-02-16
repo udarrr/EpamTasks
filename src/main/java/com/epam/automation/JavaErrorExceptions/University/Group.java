@@ -3,7 +3,6 @@ package com.epam.automation.JavaErrorExceptions.University;
 import java.util.List;
 
 public class Group {
-
     int id;
     String name;
     List<Student> students;
@@ -39,8 +38,8 @@ public class Group {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
+    public void setStudents(Student students) {
+        this.students.add(students);
     }
 
     @Override

@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Printer {
-
     public void printUniversity(List<Faculty> faculties) {
         faculties.forEach(x -> System.out.println(x.toString()));
     }
