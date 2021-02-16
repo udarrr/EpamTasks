@@ -241,7 +241,7 @@ public class Menu {
             }
 
             try {
-                management.setMarks(inputFacultyId, inputGroupId, inputStudentId, inputSubjectId, Integer.parseInt(markOrExit));
+                management.addMark(inputFacultyId, inputGroupId, inputStudentId, inputSubjectId, Integer.parseInt(markOrExit));
             } catch (NumberFormatException e) {
                 System.out.println("Mark can be only integer please try again");
             } catch (NumberIsNotInRangeException e) {

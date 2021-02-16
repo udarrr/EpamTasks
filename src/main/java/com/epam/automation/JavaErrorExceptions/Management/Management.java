@@ -51,66 +51,6 @@ public class Management {
                 filter(fac -> fac.getId() == facultyId).collect(Collectors.toList());
     }
 
-    public double getStudentAverageMark(String studentName) {
-        double avgMark;
-
-        try {
-            avgMark = university.stream().
-                    flatMap(f -> f.getFaculties().stream()).
-                    flatMap(x -> x.getGroups().stream()).
-                    flatMap(z -> z.getStudents().stream()).
-                    filter(v -> v.getFirstName().equals(studentName)).
-                    flatMap(n -> n.getSubjects().stream()).
-                    flatMap(m -> m.getMarks().stream()).mapToInt(s -> s).average().
-                    orElseThrow(NoSuchElementException::new);
-        } catch (NoSuchElementException e) {
-
-            return -1;
-        }
-
-        return avgMark;
-    }
-
-    public double getFacultyGroupSubjectAverageMark(String facultyName, String groupName, String subjectName) {
-        double avgMark;
-
-        try {
-            avgMark = university.stream().
-                    flatMap(f -> f.getFaculties().stream()).
-                    filter(f -> f.getName().equals(facultyName)).
-                    flatMap(g -> g.getGroups().stream()).
-                    filter(gr -> gr.getName().equals(groupName)).
-                    flatMap(x -> x.getStudents().stream()).
-                    flatMap(subj -> subj.getSubjects().stream()).
-                    filter(z -> z.getName().equals(subjectName)).
-                    flatMap(c -> c.getMarks().stream()).mapToInt(v -> v).average().
-                    orElseThrow(NoSuchElementException::new);
-        } catch (NoSuchElementException e) {
-
-            return -1;
-        }
-        return avgMark;
-    }
-
-    public double getSubjectAverageMark(String subjectName) {
-        double avgMark;
-
-        try {
-            avgMark = university.stream().
-                    flatMap(f -> f.getFaculties().stream()).
-                    flatMap(z -> z.getGroups().stream()).
-                    flatMap(x -> x.getStudents().stream()).
-                    flatMap(c -> c.getSubjects().stream()).filter(v -> v.getName().equals(subjectName)).
-                    flatMap(b -> b.getMarks().stream()).mapToInt(n -> n).average().
-                    orElseThrow(NoSuchElementException::new);
-        } catch (NoSuchElementException e) {
-
-            return -1;
-        }
-
-        return avgMark;
-    }
-
     public List<Group> getGroups() {
 
         return university.stream().
@@ -225,7 +165,7 @@ public class Management {
         }
     }
 
-    public void setMarks(int facultyId, int groupId, int studentId, int subjectId, int mark) throws NumberIsNotInRangeException {
+    public void addMark(int facultyId, int groupId, int studentId, int subjectId, int mark) throws NumberIsNotInRangeException {
         if ((mark >= 0) && (mark <= 10)) {
             university.stream().
                     flatMap(f -> f.getFaculties().stream()).filter(f -> f.getId() == facultyId).
@@ -236,6 +176,66 @@ public class Management {
         } else {
             throw new NumberIsNotInRangeException("You entered wrong number, mark can't be less 0 and more than 10");
         }
+    }
+
+    public double getStudentAverageMark(String studentName) {
+        double avgMark;
+
+        try {
+            avgMark = university.stream().
+                    flatMap(f -> f.getFaculties().stream()).
+                    flatMap(x -> x.getGroups().stream()).
+                    flatMap(z -> z.getStudents().stream()).
+                    filter(v -> v.getFirstName().equals(studentName)).
+                    flatMap(n -> n.getSubjects().stream()).
+                    flatMap(m -> m.getMarks().stream()).mapToInt(s -> s).average().
+                    orElseThrow(NoSuchElementException::new);
+        } catch (NoSuchElementException e) {
+
+            return -1;
+        }
+
+        return avgMark;
+    }
+
+    public double getFacultyGroupSubjectAverageMark(String facultyName, String groupName, String subjectName) {
+        double avgMark;
+
+        try {
+            avgMark = university.stream().
+                    flatMap(f -> f.getFaculties().stream()).
+                    filter(f -> f.getName().equals(facultyName)).
+                    flatMap(g -> g.getGroups().stream()).
+                    filter(gr -> gr.getName().equals(groupName)).
+                    flatMap(x -> x.getStudents().stream()).
+                    flatMap(subj -> subj.getSubjects().stream()).
+                    filter(z -> z.getName().equals(subjectName)).
+                    flatMap(c -> c.getMarks().stream()).mapToInt(v -> v).average().
+                    orElseThrow(NoSuchElementException::new);
+        } catch (NoSuchElementException e) {
+
+            return -1;
+        }
+        return avgMark;
+    }
+
+    public double getSubjectAverageMark(String subjectName) {
+        double avgMark;
+
+        try {
+            avgMark = university.stream().
+                    flatMap(f -> f.getFaculties().stream()).
+                    flatMap(z -> z.getGroups().stream()).
+                    flatMap(x -> x.getStudents().stream()).
+                    flatMap(c -> c.getSubjects().stream()).filter(v -> v.getName().equals(subjectName)).
+                    flatMap(b -> b.getMarks().stream()).mapToInt(n -> n).average().
+                    orElseThrow(NoSuchElementException::new);
+        } catch (NoSuchElementException e) {
+
+            return -1;
+        }
+
+        return avgMark;
     }
 
     public void checkExistingFaculty(int facultyId) throws NoFacultyInUniversityException {
