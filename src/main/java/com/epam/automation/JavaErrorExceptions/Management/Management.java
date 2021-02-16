@@ -23,7 +23,7 @@ public class Management {
         return faculties;
     }
 
-    public void addFaculty(String nameFaculty) {
+    public void setFaculty(String nameFaculty) {
         int nextIdFaculty = faculties.size() + 1;
 
         if (faculties.stream().noneMatch(x -> {
@@ -72,7 +72,7 @@ public class Management {
             avgMark = faculties.stream().
                     flatMap(x -> x.getGroups().stream()).
                     flatMap(z -> z.getStudents().stream()).
-                    filter(v -> v.getName().equals(nameStudent)).
+                    filter(v -> v.getFirstName().equals(nameStudent)).
                     flatMap(n -> n.getSubjects().stream()).
                     flatMap(m -> m.getMarks().stream()).mapToInt(s -> s).average().
                     orElseThrow(NoSuchElementException::new);
@@ -134,7 +134,7 @@ public class Management {
                 collect(Collectors.toList());
     }
 
-    public void addGroup(int idFaculty, String nameGroup) {
+    public void setGroup(int idFaculty, String nameGroup) {
         int nextIdGroup = getGroup().size() + 1;
         int indexFaculty = 0;
         boolean isFaculty = false;
@@ -206,7 +206,7 @@ public class Management {
                 collect(Collectors.toList());
     }
 
-    public void setStudent(int idGroup, String nameStudent) {
+    public void setStudent(int idGroup, String firstName, String lastName) {
         int nextIdStudent = getStudent().size() + 1;
         int indexGroup = 0;
         int indexFaculty = 0;
@@ -235,10 +235,10 @@ public class Management {
                         get(indexGroup).getStudents().
                         stream().noneMatch(z -> {
 
-                    return z.getName().equals(nameStudent);
+                    return z.getFirstName().equals(firstName) && z.getLastName().equals(lastName);
                 })) {
 
-            faculties.get(indexFaculty).getGroups().get(indexGroup).getStudents().add(new Student(nextIdStudent, nameStudent, new ArrayList<>()));
+            faculties.get(indexFaculty).getGroups().get(indexGroup).getStudents().add(new Student(nextIdStudent, firstName, lastName, new ArrayList<>()));
         }
     }
 

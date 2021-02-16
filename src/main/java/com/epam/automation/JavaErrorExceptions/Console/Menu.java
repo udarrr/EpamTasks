@@ -61,7 +61,7 @@ public class Menu {
                 System.out.println();
                 System.out.print("Enter new FACULTY name: ");
                 String inputNameFaculty = sc.nextLine();
-                management.addFaculty(inputNameFaculty);
+                management.setFaculty(inputNameFaculty);
             }
         }
     }
@@ -114,7 +114,7 @@ public class Menu {
             System.out.println("In university no faculty, please add one");
             System.out.print("Enter name for new faculty:");
 
-            management.addFaculty(sc.nextLine());
+            management.setFaculty(sc.nextLine());
             printer.printUniversity(management.getFaculties());
         }
     }
@@ -130,7 +130,7 @@ public class Menu {
             System.out.println("In faculty no group, please add one");
             System.out.print("Enter name for new group:");
 
-            management.addGroup(inputIdFaculty, sc.nextLine());
+            management.setGroup(inputIdFaculty, sc.nextLine());
             printer.printGroup(management.getGroup(inputIdFaculty));
         }
     }
@@ -144,9 +144,9 @@ public class Menu {
             }
         } catch (NoStudentInGroupException e) {
             System.out.println("In group no student, please add one");
-            System.out.print("Enter name for new student:");
+            System.out.print("Enter firstname and lastname for new student:");
 
-            management.setStudent(inputIdGroup, sc.nextLine());
+            management.setStudent(inputIdGroup, sc.nextLine(), sc.nextLine());
             printer.printStudent(management.getStudent(inputIdGroup));
         }
     }

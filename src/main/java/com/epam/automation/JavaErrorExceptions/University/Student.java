@@ -5,12 +5,14 @@ import java.util.List;
 public class Student {
 
     int id;
-    String name;
+    String firstName;
+    String lastName;
     List<Subject> subjects;
 
-    public Student(int id, String name, List<Subject> subjects) {
+    public Student(int id, String firstName, String lastName, List<Subject> subjects) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.subjects = subjects;
     }
 
@@ -18,12 +20,20 @@ public class Student {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public List<Subject> getSubjects() {
@@ -38,7 +48,8 @@ public class Student {
     public String toString() {
         return "Student{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 '}';
     }
 }
