@@ -276,15 +276,20 @@ public class Menu {
         int indexSubject = management.getIndexSubject(indexFaculty, indexGroup, indexStudent, inputIdSubject);
 
         while (true) {
-
             System.out.println("Writing mark or enter exit");
+
             String markOrExit = sc.nextLine();
 
             if (markOrExit.equals("exit")) {
                 break;
             }
 
-            management.setMarks(indexFaculty, indexGroup, indexStudent, indexSubject, Integer.parseInt(markOrExit));
+            try {
+                management.setMarks(indexFaculty, indexGroup, indexStudent, indexSubject, Integer.parseInt(markOrExit));
+            }catch (NumberFormatException e){
+                System.out.println("Mark can be only integer please try again");
+            }
+
             printer.printSubjectOfStudent(management.getSubject(inputIdStudent, inputIdSubject));
         }
     }
@@ -335,7 +340,6 @@ public class Menu {
                         System.out.println("Not all subjects have marks");
                     } else {
                         printer.printAvgMark(averageMark);
-
                     }
                 }
             }

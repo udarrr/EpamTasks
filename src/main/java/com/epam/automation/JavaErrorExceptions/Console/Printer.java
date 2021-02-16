@@ -32,7 +32,7 @@ public class Printer {
         System.out.println("Please choose position of menu enter it in console and press button ENTER");
         System.out.println();
         System.out.println("Menu");
-        System.out.println("1.University");
+        System.out.println("1.Faculties");
         System.out.println("2.Get average mark");
         System.out.println("3.Exit");
         System.out.println();
