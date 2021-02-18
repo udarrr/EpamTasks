@@ -13,7 +13,8 @@ public class Start {
 
         List<Path> paths = directoriesReader.getPaths();
 
-        directoriesReader.getDirectoriesTree(file);
+        new FileWriter().writeLinesToFile(directoriesReader.getDirectoriesTree(file).split("\r\n"));
+
         System.out.println(directoriesReader.getDirectoriesTree(file));
     }
 }

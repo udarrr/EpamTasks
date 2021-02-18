@@ -64,7 +64,7 @@ public class DirectoriesReader {
         stringBuilder.append(getStringAfterRecursion(isLast));
         stringBuilder.append("|--");
         stringBuilder.append(folder.getName());
-        stringBuilder.append("\n");
+        stringBuilder.append("\r\n");
 
         if(jumpRecursion >0){
             isLast.push(isEndDirectory(folder.toPath()));
@@ -87,7 +87,7 @@ public class DirectoriesReader {
         stringBuilder.append(getStringAfterRecursion(isLast));
         stringBuilder.append("|--");
         stringBuilder.append(file.getName());
-        stringBuilder.append("\n");
+        stringBuilder.append("\r\n");
     }
 
     private String getStringAfterRecursion(Stack<Integer> isLast) {
