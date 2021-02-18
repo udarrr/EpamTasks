@@ -7,13 +7,13 @@ import java.util.List;
 
 public class Start {
     public static void main(String[] args) throws IOException {
-         PathReader pathReader = new PathReader();
-         List<Path> paths = pathReader.getPaths();
+        File file = new File("E:\\Play Games\\Battle.net");
 
-        File file = new File("C:\\test");
-        System.out.println(ConsolePrinter.printDirectoryTree(file));
-//
-//        pathReader.transformLine(0,0,paths);
+        DirectoriesReader directoriesReader = new DirectoriesReader();
 
+        List<Path> paths = directoriesReader.getPaths();
+
+        directoriesReader.getDirectoriesTree(file);
+        System.out.println(directoriesReader.getDirectoriesTree(file));
     }
 }
