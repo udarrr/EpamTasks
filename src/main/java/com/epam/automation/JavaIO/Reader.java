@@ -123,7 +123,7 @@ public class Reader {
     }
 
     public double getAverageAmountFiles(List<String> strings) throws NoDirectoriesInPath {
-        if(getAmountDirectories(strings) != 0) {
+        if (getAmountDirectories(strings) != 0) {
             return getAmountFiles(strings) / getAmountDirectories(strings);
         } else {
             throw new NoDirectoriesInPath("There are no directories in path");
