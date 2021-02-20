@@ -15,7 +15,7 @@ public class DirectoriesHandler {
         Reader reader = new Reader();
 
         try {
-            writer.putLinesToFile(reader.getDirectoriesTree(enteredPath));
+            writer.putLinesToFile(reader.fillDirectoriesTree(enteredPath));
             printer.printPlaceWithResult();
         } catch (IOException e) {
             System.err.println(e.getMessage());

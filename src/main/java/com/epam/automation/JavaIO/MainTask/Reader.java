@@ -11,14 +11,14 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Reader {
-    public String getDirectoriesTree(File path) throws IOException {
+    public String fillDirectoriesTree(File path) throws IOException {
         int jumpRecursion = 0;
 
         StringBuilder stringBuilder = new StringBuilder();
 
         Stack<Integer> isLast = new Stack<>();
 
-        getDirectoriesTree(path, jumpRecursion, stringBuilder, isLast);
+        fillDirectoriesTree(path, jumpRecursion, stringBuilder, isLast);
 
         return stringBuilder.toString();
     }
@@ -39,7 +39,7 @@ public class Reader {
         }
     }
 
-    private void getDirectoriesTree(File path, int jumpRecursion, StringBuilder stringBuilder, Stack<Integer> positionDirectory) throws IOException {
+    private void fillDirectoriesTree(File path, int jumpRecursion, StringBuilder stringBuilder, Stack<Integer> positionDirectory) throws IOException {
         stringBuilder.append(getStringAfterRecursion(positionDirectory));
         stringBuilder.append("+--");
         stringBuilder.append(path.getName());
@@ -51,9 +51,9 @@ public class Reader {
 
         for (File file : Objects.requireNonNull(path.listFiles())) {
             if (file.isDirectory()) {
-                getDirectoriesTree(file, jumpRecursion + 1, stringBuilder, positionDirectory);
+                fillDirectoriesTree(file, jumpRecursion + 1, stringBuilder, positionDirectory);
             } else {
-                getFile(file, stringBuilder, positionDirectory);
+                buildLineWithFile(file, stringBuilder, positionDirectory);
             }
         }
 
@@ -62,7 +62,7 @@ public class Reader {
         }
     }
 
-    private void getFile(File path, StringBuilder stringBuilder, Stack<Integer> isLast) {
+    private void buildLineWithFile(File path, StringBuilder stringBuilder, Stack<Integer> isLast) {
         stringBuilder.append(getStringAfterRecursion(isLast));
         stringBuilder.append("\\--");
         stringBuilder.append(path.getName());
