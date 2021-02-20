@@ -1,21 +1,21 @@
 package com.epam.automation.JavaIO.OptionalTask.File;
 
-public class Point2JavaProgramUnchanged {
-    public int value;
+public class Point2JavaProgram {
+    private int value;
     private double result;
 
-    public void methodOne(){
+    private void methodOne(){
         String line;
     }
 
-    public void methodTwo(){
+    private void methodTwo(){
         String line;
     }
 
-    public void methodThree(){
+    private void methodThree(){
         String line;
     }
-    public void methodFour(){
+    private void methodFour(){
         String line;
     }
 }

@@ -11,7 +11,7 @@ public class StartPoint2 {
         List<String> linesList = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader
-                (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\Point2JavaProgramUnchanged.java"))) {
+                (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\Point2JavaProgram.java"))) {
 
             String line;
 
@@ -20,7 +20,6 @@ public class StartPoint2 {
             }
 
             List<String> listAfterChanging = linesList.stream().
-                    map(ch -> ch.replace("Point2JavaProgramUnchanged", "Point2JavaProgramChanged")).
                     map(cg -> {
                         if (!(cg.contains("public") && cg.contains("class"))) {
                             return cg.replace("public", "private");
@@ -31,7 +30,7 @@ public class StartPoint2 {
                     collect(Collectors.toList());
 
             try (BufferedWriter bw = new BufferedWriter
-                    (new FileWriter("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\Point2JavaProgramChanged.java"))) {
+                    (new FileWriter("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\Point2JavaProgram.java"))) {
 
                 for (String lines : listAfterChanging) {
                     bw.write(lines);
