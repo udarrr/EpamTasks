@@ -132,6 +132,7 @@ public class Reader {
     }
 
     private List<String> getListFiles(List<String> text) {
+
         return text.stream().filter(x->x.contains("\\--")).collect(Collectors.toList());
     }
 
