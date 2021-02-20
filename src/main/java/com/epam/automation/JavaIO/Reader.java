@@ -8,6 +8,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Reader {
     public String getDirectoriesTree(File path) throws IOException {
@@ -73,67 +74,53 @@ public class Reader {
     private String getStringAfterRecursion(Stack<Integer> positionDirectory) {
         StringBuilder stringBuilder = new StringBuilder();
         Stack<Integer> copyStackPositionDirectory = (Stack<Integer>) positionDirectory.clone();
-        Stack<Integer> stack = reverseStack(copyStackPositionDirectory);
+        Stack<Integer> reversedStack = reverseStack(copyStackPositionDirectory);
 
-        while (!stack.isEmpty()) {
-            if (stack.peek() == 1) {
+        while (!reversedStack.isEmpty()) {
+            if (reversedStack.peek() == 1) {
                 stringBuilder.append("|\u0020\u0020\u0020");
             }
-            if (stack.peek() == 0) {
+            if (reversedStack.peek() == 0) {
                 stringBuilder.append("\u0020\u0020\u0020");
             }
-            stack.pop();
+            reversedStack.pop();
         }
 
         return stringBuilder.toString();
     }
 
     private Stack<Integer> reverseStack(Stack<Integer> copyStackPositionDirectory) {
-        Stack<Integer> reverseStack = new Stack<>();
+        Stack<Integer> reversedStack = new Stack<>();
 
         while (!copyStackPositionDirectory.isEmpty()) {
-            reverseStack.push(copyStackPositionDirectory.pop());
+            reversedStack.push(copyStackPositionDirectory.pop());
         }
 
-        return reverseStack;
+        return reversedStack;
     }
 
-    public double getAmountDirectories(List<String> strings) {
-        double amount = 0;
+    public double getDirectoriesNumber(List<String> text) {
 
-        for (String str : strings) {
-            if (str.contains("+--")) {
-                amount++;
-            }
-        }
-
-        return amount;
+        return (double) text.stream().filter(x->x.contains("+--")).count();
     }
 
-    public double getAmountFiles(List<String> strings) {
-        double amount = 0;
+    public double getFilesNumber(List<String> text) {
 
-        for (String str : strings) {
-            if (str.contains("\\--")) {
-                amount++;
-            }
-        }
-
-        return amount;
+        return (double) text.stream().filter(x->x.contains("\\--")).count();
     }
 
-    public double getAverageAmountFiles(List<String> strings) throws NoDirectoriesInPath {
-        if (getAmountDirectories(strings) != 0) {
-            return getAmountFiles(strings) / getAmountDirectories(strings);
+    public double getAverageAmountFiles(List<String> text) throws NoDirectoriesInPath {
+        if (getDirectoriesNumber(text) != 0) {
+            return getFilesNumber(text) / getDirectoriesNumber(text);
         } else {
             throw new NoDirectoriesInPath("There are no directories in path");
         }
     }
 
-    private double getAmountLengthsFiles(List<String> strings) {
+    private double getFileLengthsNumber(List<String> text) {
         double averageLength = 0;
 
-        for (String str : getListFiles(strings)) {
+        for (String str : getListFiles(text)) {
             String[] splitedStr = str.split("\\\\--");
             if (splitedStr.length == 2) {
                 String[] splittedFileNameAndExtention = splitedStr[1].split("\\.");
@@ -144,21 +131,13 @@ public class Reader {
         return averageLength;
     }
 
-    private List<String> getListFiles(List<String> strings) {
-        List<String> listFiles = new ArrayList<>();
-
-        for (String str : strings) {
-            if (str.contains("\\--")) {
-                listFiles.add(str);
-            }
-        }
-
-        return listFiles;
+    private List<String> getListFiles(List<String> text) {
+        return text.stream().filter(x->x.contains("\\--")).collect(Collectors.toList());
     }
 
     public double getAverageLengthNameOfFiles(List<String> strings) throws NoFilesInDirectories {
-        if (getAmountFiles(strings) != 0) {
-            return getAmountLengthsFiles(strings) / getAmountFiles(strings);
+        if (getFilesNumber(strings) != 0) {
+            return getFileLengthsNumber(strings) / getFilesNumber(strings);
         } else {
             throw new NoFilesInDirectories("There are no files in directories");
         }
@@ -167,16 +146,14 @@ public class Reader {
     public List<String> readFile(File path) throws IOException {
         List<String> listDirectoriesAndFiles = new LinkedList<>();
 
-        BufferedReader in = new BufferedReader(new FileReader(path));
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(path))){
+            String readiedLine;
 
-        String readiedLine;
+            while ((readiedLine = bufferedReader.readLine()) != null) {
+                listDirectoriesAndFiles.add(readiedLine);
+            }
 
-        while ((readiedLine = in.readLine()) != null) {
-            listDirectoriesAndFiles.add(readiedLine);
+            return listDirectoriesAndFiles;
         }
-
-        in.close();
-
-        return listDirectoriesAndFiles;
     }
 }

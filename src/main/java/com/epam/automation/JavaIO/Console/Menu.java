@@ -58,8 +58,8 @@ public class Menu {
             System.err.println(e.getMessage());
         }
 
-        printer.printAmountDirectories(reader.getAmountDirectories(list));
-        printer.printAmountFiles(reader.getAmountFiles(list));
+        printer.printAmountDirectories(reader.getDirectoriesNumber(list));
+        printer.printAmountFiles(reader.getFilesNumber(list));
 
         try {
             printer.printAverageQuantityFilesInDirectories(reader.getAverageAmountFiles(list));
