@@ -23,16 +23,16 @@ public class Reader {
         return stringBuilder.toString();
     }
 
-    private int isEndDirectory(Path path) throws IOException {
-        Stack<Path> temporaryPath = new Stack<>();
+    private int checkEndDirectory(Path path) throws IOException {
+        Stack<Path> pathsDirectoriesInParentDirectory = new Stack<>();
 
         DirectoryStream<Path> directoryParent = Files.newDirectoryStream(path.getParent());
 
         for (Path p : directoryParent) {
-            temporaryPath.add(p);
+            pathsDirectoriesInParentDirectory.add(p);
         }
 
-        if (!temporaryPath.isEmpty() && temporaryPath.peek().equals(path)) {
+        if (!pathsDirectoriesInParentDirectory.isEmpty() && pathsDirectoriesInParentDirectory.peek().equals(path)) {
             return 0;
         } else {
             return 1;
@@ -46,7 +46,7 @@ public class Reader {
         stringBuilder.append("\r\n");
 
         if (jumpRecursion > 0) {
-            positionDirectory.push(isEndDirectory(path.toPath()));
+            positionDirectory.push(checkEndDirectory(path.toPath()));
         }
 
         for (File file : Objects.requireNonNull(path.listFiles())) {
@@ -62,8 +62,8 @@ public class Reader {
         }
     }
 
-    private void buildLineWithFile(File path, StringBuilder stringBuilder, Stack<Integer> isLast) {
-        stringBuilder.append(getStringAfterRecursion(isLast));
+    private void buildLineWithFile(File path, StringBuilder stringBuilder, Stack<Integer> positionDirectory) {
+        stringBuilder.append(getStringAfterRecursion(positionDirectory));
         stringBuilder.append("\\--");
         stringBuilder.append(path.getName());
         stringBuilder.append("\r\n");
@@ -71,8 +71,8 @@ public class Reader {
 
     private String getStringAfterRecursion(Stack<Integer> positionDirectory) {
         StringBuilder stringBuilder = new StringBuilder();
-        Stack<Integer> copyStackPositionDirectory = (Stack<Integer>) positionDirectory.clone();
-        Stack<Integer> reversedStack = reverseStack(copyStackPositionDirectory);
+        Stack<Integer> copiedStackPositionDirectory = (Stack<Integer>) positionDirectory.clone();
+        Stack<Integer> reversedStack = reverseStack(copiedStackPositionDirectory);
 
         while (!reversedStack.isEmpty()) {
             if (reversedStack.peek() == 1) {
@@ -87,11 +87,11 @@ public class Reader {
         return stringBuilder.toString();
     }
 
-    private Stack<Integer> reverseStack(Stack<Integer> copyStackPositionDirectory) {
+    private Stack<Integer> reverseStack(Stack<Integer> stack) {
         Stack<Integer> reversedStack = new Stack<>();
 
-        while (!copyStackPositionDirectory.isEmpty()) {
-            reversedStack.push(copyStackPositionDirectory.pop());
+        while (!stack.isEmpty()) {
+            reversedStack.push(stack.pop());
         }
 
         return reversedStack;
@@ -116,11 +116,11 @@ public class Reader {
     private double getFileLengthsValue(List<String> strings) {
         double averageLength = 0;
 
-        for (String str : getFilesList(strings)) {
-            String[] splitedStr = str.split("\\\\--");
+        for (String line : getFilesList(strings)) {
+            String[] splittedLine = line.split("\\\\--");
 
-            if (splitedStr.length == 2) {
-                String[] splittedFileNameAndExtention = splitedStr[1].split("\\.");
+            if (splittedLine.length == 2) {
+                String[] splittedFileNameAndExtention = splittedLine[1].split("\\.");
                 averageLength += splittedFileNameAndExtention[0].length();
             }
         }
@@ -144,10 +144,10 @@ public class Reader {
         List<String> directoriesAndFilesList = new LinkedList<>();
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
-            String readiedLine;
+            String line;
 
-            while ((readiedLine = bufferedReader.readLine()) != null) {
-                directoriesAndFilesList.add(readiedLine);
+            while ((line = bufferedReader.readLine()) != null) {
+                directoriesAndFilesList.add(line);
             }
 
             return directoriesAndFilesList;

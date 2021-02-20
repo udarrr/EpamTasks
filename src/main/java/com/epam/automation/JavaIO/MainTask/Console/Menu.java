@@ -15,15 +15,20 @@ public class Menu {
             printer.printDescriptionMenu();
 
             String inputLine = scanner.nextLine();
+            String lineWithoutSpace = inputLine.trim();
 
-            File pathToFolderOrFile = new File(inputLine);
+            if (lineWithoutSpace.length() != 0) {
+                File pathToFolderOrFile = new File(lineWithoutSpace);
 
-            if (Files.isDirectory(Path.of(String.valueOf(pathToFolderOrFile)))) {
-                new DirectoriesHandler().workWithDirectories(pathToFolderOrFile);
-            } else if (Files.isRegularFile(Path.of(String.valueOf(pathToFolderOrFile)))) {
-                new FilesHandler().workWithFiles(pathToFolderOrFile);
+                if (Files.isDirectory(Path.of(String.valueOf(pathToFolderOrFile)))) {
+                    new DirectoriesHandler().workWithDirectories(pathToFolderOrFile);
+                } else if (Files.isRegularFile(Path.of(String.valueOf(pathToFolderOrFile)))) {
+                    new FilesHandler().workWithFiles(pathToFolderOrFile);
+                } else {
+                    System.err.println("Path isn't exist please try again");
+                }
             } else {
-                System.err.println("Path is wrong");
+                System.err.println("Blank line isn't path please try again");
             }
         }
     }
