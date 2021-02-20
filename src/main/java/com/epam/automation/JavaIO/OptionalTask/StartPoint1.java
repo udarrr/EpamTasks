@@ -1,22 +1,36 @@
 package com.epam.automation.JavaIO.OptionalTask;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Random;
 
 public class StartPoint1 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Random random = new Random();
 
-        try (BufferedWriter out = new BufferedWriter
-                (new FileWriter("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\Point1Unsorted.txt"))) {
-            for (int i = 0; i < 100; i++) {
-                out.write(Integer.toString(random.nextInt(10)));
+        Path pathParentDirectory = Path.of("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\NewDirectoryPoint1");
+
+        if (!Files.isDirectory(pathParentDirectory)) {
+            try {
+                Files.createDirectory(pathParentDirectory);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
 
-        try (BufferedReader in = new BufferedReader(new FileReader("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\Point1Unsorted.txt"))) {
-            String line = in.readLine();
+        try (BufferedWriter bw = new BufferedWriter
+                (new FileWriter(pathParentDirectory + "\\Point1Unsorted.txt"))) {
+            for (int i = 0; i < 100; i++) {
+                bw.write(Integer.toString(random.nextInt(10)));
+            }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(pathParentDirectory + "\\Point1Unsorted.txt"))) {
+            String line = br.readLine();
             StringBuilder sb = new StringBuilder();
             sb.append(line);
 
@@ -34,10 +48,14 @@ public class StartPoint1 {
                 sb.append(j);
             }
 
-            try (BufferedWriter out = new BufferedWriter
-                    (new FileWriter("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\Point1Sorted.txt"))) {
-                out.write(sb.toString());
+            if (Files.isDirectory(pathParentDirectory)) {
+                try (BufferedWriter bw = new BufferedWriter
+                        (new FileWriter(pathParentDirectory + "\\Point1Sorted.txt"))) {
+                    bw.write(sb.toString());
+                }
             }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
         }
     }
 }

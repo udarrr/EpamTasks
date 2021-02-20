@@ -1,16 +1,14 @@
-//PACKAGE COM.EPAM.AUTOMATION.JAVAIO.OPTIONALTASK.FILE;
+//PACKAGE COM.EPAM.AUTOMATION.JAVAIO.OPTIONALTASK.FILE.NEWDIRECTORYPOINT2;
 //
 //PUBLIC CLASS POINT2JAVAPROGRAM {
 //    PRIVATE INT VALUE;
 //    PRIVATE DOUBLE RESULT;
 //    PRIVATE FLOAT QUALITY;
 //
-//    PRIVATE VOID METHODONE() {
-//        FLOAT fl;
+//    PRIVATE VOID METHODONE(FLOAT fl) {
 //    }
 //
-//    PRIVATE VOID METHODTWO() {
-//        DOUBLE db;
+//    PRIVATE VOID METHODTWO(DOUBLE dl) {
 //    }
 //
 //    PRIVATE VOID METHODTHREE() {
@@ -18,14 +16,10 @@
 //    }
 //
 //    PRIVATE VOID METHODFOUR() {
-//        INT in;
-//        INT tn;
-//        INT qa;
+//        STRING[] ARRAY = NEW STRING[]{"zx","xc","qa","xy"};
 //    }
 //
 //    PRIVATE VOID METHODFIVE() {
-//        STRING t;
-//        STRING x;
-//        STRING y;
+//        STRING LINE;
 //    }
 //}

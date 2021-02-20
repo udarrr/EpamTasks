@@ -1,16 +1,14 @@
-package com.epam.automation.JavaIO.OptionalTask.File;
+package com.epam.automation.JavaIO.OptionalTask.File.NewDirectoryPoint2;
 
 public class Point2JavaProgram {
     private int value;
     private double result;
     private float quality;
 
-    private void methodOne() {
-        float fl;
+    private void methodOne(float fl) {
     }
 
-    private void methodTwo() {
-        double db;
+    private void methodTwo(double dl) {
     }
 
     private void methodThree() {
@@ -18,14 +16,10 @@ public class Point2JavaProgram {
     }
 
     private void methodFour() {
-        int in;
-        int tn;
-        int qa;
+        String[] array = new String[]{"zx","xc","qa","xy"};
     }
 
     private void methodFive() {
-        String t;
-        String x;
-        String y;
+        String line;
     }
 }

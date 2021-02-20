@@ -1,6 +1,8 @@
 package com.epam.automation.JavaIO.OptionalTask;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,11 +10,21 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class StartPoint4 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         List<String> lines = new ArrayList<>();
 
+        Path pathParentDirectory = Path.of("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\NewDirectoryPoint4");
+
+        if (!Files.isDirectory(pathParentDirectory)) {
+            try {
+                Files.createDirectory(pathParentDirectory);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         try (BufferedReader br = new BufferedReader
-                (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\Point2JavaProgram.java"))) {
+                (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\NewDirectoryPoint2\\Point2JavaProgram.java"))) {
 
             String line;
 
@@ -20,9 +32,9 @@ public class StartPoint4 {
                 lines.add(line);
             }
 
-            char[] alphabet = new char[]{'a','A', 'b','B', 'c','C', 'd','D', 'e','E', 'f','F', 'g','G', 'h','H', 'i','I',
-                                         'j','J', 'k','K', 'l','L', 'm','M', 'n','N', 'o','O', 'p','P', 'q','Q', 'r','R',
-                                         's','S', 't','T','u','U', 'v','V', 'w','W', 'x','X','y','Y','z','Z'};
+            char[] alphabet = new char[]{'a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E', 'f', 'F', 'g', 'G', 'h', 'H', 'i', 'I',
+                    'j', 'J', 'k', 'K', 'l', 'L', 'm', 'M', 'n', 'N', 'o', 'O', 'p', 'P', 'q', 'Q', 'r', 'R',
+                    's', 'S', 't', 'T', 'u', 'U', 'v', 'V', 'w', 'W', 'x', 'X', 'y', 'Y', 'z', 'Z'};
             boolean isWord = false;
 
             List<Character> wordsInChar = new ArrayList<>();
@@ -55,24 +67,26 @@ public class StartPoint4 {
                             filter(x -> x.length() > 2).
                             collect(Collectors.toList());
 
-            List<String> linesAfterChanging = lines.stream().map(originalLine->
+            List<String> linesAfterChanging = lines.stream().map(originalLine ->
             {
                 String res = originalLine;
                 for (int i = 0; i < words.size(); i++) {
-                    res = res.replace(words.get(i),words.get(i).toUpperCase(Locale.ROOT));
+                    res = res.replace(words.get(i), words.get(i).toUpperCase(Locale.ROOT));
                 }
                 return res;
 
             }).collect(Collectors.toList());
 
             try (BufferedWriter bw = new BufferedWriter
-                    (new FileWriter("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\Point4JavaProgram.java"))) {
+                    (new FileWriter(pathParentDirectory + "\\Point4JavaProgram.java"))) {
 
                 for (String changedLine : linesAfterChanging) {
                     bw.write(changedLine);
                     bw.newLine();
                 }
             }
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
         }
     }
 }
