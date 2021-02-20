@@ -1,7 +1,7 @@
-package com.epam.automation.JavaIO;
+package com.epam.automation.JavaIO.MainTask;
 
-import com.epam.automation.JavaIO.Exception.NoDirectoriesInPath;
-import com.epam.automation.JavaIO.Exception.NoFilesInDirectories;
+import com.epam.automation.JavaIO.MainTask.Exception.NoDirectoriesInPath;
+import com.epam.automation.JavaIO.MainTask.Exception.NoFilesInDirectories;
 
 import java.io.*;
 import java.nio.file.DirectoryStream;
@@ -33,10 +33,8 @@ public class Reader {
         }
 
         if (!temporaryPath.isEmpty() && temporaryPath.peek().equals(path)) {
-
             return 0;
         } else {
-
             return 1;
         }
     }
@@ -99,29 +97,28 @@ public class Reader {
         return reversedStack;
     }
 
-    public double getDirectoriesNumber(List<String> text) {
-
-        return (double) text.stream().filter(x->x.contains("+--")).count();
+    public double getDirectoriesNumber(List<String> strings) {
+        return (double) strings.stream().filter(x -> x.contains("+--")).count();
     }
 
-    public double getFilesNumber(List<String> text) {
-
-        return (double) text.stream().filter(x->x.contains("\\--")).count();
+    public double getFilesNumber(List<String> strings) {
+        return (double) strings.stream().filter(x -> x.contains("\\--")).count();
     }
 
-    public double getAverageAmountFiles(List<String> text) throws NoDirectoriesInPath {
-        if (getDirectoriesNumber(text) != 0) {
-            return getFilesNumber(text) / getDirectoriesNumber(text);
+    public double getAverageFilesQuantityInDirectories(List<String> strings) throws NoDirectoriesInPath {
+        if (getDirectoriesNumber(strings) != 0) {
+            return getFilesNumber(strings) / getDirectoriesNumber(strings);
         } else {
             throw new NoDirectoriesInPath("There are no directories in path");
         }
     }
 
-    private double getFileLengthsNumber(List<String> text) {
+    private double getFileLengthsValue(List<String> strings) {
         double averageLength = 0;
 
-        for (String str : getListFiles(text)) {
+        for (String str : getFilesList(strings)) {
             String[] splitedStr = str.split("\\\\--");
+
             if (splitedStr.length == 2) {
                 String[] splittedFileNameAndExtention = splitedStr[1].split("\\.");
                 averageLength += splittedFileNameAndExtention[0].length();
@@ -131,30 +128,29 @@ public class Reader {
         return averageLength;
     }
 
-    private List<String> getListFiles(List<String> text) {
-
-        return text.stream().filter(x->x.contains("\\--")).collect(Collectors.toList());
+    private List<String> getFilesList(List<String> strings) {
+        return strings.stream().filter(x -> x.contains("\\--")).collect(Collectors.toList());
     }
 
     public double getAverageLengthNameOfFiles(List<String> strings) throws NoFilesInDirectories {
         if (getFilesNumber(strings) != 0) {
-            return getFileLengthsNumber(strings) / getFilesNumber(strings);
+            return getFileLengthsValue(strings) / getFilesNumber(strings);
         } else {
             throw new NoFilesInDirectories("There are no files in directories");
         }
     }
 
     public List<String> readFile(File path) throws IOException {
-        List<String> listDirectoriesAndFiles = new LinkedList<>();
+        List<String> directoriesAndFilesList = new LinkedList<>();
 
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(path))){
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
             String readiedLine;
 
             while ((readiedLine = bufferedReader.readLine()) != null) {
-                listDirectoriesAndFiles.add(readiedLine);
+                directoriesAndFilesList.add(readiedLine);
             }
 
-            return listDirectoriesAndFiles;
+            return directoriesAndFilesList;
         }
     }
 }

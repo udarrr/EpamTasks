@@ -1,6 +1,6 @@
-package com.epam.automation.JavaIO.Console;
+package com.epam.automation.JavaIO.MainTask.Console;
 
-import com.epam.automation.JavaIO.Resources.PathPlaces;
+import com.epam.automation.JavaIO.MainTask.Resources.PathPlaces;
 
 public class Printer {
     public void printDescriptionMenu() {
@@ -14,11 +14,11 @@ public class Printer {
     }
 
     public void printAmountDirectories(double amount) {
-        System.out.println("Amount directories: " + amount);
+        System.out.println("Quantity directories is: " + amount);
     }
 
     public void printAmountFiles(double amount) {
-        System.out.println("Amount files: " + amount);
+        System.out.println("Quantity files is: " + amount);
     }
 
     public void printAverageQuantityFilesInDirectories(double amount) {

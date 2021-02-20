@@ -1,0 +1,117 @@
++--Fun
+\--A.DBF
+\--B.DBF
+\--E.DBF
+\--FBA.DBF
+\--FL.DBF
+\--FOXD2600.ESL
+\--FOXD2600.ESO
+\--FOXUSER.DBF
+\--FOXUSER.FPT
+\--FUN.DOC
+\--FUN.EXE
++--GEO
+|   \--CKW1WLA.BAK
+|   \--G1111111.DBF
+|   \--GCEG11AA.DBF
+|   \--GCHEG11A.DBF
+|   \--GCHEG11B.DBF
+|   \--GCKW1WLA.DBF
+|   \--GCKW2CUH.DBF
+|   \--GCKW2WLA.DBF
+|   \--GDIMI67A.DBF
+|   \--GDORJITA.DBF
+|   \--GG011943.DBF
+|   \--GG231DRY.DBF
+|   \--GG231WET.DBF
+|   \--GG232DRY.DBF
+|   \--GG232WET.DBF
+|   \--GG233DRY.DBF
+|   \--GG233WET.DBF
+|   \--GGARAGCH.DBF
+|   \--GGOMEOPA.DBF
+|   \--GGU173D1.DBF
+|   \--GGU173D2.DBF
+|   \--GHYPERMA.DBF
+|   \--GHYPERWA.DBF
+|   \--GKALSIZO.DBF
+|   \--Gkanpo15.dbf
+|   \--Gkanpo25.dbf
+|   \--GKULAGIN.DBF
+|   \--GLARISKA.DBF
+|   \--GMAIMA33.DBF
+|   \--GMERZLI5.DBF
+|   \--GNEWALTA.DBF
+|   \--GOBSKOYB.DBF
+|   \--GOLGA111.DBF
+|   \--GPAVL812.DBF
+|   \--GPAVTR74.DBF
+|   \--GSOC52S1.DBF
+|   \--GSOC52S2.DBF
+|   \--GSOZIMUS.DBF
+|   \--GSTROE17.DBF
+|   \--GSUSLEFT.DBF
+|   \--GSUSRIGH.DBF
+|   \--GTWELV05.DBF
+|   \--GTWELVE1.DBF
+|   \--GTWELVE2.DBF
+|   \--GTWELVE3.DBF
+|   \--GTWELVE4.DBF
+|   \--GZ104S09.DBF
+|   \--GZ104S10.DBF
+|   \--GZMEY69N.DBF
+|   \--GZMEY69S.DBF
+|   \--GZMEY71A.DBF
+|   \--GZMEYT69.DBF
+|   \--GZMEYTR2.DBF
+|   \--GZMEYTRU.DBF
+|   \--PCHEG11A.DBF
+|   \--PCHEG11b.DBF
+|   \--PCKW2CUH.DBF
+|   \--PGSK858K.DBF
+|   \--PGU173DD.DBF
+|   \--PHYPERMA.DBF
+|   \--PKALSIZO.DBF
+|   \--PLARISKA.DBF
+|   \--Po15kano.dbf
+|   \--Po25kano.dbf
+|   \--PP011943.DBF
+|   \--PPAVL812.DBF
+|   \--PPRO2316.DBF
+|   \--PQUEEN01.DBF
+|   \--PSPORTZA.DBF
+|   \--PSTROE17.DBF
+|   \--PTI10993.DBF
+|   \--Pz104s05.dbf
+|   \--PZ104S10.DBF
+|   \--PZMEY69N.DBF
+|   \--PZMEY69S.DBF
+|   \--PZMEY71A.DBF
+|   \--PZMEYT69.DBF
+|   \--PZMEYTRU.DBF
+|   \--USTROE17.DBF
+|   \--UZMEYT69.DBF
+|   \--VHYPERLE.DBF
+|   \--VZMEY69N.DBF
+\--GRB.DBF
+\--GRU.DBF
+\--INSTR.FUN
+\--K.DBF
+\--KOL.DBF
+\--LEN.DBF
+\--OSA.DBF
+\--OT5.BAK
+\--PB.DBF
+\--POD.DBF
+\--POL.DBF
+\--PROSA.DBF
+\--PRS.DBF
+\--R.DBF
+\--S.DBF
+\--SIT.DBF
+\--SLOY.DBF
+\--T#37.DBF
+\--T#43.DBF
+\--T#44.DBF
+\--UP.DBF
+\--VLI.DBF
