@@ -24,7 +24,9 @@ public class StartPoint4 {
         }
 
         try (BufferedReader br = new BufferedReader
-                (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\NewDirectoryPoint2\\Point2JavaProgram.java"))) {
+                (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\NewDirectoryPoint2\\Point2JavaProgram.java"));
+             BufferedWriter bw = new BufferedWriter
+                     (new FileWriter(pathParentDirectory + "\\Point4JavaProgram.java"))) {
 
             String line;
 
@@ -77,13 +79,9 @@ public class StartPoint4 {
 
             }).collect(Collectors.toList());
 
-            try (BufferedWriter bw = new BufferedWriter
-                    (new FileWriter(pathParentDirectory + "\\Point4JavaProgram.java"))) {
-
-                for (String changedLine : linesAfterChanging) {
-                    bw.write(changedLine);
-                    bw.newLine();
-                }
+            for (String changedLine : linesAfterChanging) {
+                bw.write(changedLine);
+                bw.newLine();
             }
         } catch (IOException e) {
             System.err.println(e.getMessage());

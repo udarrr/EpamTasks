@@ -22,7 +22,9 @@ public class StartPoint3 {
         }
 
         try (BufferedReader br = new BufferedReader
-                (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\NewDirectoryPoint2\\Point2JavaProgram.java"))) {
+                (new FileReader("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\NewDirectoryPoint2\\Point2JavaProgram.java"));
+             BufferedWriter bw = new BufferedWriter
+                     (new FileWriter(pathParentDirectory + "\\Point3JavaProgram.java"))) {
 
             String line;
 
@@ -34,13 +36,9 @@ public class StartPoint3 {
                     map(cg -> cg.reverse()).
                     collect(Collectors.toList());
 
-            try (BufferedWriter bw = new BufferedWriter
-                    (new FileWriter(pathParentDirectory + "\\Point3JavaProgram.java"))) {
-
-                for (StringBuilder lines : listAfterChanging) {
-                    bw.write(String.valueOf(lines));
-                    bw.newLine();
-                }
+            for (StringBuilder lines : listAfterChanging) {
+                bw.write(String.valueOf(lines));
+                bw.newLine();
             }
         } catch (IOException e) {
             System.err.println(e.getMessage());

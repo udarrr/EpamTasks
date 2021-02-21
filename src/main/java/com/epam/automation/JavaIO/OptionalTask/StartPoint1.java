@@ -20,16 +20,18 @@ public class StartPoint1 {
             }
         }
 
-        try (BufferedWriter bw = new BufferedWriter
-                (new FileWriter(pathParentDirectory + "\\Point1Unsorted.txt"))) {
+        try (BufferedWriter bwUnsorted = new BufferedWriter
+                     (new FileWriter(pathParentDirectory + "\\Point1Unsorted.txt"));
+             BufferedReader br = new BufferedReader
+                     (new FileReader(pathParentDirectory + "\\Point1Unsorted.txt"));
+             BufferedWriter bwSorted = new BufferedWriter
+                     (new FileWriter(pathParentDirectory + "\\Point1Sorted.txt"))) {
             for (int i = 0; i < 100; i++) {
-                bw.write(Integer.toString(random.nextInt(10)));
+                bwUnsorted.write(Integer.toString(random.nextInt(10)));
             }
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(pathParentDirectory + "\\Point1Unsorted.txt"))) {
+            bwUnsorted.flush();
+
             String line = br.readLine();
             StringBuilder sb = new StringBuilder();
             sb.append(line);
@@ -48,12 +50,7 @@ public class StartPoint1 {
                 sb.append(j);
             }
 
-            if (Files.isDirectory(pathParentDirectory)) {
-                try (BufferedWriter bw = new BufferedWriter
-                        (new FileWriter(pathParentDirectory + "\\Point1Sorted.txt"))) {
-                    bw.write(sb.toString());
-                }
-            }
+            bwSorted.write(sb.toString());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
