@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FilesHandler {
-    public void workWithFiles(File enteredPath) {
+    public void workWithFiles(File pathToFile) {
         Reader reader = new Reader();
 
         Printer printer = new Printer();
@@ -18,7 +18,7 @@ public class FilesHandler {
         List<String> list = new ArrayList<>();
 
         try {
-            list = reader.readFile(enteredPath);
+            list = reader.readFile(pathToFile);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }

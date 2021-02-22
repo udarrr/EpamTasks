@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class DirectoriesHandler {
-    public void workWithDirectories(File enteredPath) {
+    public void workWithDirectories(File pathToDirectory) {
         Writer writer = new Writer();
 
         Printer printer = new Printer();
@@ -15,7 +15,7 @@ public class DirectoriesHandler {
         Reader reader = new Reader();
 
         try {
-            writer.putLinesToFile(reader.fillDirectoriesTree(enteredPath));
+            writer.putLinesToFile(reader.fillDirectoriesTree(pathToDirectory));
             printer.printPlaceWithResult();
         } catch (IOException e) {
             System.err.println(e.getMessage());

@@ -16,30 +16,30 @@ public class Reader {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        Stack<Integer> isLast = new Stack<>();
+        Stack<Boolean> positionDirectory = new Stack<>();
 
-        fillDirectoriesTree(path, jumpRecursion, stringBuilder, isLast);
+        fillDirectoriesTree(path, jumpRecursion, stringBuilder, positionDirectory);
 
         return stringBuilder.toString();
     }
 
-    private int checkEndDirectory(Path path) throws IOException {
+    private Boolean checkEndDirectory(Path path) throws IOException {
         Stack<Path> pathsDirectoriesInParentDirectory = new Stack<>();
 
-        DirectoryStream<Path> directoryParent = Files.newDirectoryStream(path.getParent());
+        DirectoryStream<Path> parentDirectory = Files.newDirectoryStream(path.getParent());
 
-        for (Path p : directoryParent) {
+        for (Path p : parentDirectory) {
             pathsDirectoriesInParentDirectory.add(p);
         }
 
         if (!pathsDirectoriesInParentDirectory.isEmpty() && pathsDirectoriesInParentDirectory.peek().equals(path)) {
-            return 0;
+            return false;
         } else {
-            return 1;
+            return true;
         }
     }
 
-    private void fillDirectoriesTree(File path, int jumpRecursion, StringBuilder stringBuilder, Stack<Integer> positionDirectory) throws IOException {
+    private void fillDirectoriesTree(File path, int jumpRecursion, StringBuilder stringBuilder, Stack<Boolean> positionDirectory) throws IOException {
         stringBuilder.append(getStringAfterRecursion(positionDirectory));
         stringBuilder.append("+--");
         stringBuilder.append(path.getName());
@@ -62,23 +62,24 @@ public class Reader {
         }
     }
 
-    private void buildLineWithFile(File path, StringBuilder stringBuilder, Stack<Integer> positionDirectory) {
+    private void buildLineWithFile(File path, StringBuilder stringBuilder, Stack<Boolean> positionDirectory) {
         stringBuilder.append(getStringAfterRecursion(positionDirectory));
         stringBuilder.append("\\--");
         stringBuilder.append(path.getName());
         stringBuilder.append("\r\n");
     }
 
-    private String getStringAfterRecursion(Stack<Integer> positionDirectory) {
+    private String getStringAfterRecursion(Stack<Boolean> positionDirectory) {
         StringBuilder stringBuilder = new StringBuilder();
-        Stack<Integer> copiedStackPositionDirectory = (Stack<Integer>) positionDirectory.clone();
-        Stack<Integer> reversedStack = reverseStack(copiedStackPositionDirectory);
+        Stack<Boolean> copiedStackPositionDirectory = (Stack<Boolean>) positionDirectory.clone();
+        Stack<Boolean> reversedStack = reverseStack(copiedStackPositionDirectory);
 
         while (!reversedStack.isEmpty()) {
-            if (reversedStack.peek() == 1) {
+            if (reversedStack.peek()) {
                 stringBuilder.append("|\u0020\u0020\u0020");
             }
-            if (reversedStack.peek() == 0) {
+
+            if (reversedStack.peek()) {
                 stringBuilder.append("\u0020\u0020\u0020");
             }
             reversedStack.pop();
@@ -87,8 +88,8 @@ public class Reader {
         return stringBuilder.toString();
     }
 
-    private Stack<Integer> reverseStack(Stack<Integer> stack) {
-        Stack<Integer> reversedStack = new Stack<>();
+    private Stack<Boolean> reverseStack(Stack<Boolean> stack) {
+        Stack<Boolean> reversedStack = new Stack<>();
 
         while (!stack.isEmpty()) {
             reversedStack.push(stack.pop());
