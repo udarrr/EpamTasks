@@ -6,7 +6,6 @@ import com.epam.automation.JavaClasses.Enums.CarVendor;
 import java.util.Objects;
 
 public class Car {
-
     private int id;
     private CarVendor vendor;
     private String model;
@@ -46,7 +45,6 @@ public class Car {
     }
 
     public void setModel(String model) {
-
         this.model = model;
     }
 
