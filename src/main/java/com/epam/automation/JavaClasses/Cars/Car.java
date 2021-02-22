@@ -95,7 +95,10 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return id == car.id && year == car.year && Double.compare(car.price, price) == 0 && vendor == car.vendor && Objects.equals(model, car.model) && color == car.color && Objects.equals(registrationNumber, car.registrationNumber);
+        return id == car.id && year == car.year &&
+                Double.compare(car.price, price) == 0 &&
+                vendor == car.vendor && Objects.equals(model, car.model) &&
+                color == car.color && Objects.equals(registrationNumber, car.registrationNumber);
     }
 
     @Override
