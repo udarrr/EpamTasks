@@ -2,7 +2,8 @@ package com.epam.automation.JavaIO.MainTask.Console;
 
 import com.epam.automation.JavaIO.MainTask.Exception.NoDirectoriesInPath;
 import com.epam.automation.JavaIO.MainTask.Exception.NoFilesInDirectories;
-import com.epam.automation.JavaIO.MainTask.Reader;
+import com.epam.automation.JavaIO.MainTask.Reader.DirectoriesReader;
+import com.epam.automation.JavaIO.MainTask.Reader.FilesReader;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,29 +12,30 @@ import java.util.List;
 
 public class FilesHandler {
     public void workWithFiles(File pathToFile) {
-        Reader reader = new Reader();
+        FilesReader filesReader = new FilesReader();
+        DirectoriesReader directoriesReader = new DirectoriesReader();
 
         Printer printer = new Printer();
 
         List<String> list = new ArrayList<>();
 
         try {
-            list = reader.readFile(pathToFile);
+            list = filesReader.readFile(pathToFile);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
 
-        printer.printAmountDirectories(reader.getDirectoriesNumber(list));
-        printer.printAmountFiles(reader.getFilesNumber(list));
+        printer.printAmountDirectories(directoriesReader.getDirectoriesNumber(list));
+        printer.printAmountFiles(filesReader.getFilesNumber(list));
 
         try {
-            printer.printAverageQuantityFilesInDirectories(reader.getAverageFilesQuantityInDirectories(list));
+            printer.printAverageQuantityFilesInDirectories(filesReader.getAverageFilesQuantityInDirectories(list));
         } catch (NoDirectoriesInPath e) {
             System.err.println(e.getMessage());
         }
 
         try {
-            printer.printAverageLengthNameOfFiles(reader.getAverageLengthNameOfFiles(list));
+            printer.printAverageLengthNameOfFiles(filesReader.getAverageLengthNameOfFiles(list));
         } catch (NoFilesInDirectories e) {
             System.err.println(e.getMessage());
         }

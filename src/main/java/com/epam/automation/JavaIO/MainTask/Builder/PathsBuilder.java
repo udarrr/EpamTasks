@@ -1,16 +1,12 @@
-package com.epam.automation.JavaIO.MainTask;
-
-import com.epam.automation.JavaIO.MainTask.Exception.NoDirectoriesInPath;
-import com.epam.automation.JavaIO.MainTask.Exception.NoFilesInDirectories;
+package com.epam.automation.JavaIO.MainTask.Builder;
 
 import java.io.*;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
-import java.util.stream.Collectors;
 
-public class Reader {
+public class PathsBuilder {
     public String fillDirectoriesTree(File path) throws IOException {
         int jumpRecursion = 0;
 
@@ -96,62 +92,5 @@ public class Reader {
         }
 
         return reversedStack;
-    }
-
-    public double getDirectoriesNumber(List<String> strings) {
-        return (double) strings.stream().filter(x -> x.contains("+--")).count();
-    }
-
-    public double getFilesNumber(List<String> strings) {
-        return (double) strings.stream().filter(x -> x.contains("\\--")).count();
-    }
-
-    public double getAverageFilesQuantityInDirectories(List<String> strings) throws NoDirectoriesInPath {
-        if (getDirectoriesNumber(strings) != 0) {
-            return getFilesNumber(strings) / getDirectoriesNumber(strings);
-        } else {
-            throw new NoDirectoriesInPath("There are no directories in path");
-        }
-    }
-
-    private double getFileLengthsValue(List<String> strings) {
-        double averageLength = 0;
-
-        for (String line : getFilesList(strings)) {
-            String[] splittedLine = line.split("\\\\--");
-
-            if (splittedLine.length == 2) {
-                String[] splittedFileNameAndExtention = splittedLine[1].split("\\.");
-                averageLength += splittedFileNameAndExtention[0].length();
-            }
-        }
-
-        return averageLength;
-    }
-
-    private List<String> getFilesList(List<String> strings) {
-        return strings.stream().filter(x -> x.contains("\\--")).collect(Collectors.toList());
-    }
-
-    public double getAverageLengthNameOfFiles(List<String> strings) throws NoFilesInDirectories {
-        if (getFilesNumber(strings) != 0) {
-            return getFileLengthsValue(strings) / getFilesNumber(strings);
-        } else {
-            throw new NoFilesInDirectories("There are no files in directories");
-        }
-    }
-
-    public List<String> readFile(File path) throws IOException {
-        List<String> directoriesAndFilesList = new LinkedList<>();
-
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
-            String line;
-
-            while ((line = bufferedReader.readLine()) != null) {
-                directoriesAndFilesList.add(line);
-            }
-
-            return directoriesAndFilesList;
-        }
     }
 }
