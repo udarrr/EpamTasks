@@ -1,4 +1,4 @@
-package com.epam.automation.JavaIO.MainTask.Builder;
+package com.epam.automation.JavaIO.MainTask.Builders;
 
 import java.io.*;
 import java.nio.file.DirectoryStream;
@@ -12,9 +12,9 @@ public class PathsBuilder {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        Stack<Boolean> positionDirectory = new Stack<>();
+        Stack<Boolean> directoryPosition = new Stack<>();
 
-        fillDirectoriesTree(path, jumpRecursion, stringBuilder, positionDirectory);
+        fillDirectoriesTree(path, jumpRecursion, stringBuilder, directoryPosition);
 
         return stringBuilder.toString();
     }
@@ -28,47 +28,43 @@ public class PathsBuilder {
             pathsDirectoriesInParentDirectory.add(p);
         }
 
-        if (!pathsDirectoriesInParentDirectory.isEmpty() && pathsDirectoriesInParentDirectory.peek().equals(path)) {
-            return false;
-        } else {
-            return true;
-        }
+        return pathsDirectoriesInParentDirectory.isEmpty() || !pathsDirectoriesInParentDirectory.peek().equals(path);
     }
 
-    private void fillDirectoriesTree(File path, int jumpRecursion, StringBuilder stringBuilder, Stack<Boolean> positionDirectory) throws IOException {
-        stringBuilder.append(getStringAfterRecursion(positionDirectory));
+    private void fillDirectoriesTree(File path, int jumpRecursion, StringBuilder stringBuilder, Stack<Boolean> directoryPosition) throws IOException {
+        stringBuilder.append(getStringAfterRecursion(directoryPosition));
         stringBuilder.append("+--");
         stringBuilder.append(path.getName());
         stringBuilder.append("\r\n");
 
         if (jumpRecursion > 0) {
-            positionDirectory.push(checkEndDirectory(path.toPath()));
+            directoryPosition.push(checkEndDirectory(path.toPath()));
         }
 
         for (File file : Objects.requireNonNull(path.listFiles())) {
             if (file.isDirectory()) {
-                fillDirectoriesTree(file, jumpRecursion + 1, stringBuilder, positionDirectory);
+                fillDirectoriesTree(file, jumpRecursion + 1, stringBuilder, directoryPosition);
             } else {
-                buildLineWithFile(file, stringBuilder, positionDirectory);
+                buildLineWithFile(file, stringBuilder, directoryPosition);
             }
         }
 
-        if (!positionDirectory.isEmpty()) {
-            positionDirectory.pop();
+        if (!directoryPosition.isEmpty()) {
+            directoryPosition.pop();
         }
     }
 
-    private void buildLineWithFile(File path, StringBuilder stringBuilder, Stack<Boolean> positionDirectory) {
-        stringBuilder.append(getStringAfterRecursion(positionDirectory));
+    private void buildLineWithFile(File path, StringBuilder stringBuilder, Stack<Boolean> directoryPosition) {
+        stringBuilder.append(getStringAfterRecursion(directoryPosition));
         stringBuilder.append("\\--");
         stringBuilder.append(path.getName());
         stringBuilder.append("\r\n");
     }
 
-    private String getStringAfterRecursion(Stack<Boolean> positionDirectory) {
+    private String getStringAfterRecursion(Stack<Boolean> directoryPosition) {
         StringBuilder stringBuilder = new StringBuilder();
-        Stack<Boolean> copiedStackPositionDirectory = (Stack<Boolean>) positionDirectory.clone();
-        Stack<Boolean> reversedStack = reverseStack(copiedStackPositionDirectory);
+        Stack<Boolean> copiedStackDirectoryPosition = (Stack<Boolean>) directoryPosition.clone();
+        Stack<Boolean> reversedStack = reverseStack(copiedStackDirectoryPosition);
 
         while (!reversedStack.isEmpty()) {
             if (reversedStack.peek()) {
@@ -78,6 +74,7 @@ public class PathsBuilder {
             if (reversedStack.peek()) {
                 stringBuilder.append("\u0020\u0020\u0020");
             }
+
             reversedStack.pop();
         }
 

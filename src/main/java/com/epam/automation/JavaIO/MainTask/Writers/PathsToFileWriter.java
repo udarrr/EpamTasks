@@ -1,4 +1,4 @@
-package com.epam.automation.JavaIO.MainTask.Writer;
+package com.epam.automation.JavaIO.MainTask.Writers;
 
 import com.epam.automation.JavaIO.MainTask.Resources.PathPlaces;
 

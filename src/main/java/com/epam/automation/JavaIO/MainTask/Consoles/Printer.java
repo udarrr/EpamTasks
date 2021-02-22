@@ -1,4 +1,4 @@
-package com.epam.automation.JavaIO.MainTask.Console;
+package com.epam.automation.JavaIO.MainTask.Consoles;
 
 import com.epam.automation.JavaIO.MainTask.Resources.PathPlaces;
 

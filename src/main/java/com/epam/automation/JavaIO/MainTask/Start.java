@@ -1,6 +1,6 @@
 package com.epam.automation.JavaIO.MainTask;
 
-import com.epam.automation.JavaIO.MainTask.Console.Menu;
+import com.epam.automation.JavaIO.MainTask.Consoles.Menu;
 
 public class Start {
     public static void main(String[] args) {

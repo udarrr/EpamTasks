@@ -1,9 +1,9 @@
-package com.epam.automation.JavaIO.MainTask.Console;
+package com.epam.automation.JavaIO.MainTask.Consoles;
 
-import com.epam.automation.JavaIO.MainTask.Exception.NoDirectoriesInPath;
-import com.epam.automation.JavaIO.MainTask.Exception.NoFilesInDirectories;
-import com.epam.automation.JavaIO.MainTask.Reader.DirectoriesReader;
-import com.epam.automation.JavaIO.MainTask.Reader.FilesReader;
+import com.epam.automation.JavaIO.MainTask.Exceptions.NoDirectoriesInPath;
+import com.epam.automation.JavaIO.MainTask.Exceptions.NoFilesInDirectories;
+import com.epam.automation.JavaIO.MainTask.Readers.DirectoriesReader;
+import com.epam.automation.JavaIO.MainTask.Readers.FilesReader;
 
 import java.io.File;
 import java.io.IOException;
