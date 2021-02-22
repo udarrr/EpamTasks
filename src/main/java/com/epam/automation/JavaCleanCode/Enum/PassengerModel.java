@@ -1,7 +1,6 @@
 package com.epam.automation.JavaCleanCode.Enum;
 
 public enum PassengerModel {
-
     BOEING_737("Boeing-737", 900, 12000, 60500, 164),
     BOEING_737_800("Boeing-737-800", 940, 12300, 63870, 192),
     BOEING_747("Boeing-747", 980, 16100, 70500, 242),
@@ -18,7 +17,6 @@ public enum PassengerModel {
     private final int maxPassengerCapacity;
 
     PassengerModel(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, int maxPassengerCapacity) {
-
         this.model = model;
         this.maxSpeed = maxSpeed;
         this.maxFlightDistance = maxFlightDistance;
@@ -27,27 +25,22 @@ public enum PassengerModel {
     }
 
     public String getModel() {
-
         return this.model;
     }
 
     public int getMaxSpeed() {
-
         return maxSpeed;
     }
 
     public int getMaxFlightDistance() {
-
         return maxFlightDistance;
     }
 
     public int getMaxLoadCapacity() {
-
         return maxLoadCapacity;
     }
 
     public int getMaxPassengerCapacity() {
-
         return maxPassengerCapacity;
     }
 }

@@ -1,7 +1,6 @@
 package com.epam.automation.JavaCleanCode.Enum;
 
 public enum MilitaryModel {
-
     B1B_LANCER("B-1B Lancer", 1050, 21000, 80000, MilitaryType.BOMBER),
     B2_SPIRIT("B-2 Spirit", 1030, 22000, 70000, MilitaryType.BOMBER),
     B52_STRATOFORTRESS("B-52 Stratofortress", 1000, 20000, 80000, MilitaryType.BOMBER),
@@ -16,7 +15,6 @@ public enum MilitaryModel {
     private final MilitaryType type;
 
     MilitaryModel(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity, MilitaryType type) {
-
         this.model = model;
         this.maxSpeed = maxSpeed;
         this.maxFlightDistance = maxFlightDistance;
@@ -25,27 +23,22 @@ public enum MilitaryModel {
     }
 
     public String getModel() {
-
         return this.model;
     }
 
     public int getMaxSpeed() {
-
         return maxSpeed;
     }
 
     public int getMaxFlightDistance() {
-
         return maxFlightDistance;
     }
 
     public int getMaxLoadCapacity() {
-
         return maxLoadCapacity;
     }
 
     public MilitaryType getType() {
-
         return type;
     }
 }
