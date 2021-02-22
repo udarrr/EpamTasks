@@ -3,9 +3,7 @@ package com.epam.automation.JavaFundamental.optionaltask2;
 import java.util.Arrays;
 
 public class Sequences {
-
     public static int[] getMaxLongSequences(int[][] numbers) {
-
         int[] result = new int[0];
         int countOfLength = 0;
         int jIndexStart = 0;
@@ -17,13 +15,11 @@ public class Sequences {
         boolean markNumIs;
 
         for (int i = 0; i < numbers.length; ++i) {
-
             int countOfNum = 0;
 
             boolean mark = false;
 
             for (int j = 0; j < numbers[i].length - 1; j++) {
-
                 markNumIs = false;
 
                 if (numbers[i][j] > 0 && ((numbers[i][j + 1] - numbers[i][j]) == 1) &&
@@ -33,8 +29,6 @@ public class Sequences {
                     jIndexStart = j;
                     countOfNum++;
                     markNumIs = true;
-
-
                 } else if (numbers[i][j] > 0 && ((numbers[i][j + 1] - numbers[i][j]) == 1) ||
                         numbers[i][j] < 0 && ((numbers[i][j + 1] - numbers[i][j]) == -1)) {
 
@@ -43,13 +37,11 @@ public class Sequences {
                 }
 
                 if (countOfNum > countOfLength) {
-
                     jIndexEnd = j + 1;
                     countOfLength = countOfNum;
                 }
 
                 if ((jIndexStart != 0 && jIndexEnd != 0) && !markNumIs && count < countOfNum) {
-
                     tempResJ1 = jIndexStart;
                     tempResJ2 = jIndexEnd;
                     count++;
@@ -59,17 +51,16 @@ public class Sequences {
                 }
 
                 if (!markNumIs) {
-
                     countOfNum = 0;
                     countOfLength = 0;
                 }
             }
 
             if (mark) {
-
                 result = Arrays.copyOfRange(numbers[i], tempResJ1, tempResJ2 + 1);
             }
         }
+
         return result;
     }
 }

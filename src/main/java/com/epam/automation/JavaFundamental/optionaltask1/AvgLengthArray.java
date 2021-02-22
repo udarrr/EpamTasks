@@ -1,14 +1,11 @@
 package com.epam.automation.JavaFundamental.optionaltask1;
 
 public class AvgLengthArray {
-
     String[] getAmountNumbersWithLessAvgLengthThanLengthAllNumbers(String[] numbers) {
-
         int avgLength = 0;
         int sizeArray = 0;
 
         for (int i = 0; i < numbers.length; i++) {
-
             avgLength += numbers[i].length();
         }
 
@@ -17,9 +14,7 @@ public class AvgLengthArray {
         numbers = sort.getSortedNumbers(numbers);
 
         for (int i = 0; i < numbers.length; i++) {
-
             if (numbers[i].length() <= avgLength / numbers.length) {
-
                 sizeArray++;
             }
         }
@@ -27,9 +22,7 @@ public class AvgLengthArray {
         String[] numbersWithLessAvgLengthThanLengthAllNumbers = new String[sizeArray];
 
         for (int i = 0; i < numbers.length; i++) {
-
             if (numbers[i].length() <= avgLength / numbers.length) {
-
                 numbersWithLessAvgLengthThanLengthAllNumbers[i] = numbers[i];
             }
         }
@@ -38,12 +31,10 @@ public class AvgLengthArray {
     }
 
     String[] getAmountNumbersWithMoreAvgLengthThanLengthAllNumbers(String[] numbers) {
-
         int avgLength = 0;
         int countNumbersMore = 0;
 
         for (int i = 0; i < numbers.length; i++) {
-
             avgLength += numbers[i].length();
         }
 
@@ -52,9 +43,7 @@ public class AvgLengthArray {
         numbers = sort.getSortedNumbers(numbers);
 
         for (int i = 0; i < numbers.length; i++) {
-
             if (numbers[i].length() > avgLength / numbers.length) {
-
                 countNumbersMore++;
             }
         }
@@ -64,9 +53,7 @@ public class AvgLengthArray {
         int size = 0;
 
         for (int i = 0; i < numbers.length; i++) {
-
             if (numbers[i].length() > avgLength / numbers.length && size < countNumbersMore) {
-
                 numbersWithMoreAvgLengthThanLengthAllNumbers[size] = numbers[i];
 
                 ++size;
@@ -77,11 +64,9 @@ public class AvgLengthArray {
     }
 
     String[] getLengthArrayOfNumbers(String[] numbers) {
-
         String[] lengthArray = new String[numbers.length];
 
         for (int i = 0; i < numbers.length; i++) {
-
             lengthArray[i] = String.valueOf(numbers[i].length());
         }
 

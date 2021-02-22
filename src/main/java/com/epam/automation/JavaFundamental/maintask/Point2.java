@@ -3,9 +3,7 @@ package com.epam.automation.JavaFundamental.maintask;
 import java.util.Scanner;
 
 public class Point2 {
-
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Please Enter your name");
@@ -16,7 +14,6 @@ public class Point2 {
         char[] reverseName = new char[array.length];
 
         for (int i = 0; i < array.length; i++) {
-
             reverseName[(array.length - 1) - i] = array[i];
         }
 

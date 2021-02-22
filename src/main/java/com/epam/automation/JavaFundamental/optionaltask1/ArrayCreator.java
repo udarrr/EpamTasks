@@ -3,9 +3,7 @@ package com.epam.automation.JavaFundamental.optionaltask1;
 import java.util.Scanner;
 
 public class ArrayCreator {
-
     String[] createAndFillArr() {
-
         int sizeArray = 0;
         int sizeLimit = 0;
 
@@ -18,7 +16,6 @@ public class ArrayCreator {
         System.out.println("Set size of array ");
 
         while (exit) {
-
             try {
                 String setLine = sc.nextLine();
 
@@ -30,15 +27,12 @@ public class ArrayCreator {
 
                 System.out.println("Enter here desired value for " + sizeArray + " numbers that will be included in array");
                 System.out.println("After each number in line push enter");
-
             } catch (Exception e) {
-
                 System.out.println("You can enter only integer number");
             }
         }
 
         while (sizeLimit < sizeArray) {
-
             try {
                 String newNumberInLine = sc.nextLine();
 
@@ -47,7 +41,6 @@ public class ArrayCreator {
                 ArrayOfNumbers[sizeLimit] = newNumberInLine;
 
                 sizeLimit++;
-
             } catch (Exception e) {
                 System.out.println("You can enter only numbers please try again");
             }

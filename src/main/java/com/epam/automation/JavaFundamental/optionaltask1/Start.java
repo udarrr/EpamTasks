@@ -3,9 +3,7 @@ package com.epam.automation.JavaFundamental.optionaltask1;
 import java.util.Arrays;
 
 public class Start {
-
     public static void main(String[] args) {
-
         while (true) {
 
             ArrayCreator arr = new ArrayCreator();

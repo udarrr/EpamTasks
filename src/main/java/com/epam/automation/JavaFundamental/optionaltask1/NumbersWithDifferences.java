@@ -1,7 +1,6 @@
 package com.epam.automation.JavaFundamental.optionaltask1;
 
 public class NumbersWithDifferences {
-
     String[] getLowerOrBiggerNumber(String[] numbers) {
 
         String[] result = new String[2];
@@ -10,14 +9,11 @@ public class NumbersWithDifferences {
         String lowerNumber = result[1] = numbers[0];
 
         for (int i = 0; i < numbers.length; i++) {
-
             if (biggerNumber.length() > numbers[i].length()) {
-
                 biggerNumber = numbers[i];
             }
 
             if (lowerNumber.length() < numbers[i].length()) {
-
                 lowerNumber = numbers[i];
             }
         }
@@ -26,13 +22,11 @@ public class NumbersWithDifferences {
     }
 
     String getNumberWithMinimumVariousNumbers(String[] numbers) {
-
         String possibleResult = "NO RESULT";
 
         int amountVariousValues = 10;
 
         for (int i = 0; i < numbers.length; i++) {
-
             int amountValuesInSequences = 0;
 
             char[] numberToCharArray = numbers[i].toCharArray();
@@ -40,15 +34,12 @@ public class NumbersWithDifferences {
             new ArraySorter().sortOfNumbersChar(numberToCharArray);
 
             for (int j = 0; j < numberToCharArray.length - 1; j++) {
-
                 if (numberToCharArray[0] != numberToCharArray[j + 1]) {
-
                     amountValuesInSequences++;
                 }
             }
 
             if (amountValuesInSequences < amountVariousValues) {
-
                 possibleResult = numbers[i];
                 amountVariousValues = amountValuesInSequences;
             }
@@ -58,26 +49,21 @@ public class NumbersWithDifferences {
     }
 
     int getNumbersWithOnlyOddValues(String[] numbers) {
-
         int numbersWithOddValues = 0;
         int amountNumberWithOddValues = 0;
 
         for (int i = 0; i < numbers.length; i++) {
-
             char[] numberToCharArray = numbers[i].toCharArray();
 
             new ArraySorter().sortOfNumbersChar(numberToCharArray);
 
             for (int j = 0; j < numberToCharArray.length - 1; j++) {
-
                 if (numberToCharArray[j] % 2 == 0) {
-
                     amountNumberWithOddValues++;
                 }
             }
 
             if (amountNumberWithOddValues == numberToCharArray.length - 1) {
-
                 numbersWithOddValues++;
             }
             amountNumberWithOddValues = 0;
@@ -95,28 +81,22 @@ public class NumbersWithDifferences {
         int countEvenSecondHalf = 0;
 
         for (int i = 0; i < numbers.length; i++) {
-
             char[] numberToCharArray = numbers[i].toCharArray();
 
             for (int j = 0; j < numberToCharArray.length; j++) {
-
                 if (numberToCharArray[j] % 2 == 1 && j < numberToCharArray.length / 2) {
-
                     countOddFirstHalf++;
                 }
 
                 if (numberToCharArray[j] % 2 == 0 && j < numberToCharArray.length / 2) {
-
                     countEvenFirstHalf++;
                 }
 
                 if ((numberToCharArray[j] % 2 == 1) && (j >= numberToCharArray.length / 2) && (countEvenFirstHalf != 0)) {
-
                     countOddSecondHalf++;
                 }
 
                 if ((numberToCharArray[j] % 2 == 0) && (j >= numberToCharArray.length / 2) && (countOddFirstHalf != 0)) {
-
                     countEvenSecondHalf++;
                 }
             }
@@ -137,7 +117,6 @@ public class NumbersWithDifferences {
     }
 
     String getNumberWithStrictIncreaseOrder(String[] numbers) {
-
         String possibleResult = "NO RESULT";
 
         int index = 0;
@@ -146,7 +125,6 @@ public class NumbersWithDifferences {
         boolean fail;
 
         for (int i = 0; i < numbers.length; i++) {
-
             int potentialNumber = 0;
 
             fail = false;
@@ -154,19 +132,16 @@ public class NumbersWithDifferences {
             char[] numberToCharArray = numbers[i].toCharArray();
 
             for (int j = 0; j < numberToCharArray.length - 1; j++) {
-
                 if ((numberToCharArray[index] < numberToCharArray[j + 1]) && ((numberToCharArray[j + 1] % numberToCharArray[index] == 1) || (numberToCharArray[j + 1] % numberToCharArray[index] == 0))) {
                     potentialNumber++;
                     index = j + 1;
                 } else {
-
                     fail = true;
                     break;
                 }
             }
 
             if (potentialNumber > lengthNumber && (!fail)) {
-
                 possibleResult = numbers[i];
 
                 break;
@@ -174,17 +149,16 @@ public class NumbersWithDifferences {
 
             index = 0;
         }
+
         return possibleResult;
     }
 
     String getMaxDifferenceNumber(String[] numbers) {
-
         String possibleResult = "NO RESULT";
         int lengthNumber = 0;
         boolean fail;
 
         for (int i = 0; i < numbers.length; i++) {
-
             int valueMaxDifferences = 0;
             char[] numberToCharArray = numbers[i].toCharArray();
 
@@ -193,13 +167,9 @@ public class NumbersWithDifferences {
             fail = false;
 
             for (int j = 0; j < numberToCharArray.length - 1; j++) {
-
                 if (numberToCharArray[j] != numberToCharArray[j + 1]) {
-
                     valueMaxDifferences++;
-
                 } else {
-
                     fail = true;
 
                     break;
@@ -207,7 +177,6 @@ public class NumbersWithDifferences {
             }
 
             if ((valueMaxDifferences > lengthNumber) && !fail) {
-
                 possibleResult = numbers[i];
                 lengthNumber = valueMaxDifferences;
             }
