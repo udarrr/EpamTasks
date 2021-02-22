@@ -1,17 +1,16 @@
-package com.epam.automation.JavaClasses.Car;
+package com.epam.automation.JavaClasses.Console;
 
-public class ConsolePrinter {
+import com.epam.automation.JavaClasses.Cars.Car;
+
+public class Printer {
 
     public void printCarData(Car[] carDataResult) {
-
         for (Car item : carDataResult) {
-
             System.out.println(item.toString());
         }
     }
 
     public void printDescriptionOfCommands() {
-
         System.out.println(" ");
         System.out.println("Commands '=' is equal '>' is more ,'<' is less, '%' is time exploitation, 'AND' is additional operation ");
         System.out.println("Use space between words: vendor,model,year,color,price,regId");

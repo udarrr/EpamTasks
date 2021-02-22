@@ -1,4 +1,4 @@
-package com.epam.automation.JavaClasses.Car;
+package com.epam.automation.JavaClasses.Cars;
 
 import com.epam.automation.JavaClasses.Enums.CarColor;
 import com.epam.automation.JavaClasses.Enums.CarVendor;
@@ -16,19 +16,16 @@ public class Car {
     private String registrationNumber;
 
     public Car() {
-
         super();
     }
 
     public Car(int id, CarVendor vendor, String model) {
-
         this.id = id;
         this.vendor = vendor;
         this.model = model;
     }
 
     public Car(int id, CarVendor vendor, String model, int year, CarColor color, double price, String registrationNumber) {
-
         this(id, vendor, model);
         this.year = year;
         this.color = color;
@@ -37,17 +34,14 @@ public class Car {
     }
 
     public int getId() {
-
         return id;
     }
 
     public void setId(int id) {
-
         this.id = id;
     }
 
     public String getModel() {
-
         return model;
     }
 
@@ -57,58 +51,47 @@ public class Car {
     }
 
     public int getYear() {
-
         return year;
     }
 
     public void setYear(int year) {
-
         this.year = year;
     }
 
     public double getPrice() {
-
         return price;
     }
 
     public void setPrice(double price) {
-
         this.price = price;
     }
 
     public String getRegistrationNumber() {
-
         return registrationNumber;
     }
 
     public void setRegistrationNumber(String registrationNumber) {
-
         this.registrationNumber = registrationNumber;
     }
 
     public CarVendor getVendor() {
-
         return vendor;
     }
 
     public void setVendor(CarVendor vendor) {
-
         this.vendor = vendor;
     }
 
     public CarColor getColor() {
-
         return color;
     }
 
     public void setColor(CarColor color) {
-
         this.color = color;
     }
 
     @Override
     public boolean equals(Object o) {
-
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
@@ -117,13 +100,11 @@ public class Car {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(id, vendor, model, year, color, price, registrationNumber);
     }
 
     @Override
     public String toString() {
-
         return " ID='" + getId() + '\'' +
                 " vendor='" + getVendor() + '\'' +
                 " model='" + getModel() + '\'' +
