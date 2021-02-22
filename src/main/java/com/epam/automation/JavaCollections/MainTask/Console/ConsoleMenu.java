@@ -12,7 +12,6 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class ConsoleMenu {
-
     Scanner sc = new Scanner(System.in);
 
     ConsolePrinter consolePrinter = new ConsolePrinter();
@@ -24,20 +23,16 @@ public class ConsoleMenu {
     Flat flatWithAllAppliances = new Flat(homeElectricAppliances);
 
     public void mainConsoleMenu() {
-
         while (true) {
-
             consolePrinter.printMainMenuDescription();
 
             String inputConsoleLine = sc.nextLine();
 
             if (inputConsoleLine.equals("4")) {
-
                 break;
             }
 
             switch (inputConsoleLine) {
-
                 case "1" -> {
 
                     consolePrinter.printPluggingMenuDescription();
@@ -58,7 +53,6 @@ public class ConsoleMenu {
     }
 
     private void startHandlerPluggingAppliance() {
-
         Flat flatWithConnectedAppliances = new Flat();
 
         List<HomeElectricAppliance> connectedAppliance = new ArrayList<>();
@@ -66,27 +60,22 @@ public class ConsoleMenu {
         List<HomeElectricAppliance> homeElectricAppliances = collectionAppliances.getAllAppliances();
 
         while (true) {
-
             String inputConsoleLine = sc.nextLine();
 
             if (inputConsoleLine.equals("2")) {
-
                 break;
             }
 
             if (inputConsoleLine.equals("1")) {
-
                 if (connectedAppliance.size() != 0 && homeElectricAppliances.size() != 0) {
                     connectedAppliance = flatWithConnectedAppliances.connectRandomAppliancesToElectricalNetwork(homeElectricAppliances, connectedAppliance);
                 }
 
                 if (homeElectricAppliances.size() == 0) {
-
                     System.out.println();
                     System.out.println("Nothing to connect");
 
                 } else if (connectedAppliance.size() == 0) {
-
                     connectedAppliance = flatWithConnectedAppliances.getRandomAppliance(homeElectricAppliances);
                 }
 
@@ -95,20 +84,16 @@ public class ConsoleMenu {
                 consolePrinter.printPluggingMenuDescription();
 
             } else {
-
                 System.out.println("Your a choice isn't recognized");
             }
         }
     }
 
     private void startHandlerSearcherAppliance() {
-
         while (true) {
-
             String inputConsoleLine = sc.nextLine();
 
             if (inputConsoleLine.equals("1")) {
-
                 break;
             }
 
@@ -117,13 +102,11 @@ public class ConsoleMenu {
             String[] splitConsoleLineWithParams = pattern.split(inputConsoleLine);
 
             if (splitConsoleLineWithParams.length == 3) {
-
                 String parameterTypeOfAppliance = splitConsoleLineWithParams[0];
                 int min = Integer.parseInt(splitConsoleLineWithParams[1]);
                 int max = Integer.parseInt(splitConsoleLineWithParams[2]);
 
                 if (parameterTypeOfAppliance.equalsIgnoreCase("BatteryCapacity")) {
-
                     List<ConsumerElectronic> consumerElectronics = flatWithAllAppliances.getConsumerElectronicAppliance();
 
                     List<ConsumerElectronic> filteredConsumerElectronicByBatteryCapacity =
@@ -133,7 +116,6 @@ public class ConsoleMenu {
                 }
 
                 if (parameterTypeOfAppliance.equalsIgnoreCase("Size")) {
-
                     List<MajorAppliance> majorAppliances = flatWithAllAppliances.getMajorAppliance();
 
                     List<MajorAppliance> filteredMajorApplianceBySize =
@@ -143,7 +125,6 @@ public class ConsoleMenu {
                 }
 
                 if ((parameterTypeOfAppliance.equalsIgnoreCase("Power"))) {
-
                     List<HomeElectricAppliance> filteredAppliancesByPower =
                             flatWithAllAppliances.filterByPower(min, max);
 
@@ -151,19 +132,16 @@ public class ConsoleMenu {
                 }
 
             } else {
-
                 System.out.println("Command isn't recognized");
             }
         }
     }
 
     private void startHandlerSortingByPowerAppliance() {
-
         consolePrinter.printSortedAppliancesByPower(flatWithAllAppliances.getSortedHomeElectricApplianceByPower());
         consolePrinter.printSortedMenuDescription();
 
         while (true) {
-
             String inputConsoleLine = sc.nextLine();
 
             if (inputConsoleLine.equals("1")) {

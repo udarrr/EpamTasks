@@ -11,7 +11,6 @@ import java.util.List;
 public class StartPoint6 {
 
     public static void main(String[] args) throws IOException {
-
         List<String> linesFromFile = new ArrayList<>();
 
         BufferedReader in = new BufferedReader(new FileReader("src\\main\\java\\com\\epam\\automation\\JavaCollections\\OptionalTask\\Files\\TaskPoint6.txt"));
@@ -19,12 +18,10 @@ public class StartPoint6 {
         String line;
 
         while ((line = in.readLine()) != null) {
-
             linesFromFile.add(line);
         }
 
         Collections.sort(linesFromFile, new Comparator<String>() {
-
             @Override
             public int compare(String o1, String o2) {
 
@@ -33,7 +30,6 @@ public class StartPoint6 {
         });
 
         for (String sortingLines : linesFromFile) {
-
             System.out.println(sortingLines);
         }
     }

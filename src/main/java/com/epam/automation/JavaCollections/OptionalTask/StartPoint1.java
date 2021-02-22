@@ -6,12 +6,10 @@ import java.util.*;
 public class StartPoint1 {
 
     public static void main(String[] args) {
-
         Queue<String> queue = new LinkedList<>();
 
         try {
             BufferedReader in = new BufferedReader(
-
                     new FileReader("src\\main\\java\\com\\epam\\automation\\JavaCollections\\OptionalTask\\Files\\TaskPoint1.txt"));
 
             String line;
@@ -23,14 +21,12 @@ public class StartPoint1 {
             in.close();
 
         } catch (IOException e) {
-
             System.out.println(e.getMessage() + " File isn't exist");
         }
 
         Deque<String> linesFromFileInReverseOrder = new LinkedList<>();
 
         while (queue.size() != 0) {
-
             linesFromFileInReverseOrder.addFirst(queue.poll());
         }
 
@@ -38,11 +34,9 @@ public class StartPoint1 {
 
         try {
             BufferedWriter out = new BufferedWriter(
-
                     new FileWriter("src\\main\\java\\com\\epam\\automation\\JavaCollections\\OptionalTask\\Files\\TaskPoint1.txt"));
 
             while (iterator.hasNext()) {
-
                 out.write(iterator.next());
                 out.write(System.lineSeparator());
             }
@@ -50,7 +44,6 @@ public class StartPoint1 {
             out.close();
 
         } catch (IOException e) {
-
             System.out.println(e.getMessage() + " Path isn't exist");
         }
     }

@@ -7,7 +7,6 @@ import java.util.List;
 public class StartPoint4
 {
     public static void main(String[] args) {
-
         List<String> poem = Arrays.asList(
                 new String("No one worth possessing,"),
                 new String("Can be quite possessed,"),
@@ -27,7 +26,6 @@ public class StartPoint4
          poem.sort((Comparator<String>)(o1,o2) -> o1.length() - o2.length());
 
          for(String linesPoem : poem) {
-
              System.out.println(linesPoem);
          }
     }

@@ -5,33 +5,26 @@ import com.epam.automation.JavaCollections.MainTask.Appliances.HomeElectricAppli
 import java.util.List;
 
 public class ConsolePrinter {
-
     public void printAppliances(List<? extends HomeElectricAppliance> appliances) {
-
         for (HomeElectricAppliance appliance : appliances) {
-
             System.out.println(appliance);
         }
     }
 
     public void printConnectedApplianceToElectricNetwork(List<HomeElectricAppliance> connectedAppliance) {
-
         System.out.println("Connected: ");
 
         for (HomeElectricAppliance connectedHomeElectricAppliance : connectedAppliance) {
-
             System.out.println(connectedHomeElectricAppliance);
         }
     }
 
     public void printPowerConnectedAppliancesInHome(int connectedAppliance) {
-
         System.out.println();
         System.out.println("Entire Power connected appliances in electric network: " + connectedAppliance + "Watt");
     }
 
     public void printSortedAppliancesByPower(List<HomeElectricAppliance> sortedAppliances) {
-
         for (HomeElectricAppliance homeElectricAppliance : sortedAppliances) {
 
             System.out.println(homeElectricAppliance);
@@ -39,7 +32,6 @@ public class ConsolePrinter {
     }
 
     public void printMainMenuDescription() {
-
         System.out.println();
         System.out.println("Please choose position of menu enter it in console and press button ENTER");
         System.out.println("Menu");
@@ -50,7 +42,6 @@ public class ConsolePrinter {
     }
 
     public void printPluggingMenuDescription() {
-
         System.out.println();
         System.out.println("You can switch on some random electric appliances in outlet one by one");
         System.out.println("When you are going out from here all appliances to be unplugged");
@@ -61,7 +52,6 @@ public class ConsolePrinter {
     }
 
     public void printSearcherMenuDescription() {
-
         System.out.println();
         System.out.println("Examples for search");
         System.out.println(" 'size 1-100' or 'power 1-10000' or 'batterycapacity 1-10000' where word is parameter of appliance that have got it");
@@ -74,7 +64,6 @@ public class ConsolePrinter {
     }
 
     public void printSortedMenuDescription() {
-
         System.out.println();
         System.out.println("Sorted appliances by power");
         System.out.println();
