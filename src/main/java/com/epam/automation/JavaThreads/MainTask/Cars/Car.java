@@ -74,7 +74,6 @@ public class Car extends Thread {
             } else {
                 throw new InterruptedException();
             }
-
         } catch (InterruptedException e) {
             System.out.println("Car " + id + " go away");
         }
