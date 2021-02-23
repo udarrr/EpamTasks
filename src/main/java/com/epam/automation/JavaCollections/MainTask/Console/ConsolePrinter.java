@@ -57,8 +57,15 @@ public class ConsolePrinter {
         System.out.println(" 'size 1-100' or 'power 1-10000' or 'batterycapacity 1-10000' where word is parameter of appliance that have got it");
         System.out.println("first number is first condition that mean size > 10 and second number is second condition that mean size < 100");
         System.out.println("We have 3 commands it's size,power,batterycapacity");
-        System.out.println("Please enter your command in console line or enter exit");
+        System.out.println("Please enter your command in console line or chose position of menu for exit");
         System.out.println();
+        System.out.println("Menu");
+        System.out.println("1.Exit to previous menu");
+    }
+
+    public void printDescriptionExitMenuForSearcher(){
+        System.out.println();
+        System.out.println("Please enter your command in console line or chose position of menu for exit");
         System.out.println("Menu");
         System.out.println("1.Exit to previous menu");
     }
@@ -67,6 +74,7 @@ public class ConsolePrinter {
         System.out.println();
         System.out.println("Sorted appliances by power");
         System.out.println();
+        System.out.println("Please choose position of menu for exit");
         System.out.println("1.Exit to previous menu");
     }
 }
