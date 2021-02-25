@@ -1,4 +1,4 @@
-package com.epam.automation.JavaThreads.MainTask.Resources;
+package com.epam.automation.JavaThreads.MainTask.Cars.Resources;
 
 import java.util.concurrent.Semaphore;
 

@@ -1,6 +1,6 @@
 package com.epam.automation.JavaThreads.MainTask.Cars;
 
-import com.epam.automation.JavaThreads.MainTask.Resources.Resource;
+import com.epam.automation.JavaThreads.MainTask.Cars.Resources.Resource;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,7 +29,7 @@ public class Car extends Thread {
             }
         };
 
-        tm.schedule(timer, 3000);
+        tm.schedule(timer, 10000);
     }
 
     public Car(int id, String registrationNumber, int timeParking, Semaphore semaphore) {
