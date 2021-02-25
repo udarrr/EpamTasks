@@ -8,20 +8,28 @@ import java.util.*;
 import java.util.concurrent.CyclicBarrier;
 
 public class Auction {
-    List<Participant> participants;
+    List<Participant> participants =  new ArrayList<>();;
     public CyclicBarrier roundAuction;
+    BarrierAction barrierAction = new BarrierAction(participants);
 
     public void addParticipant(Participant p) {
         participants.add(p);
     }
 
     public void registerAuction(int participantsCount) {
-        participants = new ArrayList<>();
-        roundAuction = new CyclicBarrier(participantsCount, new BarrierAction(participants));
+
+        roundAuction = new CyclicBarrier(participantsCount, barrierAction);
 
         for (int i = 0; i < participantsCount; i++) {
             addParticipant(new Participant(i, 5000, 0, false, new ArrayList<>(), roundAuction));
         }
+    }
+
+    public void startRoundAuction(){
+        int sizeParticipantInRound = (int) participants.stream().filter(f->!f.getRefused()).count();
+        roundAuction = new CyclicBarrier(sizeParticipantInRound, barrierAction);
+        participants.stream().filter(f->!f.getRefused()).forEach(x->x.setBarrier(roundAuction));
+        participants.stream().filter(f->!f.getRefused()).forEach(x -> new Thread(x).start());
     }
 
     public void startAuction(int id, String nameLot, int currentPrice) throws InterruptedException {
@@ -34,7 +42,8 @@ public class Auction {
 
             while (participants.stream().filter(x -> !x.getRefused()).count() > 1) {
                 System.out.println("Lot name " + nameLot);
-                participants.forEach(x -> new Thread(x).start());
+                //participants.forEach(x -> new Thread(x).start());
+                startRoundAuction();
                 Thread.sleep(3000);
                 System.out.println();
 

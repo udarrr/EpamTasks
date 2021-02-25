@@ -27,6 +27,14 @@ public class Participant implements Runnable {
         this.barrier = barrier;
     }
 
+    public CyclicBarrier getBarrier() {
+        return barrier;
+    }
+
+    public void setBarrier(CyclicBarrier barrier) {
+        this.barrier = barrier;
+    }
+
     public boolean isHighPrice() {
         return highPrice;
     }

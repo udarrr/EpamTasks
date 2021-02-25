@@ -1,8 +1,8 @@
 package com.epam.automation.JavaThreads.MainTask.Auctions.Console;
 
 public class Printer {
-    public void printWinner(int idPotentialWinner, int cashAfterPay) {
-        System.out.println("\033[0;32m" + "Winner participant id=" + idPotentialWinner + " Current price=" + cashAfterPay + "\033[0;38m");
+    public void payWinnerForLot(int idPotentialWinner,int currentPriceLot, int cashAfterPay) {
+        System.out.println("\033[0;32m" + "Winner participant with id=" + idPotentialWinner +"  Lot with price: " + currentPriceLot + " Current cash after pay=" + cashAfterPay + "\033[0;38m");
     }
 
     public void printWinnerWithoutCash(int idPotentialWinner, int currentCashPotentialWinner, int currentPriceLot) {
