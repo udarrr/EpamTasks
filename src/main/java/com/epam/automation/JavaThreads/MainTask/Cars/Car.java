@@ -1,7 +1,5 @@
 package com.epam.automation.JavaThreads.MainTask.Cars;
 
-import com.epam.automation.JavaThreads.MainTask.Cars.Resources.Resource;
-
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.Semaphore;
@@ -9,10 +7,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Car extends Thread {
     private final int id;
-    private final String registrationNumber;
     private final int timeParking;
     private final Semaphore semaphore;
     private boolean isWaited;
+    boolean[] availablePlaces;
 
     public void startTimer() {
         Timer tm = new Timer();
@@ -32,11 +30,11 @@ public class Car extends Thread {
         tm.schedule(timer, 10000);
     }
 
-    public Car(int id, String registrationNumber, int timeParking, Semaphore semaphore) {
+    public Car(int id, int timeParking, Semaphore semaphore, boolean[] availablePlaces) {
         this.id = id;
-        this.registrationNumber = registrationNumber;
         this.timeParking = timeParking;
         this.semaphore = semaphore;
+        this.availablePlaces = availablePlaces;
     }
 
     public void run() {
@@ -49,10 +47,10 @@ public class Car extends Thread {
 
             if (!isInterrupted()) {
                 isWaited = true;
-                synchronized (Resource.AVAILABLE_PARKING) {
-                    for (int i = 0; i < Resource.NUMBER_OF_PARKING_PLACES; i++) {
-                        if (!Resource.AVAILABLE_PARKING[i]) {
-                            Resource.AVAILABLE_PARKING[i] = true;
+                synchronized (availablePlaces) {
+                    for (int i = 0; i < availablePlaces.length; i++) {
+                        if (!availablePlaces[i]) {
+                            availablePlaces[i] = true;
                             placeOnParking = i;
                             System.out.println("Car " + id + " parked " + placeOnParking);
 
@@ -65,11 +63,11 @@ public class Car extends Thread {
             TimeUnit.MILLISECONDS.sleep(timeParking * 1000L);
 
             if (!isInterrupted()) {
-                synchronized (Resource.AVAILABLE_PARKING) {
+                synchronized (availablePlaces) {
                     semaphore.release();
                     sleep(100);
                     System.out.println("Car " + id + " go out from parking " + placeOnParking);
-                    Resource.AVAILABLE_PARKING[placeOnParking] = false;
+                    availablePlaces[placeOnParking] = false;
                 }
             } else {
                 throw new InterruptedException();
