@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlaneCreator {
-
     public static List<Plane> createListPlanes() {
         List<Plane> planes = new ArrayList<>();
 
