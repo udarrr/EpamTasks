@@ -1,10 +1,9 @@
-package com.epam.automation.JavaThreads.MainTask.Auctions.Lots;
+package com.epam.automation.JavaThreads.MainTask.Auctions.Models.Lots;
 
 public class Lot {
     private int id;
     private String lotName;
     private int currentPrice;
-    private boolean isWinner;
 
     public Lot(int id, String lotName, int currentPrice) {
         this.id = id;
@@ -34,13 +33,5 @@ public class Lot {
 
     public void setCurrentPrice(int currentPrice) {
         this.currentPrice = currentPrice;
-    }
-
-    public boolean isWinner() {
-        return isWinner;
-    }
-
-    public void setWinner(boolean winner) {
-        isWinner = winner;
     }
 }

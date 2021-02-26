@@ -1,8 +1,8 @@
 package com.epam.automation.JavaThreads.MainTask.Auctions;
 
 import com.epam.automation.JavaThreads.MainTask.Auctions.Exceptions.OnlyOneParticipantException;
-import com.epam.automation.JavaThreads.MainTask.Auctions.Lots.Lot;
-import com.epam.automation.JavaThreads.MainTask.Auctions.Participants.Participant;
+import com.epam.automation.JavaThreads.MainTask.Auctions.Models.Lots.Lot;
+import com.epam.automation.JavaThreads.MainTask.Auctions.Models.Participants.Participant;
 
 import java.util.*;
 import java.util.concurrent.CyclicBarrier;
@@ -33,7 +33,7 @@ public class Auction {
         participants.stream().filter(f -> !f.getRefused()).forEach(x -> new Thread(x).start());
     }
 
-    public void startAuction(int id, String nameLot, int currentPrice) throws InterruptedException {
+    public void startAuction(int id, String nameLot, int currentPrice) {
         participants.forEach(x -> x.addLot(new Lot(id, nameLot, currentPrice)));
         participants.forEach(z -> z.setCurrentIdLot(id));
 
@@ -46,7 +46,11 @@ public class Auction {
                 System.out.println("Lot name " + nameLot);
 
                 startRoundAuction();
-                Thread.sleep(3000);
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 System.out.println();
 
                 setCurrentLotWithHighBet(id);

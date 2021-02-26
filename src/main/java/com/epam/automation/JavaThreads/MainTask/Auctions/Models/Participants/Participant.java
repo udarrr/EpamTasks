@@ -1,7 +1,7 @@
-package com.epam.automation.JavaThreads.MainTask.Auctions.Participants;
+package com.epam.automation.JavaThreads.MainTask.Auctions.Models.Participants;
 
 import com.epam.automation.JavaThreads.MainTask.Auctions.Console.Printer;
-import com.epam.automation.JavaThreads.MainTask.Auctions.Lots.Lot;
+import com.epam.automation.JavaThreads.MainTask.Auctions.Models.Lots.Lot;
 
 import java.util.List;
 import java.util.Random;
