@@ -43,7 +43,7 @@ public class Auction {
             setStateBeforeNewLot();
 
             while (participants.stream().filter(x -> !x.getRefused()).count() > 1) {
-                System.out.println("Lot name " + nameLot);
+                System.out.println("Lot name" + "\u0020" + "<" + nameLot + ">" + "\u0020" + "starting value of price=" + currentPrice);
 
                 startRoundAuction();
                 try {
@@ -57,22 +57,22 @@ public class Auction {
                 setCurrentBetAllParticipants(id);
             }
         } catch (OnlyOneParticipantException e) {
-            System.out.println(nameLot + " " + e.getMessage());
+            System.out.println(nameLot + "\u0020" + e.getMessage());
         }
     }
 
     private void setCurrentLotWithHighBet(int id) {
-        Lot currentLotWithHighPrice = participants.stream().flatMap(x -> x.getLots().
+        Lot currentLotWithHighPrice = participants.stream().flatMap(l -> l.getLots().
                 stream()).filter(f -> f.getId() == id).max(Comparator.comparing(Lot::getCurrentPrice)).
                 orElseThrow();
 
-        participants.stream().filter(x -> {
-            return x.getLots().stream().anyMatch(v -> v.equals(currentLotWithHighPrice));
-        }).forEach(v -> v.setHighPrice(true));
+        participants.stream().filter(l -> {
+            return l.getLots().stream().anyMatch(h -> h.equals(currentLotWithHighPrice));
+        }).forEach(s -> s.setHighPrice(true));
 
-        participants.stream().filter(x -> {
-            return x.getLots().stream().noneMatch(v -> v.equals(currentLotWithHighPrice));
-        }).forEach(v -> v.setHighPrice(false));
+        participants.stream().filter(l -> {
+            return l.getLots().stream().noneMatch(h -> h.equals(currentLotWithHighPrice));
+        }).forEach(s -> s.setHighPrice(false));
     }
 
     private void setCurrentBetAllParticipants(int id) {
@@ -86,9 +86,9 @@ public class Auction {
     }
 
     private void checkFee() {
-        participants.forEach(x -> {
-            if (x.getFee() > 0) {
-                x.setFee(x.getFee() - 1);
+        participants.forEach(fee -> {
+            if (fee.getFee() > 0) {
+                fee.setFee(fee.getFee() - 1);
             }
         });
     }
