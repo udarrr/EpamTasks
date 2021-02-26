@@ -97,10 +97,10 @@ public class Participant implements Runnable {
 
     @Override
     public void run() {
-        Printer printer = new Printer();
-
         if (fee == 0) {
+
             if (!highPrice) {
+
                 if (!refused) {
                     involveInRound();
                 } else {
@@ -108,6 +108,7 @@ public class Participant implements Runnable {
                 }
             } else {
                 int currentPrice = lots.stream().filter(f -> f.getId() == currentIdLot).findFirst().orElseThrow().getCurrentPrice();
+
                 new Printer().printBetPotentialWinner(toString(), currentPrice);
             }
         } else {
@@ -136,6 +137,7 @@ public class Participant implements Runnable {
             new Printer().printBetOfParticipant(toString(), currentPrice);
         } else {
             refused = true;
+
             new Printer().printRefuseOfParticipant(toString());
         }
     }

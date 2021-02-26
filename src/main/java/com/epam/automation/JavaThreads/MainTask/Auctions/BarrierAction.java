@@ -50,9 +50,7 @@ public class BarrierAction implements Runnable {
     }
 
     private void payForLot(int idPotentialWinner, int currentPriceLot) {
-        participants.stream().
-                filter(f -> f.getId() == idPotentialWinner).
-                forEach(x -> x.setCash(x.getCash() - currentPriceLot));
+        participants.stream().filter(f -> f.getId() == idPotentialWinner).forEach(x -> x.setCash(x.getCash() - currentPriceLot));
 
         int cashAfterPay = participants.stream().filter(f -> f.getId() == idPotentialWinner).findFirst().orElseThrow().getCash();
 

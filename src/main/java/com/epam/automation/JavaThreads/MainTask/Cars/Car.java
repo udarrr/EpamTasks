@@ -26,7 +26,6 @@ public class Car extends Thread {
                 }
             }
         };
-
         tm.schedule(timer, 10000);
     }
 
@@ -52,8 +51,8 @@ public class Car extends Thread {
                         if (!availablePlaces[i]) {
                             availablePlaces[i] = true;
                             placeOnParking = i;
-                            System.out.println("Car " + id + " parked " + placeOnParking);
 
+                            System.out.println("Car " + id + " parked " + placeOnParking);
                             break;
                         }
                     }
@@ -66,7 +65,9 @@ public class Car extends Thread {
                 synchronized (availablePlaces) {
                     semaphore.release();
                     sleep(100);
+
                     System.out.println("Car " + id + " go out from parking " + placeOnParking);
+
                     availablePlaces[placeOnParking] = false;
                 }
             } else {

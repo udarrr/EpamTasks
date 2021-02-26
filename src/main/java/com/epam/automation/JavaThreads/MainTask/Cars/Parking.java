@@ -32,6 +32,7 @@ public class Parking {
 
     public void start() {
         availablePlaces = new boolean[numberParkingPlaces];
+
         Random random = new Random();
 
         Semaphore semaphore = new Semaphore(numberParkingPlaces);
