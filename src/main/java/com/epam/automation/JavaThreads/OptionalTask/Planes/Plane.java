@@ -1,6 +1,5 @@
-package com.epam.automation.JavaThreads.OptionalTask;
+package com.epam.automation.JavaThreads.OptionalTask.Planes;
 
-import java.sql.Time;
 import java.time.Instant;
 import java.util.Timer;
 import java.util.TimerTask;

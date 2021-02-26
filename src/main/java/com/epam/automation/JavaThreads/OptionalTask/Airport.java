@@ -1,5 +1,7 @@
 package com.epam.automation.JavaThreads.OptionalTask;
 
+import com.epam.automation.JavaThreads.OptionalTask.Planes.Plane;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Semaphore;

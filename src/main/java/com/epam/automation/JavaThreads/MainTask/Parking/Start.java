@@ -1,4 +1,4 @@
-package com.epam.automation.JavaThreads.MainTask.Cars;
+package com.epam.automation.JavaThreads.MainTask.Parking;
 
 public class Start {
     public static void main(String[] args) throws InterruptedException {

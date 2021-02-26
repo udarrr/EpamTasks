@@ -1,4 +1,4 @@
-package com.epam.automation.JavaThreads.MainTask.Cars;
+package com.epam.automation.JavaThreads.MainTask.Parking.Cars;
 
 import java.util.Timer;
 import java.util.TimerTask;

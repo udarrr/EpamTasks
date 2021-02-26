@@ -1,8 +1,8 @@
-package com.epam.automation.JavaThreads.MainTask.Auctions;
+package com.epam.automation.JavaThreads.MainTask.Auction;
 
-import com.epam.automation.JavaThreads.MainTask.Auctions.Exceptions.OnlyOneParticipantException;
-import com.epam.automation.JavaThreads.MainTask.Auctions.Models.Lots.Lot;
-import com.epam.automation.JavaThreads.MainTask.Auctions.Models.Participants.Participant;
+import com.epam.automation.JavaThreads.MainTask.Auction.Exceptions.OnlyOneParticipantException;
+import com.epam.automation.JavaThreads.MainTask.Auction.Models.Lots.Lot;
+import com.epam.automation.JavaThreads.MainTask.Auction.Models.Participants.Participant;
 
 import java.util.*;
 import java.util.concurrent.CyclicBarrier;
