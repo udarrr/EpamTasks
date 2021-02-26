@@ -46,7 +46,7 @@ public class Plane implements Runnable {
 
             System.out.println(toString() + " is flying up from " + occupiedLine);
 
-            Thread.sleep(1000);
+            Thread.sleep(2500);
 
             freeRunaway(tm);
         } catch (InterruptedException e) {
@@ -65,7 +65,7 @@ public class Plane implements Runnable {
 
                     System.out.println(toString() + " enter on runway " + occupiedLine + " " + Instant.now());
 
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                     break;
                 }
             }
@@ -77,8 +77,6 @@ public class Plane implements Runnable {
             orderDeparture.release();
 
             System.out.println(toString() + " freed runaway " + occupiedLine + " " + Instant.now());
-
-            Thread.sleep(1000);
 
             tm.cancel();
 
