@@ -1,33 +1,61 @@
 package com.epam.automation.JavaThreads.OptionalTask;
 
+import com.epam.automation.JavaThreads.OptionalTask.Console.Printer;
 import com.epam.automation.JavaThreads.OptionalTask.Planes.Plane;
+import com.epam.automation.JavaThreads.OptionalTask.Resources.PlanningResources;
+import com.epam.automation.JavaThreads.OptionalTask.Resources.RunAway;
+import com.epam.automation.JavaThreads.OptionalTask.Resources.RunAwayPool;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Semaphore;
+import java.time.Instant;
+import java.util.concurrent.TimeUnit;
 
 public class Airport {
-    int runaway;
-    boolean[] availableLine;
-    Semaphore semaphore;
-    List<Plane> planes;
-
-    public Airport(int runaway) {
-        this.runaway = runaway;
-    }
-
-    public void addPlane(Plane p) {
-        planes.add(p);
-    }
+    PlanningResources planningResources = new PlanningResources(5);
+    RunAwayPool pool = new RunAwayPool();
 
     public void start() {
-        semaphore = new Semaphore(runaway);
-        availableLine = new boolean[runaway];
-        planes = new ArrayList<>();
+        for (int i = 0; i < planningResources.getAvailableRunaway(); i++) {
+            pool.addRunAway(new RunAway(i));
+        }
 
         for (int i = 0; i < 10; i++) {
-            addPlane(new Plane(i, semaphore, availableLine));
+            new Thread(new Plane(i, this)).start();
         }
-        planes.forEach(x -> new Thread(x).start());
+    }
+
+    public RunAway getResource(Plane plane) {
+        try {
+            planningResources.getSemaphore().acquire();
+
+            for (RunAway runAway : pool.getResources()) {
+                if (!runAway.isBusy()) {
+                    runAway.setBusy(true);
+                    runAway.setStartTimeDepart(Instant.now());
+
+                    new Printer().printPlaneTookRunAway(plane, runAway);
+
+                    TimeUnit.MILLISECONDS.sleep(500);
+
+                    return runAway;
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void releaseResource(Plane plane, RunAway runAway) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        runAway.setBusy(false);
+        runAway.setEndTimeDepart(Instant.now());
+
+        new Printer().printFlewUpPlane(plane, runAway);
+
+        planningResources.getSemaphore().release();
     }
 }
