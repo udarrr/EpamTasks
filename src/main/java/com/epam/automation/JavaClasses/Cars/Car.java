@@ -1,16 +1,14 @@
 package com.epam.automation.JavaClasses.Cars;
 
-import com.epam.automation.JavaClasses.Enums.CarColor;
-import com.epam.automation.JavaClasses.Enums.CarVendor;
-
-import java.util.Objects;
+import com.epam.automation.JavaClasses.Enums.Color;
+import com.epam.automation.JavaClasses.Enums.Vendor;
 
 public class Car {
     private int id;
-    private CarVendor vendor;
+    private Vendor vendor;
     private String model;
     private int year;
-    private CarColor color;
+    private Color color;
     private double price;
     private String registrationNumber;
 
@@ -18,13 +16,13 @@ public class Car {
         super();
     }
 
-    public Car(int id, CarVendor vendor, String model) {
+    public Car(int id, Vendor vendor, String model) {
         this.id = id;
         this.vendor = vendor;
         this.model = model;
     }
 
-    public Car(int id, CarVendor vendor, String model, int year, CarColor color, double price, String registrationNumber) {
+    public Car(int id, Vendor vendor, String model, int year, Color color, double price, String registrationNumber) {
         this(id, vendor, model);
         this.year = year;
         this.color = color;
@@ -72,36 +70,20 @@ public class Car {
         this.registrationNumber = registrationNumber;
     }
 
-    public CarVendor getVendor() {
+    public Vendor getVendor() {
         return vendor;
     }
 
-    public void setVendor(CarVendor vendor) {
+    public void setVendor(Vendor vendor) {
         this.vendor = vendor;
     }
 
-    public CarColor getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(CarColor color) {
+    public void setColor(Color color) {
         this.color = color;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return id == car.id && year == car.year &&
-                Double.compare(car.price, price) == 0 &&
-                vendor == car.vendor && Objects.equals(model, car.model) &&
-                color == car.color && Objects.equals(registrationNumber, car.registrationNumber);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, vendor, model, year, color, price, registrationNumber);
     }
 
     @Override

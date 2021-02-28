@@ -6,10 +6,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class CommandParser {
-
     public Car[] filter(Car[] cars, String[] parameters) throws ArrayIndexOutOfBoundsException {
-        final String AND = "and";
-
         if (parameters[0] != null && parameters[1] != null && parameters[2] != null) {
             String firstCondition = parameters[0];
             String command = parameters[1];
@@ -18,14 +15,17 @@ public class CommandParser {
             for (int i = 0; i < parameters.length - 3; i += 4) {
                 String additionalOperation = parameters[i + 3];
 
-                if (additionalOperation.equalsIgnoreCase(AND)) {
+                if (additionalOperation.equalsIgnoreCase("and")) {
                     cars = filterCars(firstCondition, secondCondition, command, cars);
+
                     if (parameters[i + 4] != null) {
                         firstCondition = parameters[i + 4];
                     }
+
                     if (parameters[i + 5] != null) {
                         command = parameters[i + 5];
                     }
+
                     if (parameters[i + 6] != null) {
                         secondCondition = parameters[i + 6];
                     }
@@ -151,7 +151,6 @@ public class CommandParser {
     }
 
     private Car[] getPrice(Car[] carData, double priceRequest, String command) {
-
         int length = 0;
 
         for (int i = 0; i < carData.length; i++) {
@@ -161,14 +160,12 @@ public class CommandParser {
         }
 
         for (int i = 0; i < carData.length; i++) {
-
             if (command.equals(">") && carData[i].getPrice() > priceRequest) {
                 length++;
             }
         }
 
         for (int i = 0; i < carData.length; i++) {
-
             if (command.equals("<") && carData[i].getPrice() < priceRequest) {
                 length++;
             }

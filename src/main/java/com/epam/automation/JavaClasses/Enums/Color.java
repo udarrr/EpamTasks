@@ -1,10 +1,9 @@
 package com.epam.automation.JavaClasses.Enums;
 
-public enum CarVendor {
-    VW, BMW, MITSUBISHI, VAZ;
+public enum Color {
+    BLACK, WHITE, RED, GREEN, ORANGE, BLUE, BACLAGAN;
 
-    public static CarVendor getRandomVendor() {
+    public static Color getRandomColor() {
         return values()[(int) (Math.random() * values().length)];
     }
 }
-

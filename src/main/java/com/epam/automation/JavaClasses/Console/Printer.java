@@ -4,8 +4,8 @@ import com.epam.automation.JavaClasses.Cars.Car;
 
 public class Printer {
 
-    public void printCarData(Car[] carDataResult) {
-        for (Car item : carDataResult) {
+    public void printCarData(Car[] cars) {
+        for (Car item : cars) {
             System.out.println(item.toString());
         }
     }

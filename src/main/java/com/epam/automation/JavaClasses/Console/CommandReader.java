@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class CommandReader {
-
     public int getCarsQuantity() {
         String inputConsoleValue = "";
         String exit = "exit";
