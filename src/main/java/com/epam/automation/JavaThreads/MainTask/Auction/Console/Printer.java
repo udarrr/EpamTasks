@@ -40,4 +40,8 @@ public class Printer {
     public void printWaitingParticipant(String participant) {
         System.out.println(participant + "\u0020" + "Waiting new lot");
     }
+
+    public void printLotName(String nameLot, int currentPrice){
+        System.out.println("Lot name" + "\u0020" + "<" + nameLot + ">" + "\u0020" + "starting value of price=" + currentPrice);
+    }
 }

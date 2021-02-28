@@ -1,5 +1,6 @@
 package com.epam.automation.JavaThreads.MainTask.Auction;
 
+import com.epam.automation.JavaThreads.MainTask.Auction.Console.Printer;
 import com.epam.automation.JavaThreads.MainTask.Auction.Exceptions.OnlyOneParticipantException;
 import com.epam.automation.JavaThreads.MainTask.Auction.Models.Lots.Lot;
 import com.epam.automation.JavaThreads.MainTask.Auction.Models.Participants.Participant;
@@ -43,7 +44,7 @@ public class Auction {
             setStateBeforeNewLot();
 
             while (participants.stream().filter(x -> !x.getRefused()).count() > 1) {
-                System.out.println("Lot name" + "\u0020" + "<" + nameLot + ">" + "\u0020" + "starting value of price=" + currentPrice);
+                new Printer().printLotName(nameLot, currentPrice);
 
                 startRoundAuction();
                 try {
