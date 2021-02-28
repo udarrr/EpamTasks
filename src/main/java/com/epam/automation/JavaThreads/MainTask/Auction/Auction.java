@@ -34,8 +34,8 @@ public class Auction {
         participants.stream().filter(f -> !f.getRefused()).forEach(x -> new Thread(x).start());
     }
 
-    public void startAuction(int id, String nameLot, int currentPrice) {
-        participants.forEach(x -> x.addLot(new Lot(id, nameLot, currentPrice)));
+    public void startAuction(int id, String lotName, int currentPrice) {
+        participants.forEach(x -> x.addLot(new Lot(id, lotName, currentPrice)));
         participants.forEach(z -> z.setCurrentIdLot(id));
 
         checkFee();
@@ -44,7 +44,7 @@ public class Auction {
             setStateBeforeNewLot();
 
             while (participants.stream().filter(x -> !x.getRefused()).count() > 1) {
-                new Printer().printLotName(nameLot, currentPrice);
+                new Printer().printLotName(lotName, currentPrice);
 
                 startRoundAuction();
                 try {
@@ -58,7 +58,7 @@ public class Auction {
                 setCurrentBetAllParticipants(id);
             }
         } catch (OnlyOneParticipantException e) {
-            System.out.println(nameLot + "\u0020" + e.getMessage());
+            System.err.println(lotName + "\u0020" + e.getMessage());
         }
     }
 
