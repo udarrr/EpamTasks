@@ -14,8 +14,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>14</maven.compiler.source>
+    <maven.compiler.target>14</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -41,6 +41,16 @@
       <artifactId>testng</artifactId>
       <version>6.10</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>3.141.59</version>
+    </dependency>
+    <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>4.3.1</version>
     </dependency>
   </dependencies>
 
@@ -89,14 +99,6 @@
       </plugins>
     </pluginManagement>
       <plugins>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-compiler-plugin</artifactId>
-              <configuration>
-                  <source>14</source>
-                  <target>14</target>
-              </configuration>
-          </plugin>
       </plugins>
   </build>
 </project>
