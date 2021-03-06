@@ -24,20 +24,10 @@ public class NewPastCreatorTest {
                 .pasteBin("Hello from WebDriver")
                 .selectExpirationTime(ExpirationTime.MINUTES_10.getExpirationTime())
                 .pasteNameTitle("helloweb")
-                .resultAfterCreatingNewBin();
+                .createNewBin()
+                .checkResult();
 
         Assert.assertTrue(expectedCreatedOneNewPastBin, "New past bin wasn't created");
-
-//        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-//                .withTimeout(Duration.ofSeconds(10))
-//                .ignoring(NoSuchElementException.class);
-//
-//        WebElement result = wait.until(new Function<WebDriver, WebElement>() {
-//            @Override
-//            public WebElement apply(WebDriver driver) {
-//                return driver.findElement(By.xpath(""));
-//            }
-//        });
     }
 
     @AfterMethod(alwaysRun = true)
