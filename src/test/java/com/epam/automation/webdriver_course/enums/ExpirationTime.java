@@ -11,13 +11,13 @@ public enum ExpirationTime {
     MONTH_1("1 Month"),
     MONTH_6("6 Month");
 
-    private final String expirationTime;
+    private final String expiration;
 
-    ExpirationTime(String expirationTime) {
-        this.expirationTime = expirationTime;
+    ExpirationTime(String expiration) {
+        this.expiration = expiration;
     }
 
-    public String getExpirationTime() {
-        return expirationTime;
+    public String getExpiration() {
+        return expiration;
     }
 }

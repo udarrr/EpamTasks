@@ -1,9 +1,8 @@
 package com.epam.automation.webdriver_course.bring_it_on.test;
 
-import com.epam.automation.webdriver_course.bring_it_on.exceptions.HeaderMatchException;
-import com.epam.automation.webdriver_course.bring_it_on.exceptions.HighlightingException;
 import com.epam.automation.webdriver_course.bring_it_on.page.PasteBinHomePage;
-import com.epam.automation.webdriver_course.bring_it_on.resources.DataForBringItOnTest;
+import com.epam.automation.webdriver_course.bring_it_on.page.ResultPageAfterAddedBin;
+import com.epam.automation.webdriver_course.bring_it_on.resources.CommonDataBringItOnTestForJSON;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -20,21 +19,25 @@ public class NewPastCreatorTest {
     }
 
     @Test(description = "I can win")
-    public void createNewPastAndCheckItIsCreated() throws HeaderMatchException, HighlightingException {
-        DataForBringItOnTest data = new DataForBringItOnTest();
+    public void createNewPastAndCheckItIsCreated() {
+        CommonDataBringItOnTestForJSON data = new CommonDataBringItOnTestForJSON();
 
-        boolean expectedRightCreatedBin = new PasteBinHomePage(driver)
-                .openPage()
+        ResultPageAfterAddedBin createdBin = new PasteBinHomePage(driver)
+                .openHomePage()
                 .pasteBin(data.getSampleBashCode())
                 .selectSyntaxType(data.getTypeSyntax())
                 .selectExpirationTime(data.getExpirationTime())
                 .pasteNameTitle(data.getTitleName())
-                .createNewPaste()
-                .checkHeaderCreatedBin()
-                .checkHighlightingSyntax()
-                .checkTextInRawLinesMatchWithInitialText();
+                .createNewPaste();
 
-        Assert.assertTrue(expectedRightCreatedBin, "New past bin wasn't created");
+        boolean expectedHeaderLikeInitial = createdBin.checkHeaderCreatedBin();
+        Assert.assertTrue(expectedHeaderLikeInitial, "There is don't similar header");
+
+        boolean expectedHighlightingSyntaxInRightWay = createdBin.checkHeaderCreatedBin();
+        Assert.assertTrue(expectedHighlightingSyntaxInRightWay, "Highlighting isn't working");
+
+        boolean expectedTextInRawLinesMatchWithInitialLines = createdBin.checkTextInRawLinesMatchWithInitialText();
+        Assert.assertTrue(expectedTextInRawLinesMatchWithInitialLines, "Text in lines isn't same");
     }
 
     @AfterMethod(alwaysRun = true)

@@ -6,9 +6,9 @@ import com.epam.automation.webdriver_course.enums.SyntaxHighlighting;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class DataForBringItOnTest {
-    private final String typeSyntax = SyntaxHighlighting.BASH.getTypeSyntax();
-    private final String expirationTime = ExpirationTime.MINUTES_10.getExpirationTime();
+public final class CommonDataBringItOnTestForJSON {
+    private final String typeSyntax = SyntaxHighlighting.BASH.getType();
+    private final String expirationTime = ExpirationTime.MINUTES_10.getExpiration();
     private final String titleName = "how to gain dominance among developers";
     private final List<String> sampleBashCode = new ArrayList<>(List.of(
             "git config --global user.name \"New Sheriff in Town\"",

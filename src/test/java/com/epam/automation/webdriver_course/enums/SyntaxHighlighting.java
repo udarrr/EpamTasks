@@ -3,13 +3,13 @@ package com.epam.automation.webdriver_course.enums;
 public enum SyntaxHighlighting {
     BASH("Bash");
 
-    private final String typeSyntax;
+    private final String type;
 
-    SyntaxHighlighting(String typeSyntax) {
-        this.typeSyntax = typeSyntax;
+    SyntaxHighlighting(String type) {
+        this.type = type;
     }
 
-    public String getTypeSyntax() {
-        return typeSyntax;
+    public String getType() {
+        return type;
     }
 }

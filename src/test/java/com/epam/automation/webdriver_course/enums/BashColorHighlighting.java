@@ -9,9 +9,9 @@ public enum BashColorHighlighting {
     private final String name;
     private final String colorCode;
 
-    BashColorHighlighting(String name, String colorCode) {
+    BashColorHighlighting(String name, String code) {
         this.name = name;
-        this.colorCode = colorCode;
+        this.colorCode = code;
     }
 
     public String getName() {

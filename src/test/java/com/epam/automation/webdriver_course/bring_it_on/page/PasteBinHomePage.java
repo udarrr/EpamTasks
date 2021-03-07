@@ -38,22 +38,31 @@ public class PasteBinHomePage {
         PageFactory.initElements(driver, this);
     }
 
-    public PasteBinHomePage openPage() {
+    public PasteBinHomePage openHomePage() {
         driver.get(HOME_PAGE_URL);
-        new WebDriverWait(driver, 10).until(CustomConditions.jQueryAJAXsCompleted());
+
+        new WebDriverWait(driver, 10).withMessage("JQuery didn't load")
+                .until(CustomConditions.jQueryAJAXsCompleted());
 
         return this;
     }
 
     public PasteBinHomePage pasteBin(List<String> bin) {
-        for (String lines : bin){
-            textAreaForPasteBin.sendKeys(lines);
-            textAreaForPasteBin.sendKeys(Keys.RETURN);
+        for (int i = 0; i < bin.size(); i++) {
+            if (!(bin.size() - i == 1)) {
+                textAreaForPasteBin.sendKeys(bin.get(i));
+                textAreaForPasteBin.sendKeys(Keys.RETURN);
+            } else {
+                textAreaForPasteBin.sendKeys(bin.get(i));
+            }
         }
         return this;
     }
 
     public PasteBinHomePage selectSyntaxType(String element) {
+        new WebDriverWait(driver, 10).
+                until(ExpectedConditions.elementToBeClickable(selectorSyntaxHighlighting));
+
         selectorSyntaxHighlighting.click();
 
         buildFullLocatorForDropDownList(element).click();
@@ -62,6 +71,9 @@ public class PasteBinHomePage {
     }
 
     public PasteBinHomePage selectExpirationTime(String element) {
+        new WebDriverWait(driver, 10).
+                until(ExpectedConditions.elementToBeClickable(selectorPasteExpiration));
+
         selectorPasteExpiration.click();
 
         buildFullLocatorForDropDownList(element).click();
@@ -82,9 +94,12 @@ public class PasteBinHomePage {
         return this;
     }
 
-    public ResultPageAfterAddBin createNewPaste() {
+    public ResultPageAfterAddedBin createNewPaste() {
+        new WebDriverWait(driver, 10).
+                until(ExpectedConditions.elementToBeClickable(buttonCreateNewPast));
+
         buttonCreateNewPast.click();
 
-        return new ResultPageAfterAddBin(driver);
+        return new ResultPageAfterAddedBin(driver);
     }
 }
