@@ -6,7 +6,7 @@ import com.epam.automation.webdriver_course.enums.SyntaxHighlighting;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class CommonDataBringItOnTestForJSON {
+public final class CommonDataBringItOnTestJSON {
     private final String typeSyntax = SyntaxHighlighting.BASH.getType();
     private final String expirationTime = ExpirationTime.MINUTES_10.getExpiration();
     private final String titleName = "how to gain dominance among developers";

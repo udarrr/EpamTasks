@@ -1,5 +1,6 @@
 package com.epam.automation.webdriver_course.bring_it_on.page;
 
+import com.epam.automation.webdriver_course.bring_it_on.resources.CommonDataBringItOnTestJSON;
 import com.epam.automation.webdriver_course.waits.CustomConditions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -15,6 +16,7 @@ import java.util.List;
 public class PasteBinHomePage {
     private static final String HOME_PAGE_URL = "http://pastebin.com";
     private WebDriver driver;
+    private CommonDataBringItOnTestJSON data;
 
     @FindBy(id = "postform-text")
     private WebElement textAreaForPasteBin;
@@ -33,8 +35,9 @@ public class PasteBinHomePage {
 
     private String partOfLocatorForElementDropDownList = "//li[text()='%s']";
 
-    public PasteBinHomePage(WebDriver driver) {
+    public PasteBinHomePage(WebDriver driver, CommonDataBringItOnTestJSON data) {
         this.driver = driver;
+        this.data = data;
         PageFactory.initElements(driver, this);
     }
 
@@ -64,7 +67,6 @@ public class PasteBinHomePage {
                 until(ExpectedConditions.elementToBeClickable(selectorSyntaxHighlighting));
 
         selectorSyntaxHighlighting.click();
-
         buildFullLocatorForDropDownList(element).click();
 
         return this;
@@ -75,7 +77,6 @@ public class PasteBinHomePage {
                 until(ExpectedConditions.elementToBeClickable(selectorPasteExpiration));
 
         selectorPasteExpiration.click();
-
         buildFullLocatorForDropDownList(element).click();
 
         return this;
@@ -100,6 +101,6 @@ public class PasteBinHomePage {
 
         buttonCreateNewPast.click();
 
-        return new ResultPageAfterAddedBin(driver);
+        return new ResultPageAfterAddedBin(driver, data);
     }
 }

@@ -2,7 +2,7 @@ package com.epam.automation.webdriver_course.bring_it_on.test;
 
 import com.epam.automation.webdriver_course.bring_it_on.page.PasteBinHomePage;
 import com.epam.automation.webdriver_course.bring_it_on.page.ResultPageAfterAddedBin;
-import com.epam.automation.webdriver_course.bring_it_on.resources.CommonDataBringItOnTestForJSON;
+import com.epam.automation.webdriver_course.bring_it_on.resources.CommonDataBringItOnTestJSON;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -18,11 +18,11 @@ public class NewPastCreatorTest {
         driver.manage().window().maximize();
     }
 
-    @Test(description = "I can win")
+    @Test(description = "Bring it on")
     public void createNewPastAndCheckItIsCreated() {
-        CommonDataBringItOnTestForJSON data = new CommonDataBringItOnTestForJSON();
+        CommonDataBringItOnTestJSON data = new CommonDataBringItOnTestJSON();
 
-        ResultPageAfterAddedBin createdBin = new PasteBinHomePage(driver)
+        ResultPageAfterAddedBin createdBin = new PasteBinHomePage(driver,data)
                 .openHomePage()
                 .pasteBin(data.getSampleBashCode())
                 .selectSyntaxType(data.getTypeSyntax())
@@ -31,7 +31,7 @@ public class NewPastCreatorTest {
                 .createNewPaste();
 
         boolean expectedHeaderLikeInitial = createdBin.checkHeaderCreatedBin();
-        Assert.assertTrue(expectedHeaderLikeInitial, "There is don't similar header");
+        Assert.assertTrue(expectedHeaderLikeInitial, "There is no similar header");
 
         boolean expectedHighlightingSyntaxInRightWay = createdBin.checkHeaderCreatedBin();
         Assert.assertTrue(expectedHighlightingSyntaxInRightWay, "Highlighting isn't working");

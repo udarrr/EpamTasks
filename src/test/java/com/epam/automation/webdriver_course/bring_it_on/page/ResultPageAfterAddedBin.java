@@ -1,6 +1,6 @@
 package com.epam.automation.webdriver_course.bring_it_on.page;
 
-import com.epam.automation.webdriver_course.bring_it_on.resources.CommonDataBringItOnTestForJSON;
+import com.epam.automation.webdriver_course.bring_it_on.resources.CommonDataBringItOnTestJSON;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,20 +14,19 @@ import java.util.List;
 
 public class ResultPageAfterAddedBin {
     private WebDriver driver;
-
-    @FindBy(xpath = "//li[@class='li1']")
-    private List<WebElement> rawLinesWithResult;
+    private CommonDataBringItOnTestJSON data;
 
     @FindBy(xpath = "//div[@class='de1']")
-    private List<WebElement> rawLinesInCreatedBin;
+    private List<WebElement> rawLinesCreatedBin;
 
     @FindBy(xpath = "//h1")
     private WebElement headerCreatedBin;
 
     private String partOfLocatorParticularRawLine = "//div[@class='de1']/../../li";
 
-    public ResultPageAfterAddedBin(WebDriver driver) {
+    public ResultPageAfterAddedBin(WebDriver driver, CommonDataBringItOnTestJSON data) {
         this.driver = driver;
+        this.data = data;
         PageFactory.initElements(driver, this);
     }
 
@@ -35,7 +34,7 @@ public class ResultPageAfterAddedBin {
         new WebDriverWait(driver, 10).withMessage("Header isn't present")
                 .until(ExpectedConditions.visibilityOf(headerCreatedBin));
 
-        boolean headerHasTheSameTextLikeInitial = headerCreatedBin.getText().equals(new CommonDataBringItOnTestForJSON().getTitleName());
+        boolean headerHasTheSameTextLikeInitial = headerCreatedBin.getText().equals(new CommonDataBringItOnTestJSON().getTitleName());
 
         if (!headerHasTheSameTextLikeInitial) {
             return false;
@@ -63,10 +62,9 @@ public class ResultPageAfterAddedBin {
     }
 
     public boolean checkTextInRawLinesMatchWithInitialText() {
-        CommonDataBringItOnTestForJSON data = new CommonDataBringItOnTestForJSON();
         List<String> lines = new ArrayList<>();
 
-        for (WebElement element : rawLinesInCreatedBin) {
+        for (WebElement element : rawLinesCreatedBin) {
             lines.add(element.getText());
         }
 
@@ -78,8 +76,6 @@ public class ResultPageAfterAddedBin {
     }
 
     private boolean checkSpanHasRightColorSyntax(List<WebElement> part, int indexOfPartElement) {
-        CommonDataBringItOnTestForJSON data = new CommonDataBringItOnTestForJSON();
-
         switch (part.get(indexOfPartElement).getAttribute("class")) {
             case "kw2":
                 for (int k = 0; k < data.getCommandsGitBash().size(); k++) {
