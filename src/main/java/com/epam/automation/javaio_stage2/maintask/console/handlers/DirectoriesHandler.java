@@ -1,8 +1,8 @@
-package com.epam.automation.javaio_stage2.MainTask.Consoles.Handlers;
+package com.epam.automation.javaio_stage2.maintask.console.handlers;
 
-import com.epam.automation.javaio_stage2.MainTask.Builders.PathsBuilder;
-import com.epam.automation.javaio_stage2.MainTask.Consoles.Printer;
-import com.epam.automation.javaio_stage2.MainTask.Writers.PathsToFileWriter;
+import com.epam.automation.javaio_stage2.maintask.builders.PathsBuilder;
+import com.epam.automation.javaio_stage2.maintask.console.Printer;
+import com.epam.automation.javaio_stage2.maintask.writers.PathsToFileWriter;
 
 import java.io.File;
 import java.io.IOException;

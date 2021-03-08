@@ -1,4 +1,4 @@
-package com.epam.automation.javaio_stage2.MainTask.Resources;
+package com.epam.automation.javaio_stage2.maintask.resources;
 
 public class PathPlaces {
     private static final String placeAfterReadingDirectories = "src\\main\\java\\com\\epam\\automation\\JavaIO\\MainTask\\Files\\file.txt";

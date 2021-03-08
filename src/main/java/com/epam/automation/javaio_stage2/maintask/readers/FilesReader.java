@@ -1,7 +1,7 @@
-package com.epam.automation.javaio_stage2.MainTask.Readers;
+package com.epam.automation.javaio_stage2.maintask.readers;
 
-import com.epam.automation.javaio_stage2.MainTask.Exceptions.NoDirectoriesInPath;
-import com.epam.automation.javaio_stage2.MainTask.Exceptions.NoFilesInDirectories;
+import com.epam.automation.javaio_stage2.maintask.exceptions.NoDirectoriesInPath;
+import com.epam.automation.javaio_stage2.maintask.exceptions.NoFilesInDirectories;
 
 import java.io.BufferedReader;
 import java.io.File;

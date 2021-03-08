@@ -1,4 +1,4 @@
-package com.epam.automation.javaio_stage2.MainTask.Readers;
+package com.epam.automation.javaio_stage2.maintask.readers;
 
 import java.util.List;
 
