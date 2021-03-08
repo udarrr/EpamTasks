@@ -1,4 +1,4 @@
-package com.epam.automation.JavaCleanCode.Enum;
+package com.epam.automation.javacleancode_stage1.Enum;
 
 public enum ExperimentalModel {
     BELL_X14("Bell X-14", 277, 482, 500, ExperimentalType.HIGH_ALTITUDE, ClassificationSecurityLevel.SECRET),

@@ -1,6 +1,6 @@
-package com.epam.automation.JavaCleanCode.Planes;
+package com.epam.automation.javacleancode_stage1.Planes;
 
-import com.epam.automation.JavaCleanCode.Enum.MilitaryType;
+import com.epam.automation.javacleancode_stage1.Enum.MilitaryType;
 
 import java.util.Objects;
 

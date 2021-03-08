@@ -1,6 +1,6 @@
-package com.epam.automation.JavaCleanCode;
+package com.epam.automation.javacleancode_stage1;
 
-import com.epam.automation.JavaCleanCode.Console.Printer;
+import com.epam.automation.javacleancode_stage1.Console.Printer;
 
 public class Start {
     public static void main(String[] args) {
