@@ -1,6 +1,6 @@
-package com.epam.automation.javacollections_stage1.MainTask.Console;
+package com.epam.automation.javacollections_stage1.maintask.console;
 
-import com.epam.automation.javacollections_stage1.MainTask.Appliances.HomeElectricAppliance;
+import com.epam.automation.javacollections_stage1.maintask.appliances.HomeElectricAppliance;
 
 import java.util.List;
 

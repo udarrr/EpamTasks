@@ -1,9 +1,9 @@
-package com.epam.automation.javacollections_stage1.MainTask;
+package com.epam.automation.javacollections_stage1.maintask;
 
-import com.epam.automation.javacollections_stage1.MainTask.Appliances.ConsumerElectronic;
-import com.epam.automation.javacollections_stage1.MainTask.Appliances.HomeElectricAppliance;
-import com.epam.automation.javacollections_stage1.MainTask.Appliances.MajorAppliance;
-import com.epam.automation.javacollections_stage1.MainTask.Appliances.SmallAppliance;
+import com.epam.automation.javacollections_stage1.maintask.appliances.ConsumerElectronic;
+import com.epam.automation.javacollections_stage1.maintask.appliances.HomeElectricAppliance;
+import com.epam.automation.javacollections_stage1.maintask.appliances.MajorAppliance;
+import com.epam.automation.javacollections_stage1.maintask.appliances.SmallAppliance;
 import com.opencsv.bean.CsvToBeanBuilder;
 
 import java.io.FileReader;

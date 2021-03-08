@@ -1,4 +1,4 @@
-package com.epam.automation.javacollections_stage1.OptionalTask;
+package com.epam.automation.javacollections_stage1.optionaltask;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
