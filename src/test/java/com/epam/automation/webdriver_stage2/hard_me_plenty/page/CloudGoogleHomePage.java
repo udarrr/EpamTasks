@@ -1,5 +1,6 @@
 package com.epam.automation.webdriver_stage2.hard_me_plenty.page;
 
+import com.epam.automation.webdriver_stage2.hard_me_plenty.resources.CommonDataHardMePlentyJSON;
 import com.epam.automation.webdriver_stage2.waits.CustomConditions;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -12,12 +13,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CloudGoogleHomePage {
     private static final String HOME_PAGE_URL = "https://cloud.google.com/";
     private WebDriver driver;
+    private CommonDataHardMePlentyJSON commonData;
 
     @FindBy(xpath = "//div[@class='devsite-searchbox']/input")
     private WebElement searchInput;
 
-    public CloudGoogleHomePage(WebDriver driver) {
+    public CloudGoogleHomePage(WebDriver driver, CommonDataHardMePlentyJSON commonData) {
         this.driver = driver;
+        this.commonData = commonData;
         PageFactory.initElements(driver, this);
     }
 
@@ -36,6 +39,6 @@ public class CloudGoogleHomePage {
         searchInput.sendKeys("Google Cloud Platform Pricing Calculator");
         searchInput.sendKeys(Keys.ENTER);
 
-        return new SearchingResultPage(driver);
+        return new SearchingResultPage(driver, commonData);
     }
 }

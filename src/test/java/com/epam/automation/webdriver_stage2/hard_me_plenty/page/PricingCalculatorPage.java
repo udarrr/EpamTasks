@@ -1,5 +1,7 @@
 package com.epam.automation.webdriver_stage2.hard_me_plenty.page;
 
+import com.epam.automation.webdriver_stage2.hard_me_plenty.enums.*;
+import com.epam.automation.webdriver_stage2.hard_me_plenty.resources.CommonDataHardMePlentyJSON;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,20 +10,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PricingCalculatorPage {
     private WebDriver driver;
-
-//    * Number of instances: 4
-//            * What are these instances for?: оставить пустым
-//    * Operating System / Software: Free: Debian, CentOS, CoreOS, Ubuntu, or other User Provided OS
-//    * VM Class: Regular
-//    * Instance type: n1-standard-8    (vCPUs: 8, RAM: 30 GB)
-//            * Выбрать Add GPUs
-//        * Number of GPUs: 1
-//            * GPU type: NVIDIA Tesla V100
-//    * Local SSD: 2x375 Gb
-//    * Datacenter location: Frankfurt (europe-west3)
-//    * Commited usage: 1 Year
+    private CommonDataHardMePlentyJSON commonData;
 
     @FindBy(xpath = "//a[@class='gs-title']/b[text()='Google Cloud Platform Pricing Calculator']")
     private WebElement googleCalculatorLink;
@@ -75,13 +69,17 @@ public class PricingCalculatorPage {
 
     String partOfLocatorForPositionDropDownList = "//div[@class='md-select-menu-container md-active md-clickable']//md-option[@value='%s']";
 
-    public PricingCalculatorPage(WebDriver driver) {
+    @FindBy(xpath = "//md-list[@class='cartitem ng-scope']/md-list-item/div")
+    private List<WebElement> createdEstimate;
+
+    public PricingCalculatorPage(WebDriver driver, CommonDataHardMePlentyJSON commonData) {
         this.driver = driver;
+        this.commonData = commonData;
         PageFactory.initElements(driver, this);
     }
 
-    public WebElement buildFullLocatorForPositionMenu(String condition){
-        String fullLocator = String.format(partOfLocatorForPositionDropDownList,condition);
+    public WebElement buildFullLocatorForPositionMenu(String condition) {
+        String fullLocator = String.format(partOfLocatorForPositionDropDownList, condition);
 
         return waitBeforeChoosingMenuOption(fullLocator);
     }
@@ -115,7 +113,7 @@ public class PricingCalculatorPage {
     public PricingCalculatorPage chooseOperationSystem(String operationSystem) {
         inputContainerTypeOperationSystem.click();
 
-        String fullLocator = String.format(partOfLocatorPositionMenuTypeOperationSystem,operationSystem);
+        String fullLocator = String.format(partOfLocatorPositionMenuTypeOperationSystem, operationSystem);
 
         WebElement position = waitBeforeChoosingMenuOption(fullLocator);
         position.click();
@@ -150,10 +148,10 @@ public class PricingCalculatorPage {
         return this;
     }
 
-    public PricingCalculatorPage addGPUs(String number,String type) {
+    public PricingCalculatorPage addGPUs(String number, String type) {
         checkBoxAddGPU.click();
 
-        new WebDriverWait(driver,10)
+        new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.visibilityOf(inputContainerGPUNumber));
 
         inputContainerGPUNumber.click();
@@ -196,9 +194,49 @@ public class PricingCalculatorPage {
         return this;
     }
 
-    public PricingCalculatorPage pressButtonAddToEstimate(){
+    public PricingCalculatorPage pressButtonAddToEstimate() {
         buttonAddToEstimate.click();
 
         return this;
+    }
+
+    public boolean checkFieldsCreatedEstimateHasTheSameDataLikeInCalculator(List<String> fields) {
+        List<String> lines = new ArrayList<>();
+        createdEstimate.forEach(x->lines.add(x.getText()));
+
+        for (int i = 0; i < lines.size(); i++) {
+            for (int j = 0; j < fields.size(); j++) {
+                if (lines.get(i).contains(fields.get(j))) {
+                    if (!findResultInFields(lines.get(i), fields.get(j))) {
+                        return false;
+                    }
+                    break;
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean checkPriceCreatedEstimateHasTheSameValueLikeInManualTest(String manualTestValue) {
+        return createdEstimate.stream().filter(x -> x.getText()
+                .contains(commonData.getPriceField()))
+                .anyMatch(z -> z.getText().contains(manualTestValue));
+    }
+
+    private boolean findResultInFields(String line, String field) {
+        switch (field) {
+            case "VM class":
+                return line.toLowerCase().endsWith(MachineClass.REGULAR.getDescription().toLowerCase());
+            case "Instance type":
+                return line.toLowerCase().endsWith(MachineType.N1_STANDART_8.getDescription().toLowerCase());
+            case "Region":
+                return line.toLowerCase().endsWith(DatacenterLocation.FRANKFURT.getDescription().toLowerCase());
+            case "local SSD":
+                return line.toLowerCase().endsWith(LocalSSD.X2_375.getDescription().toLowerCase());
+            case "Commitment term":
+                return line.toLowerCase().endsWith(CommittedUsage.YEAR_1.getDescription().toLowerCase());
+            default:
+                return false;
+        }
     }
 }

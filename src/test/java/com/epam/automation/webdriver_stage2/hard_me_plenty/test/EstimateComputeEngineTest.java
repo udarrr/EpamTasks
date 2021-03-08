@@ -1,8 +1,9 @@
 package com.epam.automation.webdriver_stage2.hard_me_plenty.test;
 
 import com.epam.automation.webdriver_stage2.hard_me_plenty.page.CloudGoogleHomePage;
-import com.epam.automation.webdriver_stage2.hard_me_plenty.page.PricingCalculatorPage;
+import com.epam.automation.webdriver_stage2.hard_me_plenty.resources.CommonDataHardMePlentyJSON;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -17,27 +18,51 @@ public class EstimateComputeEngineTest {
     }
 
     @Test(description = "Hard me plenty")
-    public void createNewPastAndCheckItIsCreated() {
-        PricingCalculatorPage estimate = new CloudGoogleHomePage(driver)
+    public void createEstimateAndCheckFields() {
+        CommonDataHardMePlentyJSON commonData = new CommonDataHardMePlentyJSON();
+
+        boolean expectedEstimate = new CloudGoogleHomePage(driver, commonData)
                 .openHomePage()
                 .fillSearchInput()
                 .openPricingCalculatorPage()
                 .chooseComputerEngine()
-                .fillInputNumberInstances("4")
-                .chooseOperationSystem("free")
-                .chooseMachineClass("regular")
-                .chooseSeries("n1")
-                .chooseMachineType("CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8")
-                .addGPUs("1","NVIDIA_TESLA_V100")
-                .chooseLocalSSD("2")
-                .chooseDataCenterLocation("europe-west3")
-                .chooseCommittedUsage("1")
-                .pressButtonAddToEstimate();
+                .fillInputNumberInstances(commonData.getQuantityInstances())
+                .chooseOperationSystem(commonData.getOperationSystem())
+                .chooseMachineClass(commonData.getMachineClass())
+                .chooseSeries(commonData.getSeries())
+                .chooseMachineType(commonData.getMachineType())
+                .addGPUs(commonData.getGpuQuantity(),commonData.getGpuType())
+                .chooseLocalSSD(commonData.getLocalSSD())
+                .chooseDataCenterLocation(commonData.getDataCenterLocation())
+                .chooseCommittedUsage(commonData.getCommittedUsage())
+                .pressButtonAddToEstimate()
+                .checkFieldsCreatedEstimateHasTheSameDataLikeInCalculator(commonData.getEstimateFields());
 
+        Assert.assertTrue(expectedEstimate, "Created estimate don't have the same info like in calculator");
+    }
 
-//        boolean expectedHeaderLikeInitial = createdBin.checkHeaderCreatedBin();
-//        Assert.assertTrue(expectedHeaderLikeInitial, "There is don't similar header");
+    @Test(description = "Hard me plenty")
+    public void createEstimateAndCheckPriceHasTheSameValueLikeManualTest() {
+        CommonDataHardMePlentyJSON commonData = new CommonDataHardMePlentyJSON();
 
+        boolean expectedEstimatePriceIfCompareItWithResultAfterManualTest = new CloudGoogleHomePage(driver, commonData)
+                .openHomePage()
+                .fillSearchInput()
+                .openPricingCalculatorPage()
+                .chooseComputerEngine()
+                .fillInputNumberInstances(commonData.getQuantityInstances())
+                .chooseOperationSystem(commonData.getOperationSystem())
+                .chooseMachineClass(commonData.getMachineClass())
+                .chooseSeries(commonData.getSeries())
+                .chooseMachineType(commonData.getMachineType())
+                .addGPUs(commonData.getGpuQuantity(),commonData.getGpuType())
+                .chooseLocalSSD(commonData.getLocalSSD())
+                .chooseDataCenterLocation(commonData.getDataCenterLocation())
+                .chooseCommittedUsage(commonData.getCommittedUsage())
+                .pressButtonAddToEstimate()
+                .checkPriceCreatedEstimateHasTheSameValueLikeInManualTest(commonData.getResultEstimatePriceAfterManualTest());
+
+        Assert.assertTrue(expectedEstimatePriceIfCompareItWithResultAfterManualTest, "Estimate price don't has the same value like value manual test");
     }
 
     @AfterMethod(alwaysRun = true)
