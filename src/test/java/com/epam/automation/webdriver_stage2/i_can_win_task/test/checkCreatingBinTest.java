@@ -1,7 +1,7 @@
-package com.epam.automation.webdriver_course.i_can_win_task.test;
+package com.epam.automation.webdriver_stage2.i_can_win_task.test;
 
-import com.epam.automation.webdriver_course.enums.ExpirationTime;
-import com.epam.automation.webdriver_course.i_can_win_task.page.ThePasteBinHomePage;
+import com.epam.automation.webdriver_stage2.enums.ExpirationTime;
+import com.epam.automation.webdriver_stage2.i_can_win_task.page.ThePasteBinHomePage;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;

@@ -1,8 +1,8 @@
-package com.epam.automation.webdriver_course.bring_it_on.test;
+package com.epam.automation.webdriver_stage2.bring_it_on.test;
 
-import com.epam.automation.webdriver_course.bring_it_on.page.PasteBinHomePage;
-import com.epam.automation.webdriver_course.bring_it_on.page.ResultPageAfterAddedBin;
-import com.epam.automation.webdriver_course.bring_it_on.resources.CommonDataBringItOnTestJSON;
+import com.epam.automation.webdriver_stage2.bring_it_on.page.PasteBinHomePage;
+import com.epam.automation.webdriver_stage2.bring_it_on.page.ResultPageAfterAddedBin;
+import com.epam.automation.webdriver_stage2.bring_it_on.resources.CommonDataBringItOnTestJSON;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;

@@ -1,4 +1,4 @@
-package com.epam.automation.webdriver_course.enums;
+package com.epam.automation.webdriver_stage2.enums;
 
 public enum SyntaxHighlighting {
     BASH("Bash");

@@ -1,7 +1,7 @@
-package com.epam.automation.webdriver_course.bring_it_on.resources;
+package com.epam.automation.webdriver_stage2.bring_it_on.resources;
 
-import com.epam.automation.webdriver_course.enums.ExpirationTime;
-import com.epam.automation.webdriver_course.enums.SyntaxHighlighting;
+import com.epam.automation.webdriver_stage2.enums.ExpirationTime;
+import com.epam.automation.webdriver_stage2.enums.SyntaxHighlighting;
 
 import java.util.ArrayList;
 import java.util.List;

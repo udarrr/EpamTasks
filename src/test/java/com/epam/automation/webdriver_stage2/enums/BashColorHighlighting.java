@@ -1,4 +1,4 @@
-package com.epam.automation.webdriver_course.enums;
+package com.epam.automation.webdriver_stage2.enums;
 
 public enum BashColorHighlighting {
     KW2("kw2","#c20cb9"),

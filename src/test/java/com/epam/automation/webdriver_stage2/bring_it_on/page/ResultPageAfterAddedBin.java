@@ -1,6 +1,6 @@
-package com.epam.automation.webdriver_course.bring_it_on.page;
+package com.epam.automation.webdriver_stage2.bring_it_on.page;
 
-import com.epam.automation.webdriver_course.bring_it_on.resources.CommonDataBringItOnTestJSON;
+import com.epam.automation.webdriver_stage2.bring_it_on.resources.CommonDataBringItOnTestJSON;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

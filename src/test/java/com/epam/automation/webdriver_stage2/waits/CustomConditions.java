@@ -1,4 +1,4 @@
-package com.epam.automation.webdriver_course.waits;
+package com.epam.automation.webdriver_stage2.waits;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

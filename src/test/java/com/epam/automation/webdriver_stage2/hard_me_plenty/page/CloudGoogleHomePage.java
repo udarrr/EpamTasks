@@ -1,6 +1,6 @@
-package com.epam.automation.webdriver_course.hard_me_plenty.page;
+package com.epam.automation.webdriver_stage2.hard_me_plenty.page;
 
-import com.epam.automation.webdriver_course.waits.CustomConditions;
+import com.epam.automation.webdriver_stage2.waits.CustomConditions;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,4 +1,4 @@
-package com.epam.automation.webdriver_course.hard_me_plenty.page;
+package com.epam.automation.webdriver_stage2.hard_me_plenty.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

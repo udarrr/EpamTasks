@@ -1,7 +1,7 @@
-package com.epam.automation.webdriver_course.hard_me_plenty.test;
+package com.epam.automation.webdriver_stage2.hard_me_plenty.test;
 
-import com.epam.automation.webdriver_course.hard_me_plenty.page.CloudGoogleHomePage;
-import com.epam.automation.webdriver_course.hard_me_plenty.page.PricingCalculatorPage;
+import com.epam.automation.webdriver_stage2.hard_me_plenty.page.CloudGoogleHomePage;
+import com.epam.automation.webdriver_stage2.hard_me_plenty.page.PricingCalculatorPage;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

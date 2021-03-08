@@ -1,6 +1,6 @@
-package com.epam.automation.webdriver_course.i_can_win_task.page;
+package com.epam.automation.webdriver_stage2.i_can_win_task.page;
 
-import com.epam.automation.webdriver_course.waits.CustomConditions;
+import com.epam.automation.webdriver_stage2.waits.CustomConditions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
