@@ -1,8 +1,8 @@
-package com.epam.automation.javathreads_stage2.OptionalTask.Planes;
+package com.epam.automation.javathreads_stage2.optionaltask.planes;
 
-import com.epam.automation.javathreads_stage2.OptionalTask.Airport;
-import com.epam.automation.javathreads_stage2.OptionalTask.Console.Printer;
-import com.epam.automation.javathreads_stage2.OptionalTask.Resources.RunAway;
+import com.epam.automation.javathreads_stage2.optionaltask.Airport;
+import com.epam.automation.javathreads_stage2.optionaltask.console.Printer;
+import com.epam.automation.javathreads_stage2.optionaltask.resources.RunAway;
 
 import java.util.concurrent.TimeUnit;
 

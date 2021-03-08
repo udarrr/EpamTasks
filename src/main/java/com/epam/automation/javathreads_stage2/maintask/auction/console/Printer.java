@@ -1,4 +1,4 @@
-package com.epam.automation.javathreads_stage2.MainTask.Auction.Console;
+package com.epam.automation.javathreads_stage2.maintask.auction.console;
 
 public class Printer {
     public void payWinnerOfLot(int idPotentialWinner, int currentPriceLot, int cashAfterPay) {

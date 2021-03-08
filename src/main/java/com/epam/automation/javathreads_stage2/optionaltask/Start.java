@@ -1,4 +1,4 @@
-package com.epam.automation.javathreads_stage2.OptionalTask;
+package com.epam.automation.javathreads_stage2.optionaltask;
 
 public class Start {
     public static void main(String[] args) throws InterruptedException {
