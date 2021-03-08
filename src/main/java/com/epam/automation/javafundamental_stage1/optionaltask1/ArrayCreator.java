@@ -1,4 +1,4 @@
-package com.epam.automation.JavaFundamental.optionaltask1;
+package com.epam.automation.javafundamental_stage1.optionaltask1;
 
 import java.util.Scanner;
 

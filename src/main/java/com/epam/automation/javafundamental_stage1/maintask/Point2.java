@@ -1,4 +1,4 @@
-package com.epam.automation.JavaFundamental.maintask;
+package com.epam.automation.javafundamental_stage1.maintask;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package com.epam.automation.JavaFundamental.optionaltask2;
+package com.epam.automation.javafundamental_stage1.optionaltask2;
 
 import java.util.Arrays;
 import java.util.Random;

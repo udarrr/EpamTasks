@@ -1,4 +1,4 @@
-package com.epam.automation.JavaFundamental.optionaltask2;
+package com.epam.automation.javafundamental_stage1.optionaltask2;
 
 public class ArraySum {
     public static int[] sumLinesArray(int[][] array) {
