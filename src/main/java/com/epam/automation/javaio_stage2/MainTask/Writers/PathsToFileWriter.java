@@ -1,6 +1,6 @@
-package com.epam.automation.JavaIO.MainTask.Writers;
+package com.epam.automation.javaio_stage2.MainTask.Writers;
 
-import com.epam.automation.JavaIO.MainTask.Resources.PathPlaces;
+import com.epam.automation.javaio_stage2.MainTask.Resources.PathPlaces;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

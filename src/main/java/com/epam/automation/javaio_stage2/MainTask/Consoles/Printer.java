@@ -1,6 +1,6 @@
-package com.epam.automation.JavaIO.MainTask.Consoles;
+package com.epam.automation.javaio_stage2.MainTask.Consoles;
 
-import com.epam.automation.JavaIO.MainTask.Resources.PathPlaces;
+import com.epam.automation.javaio_stage2.MainTask.Resources.PathPlaces;
 
 public class Printer {
     public void printDescriptionMenu() {

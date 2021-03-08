@@ -1,4 +1,4 @@
-package com.epam.automation.JavaIO.OptionalTask.File.NewDirectoryPoint2;
+package com.epam.automation.javaio_stage2.OptionalTask.File.NewDirectoryPoint2;
 
 public class Point2JavaProgram {
     private int value;

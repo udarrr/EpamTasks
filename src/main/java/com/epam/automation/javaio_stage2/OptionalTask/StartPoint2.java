@@ -1,4 +1,4 @@
-package com.epam.automation.JavaIO.OptionalTask;
+package com.epam.automation.javaio_stage2.OptionalTask;
 
 import java.io.*;
 import java.nio.file.Files;

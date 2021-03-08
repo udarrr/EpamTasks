@@ -1,4 +1,4 @@
-package com.epam.automation.JavaIO.MainTask.Builders;
+package com.epam.automation.javaio_stage2.MainTask.Builders;
 
 import java.io.*;
 import java.nio.file.DirectoryStream;
