@@ -1,4 +1,4 @@
-package com.epam.automation.JavaThreads.MainTask.Auction.Models.Lots;
+package com.epam.automation.javathreads_stage2.MainTask.Auction.Models.Lots;
 
 public class Lot {
     private int id;

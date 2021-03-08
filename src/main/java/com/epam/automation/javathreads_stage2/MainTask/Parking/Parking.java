@@ -1,6 +1,6 @@
-package com.epam.automation.JavaThreads.MainTask.Parking;
+package com.epam.automation.javathreads_stage2.MainTask.Parking;
 
-import com.epam.automation.JavaThreads.MainTask.Parking.Cars.Car;
+import com.epam.automation.javathreads_stage2.MainTask.Parking.Cars.Car;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.epam.automation.JavaThreads.OptionalTask.Resources;
+package com.epam.automation.javathreads_stage2.OptionalTask.Resources;
 
 import java.time.Instant;
 

@@ -1,7 +1,7 @@
-package com.epam.automation.JavaThreads.MainTask.Auction;
+package com.epam.automation.javathreads_stage2.MainTask.Auction;
 
-import com.epam.automation.JavaThreads.MainTask.Auction.Console.Printer;
-import com.epam.automation.JavaThreads.MainTask.Auction.Models.Participants.Participant;
+import com.epam.automation.javathreads_stage2.MainTask.Auction.Console.Printer;
+import com.epam.automation.javathreads_stage2.MainTask.Auction.Models.Participants.Participant;
 
 import java.util.List;
 

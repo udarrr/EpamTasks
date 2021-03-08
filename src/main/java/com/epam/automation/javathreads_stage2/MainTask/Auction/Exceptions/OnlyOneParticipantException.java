@@ -1,4 +1,4 @@
-package com.epam.automation.JavaThreads.MainTask.Auction.Exceptions;
+package com.epam.automation.javathreads_stage2.MainTask.Auction.Exceptions;
 
 public class OnlyOneParticipantException extends Exception {
     public OnlyOneParticipantException(String message) {

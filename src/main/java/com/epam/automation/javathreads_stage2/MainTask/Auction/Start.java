@@ -1,4 +1,4 @@
-package com.epam.automation.JavaThreads.MainTask.Auction;
+package com.epam.automation.javathreads_stage2.MainTask.Auction;
 
 public class Start {
     public static void main(String[] args) {

@@ -1,10 +1,10 @@
-package com.epam.automation.JavaThreads.OptionalTask;
+package com.epam.automation.javathreads_stage2.OptionalTask;
 
-import com.epam.automation.JavaThreads.OptionalTask.Console.Printer;
-import com.epam.automation.JavaThreads.OptionalTask.Planes.Plane;
-import com.epam.automation.JavaThreads.OptionalTask.Resources.PlanningResources;
-import com.epam.automation.JavaThreads.OptionalTask.Resources.RunAway;
-import com.epam.automation.JavaThreads.OptionalTask.Resources.RunAwayPool;
+import com.epam.automation.javathreads_stage2.OptionalTask.Console.Printer;
+import com.epam.automation.javathreads_stage2.OptionalTask.Planes.Plane;
+import com.epam.automation.javathreads_stage2.OptionalTask.Resources.PlanningResources;
+import com.epam.automation.javathreads_stage2.OptionalTask.Resources.RunAway;
+import com.epam.automation.javathreads_stage2.OptionalTask.Resources.RunAwayPool;
 
 import java.time.Instant;
 import java.util.concurrent.TimeUnit;

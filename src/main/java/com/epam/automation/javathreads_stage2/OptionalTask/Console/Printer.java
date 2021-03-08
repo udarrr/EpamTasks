@@ -1,7 +1,7 @@
-package com.epam.automation.JavaThreads.OptionalTask.Console;
+package com.epam.automation.javathreads_stage2.OptionalTask.Console;
 
-import com.epam.automation.JavaThreads.OptionalTask.Planes.Plane;
-import com.epam.automation.JavaThreads.OptionalTask.Resources.RunAway;
+import com.epam.automation.javathreads_stage2.OptionalTask.Planes.Plane;
+import com.epam.automation.javathreads_stage2.OptionalTask.Resources.RunAway;
 
 import java.time.Duration;
 
