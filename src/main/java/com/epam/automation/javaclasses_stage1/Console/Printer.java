@@ -1,6 +1,6 @@
-package com.epam.automation.JavaClasses.Console;
+package com.epam.automation.javaclasses_stage1.Console;
 
-import com.epam.automation.JavaClasses.Cars.Car;
+import com.epam.automation.javaclasses_stage1.Cars.Car;
 
 public class Printer {
 

@@ -1,4 +1,4 @@
-package com.epam.automation.JavaClasses.Enums;
+package com.epam.automation.javaclasses_stage1.Enums;
 
 public enum Color {
     BLACK, WHITE, RED, GREEN, ORANGE, BLUE, BACLAGAN;

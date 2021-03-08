@@ -1,4 +1,4 @@
-package com.epam.automation.JavaClasses.Console;
+package com.epam.automation.javaclasses_stage1.Console;
 
 import java.io.BufferedReader;
 import java.io.IOException;

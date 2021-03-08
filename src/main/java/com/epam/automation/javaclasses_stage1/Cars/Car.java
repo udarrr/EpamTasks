@@ -1,7 +1,7 @@
-package com.epam.automation.JavaClasses.Cars;
+package com.epam.automation.javaclasses_stage1.Cars;
 
-import com.epam.automation.JavaClasses.Enums.Color;
-import com.epam.automation.JavaClasses.Enums.Vendor;
+import com.epam.automation.javaclasses_stage1.Enums.Color;
+import com.epam.automation.javaclasses_stage1.Enums.Vendor;
 
 public class Car {
     private int id;

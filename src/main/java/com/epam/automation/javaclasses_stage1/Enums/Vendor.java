@@ -1,4 +1,4 @@
-package com.epam.automation.JavaClasses.Enums;
+package com.epam.automation.javaclasses_stage1.Enums;
 
 public enum Vendor {
     VW, BMW, MITSUBISHI, VAZ;

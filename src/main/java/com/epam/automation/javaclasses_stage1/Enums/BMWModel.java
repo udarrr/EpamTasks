@@ -1,4 +1,4 @@
-package com.epam.automation.JavaClasses.Enums;
+package com.epam.automation.javaclasses_stage1.Enums;
 
 public enum BMWModel {
     X1, X2, X3, X4, X5, X6, X7;
