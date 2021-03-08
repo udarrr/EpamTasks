@@ -34,12 +34,7 @@ public class ResultPageAfterAddedBin {
         new WebDriverWait(driver, 10).withMessage("Header isn't present")
                 .until(ExpectedConditions.visibilityOf(headerCreatedBin));
 
-        boolean headerHasTheSameTextLikeInitial = headerCreatedBin.getText().equals(new CommonDataBringItOnTestJSON().getTitleName());
-
-        if (!headerHasTheSameTextLikeInitial) {
-            return false;
-        }
-        return true;
+        return headerCreatedBin.getText().equals(new CommonDataBringItOnTestJSON().getTitleName());
     }
 
     public boolean checkHighlightingSyntax() {
@@ -94,18 +89,12 @@ public class ResultPageAfterAddedBin {
                 return false;
 
             case "re5":
-                if (part.get(indexOfPartElement).getText().startsWith("-") ||
-                        part.get(indexOfPartElement).getText().startsWith("--")) {
-                    return true;
-                }
-                return false;
+                return part.get(indexOfPartElement).getText().startsWith("-") ||
+                        part.get(indexOfPartElement).getText().startsWith("--");
 
             case "st0":
-                if (part.get(indexOfPartElement).getText().startsWith("\"") &&
-                        part.get(indexOfPartElement).getText().endsWith("\"")) {
-                    return true;
-                }
-                return false;
+                return part.get(indexOfPartElement).getText().startsWith("\"") &&
+                        part.get(indexOfPartElement).getText().endsWith("\"");
 
             default:
                 return false;
