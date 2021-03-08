@@ -36,7 +36,13 @@ public class EstimateComputeEngineTest {
                 .chooseDataCenterLocation(commonData.getDataCenterLocation())
                 .chooseCommittedUsage(commonData.getCommittedUsage())
                 .pressButtonAddToEstimate()
-                .checkFieldsCreatedEstimateHasTheSameDataLikeInCalculator(commonData.getEstimateFields());
+                .checkFieldsCreatedEstimateHasTheSameDataLikeInCalculator(
+                        CommonDataHardMePlentyJSON.instanceTypeField,
+                        CommonDataHardMePlentyJSON.vmClassField,
+                        CommonDataHardMePlentyJSON.regionField,
+                        CommonDataHardMePlentyJSON.localSSDField,
+                        CommonDataHardMePlentyJSON.commitmentTermField
+                );
 
         Assert.assertTrue(expectedEstimate, "Created estimate don't have the same info like in calculator");
     }

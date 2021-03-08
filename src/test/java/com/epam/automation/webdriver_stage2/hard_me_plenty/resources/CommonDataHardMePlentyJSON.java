@@ -2,9 +2,6 @@ package com.epam.automation.webdriver_stage2.hard_me_plenty.resources;
 
 import com.epam.automation.webdriver_stage2.hard_me_plenty.enums.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public final class CommonDataHardMePlentyJSON {
     private final String quantityInstances = "4";
     private final String operationSystem = OperationSystem.FREE.getType();
@@ -17,17 +14,13 @@ public final class CommonDataHardMePlentyJSON {
     private final String dataCenterLocation = DatacenterLocation.FRANKFURT.getType();
     private final String committedUsage = CommittedUsage.YEAR_1.getType();
     private final String resultEstimatePriceAfterManualTest = "1,082.77";
-
-
-    private final List<String> estimateFields = new ArrayList<>(List.of(
-            "VM class",
-            "Instance type",
-            "Region",
-            "local SSD",
-            "Commitment term")
-    );
-
     private final String priceField = "Estimated Component Cost";
+
+    public static final String vmClassField = "VM class";
+    public static final String instanceTypeField = "Instance type";
+    public static final String regionField =  "Region";
+    public static final String localSSDField =  "local SSD";
+    public static final String commitmentTermField =  "Commitment term";
 
     public String getQuantityInstances() {
         return quantityInstances;
@@ -67,10 +60,6 @@ public final class CommonDataHardMePlentyJSON {
 
     public String getCommittedUsage() {
         return committedUsage;
-    }
-
-    public List<String> getEstimateFields() {
-        return estimateFields;
     }
 
     public String getPriceField() {

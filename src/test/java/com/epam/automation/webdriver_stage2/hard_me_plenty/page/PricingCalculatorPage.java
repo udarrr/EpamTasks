@@ -96,6 +96,7 @@ public class PricingCalculatorPage {
 
     public PricingCalculatorPage chooseComputerEngine() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(iFrame));
+
         driver.switchTo().frame(iFrame);
         driver.switchTo().frame(iFrameCalculatorAfterIFrame);
         tabComputerEngine.click();
@@ -200,9 +201,14 @@ public class PricingCalculatorPage {
         return this;
     }
 
-    public boolean checkFieldsCreatedEstimateHasTheSameDataLikeInCalculator(List<String> fields) {
+    public boolean checkFieldsCreatedEstimateHasTheSameDataLikeInCalculator(String field1, String field2, String field3, String field4, String field5) {
+        List<String> fields = new ArrayList<>(List.of(field1, field2, field3, field4, field5));
+        return getResultComparingFieldsWithCommonData(fields);
+    }
+
+    private boolean getResultComparingFieldsWithCommonData(List<String> fields) {
         List<String> lines = new ArrayList<>();
-        createdEstimate.forEach(x->lines.add(x.getText()));
+        createdEstimate.forEach(x -> lines.add(x.getText()));
 
         for (int i = 0; i < lines.size(); i++) {
             for (int j = 0; j < fields.size(); j++) {
@@ -225,15 +231,15 @@ public class PricingCalculatorPage {
 
     private boolean findResultInFields(String line, String field) {
         switch (field) {
-            case "VM class":
+            case CommonDataHardMePlentyJSON.vmClassField:
                 return line.toLowerCase().endsWith(MachineClass.REGULAR.getDescription().toLowerCase());
-            case "Instance type":
+            case CommonDataHardMePlentyJSON.instanceTypeField:
                 return line.toLowerCase().endsWith(MachineType.N1_STANDART_8.getDescription().toLowerCase());
-            case "Region":
+            case CommonDataHardMePlentyJSON.regionField:
                 return line.toLowerCase().endsWith(DatacenterLocation.FRANKFURT.getDescription().toLowerCase());
-            case "local SSD":
+            case CommonDataHardMePlentyJSON.localSSDField:
                 return line.toLowerCase().endsWith(LocalSSD.X2_375.getDescription().toLowerCase());
-            case "Commitment term":
+            case CommonDataHardMePlentyJSON.commitmentTermField:
                 return line.toLowerCase().endsWith(CommittedUsage.YEAR_1.getDescription().toLowerCase());
             default:
                 return false;
