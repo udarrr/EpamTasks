@@ -1,4 +1,4 @@
-package com.epam.automation.JavaCollections.OptionalTask;
+package com.epam.automation.javacollections_stage1.OptionalTask;
 
 import java.util.ArrayList;
 import java.util.Comparator;

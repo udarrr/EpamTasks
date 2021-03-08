@@ -1,4 +1,4 @@
-package com.epam.automation.JavaCollections.MainTask.Appliances;
+package com.epam.automation.javacollections_stage1.MainTask.Appliances;
 
 import com.opencsv.bean.CsvBindByName;
 

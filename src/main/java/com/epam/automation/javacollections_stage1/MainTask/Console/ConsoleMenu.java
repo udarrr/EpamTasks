@@ -1,10 +1,10 @@
-package com.epam.automation.JavaCollections.MainTask.Console;
+package com.epam.automation.javacollections_stage1.MainTask.Console;
 
-import com.epam.automation.JavaCollections.MainTask.Appliances.ConsumerElectronic;
-import com.epam.automation.JavaCollections.MainTask.Appliances.HomeElectricAppliance;
-import com.epam.automation.JavaCollections.MainTask.Appliances.MajorAppliance;
-import com.epam.automation.JavaCollections.MainTask.CsvReader;
-import com.epam.automation.JavaCollections.MainTask.Flat;
+import com.epam.automation.javacollections_stage1.MainTask.Appliances.ConsumerElectronic;
+import com.epam.automation.javacollections_stage1.MainTask.Appliances.HomeElectricAppliance;
+import com.epam.automation.javacollections_stage1.MainTask.Appliances.MajorAppliance;
+import com.epam.automation.javacollections_stage1.MainTask.CsvReader;
+import com.epam.automation.javacollections_stage1.MainTask.Flat;
 
 import java.util.ArrayList;
 import java.util.List;
