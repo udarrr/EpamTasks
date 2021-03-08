@@ -1,4 +1,4 @@
-package com.epam.automation.javacleancode_stage1.Enum;
+package com.epam.automation.javacleancode_stage1.enums;
 
 public enum PassengerModel {
     BOEING_737("Boeing-737", 900, 12000, 60500, 164),

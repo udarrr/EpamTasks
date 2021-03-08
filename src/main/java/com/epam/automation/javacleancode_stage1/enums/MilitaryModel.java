@@ -1,4 +1,4 @@
-package com.epam.automation.javacleancode_stage1.Enum;
+package com.epam.automation.javacleancode_stage1.enums;
 
 public enum MilitaryModel {
     B1B_LANCER("B-1B Lancer", 1050, 21000, 80000, MilitaryType.BOMBER),

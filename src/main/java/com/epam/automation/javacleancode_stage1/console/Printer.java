@@ -1,8 +1,8 @@
-package com.epam.automation.javacleancode_stage1.Console;
+package com.epam.automation.javacleancode_stage1.console;
 
 import com.epam.automation.javacleancode_stage1.Airport;
-import com.epam.automation.javacleancode_stage1.Planes.MilitaryPlane;
-import com.epam.automation.javacleancode_stage1.Planes.PassengerPlane;
+import com.epam.automation.javacleancode_stage1.planes.MilitaryPlane;
+import com.epam.automation.javacleancode_stage1.planes.PassengerPlane;
 
 public class Printer {
     public void printPlanesSortedByMaxDistance(Airport airport) {
