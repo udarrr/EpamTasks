@@ -1,6 +1,7 @@
 package com.epam.automation.webdriver_stage2.bring_it_on.page;
 
 import com.epam.automation.webdriver_stage2.bring_it_on.resources.CommonDataBringItOnTestJSON;
+import com.epam.automation.webdriver_stage2.enums.BashColorHighlighting;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -72,7 +73,7 @@ public class ResultPageAfterAddedBin {
 
     private boolean checkSpanHasRightColorSyntax(List<WebElement> part, int indexOfPartElement) {
         switch (part.get(indexOfPartElement).getAttribute("class")) {
-            case "kw2":
+            case BashColorHighlighting.KW2:
                 for (int k = 0; k < data.getCommandsGitBash().size(); k++) {
                     if (part.get(indexOfPartElement).getText().equals(data.getCommandsGitBash().get(k))) {
                         return true;
@@ -80,7 +81,7 @@ public class ResultPageAfterAddedBin {
                 }
                 return false;
 
-            case "br0":
+            case BashColorHighlighting.BR0:
                 for (int k = 0; k < data.getCharacterBashWrap().size(); k++) {
                     if (part.get(indexOfPartElement).getText().equals(data.getCharacterBashWrap().get(k))) {
                         return true;
@@ -88,11 +89,11 @@ public class ResultPageAfterAddedBin {
                 }
                 return false;
 
-            case "re5":
+            case BashColorHighlighting.RE5:
                 return part.get(indexOfPartElement).getText().startsWith("-") ||
                         part.get(indexOfPartElement).getText().startsWith("--");
 
-            case "st0":
+            case BashColorHighlighting.ST0:
                 return part.get(indexOfPartElement).getText().startsWith("\"") &&
                         part.get(indexOfPartElement).getText().endsWith("\"");
 
