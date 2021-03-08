@@ -1,7 +1,7 @@
-package com.epam.automation.JavaErrorExceptions.Management;
+package com.epam.automation.javaerrorexceptions_stage2.Management;
 
-import com.epam.automation.JavaErrorExceptions.Exception.*;
-import com.epam.automation.JavaErrorExceptions.University.*;
+import com.epam.automation.javaerrorexceptions_stage2.Exception.*;
+import com.epam.automation.javaerrorexceptions_stage2.University.*;
 
 import java.util.ArrayList;
 import java.util.List;

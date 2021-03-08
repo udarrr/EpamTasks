@@ -1,7 +1,7 @@
-package com.epam.automation.JavaErrorExceptions.Console;
+package com.epam.automation.javaerrorexceptions_stage2.Console;
 
-import com.epam.automation.JavaErrorExceptions.Exception.*;
-import com.epam.automation.JavaErrorExceptions.Management.Management;
+import com.epam.automation.javaerrorexceptions_stage2.Exception.*;
+import com.epam.automation.javaerrorexceptions_stage2.Management.Management;
 
 import java.util.Scanner;
 
