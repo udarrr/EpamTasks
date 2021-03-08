@@ -13,7 +13,7 @@ public final class CommonDataHardMePlentyJSON {
     private final String localSSD = LocalSSD.X2_375.getType();
     private final String dataCenterLocation = DatacenterLocation.FRANKFURT.getType();
     private final String committedUsage = CommittedUsage.YEAR_1.getType();
-    private final String resultEstimatePriceAfterManualTest = "1,082.77";
+    private final String resultPriceAfterManualTest = "1,082.77";
     private final String priceField = "Estimated Component Cost";
 
     public static final String vmClassField = "VM class";
@@ -66,7 +66,7 @@ public final class CommonDataHardMePlentyJSON {
         return priceField;
     }
 
-    public String getResultEstimatePriceAfterManualTest() {
-        return resultEstimatePriceAfterManualTest;
+    public String getResultPriceAfterManualTest() {
+        return resultPriceAfterManualTest;
     }
 }

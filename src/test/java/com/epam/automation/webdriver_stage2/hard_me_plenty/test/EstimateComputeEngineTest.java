@@ -19,22 +19,22 @@ public class EstimateComputeEngineTest {
 
     @Test(description = "Hard me plenty")
     public void createEstimateAndCheckFields() {
-        CommonDataHardMePlentyJSON commonData = new CommonDataHardMePlentyJSON();
+        CommonDataHardMePlentyJSON data = new CommonDataHardMePlentyJSON();
 
-        boolean expectedEstimate = new CloudGoogleHomePage(driver, commonData)
+        boolean expectedEstimate = new CloudGoogleHomePage(driver, data)
                 .openHomePage()
                 .fillSearchInput()
                 .openPricingCalculatorPage()
                 .chooseComputerEngine()
-                .fillInputNumberInstances(commonData.getQuantityInstances())
-                .chooseOperationSystem(commonData.getOperationSystem())
-                .chooseMachineClass(commonData.getMachineClass())
-                .chooseSeries(commonData.getSeries())
-                .chooseMachineType(commonData.getMachineType())
-                .addGPUs(commonData.getGpuQuantity(),commonData.getGpuType())
-                .chooseLocalSSD(commonData.getLocalSSD())
-                .chooseDataCenterLocation(commonData.getDataCenterLocation())
-                .chooseCommittedUsage(commonData.getCommittedUsage())
+                .fillInputNumberInstances(data.getQuantityInstances())
+                .chooseOperationSystem(data.getOperationSystem())
+                .chooseMachineClass(data.getMachineClass())
+                .chooseSeries(data.getSeries())
+                .chooseMachineType(data.getMachineType())
+                .addGPUs(data.getGpuQuantity(),data.getGpuType())
+                .chooseLocalSSD(data.getLocalSSD())
+                .chooseDataCenterLocation(data.getDataCenterLocation())
+                .chooseCommittedUsage(data.getCommittedUsage())
                 .pressButtonAddToEstimate()
                 .checkFieldsCreatedEstimateHasTheSameDataLikeInCalculator(
                         CommonDataHardMePlentyJSON.instanceTypeField,
@@ -66,7 +66,7 @@ public class EstimateComputeEngineTest {
                 .chooseDataCenterLocation(commonData.getDataCenterLocation())
                 .chooseCommittedUsage(commonData.getCommittedUsage())
                 .pressButtonAddToEstimate()
-                .checkPriceCreatedEstimateHasTheSameValueLikeInManualTest(commonData.getResultEstimatePriceAfterManualTest());
+                .checkPriceCreatedEstimateHasTheSameValueLikeInManualTest(commonData.getResultPriceAfterManualTest());
 
         Assert.assertTrue(expectedEstimatePriceIfCompareItWithResultAfterManualTest, "Estimate price don't has the same value like value manual test");
     }
