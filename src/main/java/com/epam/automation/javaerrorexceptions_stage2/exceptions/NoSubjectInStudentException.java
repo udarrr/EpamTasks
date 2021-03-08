@@ -1,4 +1,4 @@
-package com.epam.automation.javaerrorexceptions_stage2.Exception;
+package com.epam.automation.javaerrorexceptions_stage2.exceptions;
 
 public class NoSubjectInStudentException extends Exception{
     public NoSubjectInStudentException(String message) {

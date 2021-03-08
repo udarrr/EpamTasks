@@ -1,6 +1,6 @@
-package com.epam.automation.javaerrorexceptions_stage2.Console;
+package com.epam.automation.javaerrorexceptions_stage2.console;
 
-import com.epam.automation.javaerrorexceptions_stage2.University.*;
+import com.epam.automation.javaerrorexceptions_stage2.university.*;
 
 import java.util.List;
 

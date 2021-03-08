@@ -1,4 +1,4 @@
-package com.epam.automation.javaerrorexceptions_stage2.University;
+package com.epam.automation.javaerrorexceptions_stage2.university;
 
 import java.util.Arrays;
 import java.util.List;
