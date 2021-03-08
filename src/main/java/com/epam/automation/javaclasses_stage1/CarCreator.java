@@ -1,7 +1,7 @@
 package com.epam.automation.javaclasses_stage1;
 
-import com.epam.automation.javaclasses_stage1.Cars.Car;
-import com.epam.automation.javaclasses_stage1.Enums.*;
+import com.epam.automation.javaclasses_stage1.cars.Car;
+import com.epam.automation.javaclasses_stage1.enums.*;
 
 import java.util.Random;
 

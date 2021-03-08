@@ -1,4 +1,4 @@
-package com.epam.automation.javaclasses_stage1.Enums;
+package com.epam.automation.javaclasses_stage1.enums;
 
 public enum VAZModel {
     VESTA, GRANTA, LADA2101, LADA2106, LADASedan, CROSS;
