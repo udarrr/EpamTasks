@@ -17,7 +17,7 @@ public class EstimateComputeEngineTests {
         driver.manage().window().maximize();
     }
 
-    @Test(description = "Hard me plenty - check fields")
+    @Test(description = "Hard me plenty")
     public void createEstimateAndCheckFields() {
         CommonDataHardMePlentyJSON data = new CommonDataHardMePlentyJSON();
 
@@ -45,7 +45,7 @@ public class EstimateComputeEngineTests {
         Assert.assertTrue(expectedFieldsHasTheSameValueLikeInCalculator, "Created estimate don't have the same info like in calculator");
     }
 
-    @Test(description = "Hard me plenty - check total price value with value of manual test")
+    @Test(description = "Hard me plenty")
     public void createEstimateAndCheckPriceWithValueOfManualTest() {
         CommonDataHardMePlentyJSON data = new CommonDataHardMePlentyJSON();
 
@@ -70,10 +70,10 @@ public class EstimateComputeEngineTests {
     }
 
     @Test(description = "Hardcore")
-    public void createEstimateAndComparePriceCalculatorWithEmail() {
+    public void createEstimateAndComparePriceCalculatorWithSentByEmail() {
         CommonDataHardMePlentyJSON data = new CommonDataHardMePlentyJSON();
 
-        boolean expectedPriceInCalculatorTheSameLineInEmail = new CloudGoogleHomePage(driver, data)
+        boolean expectedPriceInCalculatorLikeInEmail = new CloudGoogleHomePage(driver, data)
                 .openHomePage()
                 .fillSearchInput()
                 .openPricingCalculatorPage()
@@ -100,7 +100,7 @@ public class EstimateComputeEngineTests {
                 .checkLetterInTemporaryEmailBox()
                 .compareCalculatorTotalPriceResultHasTheSamePriceLikeInTemporaryEmailLetter();
 
-        Assert.assertTrue(expectedPriceInCalculatorTheSameLineInEmail, "Price in letter don't have the same value like in calculator");
+        Assert.assertTrue(expectedPriceInCalculatorLikeInEmail, "Price in letter don't have the same value like in calculator");
     }
 
     @AfterMethod(alwaysRun = true)
