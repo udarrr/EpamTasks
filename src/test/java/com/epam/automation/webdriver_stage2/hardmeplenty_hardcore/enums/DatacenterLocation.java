@@ -1,12 +1,12 @@
-package com.epam.automation.webdriver_stage2.hard_me_plenty.enums;
+package com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.enums;
 
-public enum Series {
-    N1("n1","N1");
+public enum DatacenterLocation {
+    FRANKFURT("europe-west3","Frankfurt");
 
     private final String type;
     private final String description;
 
-    Series(String type, String description) {
+    DatacenterLocation(String type, String description) {
         this.type = type;
         this.description = description;
     }

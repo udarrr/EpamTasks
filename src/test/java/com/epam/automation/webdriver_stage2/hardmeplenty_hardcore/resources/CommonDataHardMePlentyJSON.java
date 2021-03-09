@@ -1,6 +1,6 @@
-package com.epam.automation.webdriver_stage2.hard_me_plenty.resources;
+package com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.resources;
 
-import com.epam.automation.webdriver_stage2.hard_me_plenty.enums.*;
+import com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.enums.*;
 
 public final class CommonDataHardMePlentyJSON {
     private final String quantityInstances = "4";
@@ -13,9 +13,10 @@ public final class CommonDataHardMePlentyJSON {
     private final String localSSD = LocalSSD.X2_375.getType();
     private final String dataCenterLocation = DatacenterLocation.FRANKFURT.getType();
     private final String committedUsage = CommittedUsage.YEAR_1.getType();
-    private final String resultPriceAfterManualTest = "1,082.77";
-    private final String priceField = "Estimated Component Cost";
+    private String resultPriceAfterManualTest = "1,082.77";
+    private String resultPriceFromCalculator = "";
 
+    private final String descriptionPriceField = "Estimated Component Cost";
     public static final String vmClassField = "VM class";
     public static final String instanceTypeField = "Instance type";
     public static final String regionField =  "Region";
@@ -62,11 +63,19 @@ public final class CommonDataHardMePlentyJSON {
         return committedUsage;
     }
 
-    public String getPriceField() {
-        return priceField;
+    public String getDescriptionPriceField() {
+        return descriptionPriceField;
     }
 
     public String getResultPriceAfterManualTest() {
         return resultPriceAfterManualTest;
+    }
+
+    public String getResultPriceFromCalculator() {
+        return resultPriceFromCalculator;
+    }
+
+    public void setResultPriceFromCalculator(String resultPriceFromCalculator) {
+        this.resultPriceFromCalculator = resultPriceFromCalculator;
     }
 }

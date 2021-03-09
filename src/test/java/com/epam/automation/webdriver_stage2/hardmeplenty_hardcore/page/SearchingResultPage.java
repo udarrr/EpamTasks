@@ -1,6 +1,6 @@
-package com.epam.automation.webdriver_stage2.hard_me_plenty.page;
+package com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.page;
 
-import com.epam.automation.webdriver_stage2.hard_me_plenty.resources.CommonDataHardMePlentyJSON;
+import com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.resources.CommonDataHardMePlentyJSON;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,14 +10,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SearchingResultPage {
     private WebDriver driver;
-    private CommonDataHardMePlentyJSON commonData;
+    private CommonDataHardMePlentyJSON data;
 
     @FindBy(xpath = "//a[@class='gs-title']/b[text()='Google Cloud Platform Pricing Calculator']")
     private WebElement googleCalculatorLink;
 
-    public SearchingResultPage(WebDriver driver,CommonDataHardMePlentyJSON commonData) {
+    public SearchingResultPage(WebDriver driver, CommonDataHardMePlentyJSON data) {
         this.driver = driver;
-        this.commonData = commonData;
+        this.data = data;
         PageFactory.initElements(driver, this);
     }
 
@@ -27,6 +27,6 @@ public class SearchingResultPage {
 
         googleCalculatorLink.click();
 
-        return new PricingCalculatorPage(driver, commonData);
+        return new PricingCalculatorPage(driver, data);
     }
 }

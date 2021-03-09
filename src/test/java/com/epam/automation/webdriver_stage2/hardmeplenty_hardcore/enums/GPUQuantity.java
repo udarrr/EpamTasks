@@ -1,12 +1,12 @@
-package com.epam.automation.webdriver_stage2.hard_me_plenty.enums;
+package com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.enums;
 
-public enum LocalSSD {
-    X2_375("2","2x375 GiB");
+public enum GPUQuantity {
+    ONE("1","1");
 
     private final String type;
     private final String description;
 
-    LocalSSD(String type, String description) {
+    GPUQuantity(String type, String description) {
         this.type = type;
         this.description = description;
     }

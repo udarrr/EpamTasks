@@ -1,6 +1,6 @@
-package com.epam.automation.webdriver_stage2.hard_me_plenty.page;
+package com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.page;
 
-import com.epam.automation.webdriver_stage2.hard_me_plenty.resources.CommonDataHardMePlentyJSON;
+import com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.resources.CommonDataHardMePlentyJSON;
 import com.epam.automation.webdriver_stage2.waits.CustomConditions;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -18,9 +18,9 @@ public class CloudGoogleHomePage {
     @FindBy(xpath = "//div[@class='devsite-searchbox']/input")
     private WebElement searchInput;
 
-    public CloudGoogleHomePage(WebDriver driver, CommonDataHardMePlentyJSON commonData) {
+    public CloudGoogleHomePage(WebDriver driver, CommonDataHardMePlentyJSON data) {
         this.driver = driver;
-        this.commonData = commonData;
+        this.commonData = data;
         PageFactory.initElements(driver, this);
     }
 

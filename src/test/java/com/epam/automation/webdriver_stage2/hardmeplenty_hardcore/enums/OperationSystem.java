@@ -1,12 +1,12 @@
-package com.epam.automation.webdriver_stage2.hard_me_plenty.enums;
+package com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.enums;
 
-public enum GPUType {
-    NVIDIA_TESLA_V100("NVIDIA_TESLA_V100","NVIDIA Tesla V100");
+public enum OperationSystem {
+    FREE("free","Debian, CentOS, CoreOS, Ubuntu, or other User Provided OS");
 
     private final String type;
     private final String description;
 
-    GPUType(String type, String description) {
+    OperationSystem(String type, String description) {
         this.type = type;
         this.description = description;
     }

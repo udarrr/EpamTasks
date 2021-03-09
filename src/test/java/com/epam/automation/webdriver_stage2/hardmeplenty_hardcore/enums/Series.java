@@ -1,12 +1,12 @@
-package com.epam.automation.webdriver_stage2.hard_me_plenty.enums;
+package com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.enums;
 
-public enum CommittedUsage {
-    YEAR_1("1","1 Year");
+public enum Series {
+    N1("n1","N1");
 
     private final String type;
     private final String description;
 
-    CommittedUsage(String type, String description) {
+    Series(String type, String description) {
         this.type = type;
         this.description = description;
     }

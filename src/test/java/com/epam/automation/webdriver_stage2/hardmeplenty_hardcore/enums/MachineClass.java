@@ -1,4 +1,4 @@
-package com.epam.automation.webdriver_stage2.hard_me_plenty.enums;
+package com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.enums;
 
 public enum MachineClass {
     REGULAR("regular","Regular");

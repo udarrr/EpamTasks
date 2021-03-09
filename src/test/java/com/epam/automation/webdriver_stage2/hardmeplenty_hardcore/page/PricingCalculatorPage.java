@@ -1,10 +1,8 @@
-package com.epam.automation.webdriver_stage2.hard_me_plenty.page;
+package com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.page;
 
-import com.epam.automation.webdriver_stage2.hard_me_plenty.enums.*;
-import com.epam.automation.webdriver_stage2.hard_me_plenty.resources.CommonDataHardMePlentyJSON;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.enums.*;
+import com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.resources.CommonDataHardMePlentyJSON;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,7 +13,7 @@ import java.util.List;
 
 public class PricingCalculatorPage {
     private WebDriver driver;
-    private CommonDataHardMePlentyJSON commonData;
+    private CommonDataHardMePlentyJSON data;
 
     @FindBy(xpath = "//a[@class='gs-title']/b[text()='Google Cloud Platform Pricing Calculator']")
     private WebElement googleCalculatorLink;
@@ -72,9 +70,19 @@ public class PricingCalculatorPage {
     @FindBy(xpath = "//md-list[@class='cartitem ng-scope']/md-list-item/div")
     private List<WebElement> createdEstimate;
 
-    public PricingCalculatorPage(WebDriver driver, CommonDataHardMePlentyJSON commonData) {
+    @FindBy(xpath = "//button[@aria-label='Email Estimate']")
+    private WebElement buttonEmailEstimate;
+
+    @FindBy(xpath = "//input[@type='email']")
+    private WebElement inputEmail;
+
+    @FindBy(xpath = "//button[@aria-label='Send Email']")
+    private WebElement buttonSendEmail;
+
+
+    public PricingCalculatorPage(WebDriver driver, CommonDataHardMePlentyJSON data) {
         this.driver = driver;
-        this.commonData = commonData;
+        this.data = data;
         PageFactory.initElements(driver, this);
     }
 
@@ -201,9 +209,61 @@ public class PricingCalculatorPage {
         return this;
     }
 
+    public PricingCalculatorPage saveCalculatorTotalPriceResult(){
+        for(WebElement price : createdEstimate){
+            if(price.getText().contains(data.getDescriptionPriceField())){
+                data.setResultPriceFromCalculator(price.getText());
+            }
+        }
+        return this;
+    }
+
+    public PricingCalculatorPage pressButtonEmailEstimate() {
+        buttonEmailEstimate.click();
+        new WebDriverWait(driver,10).until(ExpectedConditions.visibilityOf(inputEmail));
+
+        return this;
+    }
+
+    public TemporaryEmailHomePage openNewTab(){
+        ((JavascriptExecutor) driver).executeScript("window.open()");
+        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+
+        return new TemporaryEmailHomePage(driver, data);
+    }
+
+    public PricingCalculatorPage enterEmail() {
+        driver.switchTo().frame(iFrame);
+        driver.switchTo().frame(iFrameCalculatorAfterIFrame);
+        inputEmail.sendKeys(Keys.LEFT_CONTROL, "v");
+
+        return this;
+    }
+
+    public PricingCalculatorPage pressButtonSendEmail(){
+        buttonSendEmail.click();
+
+        return this;
+    }
+
+    public TemporaryEmailHomePage switchTabToTemporaryEmailHomePage(){
+        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs.get(1));
+
+        return new TemporaryEmailHomePage(driver, data);
+    }
+
     public boolean checkFieldsCreatedEstimateHasTheSameDataLikeInCalculator(String field1, String field2, String field3, String field4, String field5) {
         List<String> fields = new ArrayList<>(List.of(field1, field2, field3, field4, field5));
         return getResultComparingFieldsWithCommonData(fields);
+    }
+
+
+    public boolean checkPriceCreatedEstimateHasTheSameValueLikeInManualTest(String manualTestValue) {
+        return createdEstimate.stream().filter(x -> x.getText()
+                .contains(data.getDescriptionPriceField()))
+                .anyMatch(z -> z.getText().contains(manualTestValue));
     }
 
     private boolean getResultComparingFieldsWithCommonData(List<String> fields) {
@@ -221,12 +281,6 @@ public class PricingCalculatorPage {
             }
         }
         return true;
-    }
-
-    public boolean checkPriceCreatedEstimateHasTheSameValueLikeInManualTest(String manualTestValue) {
-        return createdEstimate.stream().filter(x -> x.getText()
-                .contains(commonData.getPriceField()))
-                .anyMatch(z -> z.getText().contains(manualTestValue));
     }
 
     private boolean findResultInFields(String line, String field) {

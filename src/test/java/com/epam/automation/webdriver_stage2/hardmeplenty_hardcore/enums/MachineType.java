@@ -1,12 +1,12 @@
-package com.epam.automation.webdriver_stage2.hard_me_plenty.enums;
+package com.epam.automation.webdriver_stage2.hardmeplenty_hardcore.enums;
 
-public enum OperationSystem {
-    FREE("free","Debian, CentOS, CoreOS, Ubuntu, or other User Provided OS");
+public enum MachineType {
+    N1_STANDART_8("CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8","n1-standard-8");
 
     private final String type;
     private final String description;
 
-    OperationSystem(String type, String description) {
+    MachineType(String type, String description) {
         this.type = type;
         this.description = description;
     }
