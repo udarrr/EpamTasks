@@ -1,7 +1,7 @@
-package com.epam.automation.webdriver_stage2.bring_it_on.page;
+package com.epam.automation.webdriver_stage2.icanwin_bringiton.page;
 
-import com.epam.automation.webdriver_stage2.bring_it_on.resources.CommonDataBringItOnTestJSON;
-import com.epam.automation.webdriver_stage2.enums.BashColorHighlighting;
+import com.epam.automation.webdriver_stage2.icanwin_bringiton.resources.CommonDataBringItOnTestJSON;
+import com.epam.automation.webdriver_stage2.icanwin_bringiton.enums.BashColorHighlighting;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,6 +31,13 @@ public class ResultPageAfterAddedBin {
         PageFactory.initElements(driver, this);
     }
 
+    public boolean checkCreatedBin() {
+        List<WebElement> result =new WebDriverWait(driver,10).
+                until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//li[@class='li1']")));
+
+        return result.size() > 0;
+    }
+
     public boolean checkHeaderCreatedBin() {
         new WebDriverWait(driver, 10).withMessage("Header isn't present")
                 .until(ExpectedConditions.visibilityOf(headerCreatedBin));
@@ -39,10 +46,8 @@ public class ResultPageAfterAddedBin {
     }
 
     public boolean checkHighlightingSyntax() {
-        List<WebElement> elements = driver.findElements(By.xpath(partOfLocatorParticularRawLine));
-
-        new WebDriverWait(driver, 10).withMessage("Raw lines isn't present").
-                until(ExpectedConditions.visibilityOfAllElements(elements));
+        List<WebElement> elements = new WebDriverWait(driver,10)
+                .until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(partOfLocatorParticularRawLine)));
 
         for (int i = 0; i < elements.size(); i++) {
             List<WebElement> spanElementsInRawLine =
@@ -59,6 +64,8 @@ public class ResultPageAfterAddedBin {
 
     public boolean checkTextInRawLinesMatchWithInitialText() {
         List<String> lines = new ArrayList<>();
+
+        new WebDriverWait(driver,10).until(ExpectedConditions.visibilityOfAllElements(rawLinesCreatedBin));
 
         for (WebElement element : rawLinesCreatedBin) {
             lines.add(element.getText());

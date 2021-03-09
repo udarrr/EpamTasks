@@ -1,6 +1,6 @@
-package com.epam.automation.webdriver_stage2.bring_it_on.page;
+package com.epam.automation.webdriver_stage2.icanwin_bringiton.page;
 
-import com.epam.automation.webdriver_stage2.bring_it_on.resources.CommonDataBringItOnTestJSON;
+import com.epam.automation.webdriver_stage2.icanwin_bringiton.resources.CommonDataBringItOnTestJSON;
 import com.epam.automation.webdriver_stage2.waits.CustomConditions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -62,6 +62,12 @@ public class PasteBinHomePage {
         return this;
     }
 
+    public PasteBinHomePage pasteBin(String bin) {
+                textAreaForPasteBin.sendKeys(bin);
+
+        return this;
+    }
+
     public PasteBinHomePage selectSyntaxType(String element) {
         new WebDriverWait(driver, 10).
                 until(ExpectedConditions.elementToBeClickable(selectorSyntaxHighlighting));
@@ -95,7 +101,7 @@ public class PasteBinHomePage {
         return this;
     }
 
-    public ResultPageAfterAddedBin createNewPaste() {
+    public ResultPageAfterAddedBin createNewBin() {
         new WebDriverWait(driver, 10).
                 until(ExpectedConditions.elementToBeClickable(buttonCreateNewPast));
 

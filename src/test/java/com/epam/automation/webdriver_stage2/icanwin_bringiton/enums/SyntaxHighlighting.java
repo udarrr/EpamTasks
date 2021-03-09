@@ -1,4 +1,4 @@
-package com.epam.automation.webdriver_stage2.enums;
+package com.epam.automation.webdriver_stage2.icanwin_bringiton.enums;
 
 public enum SyntaxHighlighting {
     BASH("Bash");
