@@ -45,13 +45,13 @@ public class PricingCalculatorPage {
     @FindBy(id = "select_92")
     private WebElement inputContainerMachineType;
 
-    @FindBy(xpath = "//md-checkbox[@aria-label='Add GPUs']")
+    @FindBy(xpath = "//h2[contains(text(),'Instances')]/..//md-checkbox[@aria-label='Add GPUs']")
     private WebElement checkBoxAddGPU;
 
-    @FindBy(xpath = "//md-select[@placeholder='Number of GPUs']")
+    @FindBy(xpath = "//h2[contains(text(),'Instances')]/..//md-select[@placeholder='Number of GPUs']")
     private WebElement inputContainerGPUNumber;
 
-    @FindBy(xpath = "//md-select[@placeholder='GPU type']")
+    @FindBy(xpath = "//h2[contains(text(),'Instances')]/..//md-select[@placeholder='GPU type']")
     private WebElement inputContainerGPUType;
 
     @FindBy(id = "select_357")
@@ -63,7 +63,7 @@ public class PricingCalculatorPage {
     @FindBy(id = "select_101")
     private WebElement inputContainerCommittedUsage;
 
-    @FindBy(xpath = "//button[@aria-label='Add to Estimate']")
+    @FindBy(xpath = "//h2[contains(text(),'Instances')]/..//button[@aria-label='Add to Estimate']")
     private WebElement buttonAddToEstimate;
 
     String partOfLocatorForPositionDropDownList = "//div[@class='md-select-menu-container md-active md-clickable']//md-option[@value='%s']";
@@ -210,9 +210,9 @@ public class PricingCalculatorPage {
         return this;
     }
 
-    public PricingCalculatorPage saveCalculatorTotalPriceResult(){
-        for(WebElement price : createdEstimate){
-            if(price.getText().contains(data.getDescriptionPriceField())){
+    public PricingCalculatorPage saveCalculatorTotalPriceResult() {
+        for (WebElement price : createdEstimate) {
+            if (price.getText().contains(data.getDescriptionPriceField())) {
                 data.setResultPriceFromCalculator(price.getText());
             }
         }
@@ -221,12 +221,12 @@ public class PricingCalculatorPage {
 
     public PricingCalculatorPage pressButtonEmailEstimate() {
         buttonEmailEstimate.click();
-        new WebDriverWait(driver,10).until(ExpectedConditions.visibilityOf(inputEmail));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(inputEmail));
 
         return this;
     }
 
-    public TemporaryEmailHomePage openNewTab(){
+    public TemporaryEmailHomePage openNewTab() {
         ((JavascriptExecutor) driver).executeScript("window.open()");
         ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
@@ -242,13 +242,13 @@ public class PricingCalculatorPage {
         return this;
     }
 
-    public PricingCalculatorPage pressButtonSendEmail(){
+    public PricingCalculatorPage pressButtonSendEmail() {
         buttonSendEmail.click();
 
         return this;
     }
 
-    public TemporaryEmailHomePage switchTabToTemporaryEmailHomePage(){
+    public TemporaryEmailHomePage switchTabToTemporaryEmailHomePage() {
         ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
 
