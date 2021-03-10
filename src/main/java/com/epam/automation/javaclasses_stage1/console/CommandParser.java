@@ -44,13 +44,26 @@ public class CommandParser {
         Car[] filteredCars = new Car[0];
 
         switch (firstCondition) {
-            case "vendor" -> filteredCars = getVendor(cars, secondCondition, command);
-            case "model" -> filteredCars = getModel(cars, secondCondition, command);
-            case "regId" -> filteredCars = getRegistrationNumber(cars, secondCondition, command);
-            case "color" -> filteredCars = getColor(cars, secondCondition, command);
-            case "year" -> filteredCars = getYear(cars, Integer.parseInt(secondCondition), command);
-            case "price" -> filteredCars = getPrice(cars, Double.parseDouble(secondCondition), command);
-            default -> System.out.println("Parameter isn't recognized");
+            case "vendor":
+                filteredCars = getVendor(cars, secondCondition, command);
+                break;
+            case "model":
+                filteredCars = getModel(cars, secondCondition, command);
+                break;
+            case "regId":
+                filteredCars = getRegistrationNumber(cars, secondCondition, command);
+                break;
+            case "color":
+                filteredCars = getColor(cars, secondCondition, command);
+                break;
+            case "year":
+                filteredCars = getYear(cars, Integer.parseInt(secondCondition), command);
+                break;
+            case "price":
+                filteredCars = getPrice(cars, Double.parseDouble(secondCondition), command);
+                break;
+            default:
+                System.out.println("Parameter isn't recognized");
         }
 
         return filteredCars;
