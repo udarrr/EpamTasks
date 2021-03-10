@@ -32,7 +32,7 @@ public class Plane implements Runnable {
 
     @Override
     public void run() {
-        new Printer().printPlaneMoveTowardsRunAway();
+        new Printer().printPlaneMoveTowardsRunAway(toString());
 
         RunAway runAway = airport.getResource(this);
 

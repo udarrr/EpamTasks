@@ -2,8 +2,8 @@ package com.epam.automation.javathreads_stage2.maintask.auction;
 
 import com.epam.automation.javathreads_stage2.maintask.auction.console.Printer;
 import com.epam.automation.javathreads_stage2.maintask.auction.exceptions.OnlyOneParticipantException;
-import com.epam.automation.javathreads_stage2.maintask.auction.models.Lots.Lot;
-import com.epam.automation.javathreads_stage2.maintask.auction.models.Participants.Participant;
+import com.epam.automation.javathreads_stage2.maintask.auction.models.lots.Lot;
+import com.epam.automation.javathreads_stage2.maintask.auction.models.participants.Participant;
 
 import java.util.*;
 import java.util.concurrent.CyclicBarrier;
@@ -65,7 +65,7 @@ public class Auction {
     private void setCurrentLotWithHighBet(int id) {
         Lot currentLotWithHighPrice = participants.stream().flatMap(l -> l.getLots().
                 stream()).filter(f -> f.getId() == id).max(Comparator.comparing(Lot::getCurrentPrice)).
-                orElseThrow();
+                orElseThrow(NullPointerException::new);
 
         participants.stream().filter(l -> {
             return l.getLots().stream().anyMatch(h -> h.equals(currentLotWithHighPrice));
@@ -79,7 +79,7 @@ public class Auction {
     private void setCurrentBetAllParticipants(int id) {
         int currentBet = participants.stream().flatMap(x -> x.getLots().
                 stream()).filter(f -> f.getId() == id).max(Comparator.comparing(Lot::getCurrentPrice)).
-                orElseThrow().getCurrentPrice();
+                orElseThrow(NullPointerException::new).getCurrentPrice();
 
         participants.forEach(x -> {
             x.getLots().stream().filter(f -> f.getId() == id).forEach(z -> z.setCurrentPrice(currentBet));

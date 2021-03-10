@@ -1,7 +1,7 @@
-package com.epam.automation.javathreads_stage2.maintask.auction.models.Participants;
+package com.epam.automation.javathreads_stage2.maintask.auction.models.participants;
 
 import com.epam.automation.javathreads_stage2.maintask.auction.console.Printer;
-import com.epam.automation.javathreads_stage2.maintask.auction.models.Lots.Lot;
+import com.epam.automation.javathreads_stage2.maintask.auction.models.lots.Lot;
 
 import java.util.List;
 import java.util.Random;
@@ -107,7 +107,7 @@ public class Participant implements Runnable {
                     new Printer().printWaitingParticipant(toString());
                 }
             } else {
-                int currentPrice = lots.stream().filter(f -> f.getId() == currentIdLot).findFirst().orElseThrow().getCurrentPrice();
+                int currentPrice = lots.stream().filter(f -> f.getId() == currentIdLot).findFirst().orElseThrow(NullPointerException::new).getCurrentPrice();
 
                 new Printer().printBetPotentialWinner(toString(), currentPrice);
             }
@@ -132,7 +132,7 @@ public class Participant implements Runnable {
                     ifPresent(z -> z.setCurrentPrice(z.getCurrentPrice() + bet));
 
             int currentPrice = lots.stream().
-                    filter(f -> f.getId() == currentIdLot).findFirst().orElseThrow().getCurrentPrice();
+                    filter(f -> f.getId() == currentIdLot).findFirst().orElseThrow(NullPointerException::new).getCurrentPrice();
 
             new Printer().printBetOfParticipant(toString(), currentPrice);
         } else {

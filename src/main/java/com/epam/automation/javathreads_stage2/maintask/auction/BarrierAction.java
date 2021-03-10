@@ -1,7 +1,7 @@
 package com.epam.automation.javathreads_stage2.maintask.auction;
 
 import com.epam.automation.javathreads_stage2.maintask.auction.console.Printer;
-import com.epam.automation.javathreads_stage2.maintask.auction.models.Participants.Participant;
+import com.epam.automation.javathreads_stage2.maintask.auction.models.participants.Participant;
 
 import java.util.List;
 
@@ -21,17 +21,17 @@ public class BarrierAction implements Runnable {
             new Printer().printAuctionWithoutParticipant();
         } else if (!potentialWinner) {
             int idPotentialWinner = participants.stream().
-                    filter(x -> !x.getRefused()).findFirst().orElseThrow().getId();
+                    filter(x -> !x.getRefused()).findFirst().orElseThrow(NullPointerException::new).getId();
 
             int idCurrentLot = participants.stream().
-                    filter(x -> !x.getRefused()).findFirst().orElseThrow().getCurrentIdLot();
+                    filter(x -> !x.getRefused()).findFirst().orElseThrow(NullPointerException::new).getCurrentIdLot();
 
             int currentPriceLot = participants.stream().
-                    filter(x -> !x.getRefused()).findFirst().orElseThrow().getLots().stream().
-                    filter(z -> z.getId() == idCurrentLot).findFirst().orElseThrow().getCurrentPrice();
+                    filter(x -> !x.getRefused()).findFirst().orElseThrow(NullPointerException::new).getLots().stream().
+                    filter(z -> z.getId() == idCurrentLot).findFirst().orElseThrow(NullPointerException::new).getCurrentPrice();
 
             int currentCashPotentialWinner = participants.stream().
-                    filter(f -> f.getId() == idPotentialWinner).findFirst().orElseThrow().getCash();
+                    filter(f -> f.getId() == idPotentialWinner).findFirst().orElseThrow(NullPointerException::new).getCash();
 
             if (currentCashPotentialWinner < currentPriceLot) {
                 setFeeForWinnerWithoutCash(idPotentialWinner, currentPriceLot, currentCashPotentialWinner);
@@ -46,13 +46,13 @@ public class BarrierAction implements Runnable {
     private void setFeeForWinnerWithoutCash(int idPotentialWinner, int currentPriceLot, int currentCashPotentialWinner) {
         new Printer().printWinnerWithoutCash(idPotentialWinner, currentPriceLot, currentCashPotentialWinner);
 
-        participants.stream().filter(f -> f.getId() == idPotentialWinner).findFirst().orElseThrow().setFee(2);
+        participants.stream().filter(f -> f.getId() == idPotentialWinner).findFirst().orElseThrow(NullPointerException::new).setFee(2);
     }
 
     private void payForLot(int idPotentialWinner, int currentPriceLot) {
         participants.stream().filter(f -> f.getId() == idPotentialWinner).forEach(x -> x.setCash(x.getCash() - currentPriceLot));
 
-        int cashAfterPay = participants.stream().filter(f -> f.getId() == idPotentialWinner).findFirst().orElseThrow().getCash();
+        int cashAfterPay = participants.stream().filter(f -> f.getId() == idPotentialWinner).findFirst().orElseThrow(NullPointerException::new).getCash();
 
         new Printer().payWinnerOfLot(idPotentialWinner, currentPriceLot, cashAfterPay);
     }
