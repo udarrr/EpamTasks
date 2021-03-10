@@ -33,21 +33,23 @@ public class ConsoleMenu {
             }
 
             switch (inputConsoleLine) {
-                case "1" -> {
-
+                case "1": {
                     consolePrinter.printPluggingMenuDescription();
                     startHandlerPluggingAppliance();
                 }
+                break;
 
-                case "2" -> {
-
+                case "2": {
                     consolePrinter.printSearcherMenuDescription();
                     startHandlerSearcherAppliance();
                 }
+                break;
 
-                case "3" -> startHandlerSortingByPowerAppliance();
+                case "3":
+                    startHandlerSortingByPowerAppliance();
 
-                default -> System.out.println("Your choosing isn't recognized");
+                default:
+                    System.out.println("Your choosing isn't recognized");
             }
         }
     }

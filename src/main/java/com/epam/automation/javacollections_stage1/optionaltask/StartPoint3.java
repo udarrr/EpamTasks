@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class StartPoint3 {
     private static List<Path> getAllDirectories(String path) throws IOException {
         List<Path> pathsDirectories = new ArrayList<>();
 
-        DirectoryStream<Path> directories = Files.newDirectoryStream(Path.of(path));
+        DirectoryStream<Path> directories = Files.newDirectoryStream(Paths.get(path));
 
         for (Path paths : directories) {
             pathsDirectories.add(paths);
@@ -35,7 +36,7 @@ public class StartPoint3 {
         List<Path> pathsSubdirectories = new ArrayList<>();
 
         for (int i = 0; i < listSubDirectories.size(); i++) {
-            DirectoryStream<Path> paths = Files.newDirectoryStream(Path.of(String.valueOf(listSubDirectories.get(i))));
+            DirectoryStream<Path> paths = Files.newDirectoryStream(Paths.get(String.valueOf(listSubDirectories.get(i))));
 
             for (Path recursionPaths : paths) {
                 if (Files.isDirectory(recursionPaths)) {
