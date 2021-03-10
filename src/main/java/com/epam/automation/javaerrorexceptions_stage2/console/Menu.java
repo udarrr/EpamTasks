@@ -27,11 +27,16 @@ public class Menu {
             }
 
             switch (inputConsoleLine) {
-                case "1" -> addMarksFromConsoleLine();
+                case "1":
+                    addMarksFromConsoleLine();
+                    break;
 
-                case "2" -> startHandlerMenuAverageMark();
+                case "2":
+                    startHandlerMenuAverageMark();
+                    break;
 
-                default -> System.out.println("Your choice isn't recognized");
+                default:
+                    System.out.println("Your choice isn't recognized");
             }
         }
     }
