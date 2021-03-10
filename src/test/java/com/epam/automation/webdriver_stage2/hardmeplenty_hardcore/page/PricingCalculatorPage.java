@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PricingCalculatorPage {
@@ -255,7 +256,7 @@ public class PricingCalculatorPage {
     }
 
     public boolean checkFieldsCreatedEstimateHasTheSameDataLikeInCalculator(String field1, String field2, String field3, String field4, String field5) {
-        List<String> fields = new ArrayList<>(List.of(field1, field2, field3, field4, field5));
+        List<String> fields = new ArrayList<>(Arrays.asList(field1, field2, field3, field4, field5));
         return getResultComparingFieldsWithCommonData(fields);
     }
 
