@@ -3,6 +3,7 @@ package com.epam.automation.javaio_stage2.optionaltask;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +12,7 @@ public class StartPoint3 {
     public static void main(String[] args) {
         List<StringBuilder> linesList = new ArrayList<>();
 
-        Path pathParentDirectory = Path.of("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\NewDirectoryPoint3");
+        Path pathParentDirectory = Paths.get("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\NewDirectoryPoint3");
 
         if (!Files.isDirectory(pathParentDirectory)) {
             try {

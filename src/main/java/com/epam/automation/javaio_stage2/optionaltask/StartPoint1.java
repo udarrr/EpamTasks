@@ -3,6 +3,7 @@ package com.epam.automation.javaio_stage2.optionaltask;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -10,7 +11,7 @@ public class StartPoint1 {
     public static void main(String[] args) {
         Random random = new Random();
 
-        Path pathParentDirectory = Path.of("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\NewDirectoryPoint1");
+        Path pathParentDirectory = Paths.get("src\\main\\java\\com\\epam\\automation\\JavaIO\\OptionalTask\\File\\NewDirectoryPoint1");
 
         if (!Files.isDirectory(pathParentDirectory)) {
             try {
