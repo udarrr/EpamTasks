@@ -10,7 +10,7 @@ public class Menu {
 
     Scanner sc = new Scanner(System.in);
 
-    private final Management management;
+    private Management management;
 
     public Menu(Management management) {
         this.management = management;
@@ -48,6 +48,7 @@ public class Menu {
 
         try {
             management.checkExistingFaculty(inputUniversityId);
+            printer.printFaculties(management.getFaculties());
         } catch (NoFacultyInUniversityException e) {
             System.err.println(e.getMessage());
             System.out.println();
@@ -63,6 +64,7 @@ public class Menu {
 
         try {
             management.checkExistingGroup(inputFacultyId);
+            printer.printGroup(management.getGroups(inputFacultyId));
         } catch (NoGroupInFacultyException e) {
             System.err.println(e.getMessage());
             System.out.print("Enter name for new group:");
@@ -77,6 +79,7 @@ public class Menu {
 
         try {
             management.checkExistingStudent(inputGroupId);
+            printer.printStudent(management.getStudents(inputGroupId));
         } catch (NoStudentInGroupException e) {
             System.err.println(e.getMessage());
             System.out.println();
@@ -93,6 +96,7 @@ public class Menu {
 
         try {
             management.checkExistingSubject(inputStudentId);
+            printer.printSubjectOfStudent(management.getSubject(inputStudentId));
         } catch (NoSubjectInStudentException e) {
             System.err.println(e.getMessage());
             System.out.print("Enter name for new subject:");

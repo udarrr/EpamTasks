@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Management {
-    private final List<University> university;
+    private List<University> university;
 
     public Management(List<University> university) {
         this.university = university;
